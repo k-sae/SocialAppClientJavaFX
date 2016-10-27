@@ -15,6 +15,7 @@ public class Main extends Application {
     public void stop() throws Exception {
         super.stop();
         Platform.exit();
+        //this will close all active threads with error code of 0
         System.exit(0);
     }
 
