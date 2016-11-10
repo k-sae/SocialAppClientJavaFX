@@ -1,21 +1,14 @@
 package SocialAppClient;
 
-import javafx.event.Event;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
-import sun.plugin.dom.core.Text;
-import sun.security.util.Password;
 
-import javax.swing.*;
-import javax.xml.validation.Validator;
 import java.time.LocalDate;
 import java.util.regex.Pattern;
 
@@ -23,7 +16,9 @@ import java.util.regex.Pattern;
  * Created by mosta on 30-Oct-16.
  */
 public class RegisterPage extends StackPane {
- public RegisterPage(){
+    Pane parent;
+ public RegisterPage(Pane parent){
+     this.parent = parent;
      this.setBackground(new Background(new BackgroundImage(new Image("file:Resources/background.jpg", true),BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
     BackgroundSize.DEFAULT)));
     GridPane gp=new GridPane();
@@ -67,12 +62,31 @@ public class RegisterPage extends StackPane {
          PasswordField pass=new PasswordField();
          pass.setMaxWidth(250);
          pass.setMinHeight(25);
-         Button B=new Button("login");
+         Button loginButton=new Button("login");
          //Hb.setBackground(new Background(new BackgroundFill(Color.AQUA,null,null)));
-         Hb.getChildren().addAll(email_label,email,passwordlabel,pass,B);
+         Hb.getChildren().addAll(email_label,email,passwordlabel,pass,loginButton);
+         loginButton.setOnAction(new EventHandler<ActionEvent>() {
+             @Override
+             public void handle(ActionEvent event) {
+                 //TODO #hazem
+                 //check for input
+                 long userId = checkForUserInput();
+                 if(userId != -1) {
+                     parent.getChildren().add(new MainWindow(userId));
+                     parent.getChildren().remove(this);
+                 }
+             }
+         });
          Bp.setRight(Hb);
            return Bp;
        }
+       //TODO #hazem
+    //check for user input return user id if user exists
+    //else return -1
+    private long checkForUserInput()
+    {
+        return 1;
+    }
     public TextField textFieldCreator(boolean visbility){
         TextField Tf=new TextField();
         Tf.setMaxWidth(200);

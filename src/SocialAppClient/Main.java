@@ -11,8 +11,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Pane GP=new MainWindow();
+
         Pane mainPane = new StackPane();
+        Pane GP=new RegisterPage(mainPane);
         mainPane.getChildren().add(GP);
 
         primaryStage.setTitle("btats Network");

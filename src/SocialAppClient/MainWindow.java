@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
  * Created by kemo on 09/11/2016.
  */
 public class MainWindow extends GridPane {
-    public MainWindow()
+    public MainWindow(long id)
     {
         setWindowConstrain();
         setPanels();
