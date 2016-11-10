@@ -26,10 +26,10 @@ public abstract class RequestServerCommand extends Thread {
             DataOutputStream dataOutputStream = new DataOutputStream(serverConnection.getOutputStream());
             dataOutputStream.writeUTF(command.toString());
             DataInputStream dataInputStream = new DataInputStream(serverConnection.getInputStream());
-            analyze(dataInputStream.readUTF());
+            analyze(Command.fromString(dataInputStream.readUTF()));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    abstract void analyze(String s);
+    abstract void  analyze(Command Command);
 }

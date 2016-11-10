@@ -12,7 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Pane mainPane = new StackPane();
-        GridPane GP=new RegisterPage();
+        GridPane GP=new MainWindow();
         mainPane.getChildren().add(GP);
         primaryStage.setTitle("btats Network");
         primaryStage.setScene(new Scene(mainPane,800,600));
