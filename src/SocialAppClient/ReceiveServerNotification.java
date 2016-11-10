@@ -1,7 +1,6 @@
 package SocialAppClient;
 
 import SocialAppGeneral.Command;
-import SocialAppGeneral.Connection;
 import SocialAppGeneral.ReceiveCommand;
 
 import java.net.Socket;
@@ -9,10 +8,10 @@ import java.net.Socket;
 /**
  * Created by kemo on 28/10/2016.
  */
-public class ReceiveServerCommand extends ReceiveCommand {
-    public ReceiveServerCommand(Socket remote, Connection connection)
+public class ReceiveServerNotification extends ReceiveCommand {
+    public ReceiveServerNotification(Socket remote)
     {
-        super(remote, connection);
+        super(remote);
     }
     @Override
     public void Analyze(Command command) {

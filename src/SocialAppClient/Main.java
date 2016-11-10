@@ -1,28 +1,27 @@
 package SocialAppClient;
+
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.layout.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.image.ImageView;
-import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 
 import java.sql.ParameterMetaData;
 
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
+<<<<<<< HEAD
         Pane GP=new RegisterPage();
+=======
+        Pane mainPane = new StackPane();
+        GridPane GP=new RegisterPage();
+        mainPane.getChildren().add(GP);
+>>>>>>> 37e88fd14b2021f71bbde0117893c85e29919d13
         primaryStage.setTitle("btats Network");
-        primaryStage.setFullScreen(true);
-        primaryStage.setScene(new Scene(GP,800,600));
+        primaryStage.setScene(new Scene(mainPane,800,600));
         primaryStage.show();
     }
 

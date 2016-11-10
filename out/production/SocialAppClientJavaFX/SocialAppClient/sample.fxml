@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -15,3 +16,5 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
 </GridPane>
+=======
+>>>>>>> 37e88fd14b2021f71bbde0117893c85e29919d13
