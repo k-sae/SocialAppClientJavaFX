@@ -14,7 +14,7 @@ public class NotificationConnection extends ServerConnection {
     @Override
     public void startConnection() {
         //start listening to server commands in another Thread
-        ReceiveServerCommand receiveServerCommand = new ReceiveServerCommand(connectionSocket);
+        ReceiveServerNotification receiveServerCommand = new ReceiveServerNotification(connectionSocket);
         receiveServerCommand.start();
     }
 }

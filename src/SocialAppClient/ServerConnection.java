@@ -11,7 +11,7 @@ import java.net.Socket;
 public abstract class ServerConnection implements Connection{
     protected int port;
     protected String serverName;
-    public Socket connectionSocket;
+    protected Socket connectionSocket;
     //if no parameters passed set default connection
     //TODO #kareem
     //after creating users levels accept user of type registeredUser or login user

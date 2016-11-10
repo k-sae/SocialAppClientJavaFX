@@ -33,7 +33,7 @@ public class NavBar extends HBox {
         Button homeBtn = new Button("home");
         homeBtn.setOnMouseClicked(event -> {
           mainWindow.getChildren().remove(mainFrame);
-            mainFrame = new HomePage();
+            mainFrame = new HomePage(mainFrame);
             setConstraints(mainFrame, 1,1);
             mainWindow.getChildren().add(mainFrame);
         });

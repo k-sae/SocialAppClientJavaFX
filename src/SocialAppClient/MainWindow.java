@@ -29,7 +29,7 @@ public class MainWindow extends GridPane {
     private void setPanels()
     {
         //mainframe
-        Pane mainframe = new HomePage();
+        Pane mainframe = new HomePage(this);
         GridPane.setConstraints(mainframe,1,1);
         Pane navBar = new NavBar(mainframe, this);
         mainframe.setBackground(new Background(new BackgroundFill(Color.GREEN,CornerRadii.EMPTY, Insets.EMPTY)));

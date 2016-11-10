@@ -8,8 +8,8 @@ import java.net.Socket;
 /**
  * Created by kemo on 28/10/2016.
  */
-public class ReceiveServerCommand extends ReceiveCommand {
-    public ReceiveServerCommand(Socket remote)
+public class ReceiveServerNotification extends ReceiveCommand {
+    public ReceiveServerNotification(Socket remote)
     {
         super(remote);
     }
