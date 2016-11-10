@@ -3,18 +3,15 @@ package SocialAppClient;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
-import java.sql.ParameterMetaData;
 
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Pane GP=new RegisterPage();
+        Pane GP=new MainWindow();
         Pane mainPane = new StackPane();
         mainPane.getChildren().add(GP);
 

@@ -9,7 +9,8 @@ public class MainServerConnection extends ServerConnection {
     public static Socket mainConnectionSocket;
 
     public MainServerConnection() {
-        super("LIP-LIP", 6060);
+        //TODO #config
+        super(/*change this to match ur pc name*/"LIP-LIP", 6060);
         mainConnectionSocket = connectionSocket;
     }
 

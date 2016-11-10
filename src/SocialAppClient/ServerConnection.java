@@ -26,6 +26,7 @@ public abstract class ServerConnection implements Connection{
         catch (IOException e) {
             //TODO #kareem
             //display a Alert box  stating that user have dc
+            System.out.println(e.getMessage());
         }
         catch (Exception e)
         {
