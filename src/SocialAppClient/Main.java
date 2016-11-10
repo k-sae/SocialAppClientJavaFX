@@ -13,13 +13,11 @@ import java.sql.ParameterMetaData;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
-<<<<<<< HEAD
+
         Pane GP=new RegisterPage();
-=======
         Pane mainPane = new StackPane();
-        GridPane GP=new RegisterPage();
         mainPane.getChildren().add(GP);
->>>>>>> 37e88fd14b2021f71bbde0117893c85e29919d13
+
         primaryStage.setTitle("btats Network");
         primaryStage.setScene(new Scene(mainPane,800,600));
         primaryStage.show();
