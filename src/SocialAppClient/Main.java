@@ -14,10 +14,12 @@ import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
 import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 
+import java.sql.ParameterMetaData;
+
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
-        GridPane GP=new RegisterPage();
+        Pane GP=new RegisterPage();
         primaryStage.setTitle("btats Network");
         primaryStage.setFullScreen(true);
         primaryStage.setScene(new Scene(GP,800,600));

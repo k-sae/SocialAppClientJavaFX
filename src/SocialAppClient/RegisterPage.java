@@ -12,24 +12,26 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import sun.plugin.dom.core.Text;
+import sun.security.util.Password;
+
 import javax.swing.*;
 import javax.xml.validation.Validator;
 import java.time.LocalDate;
 import java.util.regex.Pattern;
 
-
 /**
  * Created by mosta on 30-Oct-16.
  */
-public class RegisterPage extends GridPane {
+public class RegisterPage extends StackPane {
  public RegisterPage(){
      this.setBackground(new Background(new BackgroundImage(new Image("file:Resources/background.jpg", true),BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
     BackgroundSize.DEFAULT)));
-    setRow(this);
-    setCol(this);
-     layoutEditor(this);
-    // this.setMinHeight(600);
-    // this.setMinWidth(800);
+    GridPane gp=new GridPane();
+     setRow(gp);
+     setCol(gp);
+     gp.setStyle("-fx-background-color:rgba(9,9,9,0.4)");
+     this.getChildren().add(gp);
+     layoutEditor(gp);
 }
     private void setCol(GridPane gridPane)
     {
@@ -39,7 +41,7 @@ public class RegisterPage extends GridPane {
         columnConstraints1.setPercentWidth(50);
         ColumnConstraints col3=new ColumnConstraints();
         col3.setPercentWidth(20);
-        gridPane.getColumnConstraints().addAll(columnConstraints,columnConstraints1);
+        gridPane.getColumnConstraints().addAll(columnConstraints,columnConstraints1,col3);
 
     }
     private void setRow(GridPane gridPane)
@@ -52,33 +54,25 @@ public class RegisterPage extends GridPane {
         rowConstraints2.setPercentHeight(10);
         gridPane.getRowConstraints().addAll(rowConstraints,rowConstraints1,rowConstraints2);
     }
-    /*
-     public BorderPane navbarCreator(){
-         BorderPane Hb=new BorderPane();
+
+     public BorderPane  navbarCreator(){
+
+        // TODO # karim
+
+         BorderPane  Bp=new BorderPane ();
+         HBox Hb=new HBox(5);
          Label email_label=createTxt("Email:",20,true);
          TextField email=textFieldCreator(true);
          Label passwordlabel=createTxt("Password:",20,true);
-         TextField pass=textFieldCreator(true);
+         PasswordField pass=new PasswordField();
+         pass.setMaxWidth(250);
+         pass.setMinHeight(25);
          Button B=new Button("login");
-         Hb.setBackground(new Background(new BackgroundFill(Color.AQUA,null,null)));
-         Hb.setMinHeight(100);
-         Hb.setMinHeight(100);
+         //Hb.setBackground(new Background(new BackgroundFill(Color.AQUA,null,null)));
          Hb.getChildren().addAll(email_label,email,passwordlabel,pass,B);
-           return Hb;
+         Bp.setRight(Hb);
+           return Bp;
        }
-
-      public Button createRoundButtons(){
-          Button b=new Button();
-          b.setMinWidth(60);
-          b.setMinHeight(60);
-          b.setShape(new Circle(30));
-          b.setMinSize(60, 60);
-          b.setMaxSize(60, 60);
-          b.setBackground(new Background(new BackgroundImage(new Image("file:Resources/btatsya.png",60,60,false,false),BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,BackgroundSize.DEFAULT)));
-         // b.setBackground(new Background(new BackgroundFill(Color.RED,CornerRadii.EMPTY, Insets.EMPTY)));
-
-          return b;
-      }*/
     public TextField textFieldCreator(boolean visbility){
         TextField Tf=new TextField();
         Tf.setMaxWidth(200);
@@ -87,33 +81,26 @@ public class RegisterPage extends GridPane {
         return Tf;
 
     }
-    public VBox verticalBoxCreator(){
-
-        VBox vb= new VBox();
-        vb.setMinHeight(100);
-        vb.setMinWidth(200);
-        vb.setStyle("-fx-background-color:#ff0");
-        return vb;
-    }
     public void layoutEditor(GridPane gridPane){
-      // BorderPane pane = navbarCreator();
-//        pane.setBackground(new Background(new BackgroundFill(Color.RED,CornerRadii.EMPTY, Insets.EMPTY)));
-        VBox vb= textFieldArea();
+      BorderPane pane = navbarCreator();
+      VBox vb= textFieldArea();
         gridPane.setMargin(vb,new Insets(40,10,10,10));
         GridPane.setConstraints(vb,1,1);
-       // GridPane.setConstraints(pane,0,0);
-       // GridPane.setColumnSpan(pane,2);
-        gridPane.getChildren().addAll(vb);
+        GridPane.setConstraints(pane,0,0);
+        gridPane.setColumnSpan(pane,3);
+
+       gridPane.getChildren().addAll(vb,pane);
     }
     public Label createTxt(String text, int fontSize,boolean Visbility){
         Label lb=new Label();
         lb.setText(text);
         lb.setTextFill(Color.WHITE);
         lb.setFont(new Font("Yu Gothic UI",fontSize));
-        lb.setMinWidth(100);
+        lb.setMinWidth(60);
         lb.setVisible(Visbility);
         return lb;
     }
+
     public VBox textFieldArea(){
         VBox vb=new VBox();
         Label FRname=createTxt("First name:",20,true);
