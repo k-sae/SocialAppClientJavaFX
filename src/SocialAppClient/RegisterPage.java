@@ -167,49 +167,60 @@ public class RegisterPage extends StackPane {
         vb.setMargin(Gender_Hbox,(new Insets(0,0,10,0)));
         Button B=new Button("Register");
         B.setOnAction(e->{
+            int exceptions=0;
             boolean name= Pattern.matches("[a-zA-Z]{1,10}",FRname_verify.getText());
             boolean lastname= Pattern.matches("[a-zA-Z]{1,10}",LRname_verify.getText());
-            boolean password=Pattern.matches("[a-zA-Z1-9]{8,18}",password_verify.getText());
+            boolean password=Pattern.matches("[a-zA-Z0-9]{8,18}",password_verify.getText());
             boolean email =Pattern.matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",email_verify.getText());
             boolean datechecker=datecheck(dp.getValue().toString());
-            if(name==false) {
+            if(!name) {
                nameverify.setVisible(true);
                 nameverify.setTextFill(Color.RED);
+                exceptions++;
             }else{
                 nameverify.setVisible(false);
             }
-            if(lastname==false){
+            if(!lastname){
                 nameverify.setVisible(true);
                 nameverify.setTextFill(Color.RED);
+                exceptions++;
             }else{
                 nameverify.setVisible(false);
             }
 
-            if(password==false){
+            if(!password){
                 passverify.setVisible(true);
                 passverify.setTextFill(Color.RED);
-
+             exceptions++;
             }else{
                 passverify.setVisible(false);
             }
-            if(email==false){
+            if(!email){
                 emailverfiy.setVisible(true);
                 emailverfiy.setTextFill(Color.RED);
+                exceptions++;
             }else {
                 emailverfiy.setVisible(false);
             }
-            if(datechecker==true){
+            if(datechecker){
                 dateverify.setVisible(false);
             }else{
+                exceptions++;
                 dateverify.setVisible(true);
                 dateverify.setTextFill(Color.RED);
             }
+            if(exceptions==0)
+            serverconnector();
         });
 
 
 
         vb.getChildren().addAll(name_Hbox,nameverify,password_HBox,passverify,email_Hbox,emailverfiy,hdate,dateverify,Gender_Hbox,B);
         return vb;
+    }
+    public void serverconnector(){
+        System.out.println("send me to server plz");
+
     }
     public HBox createHbox(Label l,TextField t){
         HBox hb= new HBox();
