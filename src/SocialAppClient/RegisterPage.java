@@ -1,5 +1,9 @@
 package SocialAppClient;
 
+import SocialAppGeneral.Command;
+import SocialAppGeneral.LoginInfo;
+import SocialAppGeneral.RegisterInfo;
+import SocialAppGeneral.UserInfo;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -210,7 +214,21 @@ public class RegisterPage extends StackPane {
                 dateverify.setTextFill(Color.RED);
             }
             if(exceptions==0)
-            serverconnector();
+            {
+                RegisterInfo send=new RegisterInfo();
+                LoginInfo log =new LoginInfo();
+                UserInfo user =new UserInfo();
+                log.setEmail(email_verify.getText());
+                log.setPassword(password_verify.getText());
+                send.setLoginInfo(log);
+                user.setFullName(FRname_verify.getText()+LRname_verify.getText());
+                user.setBirthDate(dp.getValue().toString());
+                user.setGender(group.getSelectedToggle().toString());
+                send.setUserInfo(user);
+                Command command = new Command();
+                command.setKeyWord("new register");
+                command.setSharableObject(send);
+            }
         });
 
 
@@ -218,8 +236,7 @@ public class RegisterPage extends StackPane {
         vb.getChildren().addAll(name_Hbox,nameverify,password_HBox,passverify,email_Hbox,emailverfiy,hdate,dateverify,Gender_Hbox,B);
         return vb;
     }
-    public void serverconnector(){
-        System.out.println("send me to server plz");
+    public void serverconnector(String email,String Pass){
 
     }
     public HBox createHbox(Label l,TextField t){

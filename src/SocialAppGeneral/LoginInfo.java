@@ -26,9 +26,10 @@ public class LoginInfo implements Shareable {
         this.password = password;
     }
 
+
     @Override
-    public Shareable generateObjectFromString() {
-        return null;
+    public void generateObjectFromString(String s) {
+
     }
 
     @Override
