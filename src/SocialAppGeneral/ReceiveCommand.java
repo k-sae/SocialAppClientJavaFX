@@ -1,6 +1,6 @@
 package SocialAppGeneral;
 
-import java.io.ObjectInputStream;
+import java.io.DataInputStream;
 import java.net.Socket;
 
 /**
@@ -8,11 +8,9 @@ import java.net.Socket;
  */
 public abstract class ReceiveCommand extends Thread {
     private Socket remote;
-    protected Connection connection;
-    public ReceiveCommand(Socket remote, Connection connection)
+    public ReceiveCommand(Socket remote)
     {
         this.remote = remote;
-        this.connection = connection;
     }
     @Override
     public void run() {
@@ -23,8 +21,8 @@ public abstract class ReceiveCommand extends Thread {
                 //choose whether to
                 //make this before the while loop
                 //close it each iterate
-                ObjectInputStream objectInputStream = new ObjectInputStream(remote.getInputStream());
-                Command command = (Command) objectInputStream.readObject();
+                DataInputStream objectInputStream = new DataInputStream(remote.getInputStream());
+                Command command = Command.fromString(objectInputStream.readUTF());
                 Analyze(command);
             }
         }catch (Exception e)
