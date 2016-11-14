@@ -1,7 +1,5 @@
 package SocialAppGeneral;
 
-import java.io.Serializable;
-
 /**
  * Created by kemo on 30/10/2016.
  */
@@ -25,14 +23,17 @@ public class RegisterInfo implements Shareable {
         UserInfo = userInfo;
     }
 
-
     @Override
-    public void setAttributesFromString(String s) {
+    public void setAttributes(String s) {
 
     }
 
     @Override
-    public String generateStringFromObject() {
-        return null;
+    public String convertToString() {
+        FormedLine regFormedLined = new FormedLine();
+        regFormedLined.AddPartition("userInfo", UserInfo.convertToString());
+        regFormedLined.AddPartition("loginInfo", loginInfo.convertToString());
+        return regFormedLined.getLine();
+
     }
 }

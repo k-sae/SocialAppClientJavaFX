@@ -1,6 +1,5 @@
 package SocialAppGeneral;
 
-import SocialAppGeneral.Shareable;
 
 /**
  * Created by kemo on 24/10/2016.
@@ -44,7 +43,7 @@ public class UserInfo implements Shareable {
   }
 
   @Override
-  public void setAttributesFromString(String s){
+  public void setAttributes(String s) {
     FormedLine formedLine = new FormedLine();
     formedLine.setLine(s);
     fullName = formedLine.ReadPartition(FULL_NAME).Value;
@@ -53,7 +52,7 @@ public class UserInfo implements Shareable {
   }
 
   @Override
-  public String generateStringFromObject() {
+  public String convertToString() {
     //use Begad Class
     FormedLine formedLine = new FormedLine();
     formedLine.AddPartition(FULL_NAME, fullName);

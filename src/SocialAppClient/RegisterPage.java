@@ -13,6 +13,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+import javax.swing.*;
 import java.time.LocalDate;
 import java.util.regex.Pattern;
 
@@ -228,6 +229,7 @@ public class RegisterPage extends StackPane {
                 Command command = new Command();
                 command.setKeyWord("new register");
                 command.setSharableObject(send);
+
             }
         });
 
