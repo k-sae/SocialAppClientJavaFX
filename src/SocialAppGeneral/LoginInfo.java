@@ -1,11 +1,16 @@
 package SocialAppGeneral;
 
+import com.google.gson.Gson;
+
 /**
  * Created by kemo on 30/10/2016.
  */
 public class LoginInfo implements Shareable {
-    private final String EMAIL ="EMAIL";
-    private final String PASSWORD ="password";
+
+    //TODO #prototype GSON
+    //just for prototype will be removed
+    private transient final String EMAIL ="email"; //using transient GSON will ignore this obj and wont put it in string
+
     private String email;
     private String password;
     public LoginInfo() {
@@ -16,9 +21,11 @@ public class LoginInfo implements Shareable {
         return email;
     }
 
-   // public void setEMAIL(String EMAIL) {
-  //      this.email = EMAIL;
-   // }
+
+    public void setEmail(String EMAIL) {
+        this.email = EMAIL;
+    }
+
 
     public String getPassword() {
         return password;
@@ -28,24 +35,20 @@ public class LoginInfo implements Shareable {
         this.password = password;
     }
 
-    @Override
-    public void setAttributes(String s) {
-        FormedLine formedLine = new FormedLine();
-        formedLine.setLine(s);
-        this.email= formedLine.ReadPartition(EMAIL).Value;
-        this.password = formedLine.ReadPartition(PASSWORD).Value;
+    public  void fromJsonString(String jsonStr) {
+        //TODO #prototype GSON
+        //Read JSON
+         Gson gson = new Gson();
+        LoginInfo loginInfo = gson.fromJson(jsonStr, LoginInfo.class);
+        this.email = loginInfo.getEMAIL();
+        this.password = loginInfo.getPassword();
     }
 
     @Override
-    public String convertToString() {
-
-        FormedLine formedLine = new FormedLine();
-        formedLine.AddPartition(EMAIL,email);
-        formedLine.AddPartition(PASSWORD,password);
-        return formedLine.getLine();
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public String convertToJsonString() {
+       //TODO #prototype GSON
+        //Write JSON
+        Gson gson = new Gson();
+        return gson.toJson(this);
     }
 }
