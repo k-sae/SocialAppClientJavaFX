@@ -10,7 +10,7 @@ public class MainServerConnection extends ServerConnection {
 
     public MainServerConnection() {
         //TODO #config
-        super(/*change this to match ur pc name*/"LIP-LIP", 6060);
+        super(/*change this to match ur pc name*/"TITO", 6080);
         mainConnectionSocket = connectionSocket;
     }
 

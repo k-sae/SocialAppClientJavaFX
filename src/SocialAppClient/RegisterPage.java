@@ -226,6 +226,7 @@ public class RegisterPage extends StackPane {
                 user.setBirthDate(dp.getValue().toString());
                 user.setGender(group.getSelectedToggle().toString());
                 send.setUserInfo(user);
+                //hna hb3t el command
                 Command command = new Command();
                 command.setKeyWord("new register");
                 command.setSharableObject(send);
@@ -238,9 +239,7 @@ public class RegisterPage extends StackPane {
         vb.getChildren().addAll(name_Hbox,nameverify,password_HBox,passverify,email_Hbox,emailverfiy,hdate,dateverify,Gender_Hbox,B);
         return vb;
     }
-    public void serverconnector(String email,String Pass){
 
-    }
     public HBox createHbox(Label l,TextField t){
         HBox hb= new HBox();
         hb.getChildren().addAll(l,t);
