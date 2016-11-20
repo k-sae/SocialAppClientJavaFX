@@ -14,7 +14,6 @@ public class MainWindow extends GridPane {
         mainFrame = new Pane();
         setWindowConstrain();
         setPanels();
-        MainServerConnection mainServerConnection = new MainServerConnection();
     }
     private void setWindowConstrain()
     {

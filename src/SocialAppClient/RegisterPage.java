@@ -24,14 +24,21 @@ public class RegisterPage extends StackPane {
     Pane parent;
  public RegisterPage(Pane parent){
      this.parent = parent;
-     this.setBackground(new Background(new BackgroundImage(new Image("file:Resources/background.jpg", true),BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-    BackgroundSize.DEFAULT)));
+     this.setBackground(new Background(
+             new BackgroundImage(
+             new Image("file:Resources/background.jpg", true),
+             BackgroundRepeat.REPEAT,
+             BackgroundRepeat.NO_REPEAT,
+             BackgroundPosition.DEFAULT,
+             BackgroundSize.DEFAULT)));
     GridPane gp=new GridPane();
      setRow(gp);
      setCol(gp);
      gp.setStyle("-fx-background-color:rgba(9,9,9,0.4)");
      this.getChildren().add(gp);
      layoutEditor(gp);
+     //initialize the connection up here
+     new MainServerConnection();
 }
     private void setCol(GridPane gridPane)
     {
@@ -56,9 +63,6 @@ public class RegisterPage extends StackPane {
     }
 
      public BorderPane  navbarCreator(){
-
-        // TODO # karim
-
          BorderPane  Bp=new BorderPane ();
          HBox Hb=new HBox(5);
          Label email_label=createTxt("Email:",20,true);
