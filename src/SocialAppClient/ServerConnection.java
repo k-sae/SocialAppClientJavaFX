@@ -24,8 +24,8 @@ public abstract class ServerConnection implements Connection{
             connectionSocket = new Socket(serverName, port);
         }
         catch (IOException e) {
-            //TODO #kareem
-            //display a Alert box  stating that user have dc
+            //TODO #Hazem
+            //1-display an alert box to status non stable connection
             System.out.println(e.getMessage());
         }
         catch (Exception e)
