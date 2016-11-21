@@ -1,5 +1,6 @@
 package SocialAppClient;
 
+import SocialAppGeneral.AppUser;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
@@ -12,12 +13,10 @@ import static javafx.scene.layout.GridPane.setConstraints;
  * Created by kemo on 09/11/2016.
  */
 public class NavBar extends HBox {
-    Pane mainFrame;
-    MainWindow mainWindow;
-    public NavBar(Pane mainFrame, MainWindow mainWindow)
+
+    public NavBar(AppUser appUser)
     {
-        this.mainWindow = mainWindow;
-        this.mainFrame = mainFrame;
+
         setLayout();
         setNavButtons();
     }
@@ -32,24 +31,15 @@ public class NavBar extends HBox {
 
         Button homeBtn = new Button("home");
         homeBtn.setOnMouseClicked(event -> {
-          mainWindow.getChildren().remove(mainFrame);
-            mainFrame = new HomePage(mainFrame);
-            setConstraints(mainFrame, 1,1);
-            mainWindow.getChildren().add(mainFrame);
+            ((MainWindow)getParent()).navigateTo(new HomePage());
         });
         Button profileBtn = new Button("profile");
         profileBtn.setOnMouseClicked(event -> {
-            mainWindow.getChildren().remove(mainFrame);
-            mainFrame = new ProfilePage();
-            setConstraints(mainFrame, 1,1);
-            mainWindow.getChildren().add(mainFrame);
+            ((MainWindow)getParent()).navigateTo(new ProfilePage());
         });
         Button groupsBtn = new Button("groups");
         groupsBtn.setOnMouseClicked(event -> {
-            mainWindow.getChildren().remove(mainFrame);
-            mainFrame = new GroupPage();
-            setConstraints(mainFrame, 1,1);
-            mainWindow.getChildren().add(mainFrame);
+            ((MainWindow)getParent()).navigateTo(new GroupPage());
         });
         getChildren().addAll(homeBtn, profileBtn, groupsBtn);
     }
