@@ -35,13 +35,11 @@ public class LoginInfo implements Shareable {
         this.password = password;
     }
 
-    public  void fromJsonString(String jsonStr) {
+    public static LoginInfo fromJsonString(String jsonStr) {
         //TODO #prototype GSON
-        //Read JSON
+        //Read from JSON
          Gson gson = new Gson();
-        LoginInfo loginInfo = gson.fromJson(jsonStr, LoginInfo.class);
-        this.email = loginInfo.getEMAIL();
-        this.password = loginInfo.getPassword();
+        return  gson.fromJson(jsonStr, LoginInfo.class);
     }
 
     @Override

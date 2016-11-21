@@ -13,7 +13,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-import javax.swing.*;
 import java.time.LocalDate;
 import java.util.regex.Pattern;
 
@@ -237,6 +236,9 @@ public class RegisterPage extends StackPane {
                 RequestServerCommand requestServerCommand = new RequestServerCommand(MainServerConnection.mainConnectionSocket, command) {
                     @Override
                     void analyze(Command commandFromServer) {
+                        //TODO #prototype GSON
+                        //read object from command
+                        LoginInfo loginInfo = LoginInfo.fromJsonString(commandFromServer.getObjectStr());
                     }
                 };
                 requestServerCommand.start();
