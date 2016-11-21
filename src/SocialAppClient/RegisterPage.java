@@ -234,6 +234,12 @@ public class RegisterPage extends StackPane {
                 Command command = new Command();
                 command.setKeyWord("new register");
                 command.setSharableObject(send);
+                RequestServerCommand requestServerCommand = new RequestServerCommand(MainServerConnection.mainConnectionSocket, command) {
+                    @Override
+                    void analyze(Command commandFromServer) {
+                    }
+                };
+                requestServerCommand.start();
 
             }
         });
