@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
+import java.util.Optional;
+
 import static javafx.scene.layout.GridPane.setColumnSpan;
 import static javafx.scene.layout.GridPane.setConstraints;
 
@@ -41,6 +43,23 @@ public class NavBar extends HBox {
         groupsBtn.setOnMouseClicked(event -> {
             ((MainWindow)getParent()).navigateTo(new GroupPage());
         });
-        getChildren().addAll(homeBtn, profileBtn, groupsBtn);
+
+        Button creatButton = new Button("Create");
+        GroupPage page=new GroupPage();
+        creatButton.setOnMouseClicked(event -> {
+            Optional<String> check=page.createWindow();
+            while (check.get().equals("")){
+                page.createWindow();
+            }
+                 if(check.equals(Optional.empty())){
+                     System.out.println("False");
+                 }
+                 else {
+                         System.out.println(check.get());
+                     }
+
+
+        });
+        getChildren().addAll(homeBtn, profileBtn, groupsBtn,creatButton);
     }
 }
