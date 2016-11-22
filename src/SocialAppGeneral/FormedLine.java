@@ -51,7 +51,9 @@ public class FormedLine {
     }
 
     //Read a spicific Partition by its Variable Name
+
     public SocialAppGeneral.Partition ReadPartition(String VariableName) {
+
         Partition.Clean();
         Partition.VariableName = VariableName;
         int Counter = line.indexOf(VariableName) + VariableName.length() + 2;

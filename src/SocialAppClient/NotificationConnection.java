@@ -9,7 +9,7 @@ public class NotificationConnection extends ServerConnection {
     public NotificationConnection()
     {
         //connect to server port 6061 which responsible for notifications
-        super("LIP-LIP", 6061);
+        super("TITO",6080);
     }
     @Override
     public void startConnection() {
