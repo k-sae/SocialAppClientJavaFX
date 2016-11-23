@@ -18,14 +18,15 @@ public class MainWindow extends GridPane {
     private void setWindowConstrain()
     {
         //set columns
-        ColumnConstraints columnConstraints0 = new ColumnConstraints();
-        columnConstraints0.setPercentWidth(100);
-        ColumnConstraints columnConstraints1 = new ColumnConstraints(200);
-        getColumnConstraints().addAll(columnConstraints1,columnConstraints0);
+        ColumnConstraints columnConstraints0 = new ColumnConstraints(200);
+        ColumnConstraints columnConstraints1 = new ColumnConstraints();
+        columnConstraints1.setPercentWidth(100);
+        getColumnConstraints().addAll(columnConstraints0,columnConstraints1);
         //set rows
-        RowConstraints rowConstraints0 = new RowConstraints(80);
+        RowConstraints rowConstraints0 = new RowConstraints();
+        rowConstraints0.setPercentHeight(15);
         RowConstraints rowConstraints1 = new RowConstraints();
-        rowConstraints1.setPercentHeight(100);
+        rowConstraints1.setPercentHeight(85);
         getRowConstraints().addAll(rowConstraints0, rowConstraints1);
     }
     private void setPanels()

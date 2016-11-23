@@ -1,5 +1,6 @@
 package SocialAppClient;
 
+import SocialAppGeneral.WritePost;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -18,8 +19,10 @@ import javafx.scene.text.Text;
  * Created by kemo on 10/11/2016.
  */
 public class ProfilePage extends GridPane {
+    private String ID;
     public ProfilePage()
     {
+        /**IT WILL TAKE AN ID IN THE CONSTRUCTOR*/
         setBackground(new Background(new BackgroundFill(Color.web("#dddddd"), CornerRadii.EMPTY, Insets.EMPTY)));
 
         setGridLinesVisible(true);
@@ -31,9 +34,9 @@ public class ProfilePage extends GridPane {
     private void setConstraint(){
 
         ColumnConstraints columnConstraints0 = new ColumnConstraints();
-        columnConstraints0.setPercentWidth(20);
+        columnConstraints0.setPercentWidth(25);
         ColumnConstraints columnConstraints1 = new ColumnConstraints();
-        columnConstraints1.setPercentWidth(80);
+        columnConstraints1.setPercentWidth(75);
 
         getColumnConstraints().addAll(columnConstraints0,columnConstraints1);
 
@@ -45,32 +48,19 @@ public class ProfilePage extends GridPane {
 
     private void setPanels(){
 
-        VBox Info = new VBox();
+        InfoViewer Info = new InfoViewer(ID);
 
-        Image im = new Image("file:Resources/btatsya.png");
-        ImageView img = new ImageView(im);
-        img.setFitWidth(100);
-        img.setPreserveRatio(true);
-        img.setSmooth(true);
-        img.setCache(true);
-        img.setClip(new Circle(50,50,50));
-
-        Text Name = new Text("#NAME");
-        Name.setFont(Font.font("ARIAL",20));
-
-        Button FriendsBTN = new Button("Friends");
-        FriendsBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #dddddd;");
-        FriendsBTN.setOnMouseEntered(event -> FriendsBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;"));
-        FriendsBTN.setOnMouseExited(event -> FriendsBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #dddddd;"));
-
-
-        Info.alignmentProperty().setValue(Pos.TOP_CENTER);
-        Info.setSpacing(20);
-        Info.paddingProperty().setValue(new Insets(30,0,30,0));
-        Info.getChildren().addAll(img, Name, FriendsBTN);
         add(Info,0,0);
 
-        GridPane Content = new GridPane();
+        VBox Content = new VBox();
+        Content.setAlignment(Pos.TOP_CENTER);
+        Content.setPadding(new Insets(20,50,20,50));
+
+        /**POST CONTAINER WILL BE HERE*/
+        Label postcontainer = new Label("POST CONTAINER");
+        postcontainer.setFont(new Font(40));
+
+        Content.getChildren().addAll(new WritePost() /**POSTCONTAINER*/ , postcontainer);
         add(Content,1,0);
     }
 
