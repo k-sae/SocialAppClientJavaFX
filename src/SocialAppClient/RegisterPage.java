@@ -241,7 +241,7 @@ public class RegisterPage extends StackPane {
                         LoginInfo loginInfo = LoginInfo.fromJsonString(commandFromServer.getObjectStr());
                     }
                 };
-                commandRequest.start();
+                CommandsExecutor.getInstance().add(commandRequest);
 
             }
         });

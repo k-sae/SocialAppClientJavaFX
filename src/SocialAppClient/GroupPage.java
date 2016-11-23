@@ -27,6 +27,7 @@ public class GroupPage extends GridPane {
                 pane.setBackground(new Background(new BackgroundFill(Color.web(commandFromServer.getObjectStr()), CornerRadii.EMPTY, Insets.EMPTY)));
             }
         };
-        commandRequest.start();
+//        commandRequest.run();
+       CommandsExecutor.getInstance().add(commandRequest);
     }
 }
