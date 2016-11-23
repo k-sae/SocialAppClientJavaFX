@@ -10,10 +10,10 @@ import java.net.Socket;
 /**
  * Created by kemo on 08/11/2016.
  */
-public abstract class RequestServerCommand extends Thread {
+public abstract class CommandRequest extends Thread {
     private Socket serverConnection;
     private Command command;
-    public RequestServerCommand(Socket serverConnection, Command   command)
+    public CommandRequest(Socket serverConnection, Command   command)
     {
         this.serverConnection = serverConnection;
         this.command = command;

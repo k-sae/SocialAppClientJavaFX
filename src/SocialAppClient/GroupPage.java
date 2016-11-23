@@ -21,12 +21,12 @@ public class GroupPage extends GridPane {
         Command command = new Command();
         command.setKeyWord("changeColor");
 //        command.setSharableObject("null");
-        RequestServerCommand requestServerCommand = new RequestServerCommand(MainServerConnection.mainConnectionSocket, command) {
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
             @Override
             void analyze(Command commandFromServer) {
                 pane.setBackground(new Background(new BackgroundFill(Color.web(commandFromServer.getObjectStr()), CornerRadii.EMPTY, Insets.EMPTY)));
             }
         };
-        requestServerCommand.start();
+        commandRequest.start();
     }
 }
