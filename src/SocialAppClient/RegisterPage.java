@@ -26,7 +26,7 @@ public class RegisterPage extends StackPane {
      this.setBackground(new Background(
              new BackgroundImage(
              new Image("file:Resources/background.jpg", true),
-             BackgroundRepeat.REPEAT,
+             BackgroundRepeat.NO_REPEAT,
              BackgroundRepeat.NO_REPEAT,
              BackgroundPosition.DEFAULT,
              BackgroundSize.DEFAULT)));
@@ -236,9 +236,6 @@ public class RegisterPage extends StackPane {
                 RequestServerCommand requestServerCommand = new RequestServerCommand(MainServerConnection.mainConnectionSocket, command) {
                     @Override
                     void analyze(Command commandFromServer) {
-                        //TODO #prototype GSON
-                        //read object from command
-                        LoginInfo loginInfo = LoginInfo.fromJsonString(commandFromServer.getObjectStr());
                     }
                 };
                 requestServerCommand.start();
