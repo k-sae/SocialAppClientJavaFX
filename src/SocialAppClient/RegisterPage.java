@@ -233,7 +233,7 @@ public class RegisterPage extends StackPane {
                 Command command = new Command();
                 command.setKeyWord("new register");
                 command.setSharableObject(send);
-                RequestServerCommand requestServerCommand = new RequestServerCommand(MainServerConnection.mainConnectionSocket, command) {
+                CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
                     @Override
                     void analyze(Command commandFromServer) {
                         //TODO #prototype GSON
@@ -241,7 +241,7 @@ public class RegisterPage extends StackPane {
                         LoginInfo loginInfo = LoginInfo.fromJsonString(commandFromServer.getObjectStr());
                     }
                 };
-                requestServerCommand.start();
+                CommandsExecutor.getInstance().add(commandRequest);
 
             }
         });
