@@ -8,9 +8,9 @@ import java.net.Socket;
 public class MainServerConnection extends ServerConnection {
     public static Socket mainConnectionSocket;
 
-    public MainServerConnection() {
+    public MainServerConnection() throws Exception {
         //TODO #config
-        super(/*change this to match ur pc name*/"Lip-Lip", 6080);
+        super(/*change this to match ur pc name*/"127.0.0.1", 6000);
         mainConnectionSocket = connectionSocket;
     }
 

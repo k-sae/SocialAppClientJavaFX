@@ -16,17 +16,24 @@ public abstract class ServerConnection implements Connection{
     //TODO #kareem
     //after creating users levels accept user of type registeredUser or login user
 
-    public ServerConnection(String serverName, int port)
-    {
+    public ServerConnection(String serverName, int startPort) throws Exception {
         this.serverName = serverName;
-        this.port = port;
+        findPort(startPort, startPort+100);
+        if (port > -1) {
+            startConnection();
+            //TODO #kareem
+            //create a class inheriting Exception do identify error
+        }else throw new Exception("Server Not Found");
+    }
+    private void findPort(int sPort, int ePort)
+    {
+        if (sPort == ePort) return ;
         try {
-            connectionSocket = new Socket(serverName, port);
+            connectionSocket = new Socket(serverName, sPort);
+            port = sPort;
         }
         catch (IOException e) {
-            //TODO #Hazem
-            //1-display an alert box to status non stable connection
-            System.out.println(e.getMessage());
+            findPort(sPort + 1, ePort);
         }
         catch (Exception e)
         {
@@ -34,8 +41,6 @@ public abstract class ServerConnection implements Connection{
             //export it to log file
             System.out.println("StartConnection\t"+ e.getMessage());
         }
-
-        startConnection();
     }
 
 }
