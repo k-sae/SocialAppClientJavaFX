@@ -6,10 +6,9 @@ package SocialAppClient;
 public class NotificationConnection extends ServerConnection {
 
     public static Thread runningConnection;
-    public NotificationConnection()
-    {
-        //connect to server port 6061 which responsible for notifications
-        super("TITO",6080);
+    public NotificationConnection() throws Exception {
+        //connect to server port 6100 which responsible for notifications
+        super("127.0.0.1",6100);
     }
     @Override
     public void startConnection() {

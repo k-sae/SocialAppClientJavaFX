@@ -37,8 +37,13 @@ public class RegisterPage extends StackPane {
      this.getChildren().add(gp);
      layoutEditor(gp);
      //initialize the connection up here
-     new MainServerConnection();
-}
+     try {
+         new MainServerConnection();
+     } catch (Exception e) {
+         e.printStackTrace();
+     }
+
+ }
     private void setCol(GridPane gridPane)
     {
         ColumnConstraints columnConstraints = new ColumnConstraints();
@@ -233,12 +238,12 @@ public class RegisterPage extends StackPane {
                 Command command = new Command();
                 command.setKeyWord("new register");
                 command.setSharableObject(send);
-                RequestServerCommand requestServerCommand = new RequestServerCommand(MainServerConnection.mainConnectionSocket, command) {
+                CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
                     @Override
                     void analyze(Command commandFromServer) {
                     }
                 };
-                requestServerCommand.start();
+                CommandsExecutor.getInstance().add(commandRequest);
 
             }
         });

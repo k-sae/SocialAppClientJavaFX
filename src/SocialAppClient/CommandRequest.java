@@ -10,23 +10,34 @@ import java.net.Socket;
 /**
  * Created by kemo on 08/11/2016.
  */
-public abstract class RequestServerCommand extends Thread {
+public abstract class CommandRequest {
     private Socket serverConnection;
     private Command command;
-    public RequestServerCommand(Socket serverConnection, Command   command)
+    public CommandRequest(Socket serverConnection, Command   command)
     {
         this.serverConnection = serverConnection;
         this.command = command;
     }
-
-    @Override
     public void run() {
-        super.run();
         try {
+            //send command to server
             DataOutputStream dataOutputStream = new DataOutputStream(serverConnection.getOutputStream());
             dataOutputStream.writeUTF(command.toString());
+            //receive server command
             DataInputStream dataInputStream = new DataInputStream(serverConnection.getInputStream());
-            analyze(Command.fromString(dataInputStream.readUTF()));
+            //read string from server
+            String s = dataInputStream.readUTF();
+            //start these function in another thread inorder to prevent time consuming
+            Thread thread = new Thread()
+            {
+                @Override
+                public void run() {
+                    super.run();
+                    analyze(Command.fromString(s));
+                }
+            };
+          thread.start();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
