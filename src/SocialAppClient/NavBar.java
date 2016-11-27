@@ -1,6 +1,8 @@
 package SocialAppClient;
 
 import SocialAppGeneral.AppUser;
+import SocialAppGeneral.Command;
+import SocialAppGeneral.Group;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
@@ -45,20 +47,32 @@ public class NavBar extends HBox {
         });
 
         Button creatButton = new Button("Create");
-        GroupPage page=new GroupPage();
         creatButton.setOnMouseClicked(event -> {
-            Optional<String> check=page.createWindow();
-            while (check.get().equals("")){
-                page.createWindow();
+            Optional<String> check= Utility.createWindow("Group Name","Create Group");
+            if(!check.equals(Optional.empty())){
+                if (check.get().equals("")) {
+                    Utility.errorWindow("No name you enter");
+                } else {
+                    Group group=new Group(check.get());
+                    System.out.println(group.getAdminId());
+                    System.out.println(group.getId());
+                    System.out.println(group.getImageId());
+                    System.out.println(group.getMember());
+                    System.out.println(group.getName());
+                    System.out.println(group.getReq());
+                    System.out.println(group.getPost());
+                    Command command = new Command();
+                    command.setKeyWord(Group.CREATE_GROUP);
+                    command.setSharableObject(group);
+                    CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+                        @Override
+                        void analyze(Command Command) {
+
+                        }
+                    };
+                    CommandsExecutor.getInstance().add(commandRequest);
+                }
             }
-                 if(check.equals(Optional.empty())){
-                     System.out.println("False");
-                 }
-                 else {
-                         System.out.println(check.get());
-                     }
-
-
         });
         getChildren().addAll(homeBtn, profileBtn, groupsBtn,creatButton);
     }

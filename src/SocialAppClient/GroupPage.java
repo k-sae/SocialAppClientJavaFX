@@ -28,33 +28,12 @@ public class GroupPage extends GridPane {
         Command command = new Command();
         command.setKeyWord("changeColor");
 //        command.setSharableObject("null");
-        RequestServerCommand requestServerCommand = new RequestServerCommand(MainServerConnection.mainConnectionSocket, command) {
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
             @Override
             void analyze(Command commandFromServer) {
                 pane.setBackground(new Background(new BackgroundFill(Color.web(commandFromServer.getObjectStr()), CornerRadii.EMPTY, Insets.EMPTY)));
             }
         };
-        requestServerCommand.start();
-    }
-
-    public  Optional<String> createWindow() {
-        Alert alert=new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setContentText(null);
-        alert.setHeaderText("No name you input");
-        TextInputDialog Create = new TextInputDialog();
-        Create.setHeaderText("What name you like put ?");
-        Create.setTitle("Create Group");
-        Create.setContentText("Name");
-        Create.initStyle(StageStyle.UTILITY);
-        alert.initStyle(StageStyle.UTILITY);
-        Optional<String> result = Create.showAndWait();
-        if(result.get().equals("")){
-            alert.showAndWait();
-        }
-
-            return result;
-
-
+        CommandsExecutor.getInstance().add(commandRequest);
     }
 }
