@@ -1,4 +1,4 @@
-package SocialAppGeneral;
+package SocialAppClient;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -8,27 +8,29 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
 /**
- * Created by billy on 2016-11-22.
+ * Created by billy on 2016-11-26.
  */
-public class WritePost extends VBox {
+public class PostWriter extends VBox{
+    public PostWriter(){
 
-    public WritePost(){
         setLayout();
     }
 
     private void setLayout(){
+        setAlignment(Pos.CENTER);
         TextArea postText = new TextArea();
         postText.setPromptText("What's on your mind?!");
-        postText.setPrefSize(60,80);
+        postText.setMaxSize(400,80);
 
         HBox boxx = new HBox();
         Button addImage = new Button("Choose an image");
         Button postBtn = new Button("Post");
         boxx.setSpacing(150);
-        boxx.setPrefHeight(30);
         boxx.setAlignment(Pos.CENTER);
-        boxx.setBackground(new Background(new BackgroundFill(Color.web("#ffffff"),CornerRadii.EMPTY, Insets.EMPTY)));
+        boxx.setBackground(new Background(new BackgroundFill(Color.web("#ffffff"), CornerRadii.EMPTY, Insets.EMPTY)));
         boxx.getChildren().addAll(addImage,postBtn);
+        boxx.setMaxSize(400,30);
+        setPadding(new Insets(30,0,30,0));
 
         getChildren().addAll(postText, boxx);
     }
