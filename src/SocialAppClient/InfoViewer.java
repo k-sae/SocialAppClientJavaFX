@@ -15,49 +15,40 @@ import javafx.scene.text.Text;
 /**
  * Created by billy on 2016-11-22.
  */
-public class InfoViewer extends VBox{
-    private String ID;
-    public InfoViewer(String ID){
-        this.ID = ID;
+public abstract class InfoViewer extends VBox{
+    ImageView img;
+    public InfoViewer(){
+
         setLayout();
-        setButton();
+        setPicture("file:Resources/avatar.jpg");
     }
 
     private void setLayout(){
 
-        Image im = new Image("file:Resources/btatsya.png");
-        //Image im = new Image("file:C:\\Users\\bolla\\Pictures\\me.jpg");
-        ImageView img = new ImageView(im);
+        setAlignment(Pos.TOP_CENTER);
+        setSpacing(20);
+        setPadding(new Insets(30,0,30,0));
+
+    }
+    public void setPicture(String Path){
+        getChildren().remove(img);
+        Image im = new Image(Path);
+        img = new ImageView(im);
         img.setFitWidth(100);
         img.setPreserveRatio(true);
         img.setSmooth(true);
         img.setCache(true);
         img.setClip(new Circle(50,50,50));
 
-        /**INFO WILL BE HERE*/
-        Label Info = new Label("INFO WILL BE HERE");
-        Info.setFont(Font.font(16));
-
-        setAlignment(Pos.TOP_CENTER);
-        setSpacing(20);
-        setPadding(new Insets(30,0,30,0));
-        getChildren().addAll(img, Info);
+        getChildren().add(img);
+    }
+    public void setLabel(String... LabelName){
+        for(String name : LabelName){
+            Label Info = new Label(name);
+            Info.setFont(Font.font(16));
+            getChildren().add(Info);
+        }
     }
 
-    private void setButton(){
-        /**CHECK IF THE LOGGED USER IS A FRIEND OR VISITOR OR THE OWNER
-         * IF IS A FRIEND, RELATION BUTTON WILL BE VISIBLE AND IT'S TEXT "REMOVE FRIEND"
-         * IF IS A VISITOR, RELATION BUTTON WILL BE VISIBLE AND IT'S TEXT "ADD FRIEND"
-         * IF IS THE OWNER, RELATION BUTTON WILL NOT BE VISIBLE
-         * if(ID.equals(new AppUser().getID()))
-         */
-
-
-        Button RelationBTN = new Button("Add Friend");
-        RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #dddddd;");
-        RelationBTN.setOnMouseEntered(event -> RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;"));
-        RelationBTN.setOnMouseExited(event -> RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #dddddd;"));
-
-        getChildren().addAll(RelationBTN);
-    }
+    public abstract void setButtons();
 }
