@@ -37,8 +37,13 @@ public class RegisterPage extends StackPane {
      this.getChildren().add(gp);
      layoutEditor(gp);
      //initialize the connection up here
-     new MainServerConnection();
-}
+     try {
+         new MainServerConnection();
+     } catch (Exception e) {
+         e.printStackTrace();
+     }
+
+ }
     private void setCol(GridPane gridPane)
     {
         ColumnConstraints columnConstraints = new ColumnConstraints();
