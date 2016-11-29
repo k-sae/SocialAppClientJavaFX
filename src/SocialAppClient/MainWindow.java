@@ -18,9 +18,10 @@ public class MainWindow extends GridPane {
     private void setWindowConstrain()
     {
         //set columns
-        ColumnConstraints columnConstraints0 = new ColumnConstraints(200);
+        ColumnConstraints columnConstraints0 = new ColumnConstraints();
+        columnConstraints0.setPercentWidth(75);
         ColumnConstraints columnConstraints1 = new ColumnConstraints();
-        columnConstraints1.setPercentWidth(100);
+        columnConstraints1.setPercentWidth(25);
         getColumnConstraints().addAll(columnConstraints0,columnConstraints1);
         //set rows
         RowConstraints rowConstraints0 = new RowConstraints();
@@ -37,7 +38,7 @@ public class MainWindow extends GridPane {
         Pane navBar = new NavBar(null);
 //        mainFrame.setBackground(new Background(new BackgroundFill(Color.GREEN,CornerRadii.EMPTY, Insets.EMPTY)));
         GridPane friendList = new GridPane();
-        GridPane.setConstraints(friendList,0,1);
+        GridPane.setConstraints(friendList,1,1);
         friendList.setBackground(new Background(new BackgroundFill(Color.YELLOW,CornerRadii.EMPTY, Insets.EMPTY)));
         getChildren().addAll(navBar,mainFrame,friendList);
         navigateTo(new HomePage());
@@ -46,7 +47,7 @@ public class MainWindow extends GridPane {
     {
         getChildren().remove(mainFrame);
         mainFrame = frame;
-        GridPane.setConstraints(mainFrame,1,1);
+        GridPane.setConstraints(mainFrame,0,1);
         getChildren().add(mainFrame);
     }
 }

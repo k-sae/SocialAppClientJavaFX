@@ -16,8 +16,11 @@ import javafx.scene.text.Text;
  * Created by billy on 2016-11-22.
  */
 public abstract class InfoViewer extends VBox{
+    ImageView img;
     public InfoViewer(){
+
         setLayout();
+        setPicture("file:Resources/avatar.jpg");
     }
 
     private void setLayout(){
@@ -28,8 +31,9 @@ public abstract class InfoViewer extends VBox{
 
     }
     public void setPicture(String Path){
+        getChildren().remove(img);
         Image im = new Image(Path);
-        ImageView img = new ImageView(im);
+        img = new ImageView(im);
         img.setFitWidth(100);
         img.setPreserveRatio(true);
         img.setSmooth(true);

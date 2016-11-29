@@ -43,7 +43,6 @@ public class ProfilePage extends GridPane {
         Info.setLabel("Name: belal", "Age: 19");
         Info.setButtons();
 
-
         add(Info,0,0);
 
         Content content = new Content();

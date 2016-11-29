@@ -11,6 +11,9 @@ import javafx.scene.paint.Color;
  * Created by billy on 2016-11-26.
  */
 public class PostWriter extends VBox{
+    private TextArea postText;
+    public Button addImage;
+    public Button postBtn;
     public PostWriter(){
 
         setLayout();
@@ -18,20 +21,23 @@ public class PostWriter extends VBox{
 
     private void setLayout(){
         setAlignment(Pos.CENTER);
-        TextArea postText = new TextArea();
+        postText = new TextArea();
         postText.setPromptText("What's on your mind?!");
         postText.setMaxSize(400,80);
 
-        HBox boxx = new HBox();
-        Button addImage = new Button("Choose an image");
-        Button postBtn = new Button("Post");
-        boxx.setSpacing(150);
-        boxx.setAlignment(Pos.CENTER);
-        boxx.setBackground(new Background(new BackgroundFill(Color.web("#ffffff"), CornerRadii.EMPTY, Insets.EMPTY)));
-        boxx.getChildren().addAll(addImage,postBtn);
-        boxx.setMaxSize(400,30);
+        HBox option = new HBox();
+        addImage = new Button("Choose an image");
+        postBtn = new Button("Post");
+        option.setSpacing(150);
+        option.setAlignment(Pos.CENTER);
+        option.setBackground(new Background(new BackgroundFill(Color.web("#ffffff"), CornerRadii.EMPTY, Insets.EMPTY)));
+        option.getChildren().addAll(addImage,postBtn);
+        option.setMaxSize(400,30);
         setPadding(new Insets(30,0,30,0));
 
-        getChildren().addAll(postText, boxx);
+        getChildren().addAll(postText, option);
+    }
+    public String getPostText(){
+        return postText.getText();
     }
 }

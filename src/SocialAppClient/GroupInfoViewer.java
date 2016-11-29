@@ -19,7 +19,7 @@ public class GroupInfoViewer extends InfoViewer {
          * IF HE IS NOT IN THE GROUP, RELATION BUTTON WILL BE VISIBLE AND IT'S TEXT "JOIN GROUP"
          */
 
-        RelationBTN = new Button("Add Friend");
+        RelationBTN = new Button("JOIN");
         RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #dddddd;");
         RelationBTN.setOnMouseEntered(event -> RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;"));
         RelationBTN.setOnMouseExited(event -> RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #dddddd;"));

@@ -10,6 +10,7 @@ public class ProfileInfoViewer extends InfoViewer {
     protected Button Edit;
     public ProfileInfoViewer(){
 
+
     }
 
     @Override
