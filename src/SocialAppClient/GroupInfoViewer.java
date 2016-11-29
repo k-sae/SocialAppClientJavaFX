@@ -20,14 +20,14 @@ public class GroupInfoViewer extends InfoViewer {
          */
 
         RelationBTN = new Button("JOIN");
-        RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #dddddd;");
-        RelationBTN.setOnMouseEntered(event -> RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;"));
-        RelationBTN.setOnMouseExited(event -> RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #dddddd;"));
+        RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;");
+        RelationBTN.setOnMouseEntered(event -> RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff;"));
+        RelationBTN.setOnMouseExited(event -> RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;"));
 
         Edit = new Button("Edit");
-        Edit.setStyle("-fx-font: 20 arial; -fx-background-color: #dddddd;");
-        Edit.setOnMouseEntered(event -> Edit.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;"));
-        Edit.setOnMouseExited(event -> Edit.setStyle("-fx-font: 20 arial; -fx-background-color: #dddddd;"));
+        Edit.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;");
+        Edit.setOnMouseEntered(event -> Edit.setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff;"));
+        Edit.setOnMouseExited(event -> Edit.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;"));
 
         getChildren().addAll(RelationBTN, Edit);
     }

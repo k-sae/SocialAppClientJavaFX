@@ -7,6 +7,7 @@ import javafx.scene.layout.VBox;
 /**
  * Created by billy on 2016-11-26.
  */
+/**CONTENT IS A CONTAINER OF POSTWRITER AND POSTCONTAINER*/
 public class Content extends VBox {
     protected PostWriter postWriter;
     protected PostContainer postContainer;

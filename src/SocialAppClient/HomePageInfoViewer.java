@@ -6,7 +6,8 @@ import javafx.scene.control.Button;
  * Created by billy on 2016-11-28.
  */
 public class HomePageInfoViewer extends InfoViewer {
-    protected Button Edit;
+    /**navBtn WILL BE A NAVIGATOR BUTTONS TO OTHER PAGES*/
+    protected Button navBtn;
     protected Button CreateGroupBtn;
     public HomePageInfoViewer(){
 
@@ -14,16 +15,16 @@ public class HomePageInfoViewer extends InfoViewer {
 
     @Override
     public void setButtons() {
-        Edit = new Button("Edit");
-        Edit.setStyle("-fx-font: 20 arial; -fx-background-color: #dddddd;");
-        Edit.setOnMouseEntered(event -> Edit.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;"));
-        Edit.setOnMouseExited(event -> Edit.setStyle("-fx-font: 20 arial; -fx-background-color: #dddddd;"));
+        navBtn = new Button("NAV TO");
+        navBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;");
+        navBtn.setOnMouseEntered(event -> navBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff;"));
+        navBtn.setOnMouseExited(event -> navBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;"));
 
         CreateGroupBtn = new Button("Create Group");
-        CreateGroupBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #dddddd;");
-        CreateGroupBtn.setOnMouseEntered(event -> CreateGroupBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;"));
-        CreateGroupBtn.setOnMouseExited(event -> CreateGroupBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #dddddd;"));
+        CreateGroupBtn.setStyle("-fx-font: 19 arial; -fx-background-color: #eeeeee;");
+        CreateGroupBtn.setOnMouseEntered(event -> CreateGroupBtn.setStyle("-fx-font: 19 arial; -fx-background-color: #ffffff;"));
+        CreateGroupBtn.setOnMouseExited(event -> CreateGroupBtn.setStyle("-fx-font: 19 arial; -fx-background-color: #eeeeee;"));
 
-        getChildren().addAll(Edit, CreateGroupBtn);
+        getChildren().addAll(navBtn, CreateGroupBtn);
     }
 }

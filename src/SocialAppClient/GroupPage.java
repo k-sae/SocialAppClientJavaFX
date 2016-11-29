@@ -76,6 +76,8 @@ public class GroupPage extends GridPane {
 
         Info.Edit.setOnAction(event -> {
             getChildren().remove(content);
+            /**AFTER CLICK ON EDIT IT WILL GO TO EDIT PAGE*/
+            add(new EditInfo(),1,0);
             sp.setContent(null);
         });
     }

@@ -11,7 +11,8 @@ import javafx.scene.paint.Color;
 public class HomePage extends GridPane {
     public HomePage()
     {
-        setBackground(new Background(new BackgroundFill(Color.web(ClientTheme.BackGround, 1), CornerRadii.EMPTY, Insets.EMPTY)));
+        //setBackground(new Background(new BackgroundFill(Color.web(ClientTheme.BackGround, 1), CornerRadii.EMPTY, Insets.EMPTY)));
+        setBackground(new Background(new BackgroundFill(Color.web("#eeeeee"), CornerRadii.EMPTY, Insets.EMPTY)));
 
         setGridLinesVisible(true);
         setConstraint();
@@ -52,9 +53,5 @@ public class HomePage extends GridPane {
         sp.setFitToWidth(true);
         add(sp,1,0);
 
-        Info.Edit.setOnAction(event -> {
-            getChildren().remove(content);
-            sp.setContent(null);
-        });
     }
 }
