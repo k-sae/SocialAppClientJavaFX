@@ -9,12 +9,13 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by khaled hesham on 11/24/2016.
  */
-public class Group implements Shareable {
+public class Group implements Shareable,Serializable {
     private ArrayList<Integer> member;
     private ArrayList<Integer> req;
     private ArrayList<Integer> post;
@@ -29,7 +30,7 @@ public class Group implements Shareable {
         req = new ArrayList<>();
         adminId = 1;//will be change to user create
         imageId = 0;//wii be change to defult
-        Id = 0;//will be change to function generate id unique
+        Id = 2;//will be change to function generate id unique
         post=new ArrayList<>();
     }
 

@@ -53,17 +53,9 @@ public class NavBar extends HBox {
                 if (check.get().equals("")) {
                     Utility.errorWindow("No name you enter");
                 } else {
-                    Group group=new Group(check.get());
-                    System.out.println(group.getAdminId());
-                    System.out.println(group.getId());
-                    System.out.println(group.getImageId());
-                    System.out.println(group.getMember());
-                    System.out.println(group.getName());
-                    System.out.println(group.getReq());
-                    System.out.println(group.getPost());
                     Command command = new Command();
                     command.setKeyWord(Group.CREATE_GROUP);
-                    command.setSharableObject(group);
+                    command.setSharableObject(check.get());
                     CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
                         @Override
                         void analyze(Command Command) {
