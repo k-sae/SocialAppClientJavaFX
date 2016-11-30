@@ -1,19 +1,9 @@
 package SocialAppClient;
 
-import SocialAppGeneral.WritePost;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.RotateEvent;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 
 /**
  * Created by kemo on 10/11/2016.
@@ -23,7 +13,7 @@ public class ProfilePage extends GridPane {
     public ProfilePage()
     {
         /**IT WILL TAKE AN ID IN THE CONSTRUCTOR*/
-        setBackground(new Background(new BackgroundFill(Color.web("#dddddd"), CornerRadii.EMPTY, Insets.EMPTY)));
+        setBackground(new Background(new BackgroundFill(Color.web("#eeeeee"), CornerRadii.EMPTY, Insets.EMPTY)));
 
         setGridLinesVisible(true);
         setConstraint();
@@ -48,20 +38,28 @@ public class ProfilePage extends GridPane {
 
     private void setPanels(){
 
-        InfoViewer Info = new InfoViewer(ID);
+        ProfileInfoViewer Info = new ProfileInfoViewer();
+        /**ADD PICTURE*/
+        //Info.setPicture("");
+        /**ADD INFO*/
+        Info.setLabel("Name: 7amada", "Age: 19", "blab blah");
+        Info.setButtons();
 
         add(Info,0,0);
 
-        VBox Content = new VBox();
-        Content.setAlignment(Pos.TOP_CENTER);
-        Content.setPadding(new Insets(20,50,20,50));
+        Content content = new Content();
 
-        /**POST CONTAINER WILL BE HERE*/
-        Label postcontainer = new Label("POST CONTAINER");
-        postcontainer.setFont(new Font(40));
+        add(content,1,0);
+        ScrollPane sp = new ScrollPane(content);
+        sp.setFitToWidth(true);
+        add(sp,1,0);
 
-        Content.getChildren().addAll(new WritePost() /**POSTCONTAINER*/ , postcontainer);
-        add(Content,1,0);
+        Info.Edit.setOnAction(event -> {
+            getChildren().remove(content);
+            /**AFTER CLICK ON EDIT IT WILL GO TO EDIT PAGE*/
+            add(new EditInfo(),1,0);
+            sp.setContent(null);
+        });
     }
 
 }

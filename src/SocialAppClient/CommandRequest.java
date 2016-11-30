@@ -27,6 +27,7 @@ public abstract class CommandRequest {
             DataInputStream dataInputStream = new DataInputStream(serverConnection.getInputStream());
             //read string from server
             String s = dataInputStream.readUTF();
+            System.out.println(s);
             //start these function in another thread inorder to prevent time consuming
             Thread thread = new Thread()
             {

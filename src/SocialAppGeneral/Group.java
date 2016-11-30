@@ -28,9 +28,9 @@ public class Group implements Shareable,Serializable {
         this.name = name;
         member = new ArrayList<>();
         req = new ArrayList<>();
-        adminId = 1;//will be change to user create
-        imageId = 0;//wii be change to defult
-        Id = 2;//will be change to function generate id unique
+        adminId = 0;
+        imageId = 0;
+        Id = 0;
         post=new ArrayList<>();
     }
 
@@ -65,9 +65,8 @@ public class Group implements Shareable,Serializable {
     public ArrayList<Integer> getMember() {
         return member;
     }
-
-    public void setMember(ArrayList<Integer> member) {
-        this.member = member;
+    public void setMember(int  member) {
+        this.member.add(member,0);
     }
 
     public String getName() {
