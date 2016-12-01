@@ -38,7 +38,7 @@ public abstract class InfoViewer extends VBox{
         img.setPreserveRatio(true);
         img.setSmooth(true);
         img.setCache(true);
-        img.setClip(new Circle(50,50,50));
+        img.setClip(new Circle(img.getFitWidth()/2,img.getFitWidth()/2,img.getFitWidth()/2));
 
         getChildren().add(img);
     }

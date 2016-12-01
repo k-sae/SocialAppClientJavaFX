@@ -37,9 +37,9 @@ public class MainWindow extends GridPane {
         //on retrieve data from server send user to navBar
         Pane navBar = new NavBar(null);
 //        mainFrame.setBackground(new Background(new BackgroundFill(Color.GREEN,CornerRadii.EMPTY, Insets.EMPTY)));
-        GridPane friendList = new GridPane();
+        FriendList friendList = new FriendList();
         GridPane.setConstraints(friendList,1,1);
-        friendList.setBackground(new Background(new BackgroundFill(Color.YELLOW,CornerRadii.EMPTY, Insets.EMPTY)));
+        //friendList.setBackground(new Background(new BackgroundFill(Color.YELLOW,CornerRadii.EMPTY, Insets.EMPTY)));
         getChildren().addAll(navBar,mainFrame,friendList);
         navigateTo(new HomePage());
     }
