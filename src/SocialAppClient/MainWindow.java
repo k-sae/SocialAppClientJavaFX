@@ -1,17 +1,20 @@
 package SocialAppClient;
 
-import javafx.geometry.Insets;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.RowConstraints;
 
 /**
  * Created by kemo on 09/11/2016.
  */
 public class MainWindow extends GridPane {
-    Pane mainFrame;
+   static Pane mainFrame;
+   static Pane mainWindow;
     public MainWindow(long id)
     {
         mainFrame = new Pane();
+        mainWindow = this;
         setWindowConstrain();
         setPanels();
     }
@@ -43,11 +46,11 @@ public class MainWindow extends GridPane {
         getChildren().addAll(navBar,mainFrame,friendList);
         navigateTo(new HomePage());
     }
-    public void navigateTo(Pane frame)
+    static void navigateTo(Pane frame)
     {
-        getChildren().remove(mainFrame);
+        mainWindow.getChildren().remove(mainFrame);
         mainFrame = frame;
         GridPane.setConstraints(mainFrame,0,1);
-        getChildren().add(mainFrame);
+       mainWindow.getChildren().add(mainFrame);
     }
 }

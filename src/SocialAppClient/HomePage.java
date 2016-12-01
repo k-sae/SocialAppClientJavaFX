@@ -2,6 +2,7 @@ package SocialAppClient;
 
 import SocialAppGeneral.Command;
 import SocialAppGeneral.Group;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
@@ -65,13 +66,9 @@ public class HomePage extends GridPane {
                            void analyze(Command cmd) {
                                if (cmd.getKeyWord().equals(Group.CREATE_GROUP)){
                                    Group group  = Group.fromJsonString(cmd.getObjectStr());
-                                   Runnable runnable = new Runnable() {
-                                       @Override
-                                       public void run() {
-                                          // MainWindow.navigateTo(new GroupPage());
-                                       }
-                                   };
-                                   runnable.run();
+                                   //TODO #Fix
+                                   //fix error on threading
+                                   Platform.runLater(() -> MainWindow.navigateTo(new GroupPage()));
 
 
                                }
