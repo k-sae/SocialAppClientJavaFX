@@ -72,6 +72,7 @@ public class NavBar extends HBox {
         msgIcon.setFitWidth(25);
         msgIcon.setPreserveRatio(true);
 
+
         Menu msg = new Menu("",msgIcon);
         /** Add an item when you clicked on the menu */
         msg.getItems().addAll(new MenuItem("Belal sent you a message"));
@@ -100,7 +101,7 @@ public class NavBar extends HBox {
         Button homeBtn = new Button("Home");
 
         homeBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;");
-        homeBtn.setOnMouseEntered(event -> homeBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #000099; -fx-text-fill: #eeeeee;"));
+        homeBtn.setOnMouseEntered(event -> homeBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;"));
         homeBtn.setOnMouseExited(event -> homeBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;"));
 
 
@@ -134,7 +135,7 @@ public class NavBar extends HBox {
         Button logoutBtn = new Button("Logout");
 
         logoutBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;");
-        logoutBtn.setOnMouseEntered(event -> logoutBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;"));
+        logoutBtn.setOnMouseEntered(event -> logoutBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #999999; -fx-text-fill: #000000;"));
         logoutBtn.setOnMouseExited(event -> logoutBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;"));
 
         logoutBtn.setOnMouseClicked(event -> {
