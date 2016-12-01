@@ -35,7 +35,7 @@ abstract class ServerConnection implements Connection{
             //verify if the socket found is the desired socket
             verifyConnection();
             port = sPort;
-            connectionSocket.setSoTimeout(0);
+            connectionSocket.setSoTimeout(500);
         }
         catch (IOException e) {
             System.out.println("cant find socket on "+ sPort);

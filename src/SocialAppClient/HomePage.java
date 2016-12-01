@@ -50,6 +50,7 @@ public class HomePage extends GridPane {
 
 
         add(Info,0,0);
+
            Info.CreateGroupBtn.setOnMouseClicked(event -> {
                Optional<String> check= Utility.createWindow("Group Name","Create Group");
                if(!check.equals(Optional.empty())){
@@ -59,19 +60,28 @@ public class HomePage extends GridPane {
                        Command command = new Command();
                        command.setKeyWord(Group.CREATE_GROUP);
                        command.setSharableObject(check.get());
-
                        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
                            @Override
-                           void analyze(Command Command) {
-                               if (command.getKeyWord().equals(Group.CREATE_GROUP)){
-                                   System.out.println(command.toString());
-                                   Group group  = Group.fromJsonString(command.getObjectStr());
-                                   ((MainWindow)getParent()).navigateTo(new GroupPage(group));
+                           void analyze(Command cmd) {
+                               if (cmd.getKeyWord().equals(Group.CREATE_GROUP)){
+                                   Group group  = Group.fromJsonString(cmd.getObjectStr());
+                                   Runnable runnable = new Runnable() {
+                                       @Override
+                                       public void run() {
+                                          // MainWindow.navigateTo(new GroupPage());
+                                       }
+                                   };
+                                   runnable.run();
+
+
                                }
                            }
                        };
                        CommandsExecutor.getInstance().add(commandRequest);
+
                    }
+
+
                }
            });
 

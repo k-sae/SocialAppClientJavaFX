@@ -27,7 +27,6 @@ public abstract class CommandRequest {
             DataInputStream dataInputStream = new DataInputStream(serverConnection.getInputStream());
             //read string from server
             String s = dataInputStream.readUTF();
-            System.out.println(s);
             //start these function in another thread inorder to prevent time consuming
             Thread thread = new Thread()
             {
@@ -43,5 +42,5 @@ public abstract class CommandRequest {
             e.printStackTrace();
         }
     }
-    abstract void  analyze(Command Command);
+    abstract void  analyze(Command cmd);
 }
