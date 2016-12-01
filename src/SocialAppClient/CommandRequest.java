@@ -6,6 +6,8 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
 
 /**
  * Created by kemo on 08/11/2016.
@@ -38,8 +40,20 @@ public abstract class CommandRequest {
             };
           thread.start();
 
-        } catch (IOException e) {
+        } catch (SocketException e) {
+            //TODO #kareem
+            //notify for user dc
+        }catch (SocketTimeoutException e)
+        {
+            //TODO #kareem update:1
+            //remove it after debugging
             e.printStackTrace();
+        }
+        catch (IOException e)
+        {
+            //TODO #lastly
+            //Export to Log
+            System.out.println(e.getMessage());
         }
     }
     abstract void  analyze(Command Command);
