@@ -1,39 +1,56 @@
 package SocialAppClient;
 
 import SocialAppGeneral.Command;
+import SocialAppGeneral.Group;
 import javafx.geometry.Insets;
+
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextInputDialog;
+
 import javafx.scene.control.ScrollPane;
+
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
+import javafx.stage.StageStyle;
+
+import java.util.Optional;
 
 /**
  * Created by kemo on 10/11/2016.
  */
 public class GroupPage extends GridPane {
-   public GroupPage()
-    {
-        setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
-        updateColor(this);
 
+
+    public GroupPage(Group group) {
+       setBackground(new Background(new BackgroundFill(Color.web("#eeeeee"), CornerRadii.EMPTY, Insets.EMPTY)));
+        updateColor(this);
+        setGridLinesVisible(true);
+        setConstraint();
+//        setPanels(group);
+    }
+    public  GroupPage(){
+        setBackground(new Background(new BackgroundFill(Color.web("#fff"), CornerRadii.EMPTY, Insets.EMPTY)));
+        updateColor(this);
         setGridLinesVisible(true);
         setConstraint();
         setPanels();
+
     }
-    synchronized static void updateColor(Pane pane)
-    {
+
+    synchronized static void updateColor(Pane pane) {
         //TODO #prototype
         //set ur new command
         Command command = new Command();
         command.setKeyWord("changeColor");
-//        command.setSharableObject("null");
+        command.setSharableObject("null");
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
             @Override
             void analyze(Command commandFromServer) {
                 pane.setBackground(new Background(new BackgroundFill(Color.web(commandFromServer.getObjectStr()), CornerRadii.EMPTY, Insets.EMPTY)));
             }
         };
-//        commandRequest.run();
-       CommandsExecutor.getInstance().add(commandRequest);
+        CommandsExecutor.getInstance().add(commandRequest);
     }
 
 
@@ -52,14 +69,43 @@ public class GroupPage extends GridPane {
 
     }
 
+    private void setPanels(Group group) {
+
+        GroupInfoViewer Info = new GroupInfoViewer();
+
+        /**PUT THE PICTURE PATH*/
+        // Info.setPicture();
+        /**PUT SOME INFO AS STRING*/
+        Info.setLabel(group.getName());
+        /**ADD JOIN AND EDIT BUTTON -- EDIT THEM IN GROUPINFOVIEWER*/
+        Info.setButtons();
+
+        add(Info, 0, 0);
+
+        Content content = new Content();
+
+        add(content, 1, 0);
+
+        /**THE SCROLL BAR KEEPS TRACK THE CONTENT*/
+        ScrollPane sp = new ScrollPane(content);
+        sp.setFitToWidth(true);
+        add(sp, 1, 0);
+
+        Info.Edit.setOnAction(event -> {
+            getChildren().remove(content);
+            /**AFTER CLICK ON EDIT IT WILL GO TO EDIT PAGE*/
+            add(new EditInfo(), 1, 0);
+            sp.setContent(null);
+        });
+    }
     private void setPanels(){
 
         GroupInfoViewer Info = new GroupInfoViewer();
 
         /**PUT THE PICTURE PATH*/
-        //Info.setPicture();
+        // Info.setPicture();
         /**PUT SOME INFO AS STRING*/
-        //Info.setLabel();
+        Info.setLabel();
         /**ADD JOIN AND EDIT BUTTON -- EDIT THEM IN GROUPINFOVIEWER*/
         Info.setButtons();
 

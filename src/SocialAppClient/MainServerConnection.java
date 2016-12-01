@@ -10,7 +10,9 @@ public class MainServerConnection extends ServerConnection {
 
     public MainServerConnection() throws Exception {
         //TODO #config
+
         super(/*change this to match ur pc name*/"127.0.0.1", 6000);
+
         mainConnectionSocket = connectionSocket;
     }
 

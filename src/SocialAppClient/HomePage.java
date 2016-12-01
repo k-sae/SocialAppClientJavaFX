@@ -1,9 +1,13 @@
 package SocialAppClient;
 
+import SocialAppGeneral.Command;
+import SocialAppGeneral.Group;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+
+import java.util.Optional;
 
 /**
  * Created by kemo on 10/11/2016.
@@ -44,7 +48,42 @@ public class HomePage extends GridPane {
         //Info.setLabel();
         Info.setButtons();
 
+
         add(Info,0,0);
+
+           Info.CreateGroupBtn.setOnMouseClicked(event -> {
+               Optional<String> check= Utility.createWindow("Group Name","Create Group");
+               if(!check.equals(Optional.empty())){
+                   if (check.get().equals("")) {
+                       Utility.errorWindow("No name you enter");
+                   } else {
+                       Command command = new Command();
+                       command.setKeyWord(Group.CREATE_GROUP);
+                       command.setSharableObject(check.get());
+                       CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+                           @Override
+                           void analyze(Command cmd) {
+                               if (cmd.getKeyWord().equals(Group.CREATE_GROUP)){
+                                   Group group  = Group.fromJsonString(cmd.getObjectStr());
+                                   Runnable runnable = new Runnable() {
+                                       @Override
+                                       public void run() {
+                                          // MainWindow.navigateTo(new GroupPage());
+                                       }
+                                   };
+                                   runnable.run();
+
+
+                               }
+                           }
+                       };
+                       CommandsExecutor.getInstance().add(commandRequest);
+
+                   }
+
+
+               }
+           });
 
         Content content = new Content();
 

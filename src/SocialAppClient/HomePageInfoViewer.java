@@ -1,6 +1,10 @@
 package SocialAppClient;
 
+import SocialAppGeneral.Command;
+import SocialAppGeneral.Group;
 import javafx.scene.control.Button;
+
+import java.util.Optional;
 
 /**
  * Created by billy on 2016-11-28.

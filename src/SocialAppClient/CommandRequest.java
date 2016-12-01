@@ -42,5 +42,5 @@ public abstract class CommandRequest {
             e.printStackTrace();
         }
     }
-    abstract void  analyze(Command Command);
+    abstract void  analyze(Command cmd);
 }

@@ -41,6 +41,7 @@ public class Command  {
         Command newCommand = new Command();
         newCommand.setKeyWord(commandStr[0]);
         newCommand.setSharableObject(commandStr[1]);
+
         return newCommand;
     }
 }
