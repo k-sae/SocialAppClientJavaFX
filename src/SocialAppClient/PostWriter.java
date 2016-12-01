@@ -28,11 +28,18 @@ public class PostWriter extends VBox{
         HBox option = new HBox();
         addImage = new Button("Choose an image");
         postBtn = new Button("Post");
+        addImage.setStyle("-fx-font: 12 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;");
+        addImage.setOnMouseEntered(event -> addImage.setStyle("-fx-font: 12 arial; -fx-background-color: #999999; -fx-text-fill: #000000;"));
+        addImage.setOnMouseExited(event -> addImage.setStyle("-fx-font: 12 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;"));
+
+        postBtn.setStyle("-fx-font: 12 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;");
+        postBtn.setOnMouseEntered(event -> postBtn.setStyle("-fx-font: 12 arial; -fx-background-color: #999999; -fx-text-fill: #000000;"));
+        postBtn.setOnMouseExited(event -> postBtn.setStyle("-fx-font: 12 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;"));
+
+
         option.setSpacing(150);
         option.setAlignment(Pos.CENTER);
-        option.setBackground(new Background(new BackgroundFill(Color.web("#ffffff"), CornerRadii.EMPTY, Insets.EMPTY)));
         option.getChildren().addAll(addImage,postBtn);
-        option.setMaxSize(400,30);
         setPadding(new Insets(30,0,30,0));
 
         getChildren().addAll(postText, option);
