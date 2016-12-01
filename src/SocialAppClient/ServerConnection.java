@@ -23,7 +23,6 @@ abstract class ServerConnection implements Connection{
         findPort(startPort, startPort+10);
         if (port > -1) {
             startConnection();
-            connectionSocket.setSoTimeout(0);
             //TODO #kareem
             //create a class inheriting Exception do identify error
         }else throw new Exception("Server Not Found");
@@ -36,7 +35,7 @@ abstract class ServerConnection implements Connection{
             //verify if the socket found is the desired socket
             verifyConnection();
             port = sPort;
-            connectionSocket.setSoTimeout(1000);
+            connectionSocket.setSoTimeout(5000);
         }
         catch (IOException e) {
             System.out.println("cant find socket on "+ sPort);

@@ -4,7 +4,6 @@ import SocialAppGeneral.Command;
 import SocialAppGeneral.LoginInfo;
 import SocialAppGeneral.RegisterInfo;
 import SocialAppGeneral.UserInfo;
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -84,6 +83,8 @@ public class RegisterPage extends StackPane {
              public void handle(ActionEvent event) {
                  //TODO #hazem
                  //check for input
+                 parent.getChildren().add(new MainWindow(1));
+                 parent.getChildren().remove(RegisterPage.this);
                  Command command = new Command();
                  command.setKeyWord(LoginInfo.KEYWORD);
                  CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
