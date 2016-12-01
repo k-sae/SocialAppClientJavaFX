@@ -122,7 +122,6 @@ public class NavBar extends HBox {
         profileBtn.setOnMouseClicked(event -> {
             ((MainWindow)getParent()).navigateTo(new ProfilePage());
         });
-<<<<<<< HEAD
 
 /*
         Button groupsBtn = new Button("Groups");
@@ -131,12 +130,6 @@ public class NavBar extends HBox {
         groupsBtn.setOnMouseEntered(event -> groupsBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;"));
         groupsBtn.setOnMouseExited(event -> groupsBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #0000cc; -fx-text-fill: #eeeeee;"));
 
-||||||| merged common ancestors
-        Button groupsBtn = new Button("groups");
-=======
-
-        Button groupsBtn = new Button("groups");
->>>>>>> d05275418d743bad543b1b59d7aabb7575da56d9
         groupsBtn.setOnMouseClicked(event -> {
             ((MainWindow)getParent()).navigateTo(new GroupPage());
         });
