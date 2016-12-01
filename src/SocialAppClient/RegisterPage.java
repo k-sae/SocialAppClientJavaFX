@@ -4,6 +4,7 @@ import SocialAppGeneral.Command;
 import SocialAppGeneral.LoginInfo;
 import SocialAppGeneral.RegisterInfo;
 import SocialAppGeneral.UserInfo;
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -26,7 +27,7 @@ public class RegisterPage extends StackPane {
      this.setBackground(new Background(
              new BackgroundImage(
              new Image("file:Resources/background.jpg", true),
-             BackgroundRepeat.REPEAT,
+             BackgroundRepeat.NO_REPEAT,
              BackgroundRepeat.NO_REPEAT,
              BackgroundPosition.DEFAULT,
              BackgroundSize.DEFAULT)));
@@ -83,11 +84,15 @@ public class RegisterPage extends StackPane {
              public void handle(ActionEvent event) {
                  //TODO #hazem
                  //check for input
-                 long userId = checkForUserInput();
-                 if(userId != -1) {
-                     parent.getChildren().add(new MainWindow(userId));
-                     parent.getChildren().remove(this);
-                 }
+                 Command command = new Command();
+                 command.setKeyWord(LoginInfo.KEYWORD);
+                 CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+                     @Override
+                     void analyze(Command commandFromServer) {
+                         System.out.println(commandFromServer.getObjectStr());
+                     }
+                 };
+                 CommandsExecutor.getInstance().add(commandRequest);
              }
          });
          Bp.setRight(Hb);
@@ -236,14 +241,12 @@ public class RegisterPage extends StackPane {
                 send.setUserInfo(user);
                 //hna hb3t el command
                 Command command = new Command();
-                command.setKeyWord("new register");
+                command.setKeyWord(RegisterInfo.KEYWORD);
                 command.setSharableObject(send);
                 CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
                     @Override
                     void analyze(Command commandFromServer) {
-                        //TODO #prototype GSON
-                        //read object from command
-                        LoginInfo loginInfo = LoginInfo.fromJsonString(commandFromServer.getObjectStr());
+                        System.out.println(commandFromServer.getObjectStr());
                     }
                 };
                 CommandsExecutor.getInstance().add(commandRequest);
