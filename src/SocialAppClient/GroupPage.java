@@ -27,7 +27,7 @@ public class GroupPage extends GridPane {
         updateColor(this);
         setGridLinesVisible(true);
         setConstraint();
-//        setPanels(group);
+        setPanels(group);
     }
     public  GroupPage(){
         setBackground(new Background(new BackgroundFill(Color.web("#fff"), CornerRadii.EMPTY, Insets.EMPTY)));

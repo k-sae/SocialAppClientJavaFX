@@ -2,6 +2,8 @@ package SocialAppClient;
 
 import SocialAppGeneral.Command;
 import SocialAppGeneral.Group;
+import SocialAppGeneral.Like;
+import SocialAppGeneral.Post;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
@@ -53,6 +55,7 @@ public class HomePage extends GridPane {
         add(Info,0,0);
 
            Info.CreateGroupBtn.setOnMouseClicked(event -> {
+               /*
                Optional<String> check= Utility.createWindow("Group Name","Create Group");
                if(!check.equals(Optional.empty())){
                    if (check.get().equals("")) {
@@ -80,6 +83,83 @@ public class HomePage extends GridPane {
 
 
                }
+               */
+               /*to add post
+               Post post=new Post();
+               post.setOwnerId(2);
+               post.setContent("khaled");
+               post.setPostPos(1);
+               Command command = new Command();
+               command.setKeyWord(Post.SAVE_POST);
+               command.setSharableObject(post.convertToJsonString());
+               CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+                   @Override
+                   void analyze(Command cmd) {
+                       if (cmd.getKeyWord().equals(Post.SAVE_POST)){
+                         post.equals(Post.fromJsonString(cmd.getObjectStr())) ;
+                         System.out.println(cmd.getObjectStr());
+                       }
+                   }
+               };
+               CommandsExecutor.getInstance().add(commandRequest);
+
+
+
+
+
+           });*/
+               /*
+               Post post=new Post();
+               post.setOwnerId(2);
+               post.setPostPos(1);
+               post.setId(1);
+               Command command = new Command();
+               command.setKeyWord(Post.LOAD_POST);
+               command.setSharableObject(post.convertToJsonString());
+               CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+                   @Override
+                   void analyze(Command cmd) {
+                       if (cmd.getKeyWord().equals(Post.LOAD_POST)){
+                           post.equals(Post.fromJsonString(cmd.getObjectStr())) ;
+                           System.out.println(cmd.getObjectStr());
+                       }
+                   }
+               };
+               CommandsExecutor.getInstance().add(commandRequest);
+
+
+
+
+
+           });
+           */
+               Post post=new Post();
+               post.setOwnerId(2);
+               post.setPostPos(1);
+               post.setId(1);
+               Like like =new Like();
+               like.setLike(1);
+               like.setOwnerID(2);
+               System.out.println(like);
+               post.addlike(like);
+               Command command = new Command();
+               command.setKeyWord(Post.Add_COMMENT);
+               command.setSharableObject(post.convertToJsonString());
+               CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+                   @Override
+                   void analyze(Command cmd) {
+                       if (cmd.getKeyWord().equals(Post.Add_COMMENT)){
+                           post.equals(Post.fromJsonString(cmd.getObjectStr())) ;
+                           System.out.println(cmd.getObjectStr());
+                       }
+                   }
+               };
+               CommandsExecutor.getInstance().add(commandRequest);
+
+
+
+
+
            });
 
         Content content = new Content();
