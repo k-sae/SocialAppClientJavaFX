@@ -25,7 +25,7 @@ import java.util.logging.Logger;
  * Created by billy on 2016-11-28.
  */
 public class EditInfo extends GridPane{
-    ImageViewer profilePicture;
+    ImageView profilePicture;
     public EditInfo(){
 
         setConstraint();
@@ -54,7 +54,7 @@ public class EditInfo extends GridPane{
         Label title = new Label("INFO EDIT");
         title.setFont(Font.font(36));
 
-        profilePicture = new ImageViewer("me.jpg");
+        profilePicture = new ImageView("file:C:\\Users\\bolla\\Pictures\\me.jpg");
         profilePicture.setFitWidth(100);
         profilePicture.setPreserveRatio(true);
         profilePicture.setSmooth(true);

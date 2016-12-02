@@ -83,6 +83,7 @@ public class HomePage extends GridPane {
            });
 
         Content content = new Content();
+        content.postContainer.addPosts();
 
         add(content,1,0);
         ScrollPane sp = new ScrollPane(content);

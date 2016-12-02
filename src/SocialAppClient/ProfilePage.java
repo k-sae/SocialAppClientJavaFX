@@ -40,7 +40,7 @@ public class ProfilePage extends GridPane {
 
         ProfileInfoViewer Info = new ProfileInfoViewer();
         /**ADD PICTURE*/
-        Info.setPicture("file:C:\\Users\\bolla\\Pictures\\me.jpg");
+        //Info.setPicture();
         /**ADD INFO*/
         Info.setLabel("Name: 7amada", "Age: 19", "blab blah");
         Info.setButtons();

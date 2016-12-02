@@ -27,7 +27,7 @@ public class FriendList extends VBox {
 
         Label friendLabel = new Label("FRIENDS");
         friendLabel.setStyle("-fx-font: 30 verdana; -fx-text-fill: #666666;");
-        friendLabel.setPadding(new Insets(30,0,30,0));
+        friendLabel.setPadding(new Insets(30,0,10,0));
 
         ImageViewer friendImg = new ImageViewer("123");
         friendImg.setFitWidth(40);
