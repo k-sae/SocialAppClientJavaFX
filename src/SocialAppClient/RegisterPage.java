@@ -49,7 +49,7 @@ public class RegisterPage extends StackPane {
         ColumnConstraints columnConstraints = new ColumnConstraints();
         columnConstraints.setPercentWidth(30);
         ColumnConstraints columnConstraints1 = new ColumnConstraints();
-        columnConstraints1.setPercentWidth(50);
+        columnConstraints1.setPercentWidth(70);
         ColumnConstraints col3=new ColumnConstraints();
         col3.setPercentWidth(20);
         gridPane.getColumnConstraints().addAll(columnConstraints,columnConstraints1,col3);

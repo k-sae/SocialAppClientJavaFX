@@ -40,7 +40,7 @@ public class ProfilePage extends GridPane {
 
         ProfileInfoViewer Info = new ProfileInfoViewer();
         /**ADD PICTURE*/
-        //Info.setPicture("");
+        Info.setPicture("file:C:\\Users\\bolla\\Pictures\\me.jpg");
         /**ADD INFO*/
         Info.setLabel("Name: 7amada", "Age: 19", "blab blah");
         Info.setButtons();
@@ -57,8 +57,9 @@ public class ProfilePage extends GridPane {
         Info.Edit.setOnAction(event -> {
             getChildren().remove(content);
             /**AFTER CLICK ON EDIT IT WILL GO TO EDIT PAGE*/
-            add(new EditInfo(),1,0);
-            sp.setContent(null);
+            EditInfo editInfo = new EditInfo();
+            add(editInfo,1,0);
+            sp.setContent(editInfo);
         });
     }
 

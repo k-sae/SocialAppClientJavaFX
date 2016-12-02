@@ -42,6 +42,19 @@ public abstract class InfoViewer extends VBox{
 
         getChildren().add(img);
     }
+
+    public void setPicture(Image image){
+        getChildren().remove(img);
+        img = new ImageView(image);
+        img.setFitWidth(100);
+        img.setPreserveRatio(true);
+        img.setSmooth(true);
+        img.setCache(true);
+        img.setClip(new Circle(img.getFitWidth()/2,img.getFitWidth()/2,img.getFitWidth()/2));
+
+        getChildren().add(img);
+    }
+
     public void setLabel(String... LabelName){
         for(String name : LabelName){
             Label Info = new Label(name);

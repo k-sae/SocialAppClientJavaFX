@@ -20,6 +20,6 @@ public class Content extends VBox {
 
         postWriter = new PostWriter();
         postContainer = new PostContainer();
-        getChildren().addAll(postWriter, postContainer);
+        getChildren().addAll(postWriter, postContainer, new PostContainer());
     }
 }

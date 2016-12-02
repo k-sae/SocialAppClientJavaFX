@@ -25,4 +25,6 @@ public class PostContainer extends VBox {
 
         getChildren().addAll(postViewer);
     }
+
+
 }
