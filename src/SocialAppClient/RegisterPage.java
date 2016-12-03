@@ -83,10 +83,14 @@ public class RegisterPage extends StackPane {
              public void handle(ActionEvent event) {
                  //TODO #hazem
                  //check for input
-                 parent.getChildren().add(new MainWindow(1));
-                 parent.getChildren().remove(RegisterPage.this);
+              //   parent.getChildren().add(new MainWindow(1));
+                // parent.getChildren().remove(RegisterPage.this);
+                 LoginInfo log=new LoginInfo();
+                 log.setEmail(email.getText());
+                 log.setPassword(pass.getText());
                  Command command = new Command();
                  command.setKeyWord(LoginInfo.KEYWORD);
+                 command.setSharableObject(log);
                  CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
                      @Override
                      void analyze(Command commandFromServer) {
@@ -102,10 +106,6 @@ public class RegisterPage extends StackPane {
        //TODO #hazem
     //check for user input return user id if user exists
     //else return -1
-    private long checkForUserInput()
-    {
-        return 1;
-    }
     public TextField textFieldCreator(boolean visbility){
         TextField Tf=new TextField();
         Tf.setMaxWidth(200);

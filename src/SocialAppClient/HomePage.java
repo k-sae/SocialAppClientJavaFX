@@ -1,16 +1,12 @@
 package SocialAppClient;
 
 import SocialAppGeneral.Command;
-import SocialAppGeneral.Group;
 import SocialAppGeneral.Like;
 import SocialAppGeneral.Post;
-import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-
-import java.util.Optional;
 
 /**
  * Created by kemo on 10/11/2016.
