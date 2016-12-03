@@ -17,6 +17,13 @@ public class MainWindow extends GridPane {
         mainWindow = this;
         setWindowConstrain();
         setPanels();
+        new Thread(() -> {
+            try {
+                new NotificationConnection("0");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
     private void setWindowConstrain()
     {

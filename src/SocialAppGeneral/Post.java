@@ -22,7 +22,11 @@ public class Post implements Shareable,Serializable {
     private  String imageID ;
     private ArrayList<Like> like;
     private  ArrayList<Comment> comments;
-
+    public Post()
+    {
+        like = new ArrayList<>();
+        comments = new ArrayList<>();
+    }
     public ArrayList<Comment> getComments() {
         return comments;
     }
