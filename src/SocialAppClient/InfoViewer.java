@@ -1,26 +1,21 @@
 package SocialAppClient;
 
-import SocialAppGeneral.AppUser;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 
 /**
  * Created by billy on 2016-11-22.
  */
 public abstract class InfoViewer extends VBox{
-    ImageView img;
+    ImageViewer img;
     public InfoViewer(){
 
         setLayout();
-        setPicture("file:Resources/avatar.jpg");
+//        setPicture("file:Resources/avatar.jpg");
     }
 
     private void setLayout(){
@@ -32,20 +27,7 @@ public abstract class InfoViewer extends VBox{
     }
     public void setPicture(String Path){
         getChildren().remove(img);
-        Image im = new Image(Path);
-        img = new ImageView(im);
-        img.setFitWidth(100);
-        img.setPreserveRatio(true);
-        img.setSmooth(true);
-        img.setCache(true);
-        img.setClip(new Circle(img.getFitWidth()/2,img.getFitWidth()/2,img.getFitWidth()/2));
-
-        getChildren().add(img);
-    }
-
-    public void setPicture(Image image){
-        getChildren().remove(img);
-        img = new ImageView(image);
+        img = new ImageViewer(Path);
         img.setFitWidth(100);
         img.setPreserveRatio(true);
         img.setSmooth(true);

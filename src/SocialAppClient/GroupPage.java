@@ -3,18 +3,9 @@ package SocialAppClient;
 import SocialAppGeneral.Command;
 import SocialAppGeneral.Group;
 import javafx.geometry.Insets;
-
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextInputDialog;
-
 import javafx.scene.control.ScrollPane;
-
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.stage.Modality;
-import javafx.stage.StageStyle;
-
-import java.util.Optional;
 
 /**
  * Created by kemo on 10/11/2016.
@@ -94,7 +85,9 @@ public class GroupPage extends GridPane {
         Info.Edit.setOnAction(event -> {
             getChildren().remove(content);
             /**AFTER CLICK ON EDIT IT WILL GO TO EDIT PAGE*/
-            add(new EditInfo(), 1, 0);
+            //TODO #khaled
+            //send info here
+            add(new EditInfo(null), 1, 0);
             sp.setContent(null);
         });
     }
@@ -123,7 +116,9 @@ public class GroupPage extends GridPane {
         Info.Edit.setOnAction(event -> {
             getChildren().remove(content);
             /**AFTER CLICK ON EDIT IT WILL GO TO EDIT PAGE*/
-            add(new EditInfo(),1,0);
+            //TODO #khaled
+            //send info
+            add(new EditInfo(null),1,0);
             sp.setContent(null);
         });
     }
