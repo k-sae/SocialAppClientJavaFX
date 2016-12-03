@@ -33,7 +33,7 @@ public class Main extends Application {
         mainPane.getChildren().add(GP);
 
         primaryStage.setTitle("btats Network");
-        primaryStage.setScene(new Scene(mainPane,800,600));
+        primaryStage.setScene(new Scene(mainPane,960,600));
         primaryStage.show();
     }
 

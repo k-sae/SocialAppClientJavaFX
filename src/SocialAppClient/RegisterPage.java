@@ -4,6 +4,7 @@ import SocialAppGeneral.Command;
 import SocialAppGeneral.LoginInfo;
 import SocialAppGeneral.RegisterInfo;
 import SocialAppGeneral.UserInfo;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -19,9 +20,9 @@ import java.util.regex.Pattern;
 /**
  * Created by mosta on 30-Oct-16.
  */
-public class RegisterPage extends StackPane {
-    Pane parent;
- public RegisterPage(Pane parent){
+class RegisterPage extends StackPane {
+    private Pane parent;
+ RegisterPage(Pane parent){
      this.parent = parent;
      this.setBackground(new Background(
              new BackgroundImage(
@@ -49,7 +50,7 @@ public class RegisterPage extends StackPane {
         ColumnConstraints columnConstraints = new ColumnConstraints();
         columnConstraints.setPercentWidth(30);
         ColumnConstraints columnConstraints1 = new ColumnConstraints();
-        columnConstraints1.setPercentWidth(50);
+        columnConstraints1.setPercentWidth(70);
         ColumnConstraints col3=new ColumnConstraints();
         col3.setPercentWidth(20);
         gridPane.getColumnConstraints().addAll(columnConstraints,columnConstraints1,col3);
@@ -83,8 +84,7 @@ public class RegisterPage extends StackPane {
              public void handle(ActionEvent event) {
                  //TODO #hazem
                  //check for input
-              //   parent.getChildren().add(new MainWindow(1));
-                // parent.getChildren().remove(RegisterPage.this);
+
                  LoginInfo log=new LoginInfo();
                  log.setEmail(email.getText());
                  log.setPassword(pass.getText());
@@ -94,7 +94,15 @@ public class RegisterPage extends StackPane {
                  CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
                      @Override
                      void analyze(Command commandFromServer) {
-                         System.out.println(commandFromServer.getObjectStr());
+                         Platform.runLater(() -> {
+                             System.out.println(commandFromServer.getObjectStr());
+
+                             if (!commandFromServer.getObjectStr().equals("-1")) {
+                                 parent.getChildren().add(new MainWindow(commandFromServer.getObjectStr()));
+                                 parent.getChildren().remove(RegisterPage.this);
+                             }
+                         });
+
                      }
                  };
                  CommandsExecutor.getInstance().add(commandRequest);

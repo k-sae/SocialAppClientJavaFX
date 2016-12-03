@@ -110,7 +110,7 @@ public class NavBar extends HBox {
 
 
         homeBtn.setOnMouseClicked(event -> {
-            ((MainWindow)getParent()).navigateTo(new HomePage());
+            MainWindow.navigateTo(new HomePage());
         });
 
 
@@ -121,7 +121,7 @@ public class NavBar extends HBox {
         profileBtn.setOnMouseExited(event -> profileBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;"));
 
         profileBtn.setOnMouseClicked(event -> {
-            ((MainWindow)getParent()).navigateTo(new ProfilePage());
+            MainWindow.navigateTo(new ProfilePage(MainWindow.id));
         });
 
 /*

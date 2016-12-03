@@ -1,5 +1,8 @@
 package SocialAppClient;
 
+import SocialAppGeneral.Command;
+import SocialAppGeneral.UserInfo;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
@@ -9,9 +12,10 @@ import javafx.scene.paint.Color;
  * Created by kemo on 10/11/2016.
  */
 public class ProfilePage extends GridPane {
-    private String ID;
-    public ProfilePage()
+    private String id;
+    public ProfilePage(String id)
     {
+        this.id = id;
         /**IT WILL TAKE AN ID IN THE CONSTRUCTOR*/
         setBackground(new Background(new BackgroundFill(Color.web("#eeeeee"), CornerRadii.EMPTY, Insets.EMPTY)));
 
@@ -40,25 +44,38 @@ public class ProfilePage extends GridPane {
 
         ProfileInfoViewer Info = new ProfileInfoViewer();
         /**ADD PICTURE*/
-        //Info.setPicture("");
+        //Info.setPicture();
         /**ADD INFO*/
-        Info.setLabel("Name: 7amada", "Age: 19", "blab blah");
-        Info.setButtons();
 
-        add(Info,0,0);
+        Command command = new Command();
+        command.setKeyWord(UserInfo.PICK_INFO);
+        command.setSharableObject(id);
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+            @Override
+            void analyze(Command cmd) {
+                UserInfo userInfo = UserInfo.fromJsonString(cmd.getObjectStr());
+                Platform.runLater(() -> Info.setLabel("Name: " +userInfo.getFullName(),
+                        "BirthDate: " + userInfo.getBirthDate(),
+                        "Gender: " + userInfo.getGender()));
 
+
+
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
         Content content = new Content();
-
         add(content,1,0);
+        add(Info,0,0);
         ScrollPane sp = new ScrollPane(content);
         sp.setFitToWidth(true);
         add(sp,1,0);
-
+        Info.setButtons();
         Info.Edit.setOnAction(event -> {
             getChildren().remove(content);
             /**AFTER CLICK ON EDIT IT WILL GO TO EDIT PAGE*/
-            add(new EditInfo(),1,0);
-            sp.setContent(null);
+            EditInfo editInfo = new EditInfo();
+            add(editInfo,1,0);
+            sp.setContent(editInfo);
         });
     }
 
