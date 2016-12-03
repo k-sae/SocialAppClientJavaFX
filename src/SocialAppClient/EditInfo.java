@@ -5,10 +5,7 @@ import SocialAppGeneral.UserInfo;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -81,7 +78,7 @@ public class EditInfo extends GridPane{
                 BufferedImage bufferedImage = ImageIO.read(file);
                 Image image = SwingFXUtils.toFXImage(bufferedImage, null);
                 profilePicture.setImage(image);
-            } catch (IOException ex) {
+            } catch (Exception ex) {
             }
 
         });
@@ -112,6 +109,21 @@ public class EditInfo extends GridPane{
 
         TextField passwordTXT = new TextField();
 
+        Label birthDateLBL = new Label("Birth Date");
+        birthDateLBL.setFont(Font.font(26));
+        DatePicker datePicker = new DatePicker();
+
+        Label genderLBL = new Label("Gender:");
+        genderLBL.setFont(Font.font(26));
+
+        ToggleGroup genderGroup = new ToggleGroup();
+        RadioButton male = new RadioButton("Male");
+        male.setToggleGroup(genderGroup);
+        RadioButton female = new RadioButton("Female");
+        female.setToggleGroup(genderGroup);
+        HBox genderHbox = new HBox(5, male, female);
+        genderHbox.setAlignment(Pos.CENTER);
+
         Button saveBtn = new Button("save");
         saveBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;");
         saveBtn.setOnMouseEntered(event -> saveBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #999999; -fx-text-fill: #000000;"));
@@ -128,7 +140,7 @@ public class EditInfo extends GridPane{
             //send to server
         });
 
-        info.getChildren().addAll(title,new Separator(), profilePicture, pictureOption,FnameLBL,FnameTXT,LnameLBL,LnameTXT,passwordLBL,passwordTXT,saveBtn);
+        info.getChildren().addAll(title,new Separator(), profilePicture, pictureOption,FnameLBL,FnameTXT,LnameLBL,LnameTXT,passwordLBL,passwordTXT,birthDateLBL,datePicker,genderLBL,genderHbox,saveBtn);
 
         add(info,1,0);
     }

@@ -52,7 +52,7 @@ public class PostWriter extends VBox{
             try {
                 BufferedImage bufferedImage = ImageIO.read(file);
                 Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-            } catch (IOException ex) {
+            } catch (Exception ex) {
             }
 
         });
