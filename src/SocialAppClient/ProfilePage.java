@@ -13,7 +13,8 @@ import javafx.scene.paint.Color;
  */
 public class ProfilePage extends GridPane {
     private String id;
-    public ProfilePage(String id)
+    private UserInfo userInfo;
+    ProfilePage(String id)
     {
         this.id = id;
         /**IT WILL TAKE AN ID IN THE CONSTRUCTOR*/
@@ -44,7 +45,7 @@ public class ProfilePage extends GridPane {
 
         ProfileInfoViewer Info = new ProfileInfoViewer();
         /**ADD PICTURE*/
-        //Info.setPicture();
+
         /**ADD INFO*/
 
         Command command = new Command();
@@ -53,12 +54,12 @@ public class ProfilePage extends GridPane {
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
             @Override
             void analyze(Command cmd) {
-                UserInfo userInfo = UserInfo.fromJsonString(cmd.getObjectStr());
+                 userInfo = UserInfo.fromJsonString(cmd.getObjectStr());
                 Platform.runLater(() -> Info.setLabel("Name: " +userInfo.getFullName(),
                         "BirthDate: " + userInfo.getBirthDate(),
                         "Gender: " + userInfo.getGender()));
-
-
+                ProfilePage.this.userInfo = userInfo;
+                Info.setPicture(userInfo.getProfileImage());
 
             }
         };
@@ -73,7 +74,7 @@ public class ProfilePage extends GridPane {
         Info.Edit.setOnAction(event -> {
             getChildren().remove(content);
             /**AFTER CLICK ON EDIT IT WILL GO TO EDIT PAGE*/
-            EditInfo editInfo = new EditInfo();
+            EditInfo editInfo = new EditInfo(userInfo);
             add(editInfo,1,0);
             sp.setContent(editInfo);
         });
