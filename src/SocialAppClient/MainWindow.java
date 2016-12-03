@@ -1,18 +1,23 @@
 package SocialAppClient;
 
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 
+import java.util.ArrayList;
+
 /**
  * Created by kemo on 09/11/2016.
  */
 public class MainWindow extends GridPane {
-   static Pane mainFrame;
-   static Pane mainWindow;
-    public MainWindow(long id)
+   private static Pane mainFrame;
+   private static Pane mainWindow;
+    static String id;
+    public MainWindow(String id)
     {
+        this.id = id;
         mainFrame = new Pane();
         mainWindow = this;
         setWindowConstrain();
@@ -47,10 +52,17 @@ public class MainWindow extends GridPane {
         //on retrieve data from server send user to navBar
         Pane navBar = new NavBar(null);
 //        mainFrame.setBackground(new Background(new BackgroundFill(Color.GREEN,CornerRadii.EMPTY, Insets.EMPTY)));
-        FriendList friendList = new FriendList();
-        GridPane.setConstraints(friendList,1,1);
+        ArrayList<String> strings = new ArrayList<>();
+        for(int i = 0; i < 10; i++)
+        strings.add("1");
+        FriendList friendList = new FriendList(strings);
+
         //friendList.setBackground(new Background(new BackgroundFill(Color.YELLOW,CornerRadii.EMPTY, Insets.EMPTY)));
-        getChildren().addAll(navBar,mainFrame,friendList);
+
+        ScrollPane scrollPane = new ScrollPane(friendList);
+        scrollPane.setFitToWidth(true);
+        GridPane.setConstraints(scrollPane,1,1);
+        getChildren().addAll(navBar,mainFrame,scrollPane);
         navigateTo(new HomePage());
     }
     static void navigateTo(Pane frame)

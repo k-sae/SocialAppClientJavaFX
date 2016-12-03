@@ -1,5 +1,7 @@
 package SocialAppClient;
 
+import SocialAppGeneral.AppUser;
+import SocialAppGeneral.UserInfo;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -114,6 +116,17 @@ public class EditInfo extends GridPane{
         saveBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;");
         saveBtn.setOnMouseEntered(event -> saveBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #999999; -fx-text-fill: #000000;"));
         saveBtn.setOnMouseExited(event -> saveBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;"));
+
+        saveBtn.setOnMouseClicked(event -> {
+            AppUser appUser = new AppUser();
+            appUser.setID(MainWindow.id);
+            appUser.getUserInfo().setFullName(FnameTXT.getText() + " " + LnameTXT.getText() );
+            //TODO #belal
+
+
+            //TODO: #kareem
+            //send to server
+        });
 
         info.getChildren().addAll(title,new Separator(), profilePicture, pictureOption,FnameLBL,FnameTXT,LnameLBL,LnameTXT,passwordLBL,passwordTXT,saveBtn);
 

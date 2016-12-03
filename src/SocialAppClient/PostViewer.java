@@ -110,19 +110,6 @@ public class PostViewer extends VBox {
         setPadding(new Insets(10,0,20,0));
         setStyle("-fx-background-color: #ffffff;");
 
-        ImageView friendImg = new ImageView(new Image("file:C:\\Users\\bolla\\Pictures\\me.jpg"));
-        friendImg.setFitWidth(40);
-        friendImg.setPreserveRatio(true);
-        friendImg.setSmooth(true);
-        friendImg.setCache(true);
-        friendImg.setClip(new Circle(friendImg.getFitWidth()/2,friendImg.getFitWidth()/2,friendImg.getFitWidth()/2));
-
-        Button friendBtn = new Button("Belal Ibrahim", friendImg);
-
-        friendBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;");
-        friendBtn.setOnMouseEntered(event -> friendBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #cccccc; -fx-text-fill: #000000;"));
-        friendBtn.setOnMouseExited(event -> friendBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;"));
-
 
         postText = new Label();
         postText.setText("HELLO FROM THE OTHER SIDE!!");
@@ -180,7 +167,7 @@ public class PostViewer extends VBox {
         setMaxWidth(400);
         setMargin(postText, new Insets(0,30,0,30));
         setMargin(img, new Insets(10,0,20,0));
-        getChildren().addAll(friendBtn, postText, img, new Separator(), buttons);
+        getChildren().addAll(new FriendView("1"), postText, img, new Separator(), buttons);
 
     }
 }
