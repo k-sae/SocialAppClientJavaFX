@@ -142,8 +142,6 @@ class EditInfo extends GridPane{
             }
             Command command = new Command();
             command.setKeyWord(UserInfo.EDIT_INFO);
-            System.out.println(userInfo.getProfileImage());
-            System.out.println(userInfo.convertToJsonString());
             command.setSharableObject(userInfo);
            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
                @Override

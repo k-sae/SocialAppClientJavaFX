@@ -59,7 +59,8 @@ public class ProfilePage extends GridPane {
                         "BirthDate: " + userInfo.getBirthDate(),
                         "Gender: " + userInfo.getGender()));
                 ProfilePage.this.userInfo = userInfo;
-                Info.setPicture(userInfo.getProfileImage());
+                Platform.runLater(() -> Info.setPicture(userInfo.getProfileImage()));
+
 
             }
         };
