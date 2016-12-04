@@ -2,7 +2,6 @@ package SocialAppClient;
 
 import SocialAppGeneral.Command;
 import SocialAppGeneral.LoggedUser;
-import SocialAppGeneral.RegisterInfo;
 import javafx.scene.control.Button;
 
 /**
@@ -39,7 +38,6 @@ public class ProfileInfoViewer extends InfoViewer {
             RelationBTN.setOnAction(e->{
                 Command command = new Command();
                 command.setKeyWord(LoggedUser.ADD_FRIEND);
-                System.out.println(id);
                 command.setSharableObject(id);
                 CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
                     @Override

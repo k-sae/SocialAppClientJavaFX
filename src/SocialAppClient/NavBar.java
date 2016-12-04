@@ -1,20 +1,19 @@
 package SocialAppClient;
 
-import SocialAppGeneral.AppUser;
-import SocialAppGeneral.Command;
-import SocialAppGeneral.Group;
+import SocialAppGeneral.*;
+import SocialAppGeneral.SocialArrayList;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-
-import java.util.Optional;
 
 import static javafx.scene.layout.GridPane.setColumnSpan;
 import static javafx.scene.layout.GridPane.setConstraints;
@@ -30,7 +29,24 @@ public class NavBar extends HBox {
         setLayout();
         setNavComponent();
         setNavButtons();
+        requestServerFriendRequests();
+    }
+    private void requestServerFriendRequests()
+    {
+        Command command = new Command();
+        command.setKeyWord(LoggedUser.FETCH_REQS);
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+            @Override
+            void analyze(Command cmd) {
+                SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(cmd.getObjectStr());
+                for (Object o: socialArrayList.getItems()
+                     ) {
+                    addFriendRequest((String)o);
+                }
 
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
     }
     private void setLayout()
     {
@@ -68,9 +84,8 @@ public class NavBar extends HBox {
         FRIcon.setFitWidth(25);
         FRIcon.setPreserveRatio(true);
 
-        Menu friendRequestes = new Menu("",FRIcon);
+         friendRequests = new Menu("",FRIcon);
         /** Add an item when you clicked on the menu */
-        friendRequestes.getItems().addAll(new MenuItem("Belal sent you friend request"));
 
         /** messages menu icon */
         ImageView msgIcon = new ImageView(new Image("file:Resources/msg.png"));
@@ -78,7 +93,7 @@ public class NavBar extends HBox {
         msgIcon.setPreserveRatio(true);
 
 
-        Menu msg = new Menu("",msgIcon);
+        msg = new Menu("",msgIcon);
         /** Add an item when you clicked on the menu */
         msg.getItems().addAll(new MenuItem("Belal sent you a message"));
 
@@ -88,12 +103,12 @@ public class NavBar extends HBox {
         notiIcon.setPreserveRatio(true);
 
 
-        Menu notification = new Menu("",notiIcon);
+         notification = new Menu("",notiIcon);
         /** Add an item when you clicked on the menu */
         notification.getItems().addAll(new MenuItem("Belal liked your photo"));
 
         /** Add a menu bar to contain all menus */
-        MenuBar notificationsBar = new MenuBar(friendRequestes, msg, notification);
+        MenuBar notificationsBar = new MenuBar(friendRequests, msg, notification);
         notificationsBar.setBackground(null);
         notificationsBar.setPadding(new Insets(0,0,0,10));
 
@@ -147,5 +162,39 @@ public class NavBar extends HBox {
             getScene().getWindow().hide();
         });
         getChildren().addAll(homeBtn, profileBtn, /*groupsBtn,*/ logoutBtn);
+    }
+    //////////////////////////start of my area
+
+    private Menu friendRequests;
+    private Menu notification;
+    private Menu msg;
+    public void addFriendRequest(String... ids)
+    {
+        for (String id: ids
+             ) {
+            new UserPicker().new InfoPicker(id) {
+                @Override
+                void pick(UserInfo userInfo) {
+                    ImageViewer profilePicture = new ImageViewer(userInfo.getProfileImage());
+                    profilePicture.setFitWidth(20);
+                    profilePicture.setFitHeight(20);
+                    profilePicture.setPreserveRatio(false);
+                    profilePicture.setSmooth(true);
+                    profilePicture.setCache(true);
+                    profilePicture.setClip(new Circle(profilePicture.getFitWidth()/2,profilePicture.getFitWidth()/2,profilePicture.getFitWidth()/2));
+                    Platform.runLater(() -> {
+                        MenuItem menuItem = new MenuItem(
+                                userInfo.getFullName()
+                                ,profilePicture);
+                        menuItem.setOnAction(event -> {
+                            MainWindow.navigateTo(new ProfilePage(id));
+                        });
+                        friendRequests.getItems().
+                                add(menuItem);
+                    });
+                }
+            };
+        }
+
     }
 }

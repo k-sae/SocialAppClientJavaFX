@@ -1,6 +1,7 @@
 package SocialAppClient;
 
 import SocialAppGeneral.Command;
+import SocialAppGeneral.LoggedUser;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -31,13 +32,15 @@ public class MainWindow extends GridPane {
     {
         new Thread(() -> {
             try {
-                System.out.println(id);
                 ReceiveServerNotification receiveServerCommand = new ReceiveServerNotification(
                         new NotificationConnection(id)
                                 .getConnectionsocket()) {
                     @Override
                     public void Analyze(Command command) {
-                        System.out.println("IAM WORKING!!!!!!!!!!!!");
+                        if (command.getKeyWord().equals(LoggedUser.FRIEND_REQ))
+                        {
+                            navBar.addFriendRequest(command.getObjectStr());
+                        }
                     }
                 };
                 receiveServerCommand.start();

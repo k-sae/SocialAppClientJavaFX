@@ -24,20 +24,14 @@ public class ProfilePage extends GridPane {
 
         setGridLinesVisible(true);
         setConstraint();
-
-        Command command = new Command();
-        command.setKeyWord(UserInfo.PICK_INFO);
-        command.setSharableObject(id);
-        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+        new UserPicker().new InfoPicker(id) {
             @Override
-            void analyze(Command cmd) {
-                userInfo = UserInfo.fromJsonString(cmd.getObjectStr());
+            void pick(UserInfo userInfo) {
                 ProfilePage.this.userInfo = userInfo;
                 Platform.runLater(() -> setPanels());
-
             }
         };
-        CommandsExecutor.getInstance().add(commandRequest);
+
 
     }
 

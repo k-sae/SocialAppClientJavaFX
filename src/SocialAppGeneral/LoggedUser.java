@@ -5,9 +5,10 @@ import java.util.ArrayList;
 /**
  * Created by mosta on 27-Nov-16.
  */
-public class LoggedUser extends AppUser{
+public class LoggedUser extends AppUser {
     public static final String ADD_FRIEND="add_Friend";
     public static final String FRIEND_REQ = "friend_req";
+    public static final String FETCH_REQS = "fetch_reqs";
     //TO DO
     // may change later check with kareem
     ArrayList<Integer> friends;
