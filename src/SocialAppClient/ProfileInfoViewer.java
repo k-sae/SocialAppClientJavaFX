@@ -1,5 +1,7 @@
 package SocialAppClient;
 
+import SocialAppGeneral.Command;
+import SocialAppGeneral.LoggedUser;
 import javafx.scene.control.Button;
 
 /**
@@ -8,11 +10,10 @@ import javafx.scene.control.Button;
 public class ProfileInfoViewer extends InfoViewer {
     protected Button RelationBTN;
     protected Button Edit;
+    private  String ID;
     public ProfileInfoViewer(){
-
-
     }
-
+public void setID(String ID){this.ID=ID;}
     @Override
     public void setButtons() {
         /**CHECK IF THE LOGGED USER IS A FRIEND OR VISITOR OR THE OWNER
@@ -26,6 +27,18 @@ public class ProfileInfoViewer extends InfoViewer {
         RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;");
         RelationBTN.setOnMouseEntered(event -> RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff;"));
         RelationBTN.setOnMouseExited(event -> RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;"));
+        RelationBTN.setOnAction(e->{
+            Command command = new Command();
+            command.setKeyWord(LoggedUser.KEYWORD);
+            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+                @Override
+                void analyze(Command commandFromServer) {
+              //      System.out.println(commandFromServer.getObjectStr());
+                }
+            };
+            CommandsExecutor.getInstance().add(commandRequest);
+
+        });
 
         Edit = new Button("Edit");
         Edit.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;");

@@ -246,7 +246,7 @@ class RegisterPage extends StackPane {
                 send.setLoginInfo(log);
                 user.setFullName(FRname_verify.getText()+LRname_verify.getText());
                 user.setBirthDate(dp.getValue().toString());
-                user.setGender(group.getSelectedToggle().toString());
+                user.setGender(((RadioButton)group.getSelectedToggle()).getText());
                 send.setUserInfo(user);
                 //hna hb3t el command
                 Command command = new Command();

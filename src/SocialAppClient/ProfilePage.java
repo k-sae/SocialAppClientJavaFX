@@ -46,7 +46,6 @@ public class ProfilePage extends GridPane {
         /**ADD PICTURE*/
         //Info.setPicture();
         /**ADD INFO*/
-
         Command command = new Command();
         command.setKeyWord(UserInfo.PICK_INFO);
         command.setSharableObject(id);
