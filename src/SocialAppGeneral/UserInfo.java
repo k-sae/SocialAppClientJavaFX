@@ -8,59 +8,64 @@ import com.google.gson.Gson;
  */
 //created it for debugging
 public class UserInfo implements Shareable {
-  private String fullName;
-  private String birthDate;
-  private String gender;
-  private String profileImage;
-  public static transient final  String PICK_INFO = "pick_info";
-  public UserInfo() {
-    this.fullName = "";
-    this.birthDate = "";
-    this.gender = "";
-    profileImage = "";
-  }
 
-  public String getFullName() {
-    return fullName;
-  }
+    private String profileImage;
+    private String fullName;
+    private String birthDate;
+    private String gender;
 
-  public void setFullName(String fullName) {
-    this.fullName = fullName;
-  }
 
-  public String getBirthDate() {
-    return birthDate;
-  }
 
-  public void setBirthDate(String birthDate) {
-    this.birthDate = birthDate;
-  }
+    public static transient final  String PICK_INFO = "pick_info";
+    public static transient final  String EDIT_INFO = "edit_info";
+    public UserInfo() {
+        this.fullName = "";
+        this.birthDate = "";
+        this.gender = "";
+        profileImage = "";
+    }
 
-  public String getGender() {
-    return gender;
-  }
+    public String getFullName() {
+        return fullName;
+    }
 
-  public void setGender(String gender) {
-    this.gender = gender;
-  }
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
-  public String convertToJsonString() {
-    //TODO #hazem
-    Gson gson = new Gson();
-    return gson.toJson(this);
-  }
-  public static UserInfo fromJsonString(String jsonStr) {
-    //TODO #prototype GSON
-    //Read from JSON
-    Gson gson = new Gson();
-    return  gson.fromJson(jsonStr,UserInfo.class);
-  }
+    public String getBirthDate() {
+        return birthDate;
+    }
 
-  public String getProfileImage() {
-    return profileImage;
-  }
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
 
-  public void setProfileImage(String profileImage) {
-    this.profileImage = profileImage;
-  }
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String convertToJsonString() {
+        //TODO #hazem
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+    public static UserInfo fromJsonString(String jsonStr) {
+        //TODO #prototype GSON
+        //Read from JSON
+        Gson gson = new Gson();
+        return  gson.fromJson(jsonStr,UserInfo.class);
+    }
+
+    public String getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(String profileImage) {
+        this.profileImage = profileImage;
+    }
 }
