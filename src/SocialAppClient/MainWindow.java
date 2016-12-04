@@ -1,5 +1,6 @@
 package SocialAppClient;
 
+import SocialAppGeneral.Command;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 public class MainWindow extends GridPane {
    private static Pane mainFrame;
    private static Pane mainWindow;
+    NavBar navBar;
     static String id;
     public MainWindow(String id)
     {
@@ -22,9 +24,22 @@ public class MainWindow extends GridPane {
         mainWindow = this;
         setWindowConstrain();
         setPanels();
+        startNotifications();
+    }
+    private void startNotifications()
+    {
         new Thread(() -> {
             try {
-                new NotificationConnection("0");
+                System.out.println(id);
+                ReceiveServerNotification receiveServerCommand = new ReceiveServerNotification(
+                        new NotificationConnection(id)
+                                .getConnectionsocket()) {
+                    @Override
+                    public void Analyze(Command command) {
+                        System.out.println("IAM WORKING!!!!!!!!!!!!");
+                    }
+                };
+                receiveServerCommand.start();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -50,7 +65,7 @@ public class MainWindow extends GridPane {
         //mainframe
         //TODO #kareem
         //on retrieve data from server send user to navBar
-        Pane navBar = new NavBar(null);
+         navBar = new NavBar(id);
 //        mainFrame.setBackground(new Background(new BackgroundFill(Color.GREEN,CornerRadii.EMPTY, Insets.EMPTY)));
         ArrayList<String> strings = new ArrayList<>();
         for(int i = 0; i < 10; i++)
@@ -63,7 +78,7 @@ public class MainWindow extends GridPane {
         scrollPane.setFitToWidth(true);
         GridPane.setConstraints(scrollPane,1,1);
         getChildren().addAll(navBar,mainFrame,scrollPane);
-        navigateTo(new HomePage());
+        navigateTo(new HomePage(MainWindow.id));
     }
     static void navigateTo(Pane frame)
     {

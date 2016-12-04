@@ -2,6 +2,7 @@ package SocialAppClient;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.Socket;
 
 /**
  * Created by kemo on 08/11/2016.
@@ -16,8 +17,7 @@ public class NotificationConnection extends ServerConnection {
     public void startConnection() {
         //start listening to server commands in another Thread
 
-        ReceiveServerNotification receiveServerCommand = new ReceiveServerNotification(connectionSocket);
-        receiveServerCommand.start();
+
     }
     private void sendId(String id)
     {
@@ -27,5 +27,9 @@ public class NotificationConnection extends ServerConnection {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    Socket getConnectionsocket()
+    {
+        return connectionSocket;
     }
 }

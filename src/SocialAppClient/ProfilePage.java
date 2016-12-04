@@ -13,7 +13,8 @@ import javafx.scene.paint.Color;
  */
 public class ProfilePage extends GridPane {
     private String id;
-    public ProfilePage(String id)
+    private UserInfo userInfo;
+    ProfilePage(String id)
     {
         this.id = id;
         /**IT WILL TAKE AN ID IN THE CONSTRUCTOR*/
@@ -21,7 +22,20 @@ public class ProfilePage extends GridPane {
 
         setGridLinesVisible(true);
         setConstraint();
-        setPanels();
+
+        Command command = new Command();
+        command.setKeyWord(UserInfo.PICK_INFO);
+        command.setSharableObject(id);
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+            @Override
+            void analyze(Command cmd) {
+                userInfo = UserInfo.fromJsonString(cmd.getObjectStr());
+                ProfilePage.this.userInfo = userInfo;
+                Platform.runLater(() -> setPanels());
+
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
 
     }
 
@@ -42,26 +56,14 @@ public class ProfilePage extends GridPane {
 
     private void setPanels(){
 
-        ProfileInfoViewer Info = new ProfileInfoViewer();
+
+        ProfileInfoViewer Info = new ProfileInfoViewer(id);
         /**ADD PICTURE*/
-        //Info.setPicture();
+        Info.setPicture(userInfo.getProfileImage());
         /**ADD INFO*/
-        Command command = new Command();
-        command.setKeyWord(UserInfo.PICK_INFO);
-        command.setSharableObject(id);
-        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
-            @Override
-            void analyze(Command cmd) {
-                UserInfo userInfo = UserInfo.fromJsonString(cmd.getObjectStr());
-                Platform.runLater(() -> Info.setLabel("Name: " +userInfo.getFullName(),
-                        "BirthDate: " + userInfo.getBirthDate(),
-                        "Gender: " + userInfo.getGender()));
-
-
-
-            }
-        };
-        CommandsExecutor.getInstance().add(commandRequest);
+        Info.setLabel("Name: " +userInfo.getFullName(),
+                "BirthDate: " + userInfo.getBirthDate(),
+                "Gender: " + userInfo.getGender());
         Content content = new Content();
         add(content,1,0);
         add(Info,0,0);
@@ -72,7 +74,7 @@ public class ProfilePage extends GridPane {
         Info.Edit.setOnAction(event -> {
             getChildren().remove(content);
             /**AFTER CLICK ON EDIT IT WILL GO TO EDIT PAGE*/
-            EditInfo editInfo = new EditInfo();
+            EditInfo editInfo = new EditInfo(userInfo);
             add(editInfo,1,0);
             sp.setContent(editInfo);
         });

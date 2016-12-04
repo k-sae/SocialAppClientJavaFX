@@ -1,35 +1,33 @@
 package SocialAppClient;
 
-import SocialAppGeneral.AppUser;
+import SocialAppGeneral.Command;
 import SocialAppGeneral.UserInfo;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
-import java.util.logging.Logger;
+import java.time.LocalDate;
 
 /**
  * Created by billy on 2016-11-28.
  */
-public class EditInfo extends GridPane{
-    ImageView profilePicture;
-    public EditInfo(){
-
+class EditInfo extends GridPane{
+    private ImageViewer profilePicture;
+    public UserInfo userInfo;
+    EditInfo(UserInfo userInfo){
+        this.userInfo = userInfo;
         setConstraint();
         setLayout();
     }
@@ -56,7 +54,7 @@ public class EditInfo extends GridPane{
         Label title = new Label("INFO EDIT");
         title.setFont(Font.font(36));
 
-        profilePicture = new ImageView("file:C:\\Users\\bolla\\Pictures\\me.jpg");
+        profilePicture = new ImageViewer(userInfo.getProfileImage());
         profilePicture.setFitWidth(100);
         profilePicture.setPreserveRatio(true);
         profilePicture.setSmooth(true);
@@ -67,21 +65,21 @@ public class EditInfo extends GridPane{
         uploadImg.setStyle("-fx-font: 12 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;");
         uploadImg.setOnMouseEntered(event -> uploadImg.setStyle("-fx-font: 12 arial; -fx-background-color: #999999; -fx-text-fill: #000000;"));
         uploadImg.setOnMouseExited(event -> uploadImg.setStyle("-fx-font: 12 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;"));
-
+        final BufferedImage[] bufferedImage = {null};
         uploadImg.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
 
             FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
             FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
             fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
-
             File file = fileChooser.showOpenDialog(null);
+            //TODO #due
 
             try {
-                BufferedImage bufferedImage = ImageIO.read(file);
-                Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+              bufferedImage[0] = ImageIO.read(file);
+                Image image = SwingFXUtils.toFXImage(bufferedImage[0], null);
                 profilePicture.setImage(image);
-            } catch (IOException ex) {
+            } catch (Exception ignored) {
             }
 
         });
@@ -91,7 +89,11 @@ public class EditInfo extends GridPane{
         removePP.setOnMouseEntered(event -> removePP.setStyle("-fx-font: 12 arial; -fx-background-color: #999999; -fx-text-fill: #000000;"));
         removePP.setOnMouseExited(event -> removePP.setStyle("-fx-font: 12 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;"));
 
-        removePP.setOnAction(event -> profilePicture.setImage(new Image("file:Resources/avatar.jpg")));
+        removePP.setOnAction(event -> {
+            userInfo.setProfileImage("default");
+            bufferedImage[0] = null;
+            }
+        );
 
         pictureOption.getChildren().addAll(uploadImg,removePP);
         pictureOption.setSpacing(5);
@@ -101,6 +103,7 @@ public class EditInfo extends GridPane{
         FnameLBL.setFont(Font.font(26));
 
         TextField FnameTXT = new TextField();
+        FnameTXT.setText(userInfo.getFullName());
 
         Label LnameLBL = new Label("Last Name:");
         LnameLBL.setFont(Font.font(26));
@@ -112,23 +115,58 @@ public class EditInfo extends GridPane{
 
         TextField passwordTXT = new TextField();
 
+        Label birthDateLBL = new Label("Birth Date");
+        birthDateLBL.setFont(Font.font(26));
+        DatePicker datePicker = new DatePicker(LocalDate.parse(userInfo.getBirthDate()));
+
+        Label genderLBL = new Label("Gender:");
+        genderLBL.setFont(Font.font(26));
+
+        ToggleGroup genderGroup = new ToggleGroup();
+        RadioButton male = new RadioButton("Male");
+        male.setToggleGroup(genderGroup);
+        RadioButton female = new RadioButton("Female");
+        female.setToggleGroup(genderGroup);
+        HBox genderHbox = new HBox(5, male, female);
+        genderHbox.setAlignment(Pos.CENTER);
+        if(userInfo.getGender().equals("Male"))
+            male.setSelected(true);
+        else
+            female.setSelected(true);
+
         Button saveBtn = new Button("save");
         saveBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;");
         saveBtn.setOnMouseEntered(event -> saveBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #999999; -fx-text-fill: #000000;"));
         saveBtn.setOnMouseExited(event -> saveBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;"));
 
         saveBtn.setOnMouseClicked(event -> {
-            AppUser appUser = new AppUser();
-            appUser.setID(MainWindow.id);
-            appUser.getUserInfo().setFullName(FnameTXT.getText() + " " + LnameTXT.getText() );
+            UserInfo  userInfo = new UserInfo();
+            userInfo.setProfileImage(EditInfo.this.userInfo.getProfileImage());
+            userInfo.setFullName(FnameTXT.getText() + " " + LnameTXT.getText());
+            userInfo.setBirthDate(datePicker.getValue().toString());
+            userInfo.setGender(((RadioButton) genderGroup.getSelectedToggle()).getText());
+            //noinspection ConstantConditions
+            if (bufferedImage[0] != null)
+            {
+                userInfo.setProfileImage( Utility.uploadImage(bufferedImage[0]));
+
+            }
+            Command command = new Command();
+            command.setKeyWord(UserInfo.EDIT_INFO);
+            command.setSharableObject(userInfo);
+           CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+               @Override
+               void analyze(Command cmd) {
+                System.out.println(cmd.getObjectStr());
+               }
+           };
+           CommandsExecutor.getInstance().add(commandRequest);
             //TODO #belal
-
-
             //TODO: #kareem
             //send to server
         });
 
-        info.getChildren().addAll(title,new Separator(), profilePicture, pictureOption,FnameLBL,FnameTXT,LnameLBL,LnameTXT,passwordLBL,passwordTXT,saveBtn);
+        info.getChildren().addAll(title,new Separator(), profilePicture, pictureOption,FnameLBL,FnameTXT,LnameLBL,LnameTXT,passwordLBL,passwordTXT,birthDateLBL,datePicker,genderLBL,genderHbox,saveBtn);
 
         add(info,1,0);
     }

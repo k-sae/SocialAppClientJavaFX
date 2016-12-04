@@ -133,7 +133,21 @@ public class PostViewer extends VBox {
         thumbsUp.setOnMouseEntered(event -> thumbsUp.setStyle("-fx-background-color: #999999; -fx-text-fill: #000000;"));
         thumbsUp.setOnMouseExited(event -> thumbsUp.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;"));
 
-        thumbsUp.setOnMousePressed(event -> thumbsUp.setStyle("-fx-background-color: #ffa500"));
+        thumbsUp.setOnMouseClicked(event -> {
+            if(thumbsUp.getStyle().equals("-fx-background-color: #999999; -fx-text-fill: #000000;")) {
+                thumbsUp.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #0000ff");
+                thumbsUp.setOnMouseEntered(event1 -> thumbsUp.setStyle("-fx-background-color: #999999; -fx-text-fill: #0000ff"));
+                thumbsUp.setOnMouseExited(event1 -> thumbsUp.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #0000ff"));
+                thumbsDown.setStyle("-fx-font: 12 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;");
+                thumbsDown.setOnMouseEntered(event1 -> thumbsDown.setStyle("-fx-background-color: #999999; -fx-text-fill: #000000;"));
+                thumbsDown.setOnMouseExited(event1 -> thumbsDown.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;"));
+
+            }else{
+                thumbsUp.setStyle("-fx-font: 12 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;");
+                thumbsUp.setOnMouseEntered(event1 -> thumbsUp.setStyle("-fx-background-color: #999999; -fx-text-fill: #000000;"));
+                thumbsUp.setOnMouseExited(event1 -> thumbsUp.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;"));
+            }
+        });
         ImageView TDicon = new ImageView("file:Resources/TD.png");
         TDicon.setFitWidth(15);
         TDicon.setPreserveRatio(true);
@@ -142,6 +156,22 @@ public class PostViewer extends VBox {
         thumbsDown.setStyle("-fx-font: 12 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;");
         thumbsDown.setOnMouseEntered(event -> thumbsDown.setStyle("-fx-background-color: #999999; -fx-text-fill: #000000;"));
         thumbsDown.setOnMouseExited(event -> thumbsDown.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;"));
+
+        thumbsDown.setOnMouseClicked(event -> {
+            if(thumbsDown.getStyle().equals("-fx-background-color: #999999; -fx-text-fill: #000000;")) {
+                thumbsDown.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #ff0000");
+                thumbsDown.setOnMouseEntered(event1 -> thumbsDown.setStyle("-fx-background-color: #999999; -fx-text-fill: #ff0000"));
+                thumbsDown.setOnMouseExited(event1 -> thumbsDown.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #ff0000"));
+                thumbsUp.setStyle("-fx-font: 12 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;");
+                thumbsUp.setOnMouseEntered(event1 -> thumbsUp.setStyle("-fx-background-color: #999999; -fx-text-fill: #000000;"));
+                thumbsUp.setOnMouseExited(event1 -> thumbsUp.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;"));
+
+            }else{
+                thumbsDown.setStyle("-fx-font: 12 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;");
+                thumbsDown.setOnMouseEntered(event1 -> thumbsDown.setStyle("-fx-background-color: #999999; -fx-text-fill: #000000;"));
+                thumbsDown.setOnMouseExited(event1 -> thumbsDown.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;"));
+            }
+        });
 
         ImageView commenticon = new ImageView("file:Resources/comment.png");
         commenticon.setFitWidth(15);
@@ -167,7 +197,7 @@ public class PostViewer extends VBox {
         setMaxWidth(400);
         setMargin(postText, new Insets(0,30,0,30));
         setMargin(img, new Insets(10,0,20,0));
-        getChildren().addAll(new FriendView("1"), postText, img, new Separator(), buttons);
+        getChildren().addAll(new FriendView("3"), postText, img, new Separator(), buttons);
 
     }
 }

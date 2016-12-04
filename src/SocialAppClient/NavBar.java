@@ -24,12 +24,13 @@ import static javafx.scene.layout.GridPane.setConstraints;
  */
 public class NavBar extends HBox {
 
-    public NavBar(AppUser appUser)
+    public NavBar(String id)
     {
 
         setLayout();
         setNavComponent();
         setNavButtons();
+
     }
     private void setLayout()
     {
@@ -110,7 +111,7 @@ public class NavBar extends HBox {
 
 
         homeBtn.setOnMouseClicked(event -> {
-            MainWindow.navigateTo(new HomePage());
+            MainWindow.navigateTo(new HomePage(MainWindow.id));
         });
 
 

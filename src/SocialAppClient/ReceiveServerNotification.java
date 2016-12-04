@@ -9,7 +9,7 @@ import java.net.SocketException;
 /**
  * Created by kemo on 28/10/2016.
  */
-public class ReceiveServerNotification extends ReceiveCommand {
+abstract class ReceiveServerNotification extends ReceiveCommand {
     public ReceiveServerNotification(Socket remote)
     {
         super(remote);
@@ -19,10 +19,6 @@ public class ReceiveServerNotification extends ReceiveCommand {
             e.printStackTrace();
         }
     }
-    @Override
-    public void Analyze(Command command) {
-        //TODO #kareem
-        //our code starts here HF :)
-        System.out.println("Notification says:"+ command.toString());
-    }
+
+  abstract   public void Analyze(Command command);
 }
