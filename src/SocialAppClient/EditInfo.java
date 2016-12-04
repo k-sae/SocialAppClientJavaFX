@@ -18,6 +18,7 @@ import javafx.stage.FileChooser;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.time.LocalDate;
 
 /**
  * Created by billy on 2016-11-28.
@@ -88,7 +89,11 @@ class EditInfo extends GridPane{
         removePP.setOnMouseEntered(event -> removePP.setStyle("-fx-font: 12 arial; -fx-background-color: #999999; -fx-text-fill: #000000;"));
         removePP.setOnMouseExited(event -> removePP.setStyle("-fx-font: 12 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;"));
 
-        removePP.setOnAction(event -> profilePicture.setImage(new Image("file:Resources/avatar.jpg")));
+        removePP.setOnAction(event -> {
+            userInfo.setProfileImage("default");
+            bufferedImage[0] = null;
+            }
+        );
 
         pictureOption.getChildren().addAll(uploadImg,removePP);
         pictureOption.setSpacing(5);
@@ -98,6 +103,7 @@ class EditInfo extends GridPane{
         FnameLBL.setFont(Font.font(26));
 
         TextField FnameTXT = new TextField();
+        FnameTXT.setText(userInfo.getFullName());
 
         Label LnameLBL = new Label("Last Name:");
         LnameLBL.setFont(Font.font(26));
@@ -111,7 +117,7 @@ class EditInfo extends GridPane{
 
         Label birthDateLBL = new Label("Birth Date");
         birthDateLBL.setFont(Font.font(26));
-        DatePicker datePicker = new DatePicker();
+        DatePicker datePicker = new DatePicker(LocalDate.parse(userInfo.getBirthDate()));
 
         Label genderLBL = new Label("Gender:");
         genderLBL.setFont(Font.font(26));
@@ -123,6 +129,10 @@ class EditInfo extends GridPane{
         female.setToggleGroup(genderGroup);
         HBox genderHbox = new HBox(5, male, female);
         genderHbox.setAlignment(Pos.CENTER);
+        if(userInfo.getGender().equals("Male"))
+            male.setSelected(true);
+        else
+            female.setSelected(true);
 
         Button saveBtn = new Button("save");
         saveBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;");
@@ -131,6 +141,7 @@ class EditInfo extends GridPane{
 
         saveBtn.setOnMouseClicked(event -> {
             UserInfo  userInfo = new UserInfo();
+            userInfo.setProfileImage(EditInfo.this.userInfo.getProfileImage());
             userInfo.setFullName(FnameTXT.getText() + " " + LnameTXT.getText());
             userInfo.setBirthDate(datePicker.getValue().toString());
             userInfo.setGender(((RadioButton) genderGroup.getSelectedToggle()).getText());
