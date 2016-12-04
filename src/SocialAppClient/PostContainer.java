@@ -1,5 +1,6 @@
 package SocialAppClient;
 
+import SocialAppGeneral.ArraylistPost;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -16,7 +17,8 @@ import javafx.scene.text.Font;
  * Created by billy on 2016-11-26.
  */
 public class PostContainer extends VBox {
-
+    Button loadPostBtn;
+    PostViewer postViewer;
     public PostContainer(){
         setLayout();
     }
@@ -27,28 +29,28 @@ public class PostContainer extends VBox {
         setPadding(new Insets(0,0,20,0));
     }
 
-    public void addPosts(){
+    public void addPosts(ArraylistPost posts){
         /** IT WILL TAKE ARRAYLIST FROM POSTS*/
-        /**
-         * int i = 0;
-         * for (ArrayList<Posts> posts: posts){
-         * PostViewer postViewer = new PostViewer(posts.get(i));
-         * getChildren().add(postViewer);
-         * i++;
-         */
+
+         for (int i=0; i<posts.getPosts().size(); i++ ) {
+             PostViewer postViewer = new PostViewer(posts.getPosts().get(i));
+             getChildren().add(postViewer);
+         }
+
+        /*
 
         PostViewer postViewer = new PostViewer();
         getChildren().addAll(postViewer);
 
-        Button load = new Button("LOAD MORE");
-        load.setOnMouseClicked(event -> {
-            getChildren().remove(load);
+        loadPostBtn = new Button("LOAD MORE");
+        loadPostBtn.setOnMouseClicked(event -> {
+            getChildren().remove(loadPostBtn);
             for(int i=0; i<10; i++)
                 getChildren().add(new PostViewer());
-            getChildren().addAll(load);
+            getChildren().addAll(loadPostBtn);
         });
 
-        getChildren().addAll(load);
+        getChildren().addAll(loadPostBtn);*/
     }
 
 

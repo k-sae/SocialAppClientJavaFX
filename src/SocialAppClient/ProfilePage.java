@@ -1,6 +1,8 @@
 package SocialAppClient;
 
+import SocialAppGeneral.ArraylistPost;
 import SocialAppGeneral.Command;
+import SocialAppGeneral.Post;
 import SocialAppGeneral.UserInfo;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -65,6 +67,30 @@ public class ProfilePage extends GridPane {
                 "BirthDate: " + userInfo.getBirthDate(),
                 "Gender: " + userInfo.getGender());
         Content content = new Content();
+
+        ArraylistPost posts =new ArraylistPost();
+        posts.setOwnerPosts(Long.parseLong(MainWindow.id)) ;
+        Command command = new Command();
+        command.setKeyWord(Post.LOAD_POST_USERS);
+        command.setSharableObject(posts.convertToJsonString());
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+            @Override
+            void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Post.LOAD_POST_USERS)){
+                    ArraylistPost posts = (ArraylistPost.fromJsonString(cmd.getObjectStr()));
+
+                    System.out.println(cmd.getObjectStr());
+                    System.out.println(cmd.getObjectStr().charAt(1));
+                    System.out.println(posts.getPosts());
+                    Platform.runLater(() -> content.postContainer.addPosts(posts));
+
+                }
+            }
+        };
+
+        CommandsExecutor.getInstance().add(commandRequest);
+
+        content.postWriter.SavePost(id);
         add(content,1,0);
         add(Info,0,0);
         ScrollPane sp = new ScrollPane(content);
