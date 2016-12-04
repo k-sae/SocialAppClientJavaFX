@@ -10,7 +10,7 @@ import java.util.Date;
  * Created by khaled hesham on 12/2/2016.
  */
 public class Post implements Shareable,Serializable {
-
+    private static final long serialVersionUID = 6529685098267757690L;
     private long id;
     private String content;
     private Date date;

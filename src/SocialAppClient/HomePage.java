@@ -51,35 +51,35 @@ public class HomePage extends GridPane {
 
         add(Info,0,0);
 
-           Info.CreateGroupBtn.setOnMouseClicked(event -> {
+        Info.CreateGroupBtn.setOnMouseClicked(event -> {
 
-               Optional<String> check= Utility.createWindow("Group Name","Create Group");
-               if(!check.equals(Optional.empty())){
-                   if (check.get().equals("")) {
-                       Utility.errorWindow("No name you enter");
-                   } else {
-                       Command command = new Command();
-                       command.setKeyWord(Group.CREATE_GROUP);
-                       command.setSharableObject(check.get());
-                       CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
-                           @Override
-                           void analyze(Command cmd) {
-                               if (cmd.getKeyWord().equals(Group.CREATE_GROUP)){
-                                   Group group  = Group.fromJsonString(cmd.getObjectStr());
-                                   //TODO #Fix
-                                   //fix error on threading
-                                   Platform.runLater(() -> MainWindow.navigateTo(new GroupPage()));
-
-
-                               }
-                           }
-                       };
-                       CommandsExecutor.getInstance().add(commandRequest);
-
-                   }
+            Optional<String> check= Utility.createWindow("Group Name","Create Group");
+            if(!check.equals(Optional.empty())){
+                if (check.get().equals("")) {
+                    Utility.errorWindow("No name you enter");
+                } else {
+                    Command command = new Command();
+                    command.setKeyWord(Group.CREATE_GROUP);
+                    command.setSharableObject(check.get());
+                    CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+                        @Override
+                        void analyze(Command cmd) {
+                            if (cmd.getKeyWord().equals(Group.CREATE_GROUP)){
+                                Group group  = Group.fromJsonString(cmd.getObjectStr());
+                                //TODO #Fix
+                                //fix error on threading
+                                Platform.runLater(() -> MainWindow.navigateTo(new GroupPage()));
 
 
-               }
+                            }
+                        }
+                    };
+                    CommandsExecutor.getInstance().add(commandRequest);
+
+                }
+
+
+            }
 
                /*to add post
                Post post=new Post();
@@ -130,57 +130,60 @@ public class HomePage extends GridPane {
 
            });
            */
-               Post post=new Post();
-               post.setOwnerId(2);
-               post.setPostPos(1);
-               post.setId(1);
-               Like like =new Like();
-               like.setLike(1);
-               like.setOwnerID(2);
-               System.out.println(like);
-               post.addlike(like);
-               Command command = new Command();
-               command.setKeyWord(Post.Add_COMMENT);
-               command.setSharableObject(post.convertToJsonString());
-               CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
-                   @Override
-                   void analyze(Command cmd) {
-                       if (cmd.getKeyWord().equals(Post.Add_COMMENT)){
-                           post.equals(Post.fromJsonString(cmd.getObjectStr())) ;
-                           System.out.println(cmd.getObjectStr());
-                       }
-                   }
-               };
-               CommandsExecutor.getInstance().add(commandRequest);
+            Post post=new Post();
+            post.setOwnerId(2);
+            post.setPostPos(1);
+            post.setId(1);
+            Like like =new Like();
+            like.setLike(1);
+            like.setOwnerID(2);
+            System.out.println(like);
+            post.addlike(like);
+            Command command = new Command();
+            command.setKeyWord(Post.Add_COMMENT);
+            command.setSharableObject(post.convertToJsonString());
+            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+                @Override
+                void analyze(Command cmd) {
+                    if (cmd.getKeyWord().equals(Post.Add_COMMENT)){
+                        post.equals(Post.fromJsonString(cmd.getObjectStr())) ;
+                        System.out.println(cmd.getObjectStr());
+                    }
+                }
+            };
+            CommandsExecutor.getInstance().add(commandRequest);
 
 
 
 
 
-           });
+        });
 
         Content content = new Content();
         //to add post
         content.postContainer.addPosts();
+
         content.postWriter.postBtn.setOnAction(e->{
+            ///*
+
+            Post post=new Post();
+            post.setOwnerId(Long.parseLong(MainWindow.id));
+            post.setContent(content.postWriter.getPostText());
+            post.setPostPos(Long.parseLong(MainWindow.id));
+            Command command = new Command();
+            command.setKeyWord(Post.SAVE_POST_USER);
+            command.setSharableObject(post.convertToJsonString());
+            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+                @Override
+                void analyze(Command cmd) {
+                    if (cmd.getKeyWord().equals(Post.SAVE_POST_USER)){
+                        post.equals(Post.fromJsonString(cmd.getObjectStr())) ;
+                        System.out.println(cmd.getObjectStr());
+                    }
+                }
+                //*/
             /*
-                }
-                Post post=new Post();
-        post.setOwnerId(Long.parseLong(MainWindow.id));
-        post.setContent(content.postWriter.getPostText());
-        post.setPostPos(Long.parseLong(MainWindow.id));
-        Command command = new Command();
-        command.setKeyWord(Post.SAVE_POST_USER);
-        command.setSharableObject(post.convertToJsonString());
-        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
-            @Override
-            void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.SAVE_POST_USER)){
-                    post.equals(Post.fromJsonString(cmd.getObjectStr())) ;
-                    System.out.println(cmd.getObjectStr());
-                }
-            }
-            */
+
             ArraylistPost posts =new ArraylistPost();
             posts.setOwnerPosts(Long.parseLong(MainWindow.id)) ;
             Command command = new Command();
@@ -195,7 +198,9 @@ public class HomePage extends GridPane {
                         System.out.println(posts.getPosts());
                     }
                 }
+             */
             };
+
             CommandsExecutor.getInstance().add(commandRequest);
 
 

@@ -12,8 +12,8 @@ import java.util.ArrayList;
  * Created by kemo on 09/11/2016.
  */
 public class MainWindow extends GridPane {
-   private static Pane mainFrame;
-   private static Pane mainWindow;
+    private static Pane mainFrame;
+    private static Pane mainWindow;
     static String id;
     public MainWindow(String id)
     {
@@ -54,7 +54,7 @@ public class MainWindow extends GridPane {
 //        mainFrame.setBackground(new Background(new BackgroundFill(Color.GREEN,CornerRadii.EMPTY, Insets.EMPTY)));
         ArrayList<String> strings = new ArrayList<>();
         for(int i = 0; i < 10; i++)
-        strings.add("1");
+            strings.add("4");
         FriendList friendList = new FriendList(strings);
 
         //friendList.setBackground(new Background(new BackgroundFill(Color.YELLOW,CornerRadii.EMPTY, Insets.EMPTY)));
@@ -70,6 +70,6 @@ public class MainWindow extends GridPane {
         mainWindow.getChildren().remove(mainFrame);
         mainFrame = frame;
         GridPane.setConstraints(mainFrame,0,1);
-       mainWindow.getChildren().add(mainFrame);
+        mainWindow.getChildren().add(mainFrame);
     }
 }
