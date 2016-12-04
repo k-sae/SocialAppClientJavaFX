@@ -1,12 +1,13 @@
 package SocialAppClient;
 
-import SocialAppGeneral.Command;
-import SocialAppGeneral.Like;
-import SocialAppGeneral.Post;
+import SocialAppGeneral.*;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+
+import java.util.Optional;
 
 /**
  * Created by kemo on 10/11/2016.
@@ -51,7 +52,7 @@ public class HomePage extends GridPane {
         add(Info,0,0);
 
            Info.CreateGroupBtn.setOnMouseClicked(event -> {
-               /*
+
                Optional<String> check= Utility.createWindow("Group Name","Create Group");
                if(!check.equals(Optional.empty())){
                    if (check.get().equals("")) {
@@ -79,7 +80,7 @@ public class HomePage extends GridPane {
 
 
                }
-               */
+
                /*to add post
                Post post=new Post();
                post.setOwnerId(2);
@@ -159,7 +160,53 @@ public class HomePage extends GridPane {
            });
 
         Content content = new Content();
+        //to add post
         content.postContainer.addPosts();
+        content.postWriter.postBtn.setOnAction(e->{
+            /*
+                }
+                Post post=new Post();
+        post.setOwnerId(Long.parseLong(MainWindow.id));
+        post.setContent(content.postWriter.getPostText());
+        post.setPostPos(Long.parseLong(MainWindow.id));
+        Command command = new Command();
+        command.setKeyWord(Post.SAVE_POST_USER);
+        command.setSharableObject(post.convertToJsonString());
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+            @Override
+            void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Post.SAVE_POST_USER)){
+                    post.equals(Post.fromJsonString(cmd.getObjectStr())) ;
+                    System.out.println(cmd.getObjectStr());
+                }
+            }
+            */
+            ArraylistPost posts =new ArraylistPost();
+            posts.setOwnerPosts(Long.parseLong(MainWindow.id)) ;
+            Command command = new Command();
+            command.setKeyWord(Post.LOAD_POST_USERS);
+            command.setSharableObject(posts.convertToJsonString());
+            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+                @Override
+                void analyze(Command cmd) {
+                    if (cmd.getKeyWord().equals(Post.LOAD_POST_USERS)){
+                        posts.equals(Post.fromJsonString(cmd.getObjectStr())) ;
+                        System.out.println(cmd.getObjectStr().charAt(1));
+                        System.out.println(posts.getPosts());
+                    }
+                }
+            };
+            CommandsExecutor.getInstance().add(commandRequest);
+
+
+
+
+        });
+
+
+
+
+
 
         add(content,1,0);
         ScrollPane sp = new ScrollPane(content);

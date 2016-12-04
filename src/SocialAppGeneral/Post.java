@@ -16,9 +16,11 @@ public class Post implements Shareable,Serializable {
     private Date date;
     private long ownerId;
     private long PostPos;
-    public static final String SAVE_POST = "save_post";
-    public static final String LOAD_POST = "load_post";
+    public static final String SAVE_POST_USER = "save_post_user";
+    public static final String LOAD_POST_GROUPS = "load_post_groups";
+    public static final String LOAD_POST_USERS = "load_post_user";
     public static final String Add_COMMENT = "add_comment";
+    public static final String SAVE_POST_GROUP = "save_post_group";
     private  String imageID ;
     private ArrayList<Like> like;
     private  ArrayList<Comment> comments;

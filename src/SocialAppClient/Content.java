@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 public class Content extends VBox {
     protected PostWriter postWriter;
     protected PostContainer postContainer;
+
     public Content(){
         setLayout();
     }
