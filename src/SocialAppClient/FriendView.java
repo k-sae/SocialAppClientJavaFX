@@ -32,7 +32,7 @@ public class FriendView extends Button {
     }
     private void setAttributes(UserInfo userInfo)
     {
-        ImageViewer friendImg = new ImageViewer("123");
+        ImageViewer friendImg = new ImageViewer(userInfo.getProfileImage());
         friendImg.setFitWidth(40);
         friendImg.setFitHeight(40);
         friendImg.setSmooth(true);

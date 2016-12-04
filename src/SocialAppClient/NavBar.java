@@ -110,7 +110,7 @@ public class NavBar extends HBox {
 
 
         homeBtn.setOnMouseClicked(event -> {
-            MainWindow.navigateTo(new HomePage());
+            MainWindow.navigateTo(new HomePage(MainWindow.id));
         });
 
 

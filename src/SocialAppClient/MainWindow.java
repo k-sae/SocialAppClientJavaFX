@@ -63,7 +63,7 @@ public class MainWindow extends GridPane {
         scrollPane.setFitToWidth(true);
         GridPane.setConstraints(scrollPane,1,1);
         getChildren().addAll(navBar,mainFrame,scrollPane);
-        navigateTo(new HomePage());
+        navigateTo(new HomePage(MainWindow.id));
     }
     static void navigateTo(Pane frame)
     {

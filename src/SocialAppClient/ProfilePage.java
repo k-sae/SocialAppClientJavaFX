@@ -22,7 +22,20 @@ public class ProfilePage extends GridPane {
 
         setGridLinesVisible(true);
         setConstraint();
-        setPanels();
+
+        Command command = new Command();
+        command.setKeyWord(UserInfo.PICK_INFO);
+        command.setSharableObject(id);
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+            @Override
+            void analyze(Command cmd) {
+                userInfo = UserInfo.fromJsonString(cmd.getObjectStr());
+                ProfilePage.this.userInfo = userInfo;
+                Platform.runLater(() -> setPanels());
+
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
 
     }
 
@@ -43,27 +56,14 @@ public class ProfilePage extends GridPane {
 
     private void setPanels(){
 
+
         ProfileInfoViewer Info = new ProfileInfoViewer(id);
         /**ADD PICTURE*/
-
+        Info.setPicture(userInfo.getProfileImage());
         /**ADD INFO*/
-
-        Command command = new Command();
-        command.setKeyWord(UserInfo.PICK_INFO);
-        command.setSharableObject(id);
-        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
-            @Override
-            void analyze(Command cmd) {
-                 userInfo = UserInfo.fromJsonString(cmd.getObjectStr());
-                Platform.runLater(() -> Info.setLabel("Name: " +userInfo.getFullName(),
-                        "BirthDate: " + userInfo.getBirthDate(),
-                        "Gender: " + userInfo.getGender()));
-                ProfilePage.this.userInfo = userInfo;
-
-
-            }
-        };
-        CommandsExecutor.getInstance().add(commandRequest);
+        Info.setLabel("Name: " +userInfo.getFullName(),
+                "BirthDate: " + userInfo.getBirthDate(),
+                "Gender: " + userInfo.getGender());
         Content content = new Content();
         add(content,1,0);
         add(Info,0,0);

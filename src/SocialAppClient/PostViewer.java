@@ -135,9 +135,9 @@ public class PostViewer extends VBox {
 
         thumbsUp.setOnMouseClicked(event -> {
             if(thumbsUp.getStyle().equals("-fx-background-color: #999999; -fx-text-fill: #000000;")) {
-                thumbsUp.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #ffa500");
-                thumbsUp.setOnMouseEntered(event1 -> thumbsUp.setStyle("-fx-background-color: #999999; -fx-text-fill: #ffa500"));
-                thumbsUp.setOnMouseExited(event1 -> thumbsUp.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #ffa500"));
+                thumbsUp.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #0000ff");
+                thumbsUp.setOnMouseEntered(event1 -> thumbsUp.setStyle("-fx-background-color: #999999; -fx-text-fill: #0000ff"));
+                thumbsUp.setOnMouseExited(event1 -> thumbsUp.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #0000ff"));
                 thumbsDown.setStyle("-fx-font: 12 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;");
                 thumbsDown.setOnMouseEntered(event1 -> thumbsDown.setStyle("-fx-background-color: #999999; -fx-text-fill: #000000;"));
                 thumbsDown.setOnMouseExited(event1 -> thumbsDown.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;"));
@@ -159,9 +159,9 @@ public class PostViewer extends VBox {
 
         thumbsDown.setOnMouseClicked(event -> {
             if(thumbsDown.getStyle().equals("-fx-background-color: #999999; -fx-text-fill: #000000;")) {
-                thumbsDown.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #ffa500");
-                thumbsDown.setOnMouseEntered(event1 -> thumbsDown.setStyle("-fx-background-color: #999999; -fx-text-fill: #ffa500"));
-                thumbsDown.setOnMouseExited(event1 -> thumbsDown.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #ffa500"));
+                thumbsDown.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #ff0000");
+                thumbsDown.setOnMouseEntered(event1 -> thumbsDown.setStyle("-fx-background-color: #999999; -fx-text-fill: #ff0000"));
+                thumbsDown.setOnMouseExited(event1 -> thumbsDown.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #ff0000"));
                 thumbsUp.setStyle("-fx-font: 12 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;");
                 thumbsUp.setOnMouseEntered(event1 -> thumbsUp.setStyle("-fx-background-color: #999999; -fx-text-fill: #000000;"));
                 thumbsUp.setOnMouseExited(event1 -> thumbsUp.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;"));
@@ -197,7 +197,7 @@ public class PostViewer extends VBox {
         setMaxWidth(400);
         setMargin(postText, new Insets(0,30,0,30));
         setMargin(img, new Insets(10,0,20,0));
-        getChildren().addAll(new FriendView("1"), postText, img, new Separator(), buttons);
+        getChildren().addAll(new FriendView("3"), postText, img, new Separator(), buttons);
 
     }
 }

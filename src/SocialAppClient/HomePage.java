@@ -1,6 +1,10 @@
 package SocialAppClient;
 
 import SocialAppGeneral.*;
+import SocialAppGeneral.Command;
+import SocialAppGeneral.Like;
+import SocialAppGeneral.Post;
+import SocialAppGeneral.UserInfo;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
@@ -13,14 +17,31 @@ import java.util.Optional;
  * Created by kemo on 10/11/2016.
  */
 public class HomePage extends GridPane {
-    public HomePage()
+    private String id;
+    private UserInfo userInfo;
+    public HomePage(String id)
     {
+        this.id = id;
         //setBackground(new Background(new BackgroundFill(Color.web(ClientTheme.BackGround, 1), CornerRadii.EMPTY, Insets.EMPTY)));
         setBackground(new Background(new BackgroundFill(Color.web("#eeeeee"), CornerRadii.EMPTY, Insets.EMPTY)));
 
         setGridLinesVisible(true);
         setConstraint();
-        setPanels();
+
+        Command command = new Command();
+        command.setKeyWord(UserInfo.PICK_INFO);
+        command.setSharableObject(id);
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+            @Override
+            void analyze(Command cmd) {
+                userInfo = UserInfo.fromJsonString(cmd.getObjectStr());
+                HomePage.this.userInfo = userInfo;
+                Platform.runLater(() -> setPanels());
+
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
+
     }
 
     private void setConstraint(){
@@ -43,7 +64,7 @@ public class HomePage extends GridPane {
         HomePageInfoViewer Info = new HomePageInfoViewer();
 
         /**PUT THE PICTURE PATH*/
-        //Info.setPicture();
+        Info.setPicture(userInfo.getProfileImage());
         /**PUT SOME INFO AS STRING*/
         //Info.setLabel();
         Info.setButtons();
