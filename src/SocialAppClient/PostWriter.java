@@ -82,7 +82,7 @@ public class PostWriter extends VBox{
             Post post=new Post();
             post.setOwnerId(Long.parseLong(MainWindow.id));
             post.setContent(getPostText());
-            post.setPostPos(Long.parseLong(id));
+            post.setPostPos(Long.parseLong(MainWindow.id));
             Command command = new Command();
             command.setKeyWord(Post.SAVE_POST_USER);
             command.setSharableObject(post.convertToJsonString());
@@ -90,8 +90,8 @@ public class PostWriter extends VBox{
                 @Override
                 void analyze(Command cmd) {
                     if (cmd.getKeyWord().equals(Post.SAVE_POST_USER)) {
-                        post.equals(Post.fromJsonString(cmd.getObjectStr()));
-                        System.out.println(cmd.getObjectStr());
+
+
                     }
                 }
             };

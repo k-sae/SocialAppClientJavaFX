@@ -36,6 +36,12 @@ public class PostContainer extends VBox {
              PostViewer postViewer = new PostViewer(posts.getPosts().get(i));
              getChildren().add(postViewer);
          }
+        loadPostBtn = new Button("LOAD MORE");
+        loadPostBtn.setOnMouseClicked(event -> {
+            getChildren().remove(loadPostBtn);
+            /********/
+            getChildren().addAll(loadPostBtn);
+        });
 
         /*
 

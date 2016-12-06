@@ -53,7 +53,7 @@ public class ProfilePage extends GridPane {
     private void setPanels(){
 
 
-        ProfileInfoViewer Info = new ProfileInfoViewer(id);
+        ProfileInfoViewer Info = new ProfileInfoViewer(MainWindow.id);
         /**ADD PICTURE*/
         Info.setPicture(userInfo.getProfileImage());
         /**ADD INFO*/
@@ -63,7 +63,7 @@ public class ProfilePage extends GridPane {
         Content content = new Content();
 
         ArraylistPost posts =new ArraylistPost();
-        posts.setOwnerPosts(Long.parseLong(MainWindow.id)) ;
+        posts.setOwnerPosts(Long.parseLong(id)) ;
         Command command = new Command();
         command.setKeyWord(Post.LOAD_POST_USERS);
         command.setSharableObject(posts.convertToJsonString());
@@ -72,11 +72,9 @@ public class ProfilePage extends GridPane {
             void analyze(Command cmd) {
                 if (cmd.getKeyWord().equals(Post.LOAD_POST_USERS)){
                     ArraylistPost posts = (ArraylistPost.fromJsonString(cmd.getObjectStr()));
-
-                    System.out.println(cmd.getObjectStr());
-                    System.out.println(cmd.getObjectStr().charAt(1));
-                    System.out.println(posts.getPosts());
-                    Platform.runLater(() -> content.postContainer.addPosts(posts));
+                      if(!posts.getPosts().isEmpty()) {
+                          Platform.runLater(() -> content.postContainer.addPosts(posts));
+                      }
 
                 }
             }
