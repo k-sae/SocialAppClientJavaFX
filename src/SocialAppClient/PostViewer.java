@@ -53,6 +53,7 @@ public class PostViewer extends VBox {
         while (i<post.getLike().size()&&post.getLike().get(i).getOwnerID() == Long.parseLong(MainWindow.id)){
             i++;
         }
+        /*
 
         Command command = new Command();
                     command.setKeyWord(Post.EDITE_POST);
