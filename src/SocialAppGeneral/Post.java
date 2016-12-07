@@ -39,8 +39,8 @@ public class Post implements Shareable,Serializable {
     public void addcomment(Comment comment) {
         this.comments.add(comment);
     }
-    public  void deletecomment(Comment comment){
-        this.comments.remove(comment);
+    public  void deletecomment(int  index){
+        this.comments.remove(index);
     }
 
 
@@ -63,8 +63,8 @@ public class Post implements Shareable,Serializable {
     public void addlike(Like like) {
         this.like.add(like);
     }
-    public  void deletelike(Like like){
-        this.like.remove(like);
+    public  void deletelike(int index){
+        this.like.remove(index);
     }
 
     public String getContent() {

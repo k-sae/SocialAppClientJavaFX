@@ -62,6 +62,7 @@ public class ProfilePage extends GridPane {
                 "Gender: " + userInfo.getGender());
         Content content = new Content();
 
+
         ArraylistPost posts =new ArraylistPost();
         posts.setOwnerPosts(Long.parseLong(id)) ;
         Command command = new Command();
