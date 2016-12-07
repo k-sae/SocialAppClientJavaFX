@@ -38,10 +38,10 @@ public class FriendView extends Button {
         friendImg.setSmooth(true);
         friendImg.setCache(true);
         friendImg.setClip(new Circle(friendImg.getFitWidth()/2,friendImg.getFitWidth()/2,friendImg.getFitWidth()/2));
-
-        setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee; -fx-text-fill: #000000;");
-        setOnMouseEntered(event -> setStyle("-fx-font: 20 arial; -fx-background-color: #cccccc; -fx-text-fill: #000000;"));
-        setOnMouseExited(event -> setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee; -fx-text-fill: #000000;"));
+        setWrapText(true);
+        setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;");
+        setOnMouseEntered(event -> setStyle("-fx-font: 20 arial; -fx-background-color: #dddddd; -fx-text-fill: #000000;"));
+        setOnMouseExited(event -> setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;"));
         setOnMouseClicked(event -> Platform.runLater(() -> MainWindow.navigateTo(new ProfilePage(id))));
         setText(userInfo.getFullName());
         setGraphic(friendImg);

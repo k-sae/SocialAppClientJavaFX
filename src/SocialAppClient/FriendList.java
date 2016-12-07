@@ -30,9 +30,8 @@ class FriendList extends VBox {
         friendLabel.setStyle("-fx-font: 30 verdana; -fx-text-fill: #666666;");
         friendLabel.setPadding(new Insets(30,0,10,0));
         getChildren().addAll(friendLabel, new Separator());
-        for (String id:ids
-             ) {
-            getChildren().add(new FriendView(id));
+        for (String id:ids) {
+            getChildren().add(new HBox(new FriendView(id)));
         }
     }
 }

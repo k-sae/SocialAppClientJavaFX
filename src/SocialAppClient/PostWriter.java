@@ -33,7 +33,7 @@ public class PostWriter extends VBox{
         setAlignment(Pos.CENTER);
         postText = new TextArea();
         postText.setPromptText("What's on your mind?!");
-        postText.setMaxSize(400,80);
+        postText.setMaxSize(450,100);
 
         HBox option = new HBox();
         addImage = new Button("Choose an image");
@@ -69,7 +69,7 @@ public class PostWriter extends VBox{
         option.setSpacing(150);
         option.setAlignment(Pos.CENTER);
         option.getChildren().addAll(addImage,postBtn);
-        setPadding(new Insets(30,0,30,0));
+        setPadding(new Insets(30,0,0,0));
 
         getChildren().addAll(postText, option);
     }

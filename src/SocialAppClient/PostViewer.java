@@ -32,18 +32,18 @@ public class PostViewer extends VBox {
     }
     private void setLayout(){
         setAlignment(Pos.TOP_CENTER);
-        setPadding(new Insets(10,0,20,0));
+        setPadding(new Insets(10,0,10,0));
         setStyle("-fx-background-color: #ffffff;");
 
         postText = new Label();
         postText.setText(post.getContent());
-        postText.setFont(Font.font(16));
+        postText.setFont(Font.font(18));
         postText.setWrapText(true);
         postText.setPadding(new Insets(0,0,10,0));
 /*
         Image im = new Image("file:C:\\Users\\bolla\\Pictures\\me.jpg");
         ImageView img = new ImageView(im);
-        img.setFitWidth(350);
+        img.setFitWidth(400);
         img.setPreserveRatio(true);
         img.setSmooth(true);
         img.setCache(true);
@@ -142,6 +142,10 @@ public class PostViewer extends VBox {
         comment.setStyle("-fx-font: 12 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;");
         comment.setOnMouseEntered(event -> comment.setStyle("-fx-background-color: #999999; -fx-text-fill: #000000;"));
         comment.setOnMouseExited(event -> comment.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;"));
+        comment.setOnMouseClicked(event -> {
+            ((CallBack) getParent()).showPostDetails(post);
+
+        });
 
         ImageView shareicon = new ImageView("file:Resources/share.png");
         shareicon.setFitWidth(15);
@@ -173,10 +177,10 @@ public class PostViewer extends VBox {
         HBox buttons = new HBox(thumbsUp, thumbsDown, comment, share);
         buttons.setAlignment(Pos.CENTER);
 
-        setMaxWidth(400);
+        setMaxWidth(450);
         setMargin(postText, new Insets(0,30,0,30));
         //setMargin(img, new Insets(10,0,20,0));
-        getChildren().addAll(new FriendView(""+post.getOwnerId()), postText, /*img,*/ new Separator(), buttons);
+        getChildren().addAll(new HBox(new FriendView(""+post.getOwnerId()),new Label(post.getDate().toString())), postText, /*img,*/ new Separator(), buttons);
 
     }
     private void setLikeStyle(int i){
