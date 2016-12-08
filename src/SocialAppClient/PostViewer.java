@@ -19,6 +19,7 @@ import javafx.scene.text.Font;
 /**
  * Created by billy on 2016-11-30.
  */
+
 public class PostViewer extends VBox {
     protected Label postText;
     protected Button thumbsUp;
@@ -149,7 +150,20 @@ public class PostViewer extends VBox {
         comment.setOnMouseEntered(event -> comment.setStyle("-fx-background-color: #999999; -fx-text-fill: #000000;"));
         comment.setOnMouseExited(event -> comment.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;"));
           comment.setOnMouseClicked(event -> {
-              setCommentCommend(true);
+             // setCommentCommend(1);
+              Command command = new Command();
+              command.setKeyWord(Post.DELETE_POST_USERS);
+              command.setSharableObject(post.convertToJsonString());
+              CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+                  @Override
+                  void analyze(Command cmd) {
+                      if (cmd.getKeyWord().equals(Post.DELETE_POST_USERS)) {
+
+                      }
+                  }
+              };
+              CommandsExecutor.getInstance().add(commandRequest);
+
           });
         ImageView shareicon = new ImageView("file:Resources/share.png");
         shareicon.setFitWidth(15);
@@ -235,7 +249,7 @@ public class PostViewer extends VBox {
         };
         CommandsExecutor.getInstance().add(commandRequest);
     }
-    private void setCommentCommend(boolean show){
+    private void setCommentCommend(int show){
         Comment comment=new Comment();
         comment.setCommentcontent("khaled");
         comment.setOwnerID(Long.parseLong(MainWindow.id));
