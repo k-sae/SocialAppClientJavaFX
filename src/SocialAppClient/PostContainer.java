@@ -72,4 +72,9 @@ public class PostContainer extends VBox implements CallBack {
     }
     public void removePostWriter(){
     }
+
+    @Override
+    public void commentedit(String text) {
+
+    }
 }

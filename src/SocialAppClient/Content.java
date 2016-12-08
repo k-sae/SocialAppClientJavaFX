@@ -33,4 +33,9 @@ public class Content extends VBox implements CallBack{
     public void removePostWriter(){
         getChildren().remove(postWriter);
     }
+
+    @Override
+    public void commentedit(String text) {
+
+    }
 }

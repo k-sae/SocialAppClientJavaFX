@@ -3,7 +3,6 @@ package SocialAppClient;
 import SocialAppGeneral.Command;
 import SocialAppGeneral.Comment;
 import SocialAppGeneral.Post;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
@@ -11,19 +10,21 @@ import javafx.scene.layout.VBox;
 /**
  * Created by billy on 2016-12-07.
  */
-public class PostDetails extends VBox{
+public class PostDetails extends VBox implements CallBack{
     protected PostViewer postViewer;
-    protected CommentViewer commentViewer;
+    protected CommentContainer CommentContainer;
     private Post post;
     public PostDetails(Post post){
         this.post = post;
         postViewer = new PostViewer(this.post);
         postViewer.comment.setOnMouseClicked(null);
-        commentViewer = new CommentViewer(this.post.getComments());
-        commentViewer.commentText.setOnKeyPressed(event -> {
+
+        CommentContainer = new CommentContainer(this.post.getComments());
+        CommentContainer.commentText.setOnKeyPressed(event -> {
             if(event.getCode().equals(KeyCode.ENTER)){
-                setCommentCommend(1);
-                commentViewer.commentText.setText("");
+                setCommentCommend(1, CommentContainer.commentText.getText());
+                CommentContainer.commentText.setText("");
+                ((CallBack)getParent()).showPostDetails(post);
             }
         });
         setLayout();
@@ -31,11 +32,11 @@ public class PostDetails extends VBox{
     private void setLayout(){
         setAlignment(Pos.TOP_CENTER);
 
-        getChildren().addAll(postViewer,commentViewer);
+        getChildren().addAll(postViewer,CommentContainer);
     }
-    private void setCommentCommend(int show){
+    private void setCommentCommend(int show, String text){
         Comment comment=new Comment();
-        comment.setCommentcontent(commentViewer.commentText.getText());
+        comment.setCommentcontent(text);
         comment.setOwnerID(Long.parseLong(MainWindow.id));
         comment.setShow(show);
         Post post1 = new Post();
@@ -54,5 +55,20 @@ public class PostDetails extends VBox{
             }
         };
         CommandsExecutor.getInstance().add(commandRequest);
+    }
+
+    @Override
+    public void showPostDetails(Post post) {
+
+    }
+
+    @Override
+    public void removePostWriter() {
+
+    }
+
+    @Override
+    public void commentedit(String text) {
+        setCommentCommend(0, text);
     }
 }

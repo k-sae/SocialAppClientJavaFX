@@ -1,50 +1,50 @@
 package SocialAppClient;
 
 import SocialAppGeneral.Comment;
-import SocialAppGeneral.Post;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.Label;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
-import java.util.ArrayList;
-
 /**
- * Created by billy on 2016-12-07.
+ * Created by billy on 2016-12-08.
  */
-public class CommentViewer extends VBox{
-    private Label postComments;
-    protected TextField commentText;
-    private ArrayList<Comment> comments;
-    public CommentViewer(ArrayList<Comment> comments){
-        this.comments = comments;
-        commentText = new TextField();
-        commentText.setPromptText("Write a comment...");
+public class CommentViewer extends VBox {
+    private Comment comment;
+    private TextField postComments;
+    public CommentViewer(Comment comment){
+        this.comment = comment;
+        postComments = new TextField(this.comment.getCommentcontent());
         setLayout();
     }
     private void setLayout(){
+        postComments.setFont(Font.font(18));
+//        postComments.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        postComments.setEditable(false);
 
-        //setAlignment(Pos.TOP_CENTER);
-        setSpacing(5);
-        setPadding(new Insets(10,0,20,0));
-        setStyle("-fx-background-color: #ffffff;");
+        ChoiceBox<String> edit = new ChoiceBox<>();
+        edit.setStyle("-fx-background-color: transparent");
+        edit.setPrefWidth(1);
+        edit.getItems().addAll("Edit","Delete");
 
-        for (Comment comment: comments) {
-            postComments = new Label(comment.getCommentcontent());
-            postComments.setFont(Font.font(18));
-            postComments.setWrapText(true);
-            setMargin(postComments, new Insets(0,20,0,20));
-            getChildren().addAll(new Separator(), new FriendView("" + comment.getOwnerID()), postComments);
+        edit.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+                if(newValue.equals("Edit")){
+                    postComments.setEditable(true);
+                    postComments.requestFocus();
+                    postComments.setOnKeyPressed(event -> {
+                        if (event.getCode().equals(KeyCode.ENTER)) {
+                            ((CallBack) getParent().getParent()).commentedit(postComments.getText());
+                            postComments.setEditable(false);
+                        }
+                    });
+                }
+        });
 
-        }
-        setMaxWidth(450);
-        setMargin(commentText, new Insets(0,20,0,20));
+        setMargin(postComments, new Insets(0,20,0,20));
+        getChildren().addAll(new Separator(),edit, new FriendView("" + comment.getOwnerID()), postComments);
 
-        getChildren().add(commentText);
     }
 }
