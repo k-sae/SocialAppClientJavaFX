@@ -5,6 +5,7 @@ import SocialAppGeneral.Post;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
@@ -35,25 +36,14 @@ public class CommentViewer extends VBox{
 
         for (Comment comment: comments) {
             postComments = new Label(comment.getCommentcontent());
-            getChildren().addAll(new FriendView("" + comment.getCommentId()), postComments);
+            postComments.setFont(Font.font(18));
+            postComments.setWrapText(true);
+            setMargin(postComments, new Insets(0,20,0,20));
+            getChildren().addAll(new Separator(), new FriendView("" + comment.getOwnerID()), postComments);
 
         }
-        postComments = new Label("testing testing testing testing testing testing testing testing");
-        postComments.setFont(Font.font(18));
-        postComments.setWrapText(true);
-        setMargin(postComments, new Insets(0,20,0,20));
-
-        getChildren().addAll(new FriendView("1"), postComments);
-
         setMaxWidth(450);
         setMargin(commentText, new Insets(0,20,0,20));
-        commentText.setOnKeyPressed(event -> {
-            if(event.getCode().equals(KeyCode.ENTER)){
-                /************************************/
-
-                commentText.setText("");
-            }
-        });
 
         getChildren().add(commentText);
     }

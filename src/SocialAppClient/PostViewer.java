@@ -1,6 +1,7 @@
 package SocialAppClient;
 
 import SocialAppGeneral.Command;
+import SocialAppGeneral.Comment;
 import SocialAppGeneral.Like;
 import SocialAppGeneral.Post;
 import javafx.geometry.Insets;
@@ -18,6 +19,7 @@ import javafx.scene.text.Font;
 /**
  * Created by billy on 2016-11-30.
  */
+
 public class PostViewer extends VBox {
     protected Label postText;
     protected Button thumbsUp;
@@ -97,41 +99,46 @@ public class PostViewer extends VBox {
 
         int i = 0;
         int check = -1;
-        while (i<post.getLike().size()&&post.getLike().get(i).getOwnerID() != Long.parseLong(MainWindow.id)){
-            if(post.getLike().get(i).getOwnerID() == Long.parseLong(MainWindow.id)) {
-                check = i;
-            }
-            i++;
+        if(post.getLike().size() !=0) {
+            do {
+                if (post.getLike().get(i).getOwnerID() == Long.parseLong(MainWindow.id)) {
+                    check = i;
+                }
+                i++;
+            } while (i < post.getLike().size() && post.getLike().get(i).getOwnerID() != Long.parseLong(MainWindow.id));
         }
         if(check == -1) {
             setLikeStyle(check);
             thumbsUp.setOnMouseClicked(event -> {
                 setLikeStyle(1);
-                Like like = new Like();
-                like.setLike(1);
-                like.setOwnerID(Long.parseLong(MainWindow.id));
-                Post post1 = new Post();
-                post1.setId(post.getId());
-                post1.setPostPos(post.getPostPos());
-                post1.addlike(like);
-                Command command = new Command();
-                command.setKeyWord(Post.EDIT_POST_USERS);
-                command.setSharableObject(post1.convertToJsonString());
-                CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
-                    @Override
-                    void analyze(Command cmd) {
-                        if (cmd.getKeyWord().equals(Post.EDIT_POST_USERS)) {
-
-                        }
-                    }
-                };
-                CommandsExecutor.getInstance().add(commandRequest);
+               setLikecommend(1);
+            });
+            thumbsDown.setOnMouseClicked(event -> {
+                setLikeStyle(0);
+                setLikecommend(0);
             });
 
         }else if(post.getLike().get(check).getLike() == 1){
             setLikeStyle(1);
+            thumbsUp.setOnMouseClicked(event -> {
+                setLikeStyle(-1);
+                setLikecommend(-1);
+            });
+            thumbsDown.setOnMouseClicked(event -> {
+                setLikeStyle(0);
+                setLikecommend(0);
+                    }
+            );
         }else{
             setLikeStyle(0);
+            thumbsUp.setOnMouseClicked(event -> {
+                setLikeStyle(1);
+                setLikecommend(1);
+            });
+            thumbsDown.setOnMouseClicked(event -> {
+                setLikeStyle(-1);
+                setLikecommend(-1);
+            });
         }
 
         ImageView commenticon = new ImageView("file:Resources/comment.png");
@@ -142,11 +149,24 @@ public class PostViewer extends VBox {
         comment.setStyle("-fx-font: 12 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;");
         comment.setOnMouseEntered(event -> comment.setStyle("-fx-background-color: #999999; -fx-text-fill: #000000;"));
         comment.setOnMouseExited(event -> comment.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;"));
+
         comment.setOnMouseClicked(event -> {
+
             ((CallBack) getParent()).showPostDetails(post);
-
+            /** DELETE POST
+            Command command = new Command();
+            command.setKeyWord(Post.DELETE_POST_USERS);
+            command.setSharableObject(post.convertToJsonString());
+            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+                @Override
+                void analyze(Command cmd) {
+                    if (cmd.getKeyWord().equals(Post.DELETE_POST_USERS)) {
+                     }
+                }
+            };
+            CommandsExecutor.getInstance().add(commandRequest);
+            */
         });
-
         ImageView shareicon = new ImageView("file:Resources/share.png");
         shareicon.setFitWidth(15);
         shareicon.setPreserveRatio(true);
@@ -209,5 +229,26 @@ public class PostViewer extends VBox {
             thumbsUp.setOnMouseExited(event -> thumbsUp.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;"));
 
         }
+    }
+    private  void setLikecommend(int i){
+        Like like = new Like();
+        like.setLike(i);
+        like.setOwnerID(Long.parseLong(MainWindow.id));
+        Post post1 = new Post();
+        post1.setId(post.getId());
+        post1.setPostPos(post.getPostPos());
+        post1.addlike(like);
+        Command command = new Command();
+        command.setKeyWord(Post.EDIT_POST_USERS);
+        command.setSharableObject(post1.convertToJsonString());
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+            @Override
+            void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Post.EDIT_POST_USERS)) {
+
+                }
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
     }
 }

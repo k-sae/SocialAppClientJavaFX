@@ -21,6 +21,7 @@ public class Post implements Shareable,Serializable {
     public static final String LOAD_POST_USERS = "load_post_user";
     public static final String EDIT_POST_USERS = "save_post_without_id";
     public static final String SAVE_POST_GROUP = "save_post_group";
+    public static final String  DELETE_POST_USERS = "delete_post_user";
     private  String imageID ;
     private ArrayList<Like> like;
     private  ArrayList<Comment> comments;
@@ -39,8 +40,8 @@ public class Post implements Shareable,Serializable {
     public void addcomment(Comment comment) {
         this.comments.add(comment);
     }
-    public  void deletecomment(Comment comment){
-        this.comments.remove(comment);
+    public  void deletecomment(int  index){
+        this.comments.remove(index);
     }
 
 
@@ -63,8 +64,8 @@ public class Post implements Shareable,Serializable {
     public void addlike(Like like) {
         this.like.add(like);
     }
-    public  void deletelike(Like like){
-        this.like.remove(like);
+    public  void deletelike(int index){
+        this.like.remove(index);
     }
 
     public String getContent() {
