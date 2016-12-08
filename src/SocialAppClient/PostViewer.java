@@ -97,49 +97,52 @@ public class PostViewer extends VBox {
         });
 */
 
-        int i = 0;
-        int check = -1;
-        if(post.getLike().size() !=0) {
-            do {
-                if (post.getLike().get(i).getOwnerID() == Long.parseLong(MainWindow.id)) {
-                    check = i;
-                }
-                i++;
-            } while (i < post.getLike().size() && post.getLike().get(i).getOwnerID() != Long.parseLong(MainWindow.id));
-        }
-        if(check == -1) {
+        int check=checkID();
+        if(check == -1||post.getLike().get(check).getLike() == -1) {
             setLikeStyle(check);
-            thumbsUp.setOnMouseClicked(event -> {
-                setLikeStyle(1);
-               setLikecommend(1);
-            });
-            thumbsDown.setOnMouseClicked(event -> {
-                setLikeStyle(0);
-                setLikecommend(0);
-            });
+
 
         }else if(post.getLike().get(check).getLike() == 1){
-            setLikeStyle(1);
-            thumbsUp.setOnMouseClicked(event -> {
+            setLikeStyle(1
+            );
+
+        }else if(post.getLike().get(check).getLike() == 0){
+            setLikeStyle(0);
+
+        }
+        final int[] finalCheck = new int[1];
+        thumbsUp.setOnAction(event -> {
+             finalCheck[0] =checkID();
+             if(finalCheck[0] == -1||post.getLike().get(finalCheck[0]).getLike() == -1) {
+                 setLikeStyle(1);
+               setLikecommend(1);
+             }else if(post.getLike().get(finalCheck[0]).getLike() == 1){
+
                 setLikeStyle(-1);
                 setLikecommend(-1);
-            });
-            thumbsDown.setOnMouseClicked(event -> {
-                setLikeStyle(0);
-                setLikecommend(0);
-                    }
-            );
-        }else{
-            setLikeStyle(0);
-            thumbsUp.setOnMouseClicked(event -> {
+
+             }else if(post.getLike().get(finalCheck[0]).getLike() == 0){
+
                 setLikeStyle(1);
                 setLikecommend(1);
+             }
             });
-            thumbsDown.setOnMouseClicked(event -> {
-                setLikeStyle(-1);
+
+
+        thumbsDown.setOnAction(event -> {
+             finalCheck[0] =checkID();
+                if(finalCheck[0] == -1||post.getLike().get(finalCheck[0]).getLike() == -1) {
+                    setLikeStyle(0);
+                setLikecommend(0);
+                }else if(post.getLike().get(finalCheck[0]).getLike() == 1){
+                    setLikeStyle(0);
+                setLikecommend(0);
+                }else if(post.getLike().get(finalCheck[0]).getLike() == 0){
+                    setLikeStyle(-1);
                 setLikecommend(-1);
+
+                }
             });
-        }
 
         ImageView commenticon = new ImageView("file:Resources/comment.png");
         commenticon.setFitWidth(15);
@@ -243,7 +246,13 @@ public class PostViewer extends VBox {
             @Override
             void analyze(Command cmd) {
                 if (cmd.getKeyWord().equals(Post.EDIT_POST_USERS)) {
-
+                    int check=checkID();
+                    if(check ==-1){
+                        post.getLike().add(like);
+                    }
+                    else {
+                        post.getLike().get(check).setLike(i);
+                    }
                 }
             }
         };
@@ -271,5 +280,18 @@ public class PostViewer extends VBox {
         };
         CommandsExecutor.getInstance().add(commandRequest);
     }
+   private int checkID(){
+       int i = 0;
+       int check = -1;
+       if(post.getLike().size() !=0) {
+           do {
+               if (post.getLike().get(i).getOwnerID() == Long.parseLong(MainWindow.id)) {
+                   check = i;
+               }
+               i++;
+           } while (i < post.getLike().size() && post.getLike().get(i).getOwnerID() != Long.parseLong(MainWindow.id));
+       }
+       return check;
+   }
 
 }
