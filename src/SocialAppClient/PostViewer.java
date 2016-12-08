@@ -34,18 +34,18 @@ public class PostViewer extends VBox {
     }
     private void setLayout(){
         setAlignment(Pos.TOP_CENTER);
-        setPadding(new Insets(10,0,20,0));
+        setPadding(new Insets(10,0,10,0));
         setStyle("-fx-background-color: #ffffff;");
 
         postText = new Label();
         postText.setText(post.getContent());
-        postText.setFont(Font.font(16));
+        postText.setFont(Font.font(18));
         postText.setWrapText(true);
         postText.setPadding(new Insets(0,0,10,0));
 /*
         Image im = new Image("file:C:\\Users\\bolla\\Pictures\\me.jpg");
         ImageView img = new ImageView(im);
-        img.setFitWidth(350);
+        img.setFitWidth(400);
         img.setPreserveRatio(true);
         img.setSmooth(true);
         img.setCache(true);
@@ -152,22 +152,24 @@ public class PostViewer extends VBox {
         comment.setStyle("-fx-font: 12 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;");
         comment.setOnMouseEntered(event -> comment.setStyle("-fx-background-color: #999999; -fx-text-fill: #000000;"));
         comment.setOnMouseExited(event -> comment.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;"));
-          comment.setOnMouseClicked(event -> {
-             // setCommentCommend(1);
-              Command command = new Command();
-              command.setKeyWord(Post.DELETE_POST_USERS);
-              command.setSharableObject(post.convertToJsonString());
-              CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
-                  @Override
-                  void analyze(Command cmd) {
-                      if (cmd.getKeyWord().equals(Post.DELETE_POST_USERS)) {
 
-                      }
-                  }
-              };
-              CommandsExecutor.getInstance().add(commandRequest);
+        comment.setOnMouseClicked(event -> {
 
-          });
+            ((CallBack) getParent()).showPostDetails(post);
+            /** DELETE POST
+            Command command = new Command();
+            command.setKeyWord(Post.DELETE_POST_USERS);
+            command.setSharableObject(post.convertToJsonString());
+            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+                @Override
+                void analyze(Command cmd) {
+                    if (cmd.getKeyWord().equals(Post.DELETE_POST_USERS)) {
+                     }
+                }
+            };
+            CommandsExecutor.getInstance().add(commandRequest);
+            */
+        });
         ImageView shareicon = new ImageView("file:Resources/share.png");
         shareicon.setFitWidth(15);
         shareicon.setPreserveRatio(true);
@@ -198,10 +200,10 @@ public class PostViewer extends VBox {
         HBox buttons = new HBox(thumbsUp, thumbsDown, comment, share);
         buttons.setAlignment(Pos.CENTER);
 
-        setMaxWidth(400);
+        setMaxWidth(450);
         setMargin(postText, new Insets(0,30,0,30));
         //setMargin(img, new Insets(10,0,20,0));
-        getChildren().addAll(new FriendView(""+post.getOwnerId()), postText, /*img,*/ new Separator(), buttons);
+        getChildren().addAll(new HBox(new FriendView(""+post.getOwnerId()),new Label(post.getDate().toString())), postText, /*img,*/ new Separator(), buttons);
 
     }
     private void setLikeStyle(int i){
@@ -258,28 +260,8 @@ public class PostViewer extends VBox {
         };
         CommandsExecutor.getInstance().add(commandRequest);
     }
-    private void setCommentCommend(int show){
-        Comment comment=new Comment();
-        comment.setCommentcontent("khaled");
-        comment.setOwnerID(Long.parseLong(MainWindow.id));
-        comment.setShow(show);
-        Post post1 = new Post();
-        post1.setId(post.getId());
-        post1.setPostPos(post.getPostPos());
-        post1.addcomment(comment);
-        Command command = new Command();
-        command.setKeyWord(Post.EDIT_POST_USERS);
-        command.setSharableObject(post1.convertToJsonString());
-        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
-            @Override
-            void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.EDIT_POST_USERS)) {
 
-                }
-            }
-        };
-        CommandsExecutor.getInstance().add(commandRequest);
-    }
+
    private int checkID(){
        int i = 0;
        int check = -1;
@@ -293,5 +275,6 @@ public class PostViewer extends VBox {
        }
        return check;
    }
+
 
 }

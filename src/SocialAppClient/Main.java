@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 
 import javafx.scene.Scene;
@@ -33,6 +34,8 @@ public class Main extends Application {
         mainPane.getChildren().add(GP);
 
         primaryStage.setTitle("btats Network");
+        /** ADD THE APPLICATION ICON */
+        primaryStage.getIcons().add(new Image("file:Resources/btatsya.png"));
         primaryStage.setScene(new Scene(mainPane,960,600));
         primaryStage.show();
     }

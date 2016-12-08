@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="22ba573f-114e-411e-9a9b-74ef2ac3b921" name="Default" comment="" />
+    <list default="true" id="22ba573f-114e-411e-9a9b-74ef2ac3b921" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SocialAppClient/CallBack.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SocialAppClient/CommentContainer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SocialAppClient/CommentViewer.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SocialAppClient/PostDetails.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/Content.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/Content.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/FriendList.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/FriendList.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/FriendView.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/FriendView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/Main.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/MainWindow.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/MainWindow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/PostContainer.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/PostContainer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/PostViewer.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/PostViewer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/PostWriter.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/PostWriter.java" />
+    </list>
     <ignored path="SocialAppClientJavaFX.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -35,8 +49,8 @@
       <file leaf-file-name="PostViewer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SocialAppClient/PostViewer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="126" column="34" selection-start-line="126" selection-start-column="34" selection-end-line="126" selection-end-column="34" />
+            <state relative-caret-position="153">
+              <caret line="243" column="40" selection-start-line="243" selection-start-column="40" selection-end-line="243" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -146,13 +160,6 @@
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -164,20 +171,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/UserPicker.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/ProfileInfoViewer.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/MainWindow.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppGeneral/LoggedUser.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/SocialArrayList.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppGeneral/SocialArrayList.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/NavBar.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/PostWriter.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/PostContainer.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppGeneral/PostAtachmment.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/ProfilePage.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppGeneral/Comment.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppGeneral/Post.java" />
         <option value="$PROJECT_DIR$/src/SocialAppClient/PostViewer.java" />
       </list>
     </option>
@@ -273,15 +266,6 @@
       <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
-  </component>
-  <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SocialAppServer" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="SocialAppGeneral" />
-      <recent name="SocialAppClient" />
-    </key>
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -571,7 +555,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1378" height="744" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -582,7 +566,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="92" y="92" width="1178" height="544" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32242227" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32242227" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1088,8 +1072,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/PostViewer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="126" column="34" selection-start-line="126" selection-start-column="34" selection-end-line="126" selection-end-column="34" />
+        <state relative-caret-position="153">
+          <caret line="243" column="40" selection-start-line="243" selection-start-column="40" selection-end-line="243" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

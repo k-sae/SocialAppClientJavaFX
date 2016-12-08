@@ -1,5 +1,6 @@
 package SocialAppClient;
 
+import SocialAppGeneral.Post;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.VBox;
@@ -8,7 +9,7 @@ import javafx.scene.layout.VBox;
  * Created by billy on 2016-11-26.
  */
 /**CONTENT IS A CONTAINER OF POSTWRITER AND POSTCONTAINER*/
-public class Content extends VBox {
+public class Content extends VBox implements CallBack{
     protected PostWriter postWriter;
     protected PostContainer postContainer;
 
@@ -22,5 +23,19 @@ public class Content extends VBox {
         postWriter = new PostWriter();
         postContainer = new PostContainer();
         getChildren().addAll(postWriter, postContainer);
+    }
+
+    @Override
+    public void showPostDetails(Post post) {
+
+    }
+
+    public void removePostWriter(){
+        getChildren().remove(postWriter);
+    }
+
+    @Override
+    public void commentedit(String text) {
+
     }
 }
