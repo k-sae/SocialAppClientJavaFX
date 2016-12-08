@@ -22,7 +22,7 @@ public class PostDetails extends VBox implements CallBack{
         CommentContainer = new CommentContainer(this.post.getComments());
         CommentContainer.commentText.setOnKeyPressed(event -> {
             if(event.getCode().equals(KeyCode.ENTER)){
-                setCommentCommend(1, CommentContainer.commentText.getText());
+                setCommentCommend(1, CommentContainer.commentText.getText(),0);
                 CommentContainer.commentText.setText("");
                 ((CallBack)getParent()).showPostDetails(post);
             }
@@ -34,11 +34,12 @@ public class PostDetails extends VBox implements CallBack{
 
         getChildren().addAll(postViewer,CommentContainer);
     }
-    private void setCommentCommend(int show, String text){
+    public void setCommentCommend(int show, String text, long id){
         Comment comment=new Comment();
         comment.setCommentcontent(text);
         comment.setOwnerID(Long.parseLong(MainWindow.id));
         comment.setShow(show);
+        comment.setCommentId(id);
         Post post1 = new Post();
         post1.setId(post.getId());
         post1.setPostPos(post.getPostPos());
@@ -67,8 +68,4 @@ public class PostDetails extends VBox implements CallBack{
 
     }
 
-    @Override
-    public void commentEdit(String text) {
-        setCommentCommend(0, text);
-    }
 }
