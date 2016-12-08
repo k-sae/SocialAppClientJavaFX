@@ -2,19 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="22ba573f-114e-411e-9a9b-74ef2ac3b921" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SocialAppClient/CallBack.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SocialAppClient/CommentContainer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SocialAppClient/CommentViewer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SocialAppClient/PostDetails.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/CallBack.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/CallBack.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/CommentViewer.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/CommentViewer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/Content.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/Content.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/FriendList.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/FriendList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/FriendView.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/FriendView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/Main.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/MainWindow.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/MainWindow.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/PostContainer.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/PostContainer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/PostDetails.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/PostDetails.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/PostViewer.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/PostViewer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/PostWriter.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/PostWriter.java" />
     </list>
     <ignored path="SocialAppClientJavaFX.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,21 +30,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ProfilePage.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ProfilePage.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ProfilePage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="-213">
               <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PostViewer.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PostViewer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocialAppClient/PostViewer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="243" column="40" selection-start-line="243" selection-start-column="40" selection-end-line="243" selection-end-column="40" />
+            <state relative-caret-position="294">
+              <caret line="52" column="19" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -545,17 +539,10 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="22ba573f-114e-411e-9a9b-74ef2ac3b921" name="Default" comment="" />
-      <created>1480862816394</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1480862816394</updated>
-    </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1378" height="744" extended-state="1" />
+    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -628,7 +615,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="6" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/SocialAppClient/PostViewer.java</url>
+          <line>55</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="7" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1062,21 +1057,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ProfilePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/PostViewer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="243" column="40" selection-start-line="243" selection-start-column="40" selection-end-line="243" selection-end-column="40" />
+        <state relative-caret-position="294">
+          <caret line="52" column="19" selection-start-line="52" selection-start-column="19" selection-end-line="52" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ProfilePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-213">
+          <caret line="52" column="13" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>

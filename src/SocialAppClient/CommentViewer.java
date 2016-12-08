@@ -36,10 +36,12 @@ public class CommentViewer extends VBox {
                     postComments.requestFocus();
                     postComments.setOnKeyPressed(event -> {
                         if (event.getCode().equals(KeyCode.ENTER)) {
-                            ((CallBack) getParent().getParent()).commentedit(postComments.getText());
+                            ((CallBack) getParent().getParent()).setCommentCommend(0,postComments.getText(),comment.getCommentId());
                             postComments.setEditable(false);
                         }
                     });
+                }else if(newValue.equals("Delete")){
+                    ((CallBack) getParent().getParent()).setCommentCommend(-1,postComments.getText(),comment.getCommentId());
                 }
         });
 

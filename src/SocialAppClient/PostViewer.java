@@ -6,11 +6,10 @@ import SocialAppGeneral.Like;
 import SocialAppGeneral.Post;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -21,7 +20,7 @@ import javafx.scene.text.Font;
  */
 
 public class PostViewer extends VBox {
-    protected Label postText;
+    protected TextField postText;
     protected Button thumbsUp;
     protected Button thumbsDown;
     protected Button comment;
@@ -37,10 +36,42 @@ public class PostViewer extends VBox {
         setPadding(new Insets(10,0,10,0));
         setStyle("-fx-background-color: #ffffff;");
 
-        postText = new Label();
+        ChoiceBox<String> edit = new ChoiceBox<>();
+        edit.setStyle("-fx-background-color: transparent");
+        edit.setPrefWidth(1);
+        edit.getItems().addAll("Edit","Delete");
+
+        edit.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if(newValue.equals("Edit")){
+                postText.setEditable(true);
+                postText.requestFocus();
+                postText.setOnKeyPressed(event -> {
+                    if (event.getCode().equals(KeyCode.ENTER)) {
+                        editpost(postText.getText());
+                        postText.setEditable(false);
+                    }
+                });
+            }else if(newValue.equals("Delete")){
+
+                 Command command = new Command();
+                 command.setKeyWord(Post.DELETE_POST_USERS);
+                 command.setSharableObject(post.convertToJsonString());
+                 CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+                @Override
+                void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Post.DELETE_POST_USERS)) {
+                }
+                }
+                };
+                 CommandsExecutor.getInstance().add(commandRequest);
+
+            }
+    });
+
+        postText = new TextField();
         postText.setText(post.getContent());
         postText.setFont(Font.font(18));
-        postText.setWrapText(true);
+        postText.setEditable(false);
         postText.setPadding(new Insets(0,0,10,0));
 /*
         Image im = new Image("file:C:\\Users\\bolla\\Pictures\\me.jpg");
@@ -156,19 +187,7 @@ public class PostViewer extends VBox {
         comment.setOnMouseClicked(event -> {
 
             ((CallBack) getParent()).showPostDetails(post);
-            /** DELETE POST
-            Command command = new Command();
-            command.setKeyWord(Post.DELETE_POST_USERS);
-            command.setSharableObject(post.convertToJsonString());
-            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
-                @Override
-                void analyze(Command cmd) {
-                    if (cmd.getKeyWord().equals(Post.DELETE_POST_USERS)) {
-                     }
-                }
-            };
-            CommandsExecutor.getInstance().add(commandRequest);
-            */
+
         });
         ImageView shareicon = new ImageView("file:Resources/share.png");
         shareicon.setFitWidth(15);
@@ -203,7 +222,7 @@ public class PostViewer extends VBox {
         setMaxWidth(450);
         setMargin(postText, new Insets(0,30,0,30));
         //setMargin(img, new Insets(10,0,20,0));
-        getChildren().addAll(new HBox(new FriendView(""+post.getOwnerId()),new Label(post.getDate().toString())), postText, /*img,*/ new Separator(), buttons);
+        getChildren().addAll(new HBox(new FriendView(""+post.getOwnerId()),new Label(post.getDate().toString()),edit), postText, /*img,*/ new Separator(), buttons);
 
     }
     private void setLikeStyle(int i){
@@ -262,6 +281,7 @@ public class PostViewer extends VBox {
     }
 
 
+
    private int checkID(){
        int i = 0;
        int check = -1;
@@ -276,5 +296,25 @@ public class PostViewer extends VBox {
        return check;
    }
 
+
+
+    private void editpost (String text){
+        Post post1 = new Post();
+        post1.setId(post.getId());
+        post1.setPostPos(post.getPostPos());
+        post1.setContent(text);
+        Command command = new Command();
+        command.setKeyWord(Post.EDIT_POST_USERS);
+        command.setSharableObject(post1.convertToJsonString());
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+            @Override
+            void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Post.EDIT_POST_USERS)) {
+
+                }
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
+    }
 
 }
