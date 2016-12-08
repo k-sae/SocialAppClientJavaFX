@@ -36,7 +36,7 @@ public class CommentViewer extends VBox {
                     postComments.requestFocus();
                     postComments.setOnKeyPressed(event -> {
                         if (event.getCode().equals(KeyCode.ENTER)) {
-                            ((CallBack) getParent().getParent()).commentedit(postComments.getText());
+                            ((CallBack) getParent().getParent()).commentEdit(postComments.getText());
                             postComments.setEditable(false);
                         }
                     });

@@ -68,7 +68,7 @@ public class PostDetails extends VBox implements CallBack{
     }
 
     @Override
-    public void commentedit(String text) {
+    public void commentEdit(String text) {
         setCommentCommend(0, text);
     }
 }

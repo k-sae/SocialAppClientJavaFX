@@ -8,5 +8,5 @@ import SocialAppGeneral.Post;
 public interface CallBack {
     void showPostDetails(Post post);
     void removePostWriter();
-    void commentedit(String text);
+    void commentEdit(String text);
 }

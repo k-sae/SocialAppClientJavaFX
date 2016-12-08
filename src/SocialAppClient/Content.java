@@ -35,7 +35,7 @@ public class Content extends VBox implements CallBack{
     }
 
     @Override
-    public void commentedit(String text) {
+    public void commentEdit(String text) {
 
     }
 }
