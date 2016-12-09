@@ -65,6 +65,7 @@ public class ProfilePage extends GridPane {
 
         ArraylistPost posts =new ArraylistPost();
         posts.setOwnerPosts(Long.parseLong(id)) ;
+        posts.setNumberpost(1);
         Command command = new Command();
         command.setKeyWord(Post.LOAD_POST_USERS);
         command.setSharableObject(posts.convertToJsonString());

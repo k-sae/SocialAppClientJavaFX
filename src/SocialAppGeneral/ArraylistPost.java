@@ -12,6 +12,16 @@ import java.util.ArrayList;
 public class ArraylistPost implements Shareable {
     private ArrayList<Post> posts=new ArrayList<>();
     private long OwnerPosts;
+    private long numberpost;
+
+    public long getNumberpost() {
+        return numberpost;
+    }
+
+    public void setNumberpost(long numberpost) {
+        this.numberpost = numberpost;
+    }
+
     public ArrayList<Post> getPosts() {
         return posts;
     }

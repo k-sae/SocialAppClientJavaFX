@@ -291,7 +291,7 @@ public class PostViewer extends VBox {
                         }
 
                     } else {
-                        System.out.println(cmd.getObjectStr());
+                       Utility.errorWindow("please refresh window");
                     }
 
                 }
