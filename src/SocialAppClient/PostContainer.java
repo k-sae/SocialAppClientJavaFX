@@ -45,8 +45,7 @@ public class PostContainer extends VBox implements CallBack {
             PostViewer postViewer = new PostViewer(posts.getPosts().get(i));
             getChildren().add(postViewer);
         }
-        //setPostPage();
-        if(posts.getPosts().size() ==10) {
+        if(posts.getPosts().size() == 10) {
             loadPostBtn = new Button("LOAD MORE");
             getChildren().add(loadPostBtn);
             loadPostBtn.setOnMouseClicked(event -> {
@@ -59,24 +58,6 @@ public class PostContainer extends VBox implements CallBack {
                 command1.setSharableObject(posts.convertToJsonString());
                 System.out.println(posts.convertToJsonString());
                 CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command1) {
-
-                    /*
-                            for (int i=0; i<10 && c<posts.getPosts().size(); i++ ) {
-                                PostViewer postViewer = new PostViewer(posts.getPosts().get(c));
-                                getChildren().add(postViewer);
-                                c++;
-                            }
-                            if(c<posts.getPosts().size()) {
-                                loadPostBtn = new Button("LOAD MORE");
-                                getChildren().add(loadPostBtn);
-                                loadPostBtn.setOnMouseClicked(event -> {
-                                    getChildren().remove(loadPostBtn);/*
-                                posts.setOwnerPosts(Long.parseLong("1")) ;
-                                Command command = new Command();
-                                command.setKeyWord(Post.LOAD_POST_USERS);
-                                command.setSharableObject(posts.convertToJsonString());
-                                CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
-                    */
                     @Override
                     void analyze(Command cmd) {
                         if (cmd.getKeyWord().equals(Post.LOAD_POST_USERS)) {
@@ -88,29 +69,7 @@ public class PostContainer extends VBox implements CallBack {
                         }
                     }
                 };
-            /*
-
-            CommandsExecutor.getInstance().add(commandRequest);
-            getChildren().addAll(loadPostBtn);
-        });
-
-
-
-        PostViewer postViewer = new PostViewer();
-        getChildren().addAll(postViewer);
-
-        loadPostBtn = new Button("LOAD MORE");
-        loadPostBtn.setOnMouseClicked(event -> {
-            getChildren().remove(loadPostBtn);
-            for(int i=0; i<10; i++)
-                getChildren().add(new PostViewer());
-            getChildren().addAll(loadPostBtn);
-        });
-
-        getChildren().addAll(loadPostBtn);*/
-
                 CommandsExecutor.getInstance().add(commandRequest);
-                Platform.runLater(() -> addPosts(posts));
             });
         }
     }
