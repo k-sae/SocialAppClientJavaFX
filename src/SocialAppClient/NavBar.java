@@ -15,6 +15,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 import static javafx.scene.layout.GridPane.setColumnSpan;
 import static javafx.scene.layout.GridPane.setConstraints;
 
@@ -31,6 +34,8 @@ public class NavBar extends HBox {
         setNavButtons();
         requestServerFriendRequests();
     }
+   //TODO
+    //moheim
     private void requestServerFriendRequests()
     {
         Command command = new Command();
@@ -68,16 +73,38 @@ public class NavBar extends HBox {
         Title.setPadding(new Insets(0,10,0,5));
 
         /** Search Text */
-        TextField Search = new TextField();
+        ComboBox Search = new ComboBox();
         Search.setPromptText("Search...");
+        Search.setEditable(true);
+
 
         /** Search Button with Icon */
         ImageView searchImg = new ImageView(new Image("file:Resources/search.png"));
         searchImg.setFitWidth(17);
         searchImg.setPreserveRatio(true);
-
+        SearchMenu = new Menu("");
         Button searchBtn = new Button("", searchImg);
+        searchBtn.setOnAction(e->{
 
+            /** Add an item when you clicked on the menu */
+            Command command = new Command();
+            command.setKeyWord("Search");
+            command.setSharableObject(Search.getEditor().getText());
+            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+                @Override
+                void analyze(Command cmd) {
+                  SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(cmd.getObjectStr());
+                    Search.getItems().clear();
+                    for (Object o: socialArrayList.getItems()) {
+                        Search.getItems().addAll(new FriendView((String)o));
+                        SearchMenu.getItems().addAll(new MenuItem((String)o));
+                     //   addFriendRequest((String)o);
+                    }
+                }
+            };
+            CommandsExecutor.getInstance().add(commandRequest);
+
+        });
 
         /** Friend request menu icon */
         ImageView FRIcon = new ImageView(new Image("file:Resources/FR.png"));
@@ -108,7 +135,7 @@ public class NavBar extends HBox {
         notification.getItems().addAll(new MenuItem("Belal liked your photo"));
 
         /** Add a menu bar to contain all menus */
-        MenuBar notificationsBar = new MenuBar(friendRequests, msg, notification);
+        MenuBar notificationsBar = new MenuBar(SearchMenu,friendRequests, msg, notification);
         notificationsBar.setBackground(null);
         notificationsBar.setPadding(new Insets(0,0,0,10));
 
@@ -168,6 +195,7 @@ public class NavBar extends HBox {
     private Menu friendRequests;
     private Menu notification;
     private Menu msg;
+    private Menu SearchMenu;
     public void addFriendRequest(String... ids)
     {
         for (String id: ids
