@@ -99,6 +99,7 @@ public class PostWriter extends VBox{
                 }
             };
             CommandsExecutor.getInstance().add(commandRequest);
+            postText.setText("");
 
         });
     }

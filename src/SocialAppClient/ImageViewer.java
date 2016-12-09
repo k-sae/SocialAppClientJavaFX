@@ -14,7 +14,7 @@ import java.net.Socket;
 /**
  * Created by kemo on 01/12/2016.
  */
-public class ImageViewer extends ImageView implements SocialAppImages {
+class ImageViewer extends ImageView implements SocialAppImages {
     String id;
     ImageViewer(String id)
     {
@@ -47,7 +47,7 @@ public class ImageViewer extends ImageView implements SocialAppImages {
         thread.start();
 
     }
-    void sendCommand(Socket socket)
+    private void sendCommand(Socket socket)
     {
         try {
             DataOutputStream  dataOutputStream = new DataOutputStream(socket.getOutputStream());
