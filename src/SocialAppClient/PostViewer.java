@@ -26,14 +26,16 @@ public class PostViewer extends VBox {
     protected Button comment;
     protected Button share;
     private Post post;
-    public PostViewer(Post post){
+
+    public PostViewer(Post post) {
         this.post = post;
         System.out.println(post.convertToJsonString());
         setLayout();
     }
-    private void setLayout(){
+
+    private void setLayout() {
         setAlignment(Pos.TOP_CENTER);
-        setPadding(new Insets(10,0,10,0));
+        setPadding(new Insets(10, 0, 10, 0));
         setStyle("-fx-background-color: #ffffff;");
 
         postText = new TextField();
@@ -46,10 +48,10 @@ public class PostViewer extends VBox {
         ChoiceBox<String> edit = new ChoiceBox<>();
         edit.setStyle("-fx-background-color: transparent");
         edit.setPrefWidth(1);
-        edit.getItems().addAll("Edit","Delete");
+        edit.getItems().addAll("Edit", "Delete");
 
         edit.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if(newValue.equals("Edit")){
+            if (newValue.equals("Edit")) {
                 postText.setEditable(true);
                 postText.requestFocus();
                 postText.setStyle(null);
@@ -60,7 +62,7 @@ public class PostViewer extends VBox {
                         postText.setStyle("-fx-background-color: #ffffff;");
                     }
                 });
-            }else if(newValue.equals("Delete")){
+            } else if (newValue.equals("Delete")) {
 
                 Command command = new Command();
                 command.setKeyWord(Post.DELETE_POST_USERS);
@@ -75,7 +77,7 @@ public class PostViewer extends VBox {
                 };
                 CommandsExecutor.getInstance().add(commandRequest);
             }
-    });
+        });
 
 /*
         Image im = new Image("file:C:\\Users\\bolla\\Pictures\\me.jpg");
@@ -132,52 +134,52 @@ public class PostViewer extends VBox {
         });
 */
 
-        int check=checkID();
-        if(check == -1||post.getLike().get(check).getLike() == -1) {
+        int check = checkID();
+        if (check == -1 || post.getLike().get(check).getLike() == -1) {
             setLikeStyle(check);
 
 
-        }else if(post.getLike().get(check).getLike() == 1){
+        } else if (post.getLike().get(check).getLike() == 1) {
             setLikeStyle(1
             );
 
-        }else if(post.getLike().get(check).getLike() == 0){
+        } else if (post.getLike().get(check).getLike() == 0) {
             setLikeStyle(0);
 
         }
         final int[] finalCheck = new int[1];
         thumbsUp.setOnAction(event -> {
-             finalCheck[0] =checkID();
-             if(finalCheck[0] == -1||post.getLike().get(finalCheck[0]).getLike() == -1) {
-                 setLikeStyle(1);
-               setLikecommend(1);
-             }else if(post.getLike().get(finalCheck[0]).getLike() == 1){
+            finalCheck[0] = checkID();
+            if (finalCheck[0] == -1 || post.getLike().get(finalCheck[0]).getLike() == -1) {
+                setLikeStyle(1);
+                setLikecommend(1);
+            } else if (post.getLike().get(finalCheck[0]).getLike() == 1) {
 
                 setLikeStyle(-1);
                 setLikecommend(-1);
 
-             }else if(post.getLike().get(finalCheck[0]).getLike() == 0){
+            } else if (post.getLike().get(finalCheck[0]).getLike() == 0) {
 
                 setLikeStyle(1);
                 setLikecommend(1);
-             }
-            });
+            }
+        });
 
 
         thumbsDown.setOnAction(event -> {
-             finalCheck[0] =checkID();
-                if(finalCheck[0] == -1||post.getLike().get(finalCheck[0]).getLike() == -1) {
-                    setLikeStyle(0);
+            finalCheck[0] = checkID();
+            if (finalCheck[0] == -1 || post.getLike().get(finalCheck[0]).getLike() == -1) {
+                setLikeStyle(0);
                 setLikecommend(0);
-                }else if(post.getLike().get(finalCheck[0]).getLike() == 1){
-                    setLikeStyle(0);
+            } else if (post.getLike().get(finalCheck[0]).getLike() == 1) {
+                setLikeStyle(0);
                 setLikecommend(0);
-                }else if(post.getLike().get(finalCheck[0]).getLike() == 0){
-                    setLikeStyle(-1);
+            } else if (post.getLike().get(finalCheck[0]).getLike() == 0) {
+                setLikeStyle(-1);
                 setLikecommend(-1);
 
-                }
-            });
+            }
+        });
 
         ImageView commenticon = new ImageView("file:Resources/comment.png");
         commenticon.setFitWidth(15);
@@ -197,19 +199,19 @@ public class PostViewer extends VBox {
         shareicon.setFitWidth(15);
         shareicon.setPreserveRatio(true);
 
-        share = new Button("Repost" ,shareicon);
+        share = new Button("Repost", shareicon);
         share.setStyle("-fx-font: 12 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;");
         share.setOnMouseEntered(event -> share.setStyle("-fx-background-color: #999999; -fx-text-fill: #000000;"));
         share.setOnMouseExited(event -> share.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;"));
         share.setOnMouseClicked(event -> {
-            Post post1=new Post();
+            Post post1 = new Post();
             post1.setOwnerId(Long.parseLong(MainWindow.id));
             post1.setContent(post.getContent());
             post1.setPostPos(Long.parseLong(MainWindow.id));
             Command command = new Command();
             command.setKeyWord(Post.SAVE_POST_USER);
             command.setSharableObject(post1.convertToJsonString());
-            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
                 @Override
                 void analyze(Command cmd) {
                     if (cmd.getKeyWord().equals(Post.SAVE_POST_USER)) {
@@ -224,13 +226,14 @@ public class PostViewer extends VBox {
         buttons.setAlignment(Pos.CENTER);
 
         setMaxWidth(450);
-        setMargin(postText, new Insets(0,30,0,30));
+        setMargin(postText, new Insets(0, 30, 0, 30));
         //setMargin(img, new Insets(10,0,20,0));
-        getChildren().addAll(new HBox(new FriendView(""+post.getOwnerId()),new Label(post.getDate().toString()),edit), postText, /*img,*/ new Separator(), buttons);
+        getChildren().addAll(new HBox(new FriendView("" + post.getOwnerId()), new Label(post.getDate().toString()), edit), postText, /*img,*/ new Separator(), buttons);
 
     }
-    private void setLikeStyle(int i){
-        if(i == -1) {
+
+    private void setLikeStyle(int i) {
+        if (i == -1) {
             thumbsUp.setStyle("-fx-font: 12 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;");
             thumbsUp.setOnMouseEntered(event -> thumbsUp.setStyle("-fx-background-color: #999999; -fx-text-fill: #000000;"));
             thumbsUp.setOnMouseExited(event -> thumbsUp.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;"));
@@ -239,14 +242,14 @@ public class PostViewer extends VBox {
             thumbsDown.setOnMouseExited(event -> thumbsDown.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;"));
 
 
-        }else if(i == 1){
+        } else if (i == 1) {
             thumbsUp.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #0000ff");
             thumbsUp.setOnMouseEntered(event -> thumbsUp.setStyle("-fx-background-color: #999999; -fx-text-fill: #0000ff"));
             thumbsUp.setOnMouseExited(event -> thumbsUp.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #0000ff"));
             thumbsDown.setStyle("-fx-font: 12 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;");
             thumbsDown.setOnMouseEntered(event -> thumbsDown.setStyle("-fx-background-color: #999999; -fx-text-fill: #000000;"));
             thumbsDown.setOnMouseExited(event -> thumbsDown.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #000000;"));
-        }else{
+        } else {
             thumbsDown.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #ff0000");
             thumbsDown.setOnMouseEntered(event -> thumbsDown.setStyle("-fx-background-color: #999999; -fx-text-fill: #ff0000"));
             thumbsDown.setOnMouseExited(event -> thumbsDown.setStyle("-fx-background-color: #ffffff; -fx-text-fill: #ff0000"));
@@ -256,7 +259,8 @@ public class PostViewer extends VBox {
 
         }
     }
-    private  void setLikecommend(int i){
+
+    private void setLikecommend(int i) {
         Like like = new Like();
         like.setLike(i);
         like.setOwnerID(Long.parseLong(MainWindow.id));
@@ -267,17 +271,23 @@ public class PostViewer extends VBox {
         Command command = new Command();
         command.setKeyWord(Post.EDIT_POST_USERS);
         command.setSharableObject(post1.convertToJsonString());
-        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
             @Override
             void analyze(Command cmd) {
                 if (cmd.getKeyWord().equals(Post.EDIT_POST_USERS)) {
-                    int check=checkID();
-                    if(check ==-1){
-                        post.getLike().add(like);
+                    int check = checkID();
+                       boolean b= Boolean.parseBoolean(cmd.getObjectStr());
+                    if (b) {
+                        if (check == -1) {
+                            post.getLike().add(like);
+                        } else {
+                            post.getLike().get(check).setLike(i);
+                        }
+
+                    } else {
+                        System.out.println(cmd.getObjectStr());
                     }
-                    else {
-                        post.getLike().get(check).setLike(i);
-                    }
+
                 }
             }
         };
@@ -286,39 +296,40 @@ public class PostViewer extends VBox {
 
 
 
-   private int checkID(){
-       int i = 0;
-       int check = -1;
-       if(post.getLike().size() !=0) {
-           do {
-               if (post.getLike().get(i).getOwnerID() == Long.parseLong(MainWindow.id)) {
-                   check = i;
-               }
-               i++;
-           } while (i < post.getLike().size() && post.getLike().get(i).getOwnerID() != Long.parseLong(MainWindow.id));
-       }
-       return check;
-   }
 
-
-
-    private void editpost (String text){
-        Post post1 = new Post();
-        post1.setId(post.getId());
-        post1.setPostPos(post.getPostPos());
-        post1.setContent(text);
-        Command command = new Command();
-        command.setKeyWord(Post.EDIT_POST_USERS);
-        command.setSharableObject(post1.convertToJsonString());
-        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
-            @Override
-            void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.EDIT_POST_USERS)) {
-
+            private int checkID() {
+                int i = 0;
+                int check = -1;
+                if (post.getLike().size() != 0) {
+                    do {
+                        if (post.getLike().get(i).getOwnerID() == Long.parseLong(MainWindow.id)) {
+                            check = i;
+                        }
+                        i++;
+                    }
+                    while (i < post.getLike().size() && post.getLike().get(i).getOwnerID() != Long.parseLong(MainWindow.id));
                 }
+                return check;
             }
-        };
-        CommandsExecutor.getInstance().add(commandRequest);
-    }
+
+
+            private void editpost(String text) {
+                Post post1 = new Post();
+                post1.setId(post.getId());
+                post1.setPostPos(post.getPostPos());
+                post1.setContent(text);
+                Command command = new Command();
+                command.setKeyWord(Post.EDIT_POST_USERS);
+                command.setSharableObject(post1.convertToJsonString());
+                CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+                    @Override
+                    void analyze(Command cmd) {
+                        if (cmd.getKeyWord().equals(Post.EDIT_POST_USERS)) {
+                            System.out.println(cmd.getObjectStr());
+                        }
+                    }
+                };
+                CommandsExecutor.getInstance().add(commandRequest);
+            }
 
 }
