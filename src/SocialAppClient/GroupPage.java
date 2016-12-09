@@ -11,18 +11,18 @@ import javafx.scene.paint.Color;
  * Created by kemo on 10/11/2016.
  */
 public class GroupPage extends GridPane {
-
-
+    private Group group;
     public GroupPage(Group group) {
-       setBackground(new Background(new BackgroundFill(Color.web("#eeeeee"), CornerRadii.EMPTY, Insets.EMPTY)));
-        updateColor(this);
+        this.group = group;
+        setBackground(new Background(new BackgroundFill(Color.web("#eeeeee"), CornerRadii.EMPTY, Insets.EMPTY)));
+        //updateColor(this);
         setGridLinesVisible(true);
         setConstraint();
-        setPanels(group);
+        setPanels();
     }
     public  GroupPage(){
-        setBackground(new Background(new BackgroundFill(Color.web("#fff"), CornerRadii.EMPTY, Insets.EMPTY)));
-        updateColor(this);
+        setBackground(new Background(new BackgroundFill(Color.web("#eeeeee"), CornerRadii.EMPTY, Insets.EMPTY)));
+        //updateColor(this);
         setGridLinesVisible(true);
         setConstraint();
         setPanels();
@@ -59,46 +59,14 @@ public class GroupPage extends GridPane {
         getRowConstraints().addAll(rowConstraints0);
 
     }
-
-    private void setPanels(Group group) {
-
-        GroupInfoViewer Info = new GroupInfoViewer();
-
-        /**PUT THE PICTURE PATH*/
-        // Info.setPicture();
-        /**PUT SOME INFO AS STRING*/
-        Info.setLabel(group.getName());
-        /**ADD JOIN AND EDIT BUTTON -- EDIT THEM IN GROUPINFOVIEWER*/
-        Info.setButtons();
-
-        add(Info, 0, 0);
-
-        Content content = new Content();
-
-        add(content, 1, 0);
-
-        /**THE SCROLL BAR KEEPS TRACK THE CONTENT*/
-        ScrollPane sp = new ScrollPane(content);
-        sp.setFitToWidth(true);
-        add(sp, 1, 0);
-
-        Info.Edit.setOnAction(event -> {
-            getChildren().remove(content);
-            /**AFTER CLICK ON EDIT IT WILL GO TO EDIT PAGE*/
-            //TODO #khaled
-            //send info here
-            add(new EditInfo(null), 1, 0);
-            sp.setContent(null);
-        });
-    }
     private void setPanels(){
 
-        GroupInfoViewer Info = new GroupInfoViewer();
+        GroupInfoViewer Info = new GroupInfoViewer(group.getId());
 
         /**PUT THE PICTURE PATH*/
-        // Info.setPicture();
+        Info.setPicture(""+group.getImageId());
         /**PUT SOME INFO AS STRING*/
-        Info.setLabel();
+        Info.setLabel(group.getName());
         /**ADD JOIN AND EDIT BUTTON -- EDIT THEM IN GROUPINFOVIEWER*/
         Info.setButtons();
 
@@ -112,14 +80,13 @@ public class GroupPage extends GridPane {
         ScrollPane sp = new ScrollPane(content);
         sp.setFitToWidth(true);
         add(sp,1,0);
-
+/*
         Info.Edit.setOnAction(event -> {
             getChildren().remove(content);
-            /**AFTER CLICK ON EDIT IT WILL GO TO EDIT PAGE*/
             //TODO #khaled
             //send info
             add(new EditInfo(null),1,0);
             sp.setContent(null);
-        });
+        });*/
     }
 }

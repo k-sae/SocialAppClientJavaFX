@@ -67,7 +67,8 @@ public class HomePage extends GridPane {
         /**PUT THE PICTURE PATH*/
         Info.setPicture(userInfo.getProfileImage());
         /**PUT SOME INFO AS STRING*/
-        //Info.setLabel();
+        Info.setLabel(userInfo.getFullName());
+        //Info.setGroupsBtn(userInfo);
         Info.setButtons();
 
         add(Info,0,0);

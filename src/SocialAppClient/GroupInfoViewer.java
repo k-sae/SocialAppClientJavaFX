@@ -1,5 +1,6 @@
 package SocialAppClient;
 
+import SocialAppGeneral.Group;
 import javafx.scene.control.Button;
 
 /**
@@ -8,27 +9,36 @@ import javafx.scene.control.Button;
 public class GroupInfoViewer extends InfoViewer {
     protected Button RelationBTN;
     protected Button Edit;
-    public GroupInfoViewer(){
-
+    private int id;
+    private Group group;
+    public GroupInfoViewer(int id){
+        this.id = id;
+        group.setId(this.id);
     }
 
     @Override
     public void setButtons() {
-        /**CHECK IF THE LOGGED USER IS IN THE GROUP OR NOT
-         * IF HE IS IN THE GROUP, RELATION BUTTON WILL BE VISIBLE AND IT'S TEXT "LEAVE GROUP"
-         * IF HE IS NOT IN THE GROUP, RELATION BUTTON WILL BE VISIBLE AND IT'S TEXT "JOIN GROUP"
-         */
+        for(int i : group.getMember()) {
+            if (MainWindow.id.equals(""+i)){
+                RelationBTN = new Button("LEAVE");
+                RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;");
+                RelationBTN.setOnMouseEntered(event -> RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff;"));
+                RelationBTN.setOnMouseExited(event -> RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;"));
 
-        RelationBTN = new Button("JOIN");
-        RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;");
-        RelationBTN.setOnMouseEntered(event -> RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff;"));
-        RelationBTN.setOnMouseExited(event -> RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;"));
+            }else{
+                RelationBTN = new Button("JOIN");
+                RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;");
+                RelationBTN.setOnMouseEntered(event -> RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff;"));
+                RelationBTN.setOnMouseExited(event -> RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;"));
 
+            }
+        }
+        /*
         Edit = new Button("Edit");
         Edit.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;");
         Edit.setOnMouseEntered(event -> Edit.setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff;"));
         Edit.setOnMouseExited(event -> Edit.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;"));
-
-        getChildren().addAll(RelationBTN, Edit);
+*/
+        getChildren().addAll(RelationBTN);
     }
 }
