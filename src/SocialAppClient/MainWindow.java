@@ -90,5 +90,6 @@ public class MainWindow extends GridPane {
         mainFrame = frame;
         GridPane.setConstraints(mainFrame,0,1);
         mainWindow.getChildren().add(mainFrame);
+        System.gc();
     }
 }

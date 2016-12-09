@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SocialAppClientJavaFX:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SocialAppClientJavaFX_jar</output-path>
+    <root id="archive" name="SocialAppClientJavaFX.jar">
+      <element id="module-output" name="SocialAppClientJavaFX" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/gson-2.8.0.zip" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

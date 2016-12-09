@@ -53,7 +53,7 @@ public class ProfilePage extends GridPane {
     private void setPanels(){
 
 
-        ProfileInfoViewer Info = new ProfileInfoViewer(MainWindow.id);
+        ProfileInfoViewer Info = new ProfileInfoViewer(id);
         /**ADD PICTURE*/
         Info.setPicture(userInfo.getProfileImage());
         /**ADD INFO*/
