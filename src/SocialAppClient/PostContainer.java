@@ -82,7 +82,9 @@ public class PostContainer extends VBox implements CallBack {
                     if (cmd.getKeyWord().equals(Post.LOAD_POST_USERS)) {
                         ArraylistPost posts = (ArraylistPost.fromJsonString(cmd.getObjectStr()));
                         if (!posts.getPosts().isEmpty()) {
+
                             Platform.runLater(() -> addPosts(posts));
+                            getChildren().remove(loadPostBtn);
                         }
 
                     }
@@ -110,6 +112,7 @@ public class PostContainer extends VBox implements CallBack {
         getChildren().addAll(loadPostBtn);*/
 
             CommandsExecutor.getInstance().add(commandRequest);
+
             Platform.runLater(() -> addPosts(posts));
         });
     }
