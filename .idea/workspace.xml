@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67d2cbba-46d7-484b-bba3-693786e5ec0b" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/SocialAppClientJavaFX_jar.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/SocialAppClientJavaFX/META-INF/MANIFEST.MF" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SocialAppGeneral/Relations.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/GroupInfoViewer.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/GroupInfoViewer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/GroupPage.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/GroupPage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/HomePage.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/HomePage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/HomePageInfoViewer.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/HomePageInfoViewer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/PostContainer.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/PostContainer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/PostWriter.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/PostWriter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/ImageViewer.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/ImageViewer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/MainWindow.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/MainWindow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/ProfileInfoViewer.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/ProfileInfoViewer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/ProfilePage.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/ProfilePage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppGeneral/LoggedUser.java" afterPath="$PROJECT_DIR$/src/SocialAppGeneral/LoggedUser.java" />
     </list>
     <ignored path="SocialAppClientJavaFX.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,16 +42,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProfilePage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ProfilePage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="80" column="13" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -63,18 +56,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/NavBar.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/MainWindow.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/ProfilePage.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/HomePageInfoViewer.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/GroupPage.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/CommentViewer.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/PostDetails.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/HomePage.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/PostViewer.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/PostWriter.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/PostContainer.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/GroupInfoViewer.java" />
       </list>
     </option>
   </component>
@@ -163,6 +144,34 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="SocialAppClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SocialAppClientJavaFX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SocialAppClientJavaFX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SocialAppClientJavaFX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SocialAppClientJavaFX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -448,13 +457,6 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="67d2cbba-46d7-484b-bba3-693786e5ec0b" name="Default" comment="" />
-      <created>1481271106979</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1481271106979</updated>
-    </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -536,13 +538,6 @@
         <state relative-caret-position="464">
           <caret line="24" column="44" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -665,14 +660,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ProfilePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="80" column="13" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/GroupInfoViewer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="393">
@@ -680,6 +667,22 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ProfilePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="79" column="13" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
