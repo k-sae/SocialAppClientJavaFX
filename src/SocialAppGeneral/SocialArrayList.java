@@ -36,4 +36,5 @@ public class SocialArrayList {
     public void setItems(List<Object> items) {
         this.items = items;
     }
+
 }

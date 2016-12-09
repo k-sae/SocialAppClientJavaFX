@@ -189,25 +189,19 @@ class RegisterPage extends StackPane {
         FeMale.setToggleGroup(group);
         FeMale.setTextFill(Color.WHITE);
         HBox Gender_Hbox=new HBox(20);
-
         Gender_Hbox.getChildren().addAll(Gender,Male,FeMale);
         vb.setMargin(Gender_Hbox,(new Insets(0,0,10,0)));
         Button B=new Button("Register");
         B.setOnAction(e->{
             int exceptions=0;
-            boolean name= Pattern.matches("[a-zA-Z]{1,10}",FRname_verify.getText());
-            boolean lastname= Pattern.matches("[a-zA-Z]{1,10}",LRname_verify.getText());
-            boolean password=Pattern.matches("[a-zA-Z0-9]{8,18}",password_verify.getText());
-            boolean email =Pattern.matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",email_verify.getText());
-            boolean datechecker=datecheck(dp.getValue().toString());
-            if(!name) {
+            if(!validator.valdiateName(FRname_verify.getText())) {
                nameverify.setVisible(true);
                 nameverify.setTextFill(Color.RED);
                 exceptions++;
             }else{
                 nameverify.setVisible(false);
             }
-            if(!lastname){
+            if(!validator.valdiateName(LRname_verify.getText())){
                 nameverify.setVisible(true);
                 nameverify.setTextFill(Color.RED);
                 exceptions++;
@@ -215,21 +209,21 @@ class RegisterPage extends StackPane {
                 nameverify.setVisible(false);
             }
 
-            if(!password){
+            if(!validator.valdiatePass(password_verify.getText())){
                 passverify.setVisible(true);
                 passverify.setTextFill(Color.RED);
              exceptions++;
             }else{
                 passverify.setVisible(false);
             }
-            if(!email){
+            if(!validator.valdiateEmail(email_verify.getText())){
                 emailverfiy.setVisible(true);
                 emailverfiy.setTextFill(Color.RED);
                 exceptions++;
             }else {
                 emailverfiy.setVisible(false);
             }
-            if(datechecker){
+            if(validator.datecheck(dp.getValue().toString())){
                 dateverify.setVisible(false);
             }else{
                 exceptions++;
@@ -244,7 +238,7 @@ class RegisterPage extends StackPane {
                 log.setEmail(email_verify.getText());
                 log.setPassword(password_verify.getText());
                 send.setLoginInfo(log);
-                user.setFullName(FRname_verify.getText()+LRname_verify.getText());
+                user.setFullName(FRname_verify.getText()+" "+LRname_verify.getText());
                 user.setBirthDate(dp.getValue().toString());
                 send.setUserInfo(user);
                 //hna hb3t el command
@@ -280,11 +274,5 @@ class RegisterPage extends StackPane {
 
         return hb;
     }
-    public boolean datecheck(String date){
 
-    if(Integer.parseInt(date.substring(0,4))<2016&&Integer.parseInt(date.substring(0,4))>1916)
-        return true;
-    else
-        return false;
-    }
 }
