@@ -1,7 +1,9 @@
 package SocialAppClient;
 
 import SocialAppGeneral.ArraylistPost;
+import SocialAppGeneral.Command;
 import SocialAppGeneral.Post;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -39,9 +41,25 @@ public class PostContainer extends VBox implements CallBack {
          }
          //setPostPage();
         loadPostBtn = new Button("LOAD MORE");
+        getChildren().add(loadPostBtn);
         loadPostBtn.setOnMouseClicked(event -> {
             getChildren().remove(loadPostBtn);
-            /********/
+            posts.setOwnerPosts(Long.parseLong("1")) ;
+            Command command = new Command();
+            command.setKeyWord(Post.LOAD_POST_USERS);
+            command.setSharableObject(posts.convertToJsonString());
+            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+                @Override
+                void analyze(Command cmd) {
+                    if (cmd.getKeyWord().equals(Post.LOAD_POST_USERS)){
+                        ArraylistPost posts = (ArraylistPost.fromJsonString(cmd.getObjectStr()));
+                        if(!posts.getPosts().isEmpty()) {
+                            Platform.runLater(() -> addPosts(posts));
+                        }
+
+                    }
+                }
+            };
             getChildren().addAll(loadPostBtn);
         });
 

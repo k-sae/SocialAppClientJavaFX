@@ -22,7 +22,7 @@ public class CommentViewer extends VBox {
     }
     private void setLayout(){
         postComments.setFont(Font.font(18));
-//        postComments.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        postComments.setStyle("-fx-background-color: #ffffff;");
         postComments.setEditable(false);
 
         ChoiceBox<String> edit = new ChoiceBox<>();
@@ -34,10 +34,12 @@ public class CommentViewer extends VBox {
                 if(newValue.equals("Edit")){
                     postComments.setEditable(true);
                     postComments.requestFocus();
+                    postComments.setStyle(null);
                     postComments.setOnKeyPressed(event -> {
                         if (event.getCode().equals(KeyCode.ENTER)) {
                             ((CallBack) getParent().getParent()).setCommentCommend(0,postComments.getText(),comment.getCommentId());
                             postComments.setEditable(false);
+                            postComments.setStyle("-fx-background-color: #ffffff;");
                         }
                     });
                 }else if(newValue.equals("Delete")){
@@ -46,6 +48,7 @@ public class CommentViewer extends VBox {
         });
 
         setMargin(postComments, new Insets(0,20,0,20));
+        setMargin(edit, new Insets(0,20,0,400));
         getChildren().addAll(new Separator(),edit, new FriendView("" + comment.getOwnerID()), postComments);
 
     }

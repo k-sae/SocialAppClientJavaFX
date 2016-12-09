@@ -36,6 +36,13 @@ public class PostViewer extends VBox {
         setPadding(new Insets(10,0,10,0));
         setStyle("-fx-background-color: #ffffff;");
 
+        postText = new TextField();
+        postText.setText(post.getContent());
+        postText.setFont(Font.font(18));
+        postText.setEditable(false);
+        postText.setPadding(new Insets(0,0,10,0));
+        postText.setStyle("-fx-background-color: #ffffff;");
+
         ChoiceBox<String> edit = new ChoiceBox<>();
         edit.setStyle("-fx-background-color: transparent");
         edit.setPrefWidth(1);
@@ -45,34 +52,31 @@ public class PostViewer extends VBox {
             if(newValue.equals("Edit")){
                 postText.setEditable(true);
                 postText.requestFocus();
+                postText.setStyle(null);
                 postText.setOnKeyPressed(event -> {
                     if (event.getCode().equals(KeyCode.ENTER)) {
                         editpost(postText.getText());
                         postText.setEditable(false);
+                        postText.setStyle("-fx-background-color: #ffffff;");
                     }
                 });
             }else if(newValue.equals("Delete")){
 
-                 Command command = new Command();
-                 command.setKeyWord(Post.DELETE_POST_USERS);
-                 command.setSharableObject(post.convertToJsonString());
-                 CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
-                @Override
-                void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.DELETE_POST_USERS)) {
-                }
-                }
-                };
-                 CommandsExecutor.getInstance().add(commandRequest);
+                Command command = new Command();
+                command.setKeyWord(Post.DELETE_POST_USERS);
+                command.setSharableObject(post.convertToJsonString());
+                CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+                    @Override
+                    void analyze(Command cmd) {
+                        if (cmd.getKeyWord().equals(Post.DELETE_POST_USERS)) {
 
+                        }
+                    }
+                };
+                CommandsExecutor.getInstance().add(commandRequest);
             }
     });
 
-        postText = new TextField();
-        postText.setText(post.getContent());
-        postText.setFont(Font.font(18));
-        postText.setEditable(false);
-        postText.setPadding(new Insets(0,0,10,0));
 /*
         Image im = new Image("file:C:\\Users\\bolla\\Pictures\\me.jpg");
         ImageView img = new ImageView(im);
