@@ -20,7 +20,7 @@ import javafx.scene.text.Font;
  */
 
 public class PostViewer extends VBox {
-    protected TextField postText;
+    protected TextArea postText;
     protected Button thumbsUp;
     protected Button thumbsDown;
     protected Button comment;
@@ -38,11 +38,15 @@ public class PostViewer extends VBox {
         setPadding(new Insets(10, 0, 10, 0));
         setStyle("-fx-background-color: #ffffff;");
 
-        postText = new TextField();
+        postText = new TextArea();
         postText.setText(post.getContent());
         postText.setFont(Font.font(18));
         postText.setEditable(false);
+        postText.setWrapText(true);
+        postText.setPrefHeight(postText.getText().length());
         postText.setPadding(new Insets(0,0,10,0));
+        postText.setOnKeyTyped(event ->
+                postText.setPrefHeight(postText.getText().length()));
         postText.setStyle("-fx-background-color: #ffffff;");
 
         ChoiceBox<String> edit = new ChoiceBox<>();
@@ -78,6 +82,8 @@ public class PostViewer extends VBox {
                 CommandsExecutor.getInstance().add(commandRequest);
             }
         });
+        if(!MainWindow.id.equals(""+post.getOwnerId()))
+            edit.setVisible(false);
 
 /*
         Image im = new Image("file:C:\\Users\\bolla\\Pictures\\me.jpg");

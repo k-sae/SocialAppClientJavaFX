@@ -48,6 +48,7 @@ public class PostContainer extends VBox implements CallBack {
             Command command = new Command();
             command.setKeyWord(Post.LOAD_POST_USERS);
             command.setSharableObject(posts.convertToJsonString());
+            /**مش بيدخل في ال commandrequest */
             CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
                 @Override
                 void analyze(Command cmd) {

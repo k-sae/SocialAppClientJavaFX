@@ -4,6 +4,7 @@ import SocialAppGeneral.Comment;
 import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Separator;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
@@ -14,16 +15,20 @@ import javafx.scene.text.Font;
  */
 public class CommentViewer extends VBox {
     private Comment comment;
-    private TextField postComments;
+    private TextArea postComments;
     public CommentViewer(Comment comment){
         this.comment = comment;
-        postComments = new TextField(this.comment.getCommentcontent());
+        postComments = new TextArea(this.comment.getCommentcontent());
         setLayout();
     }
     private void setLayout(){
         postComments.setFont(Font.font(18));
         postComments.setStyle("-fx-background-color: #ffffff;");
         postComments.setEditable(false);
+        postComments.setWrapText(true);
+        postComments.setPrefHeight(postComments.getText().length());
+        postComments.setOnKeyTyped(event ->
+                postComments.setPrefHeight(postComments.getText().length()));
 
         ChoiceBox<String> edit = new ChoiceBox<>();
         edit.setStyle("-fx-background-color: transparent");
@@ -47,6 +52,8 @@ public class CommentViewer extends VBox {
                 }
         });
 
+        if(!MainWindow.id.equals(""+comment.getOwnerID()))
+            edit.setVisible(false);
         setMargin(postComments, new Insets(0,20,0,20));
         setMargin(edit, new Insets(0,20,0,400));
         getChildren().addAll(new Separator(),edit, new FriendView("" + comment.getOwnerID()), postComments);

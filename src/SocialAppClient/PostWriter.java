@@ -10,6 +10,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 
 import javax.imageio.ImageIO;
@@ -33,6 +34,8 @@ public class PostWriter extends VBox{
         setAlignment(Pos.CENTER);
         postText = new TextArea();
         postText.setPromptText("What's on your mind?!");
+        postText.setWrapText(true);
+        postText.setFont(Font.font(18));
         postText.setMaxSize(450,100);
 
         HBox option = new HBox();
