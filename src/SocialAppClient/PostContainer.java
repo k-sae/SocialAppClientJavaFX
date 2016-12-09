@@ -46,48 +46,48 @@ public class PostContainer extends VBox implements CallBack {
             getChildren().add(postViewer);
         }
         //setPostPage();
+        if(posts.getPosts().size() ==10) {
+            loadPostBtn = new Button("LOAD MORE");
+            getChildren().add(loadPostBtn);
+            loadPostBtn.setOnMouseClicked(event -> {
+                number++;
+                getChildren().remove(loadPostBtn);
+                posts.getPosts().clear();
+                posts.setNumberpost(number);
+                Command command1 = new Command();
+                command1.setKeyWord(Post.LOAD_POST_USERS);
+                command1.setSharableObject(posts.convertToJsonString());
+                System.out.println(posts.convertToJsonString());
+                CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command1) {
 
-        loadPostBtn = new Button("LOAD MORE");
-        getChildren().add(loadPostBtn);
-        loadPostBtn.setOnMouseClicked(event -> {
-            number++;
-            getChildren().remove(loadPostBtn);
-            posts.getPosts().clear();
-            posts.setNumberpost(number);
-            Command command1 = new Command();
-            command1.setKeyWord(Post.LOAD_POST_USERS);
-            command1.setSharableObject(posts.convertToJsonString());
-            System.out.println(posts.convertToJsonString());
-            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command1) {
+                    /*
+                            for (int i=0; i<10 && c<posts.getPosts().size(); i++ ) {
+                                PostViewer postViewer = new PostViewer(posts.getPosts().get(c));
+                                getChildren().add(postViewer);
+                                c++;
+                            }
+                            if(c<posts.getPosts().size()) {
+                                loadPostBtn = new Button("LOAD MORE");
+                                getChildren().add(loadPostBtn);
+                                loadPostBtn.setOnMouseClicked(event -> {
+                                    getChildren().remove(loadPostBtn);/*
+                                posts.setOwnerPosts(Long.parseLong("1")) ;
+                                Command command = new Command();
+                                command.setKeyWord(Post.LOAD_POST_USERS);
+                                command.setSharableObject(posts.convertToJsonString());
+                                CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+                    */
+                    @Override
+                    void analyze(Command cmd) {
+                        if (cmd.getKeyWord().equals(Post.LOAD_POST_USERS)) {
+                            ArraylistPost posts = (ArraylistPost.fromJsonString(cmd.getObjectStr()));
+                            if (!posts.getPosts().isEmpty()) {
+                                Platform.runLater(() -> addPosts(posts));
+                            }
 
-                /*
-                        for (int i=0; i<10 && c<posts.getPosts().size(); i++ ) {
-                            PostViewer postViewer = new PostViewer(posts.getPosts().get(c));
-                            getChildren().add(postViewer);
-                            c++;
                         }
-                        if(c<posts.getPosts().size()) {
-                            loadPostBtn = new Button("LOAD MORE");
-                            getChildren().add(loadPostBtn);
-                            loadPostBtn.setOnMouseClicked(event -> {
-                                getChildren().remove(loadPostBtn);/*
-                            posts.setOwnerPosts(Long.parseLong("1")) ;
-                            Command command = new Command();
-                            command.setKeyWord(Post.LOAD_POST_USERS);
-                            command.setSharableObject(posts.convertToJsonString());
-                            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
-                */
-                @Override
-                void analyze(Command cmd) {
-                    if (cmd.getKeyWord().equals(Post.LOAD_POST_USERS)) {
-                        ArraylistPost posts = (ArraylistPost.fromJsonString(cmd.getObjectStr()));
-                        if (!posts.getPosts().isEmpty()) {
-                            Platform.runLater(() -> addPosts(posts));
-                        }
-
                     }
-                }
-            };
+                };
             /*
 
             CommandsExecutor.getInstance().add(commandRequest);
@@ -109,9 +109,10 @@ public class PostContainer extends VBox implements CallBack {
 
         getChildren().addAll(loadPostBtn);*/
 
-            CommandsExecutor.getInstance().add(commandRequest);
-            Platform.runLater(() -> addPosts(posts));
-        });
+                CommandsExecutor.getInstance().add(commandRequest);
+                Platform.runLater(() -> addPosts(posts));
+            });
+        }
     }
 
 
