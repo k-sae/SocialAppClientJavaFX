@@ -20,7 +20,7 @@ import javafx.scene.text.Font;
  */
 
 public class PostViewer extends VBox {
-    protected TextField postText;
+    protected TextArea postText;
     protected Button thumbsUp;
     protected Button thumbsDown;
     protected Button comment;
@@ -38,6 +38,17 @@ public class PostViewer extends VBox {
         setPadding(new Insets(10, 0, 10, 0));
         setStyle("-fx-background-color: #ffffff;");
 
+        postText = new TextArea();
+        postText.setText(post.getContent());
+        postText.setFont(Font.font(18));
+        postText.setEditable(false);
+        postText.setWrapText(true);
+        postText.setPrefHeight(postText.getText().length());
+        postText.setPadding(new Insets(0,0,10,0));
+        postText.setOnKeyTyped(event ->
+                postText.setPrefHeight(postText.getText().length()));
+        postText.setStyle("-fx-background-color: #ffffff;");
+
         ChoiceBox<String> edit = new ChoiceBox<>();
         edit.setStyle("-fx-background-color: transparent");
         edit.setPrefWidth(1);
@@ -47,10 +58,12 @@ public class PostViewer extends VBox {
             if (newValue.equals("Edit")) {
                 postText.setEditable(true);
                 postText.requestFocus();
+                postText.setStyle(null);
                 postText.setOnKeyPressed(event -> {
                     if (event.getCode().equals(KeyCode.ENTER)) {
                         editpost(postText.getText());
                         postText.setEditable(false);
+                        postText.setStyle("-fx-background-color: #ffffff;");
                     }
                 });
             } else if (newValue.equals("Delete")) {
@@ -58,24 +71,20 @@ public class PostViewer extends VBox {
                 Command command = new Command();
                 command.setKeyWord(Post.DELETE_POST_USERS);
                 command.setSharableObject(post.convertToJsonString());
-                CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+                CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
                     @Override
                     void analyze(Command cmd) {
                         if (cmd.getKeyWord().equals(Post.DELETE_POST_USERS)) {
-                        }
 
+                        }
                     }
                 };
                 CommandsExecutor.getInstance().add(commandRequest);
-
             }
         });
+        if(!MainWindow.id.equals(""+post.getOwnerId()))
+            edit.setVisible(false);
 
-        postText = new TextField();
-        postText.setText(post.getContent());
-        postText.setFont(Font.font(18));
-        postText.setEditable(false);
-        postText.setPadding(new Insets(0, 0, 10, 0));
 /*
         Image im = new Image("file:C:\\Users\\bolla\\Pictures\\me.jpg");
         ImageView img = new ImageView(im);
@@ -282,7 +291,7 @@ public class PostViewer extends VBox {
                         }
 
                     } else {
-                        System.out.println(cmd.getObjectStr());
+                       Utility.errorWindow("please refresh window");
                     }
 
                 }

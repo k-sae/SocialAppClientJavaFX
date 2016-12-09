@@ -1,7 +1,9 @@
 package SocialAppClient;
 
 import SocialAppGeneral.ArraylistPost;
+import SocialAppGeneral.Command;
 import SocialAppGeneral.Post;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -20,6 +22,7 @@ import javafx.scene.text.Font;
 public class PostContainer extends VBox implements CallBack {
     Button loadPostBtn;
     PostViewer postViewer;
+    int number=1;
     public PostContainer(){
 
         setLayout();
@@ -38,10 +41,31 @@ public class PostContainer extends VBox implements CallBack {
              getChildren().add(postViewer);
          }
          //setPostPage();
+
         loadPostBtn = new Button("LOAD MORE");
+        getChildren().add(loadPostBtn);
         loadPostBtn.setOnMouseClicked(event -> {
+           number++;
             getChildren().remove(loadPostBtn);
-            /********/
+           posts.getPosts().clear();
+            posts.setNumberpost(number);
+            Command command1 = new Command();
+            command1.setKeyWord(Post.LOAD_POST_USERS);
+            command1.setSharableObject(posts.convertToJsonString());
+            System.out.println(posts.convertToJsonString());
+            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command1) {
+                @Override
+                void analyze(Command cmd) {
+                    if (cmd.getKeyWord().equals(Post.LOAD_POST_USERS)){
+                        ArraylistPost posts = (ArraylistPost.fromJsonString(cmd.getObjectStr()));
+                        if(!posts.getPosts().isEmpty()) {
+                            Platform.runLater(() -> addPosts(posts));
+                        }
+
+                    }
+                }
+            };
+            CommandsExecutor.getInstance().add(commandRequest);
             getChildren().addAll(loadPostBtn);
         });
 
