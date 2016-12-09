@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="22ba573f-114e-411e-9a9b-74ef2ac3b921" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SocialAppClient/SocialArrayList.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SocialAppClient/UserPicker.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SocialAppGeneral/SocialArrayList.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SocialAppGeneral/Relations.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/ImageViewer.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/ImageViewer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/MainWindow.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/MainWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/NavBar.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/NavBar.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/ProfileInfoViewer.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/ProfileInfoViewer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/ProfilePage.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/ProfilePage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppGeneral/LoggedUser.java" afterPath="$PROJECT_DIR$/src/SocialAppGeneral/LoggedUser.java" />
     </list>
     <ignored path="SocialAppClientJavaFX.iws" />
@@ -35,98 +32,24 @@
       <file leaf-file-name="ProfileInfoViewer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ProfileInfoViewer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="39" column="58" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
-              <folding />
+            <state relative-caret-position="137">
+              <caret line="151" column="56" selection-start-line="151" selection-start-column="56" selection-end-line="151" selection-end-column="56" />
+              <folding>
+                <element signature="method#addAddFriendButton#0;class#ProfileInfoViewer#0" expanded="false" />
+                <element signature="method#createButton#0;class#ProfileInfoViewer#0" expanded="false" />
+                <element signature="method#addConfirmationButton#0;class#ProfileInfoViewer#0" expanded="false" />
+                <element signature="method#addRemoveFriendButton#0;class#ProfileInfoViewer#0" expanded="false" />
+                <element signature="method#addCancelRequestButton#0;class#ProfileInfoViewer#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-120">
-              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/MainWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProfilePage.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ProfilePage.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SocialArrayList.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialAppGeneral/SocialArrayList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EditInfo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/EditInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="61" column="68" selection-start-line="61" selection-start-column="68" selection-end-line="61" selection-end-column="68" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NavBar.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/NavBar.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="39" column="39" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SocialArrayList.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/SocialArrayList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoggedUser.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LoggedUser.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SocialAppGeneral/LoggedUser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ImageViewer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ImageViewer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="121">
-              <caret line="52" column="12" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
+            <state relative-caret-position="154">
+              <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -155,12 +78,15 @@
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/SocialAppClient/ProfilePage.java" />
         <option value="$PROJECT_DIR$/src/SocialAppClient/UserPicker.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/ProfileInfoViewer.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/MainWindow.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppGeneral/LoggedUser.java" />
         <option value="$PROJECT_DIR$/src/SocialAppClient/SocialArrayList.java" />
         <option value="$PROJECT_DIR$/src/SocialAppGeneral/SocialArrayList.java" />
         <option value="$PROJECT_DIR$/src/SocialAppClient/NavBar.java" />
+        <option value="$PROJECT_DIR$/src/SocialAppClient/ImageViewer.java" />
+        <option value="$PROJECT_DIR$/src/SocialAppGeneral/Relations.java" />
+        <option value="$PROJECT_DIR$/src/SocialAppClient/MainWindow.java" />
+        <option value="$PROJECT_DIR$/src/SocialAppClient/EditInfo.java" />
+        <option value="$PROJECT_DIR$/src/SocialAppGeneral/LoggedUser.java" />
+        <option value="$PROJECT_DIR$/src/SocialAppClient/ProfileInfoViewer.java" />
       </list>
     </option>
   </component>
@@ -195,9 +121,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -252,8 +175,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SocialAppClientJavaFX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SocialAppClientJavaFX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="RecentsManager">
@@ -539,6 +479,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="22ba573f-114e-411e-9a9b-74ef2ac3b921" name="Default" comment="" />
@@ -551,9 +494,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938644" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -561,24 +504,24 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32569557" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934534" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Code Iris" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Code Iris" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -622,7 +565,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -631,7 +574,71 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ProfileInfoViewer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="91" column="45" selection-start-line="91" selection-start-column="45" selection-end-line="91" selection-end-column="45" />
+          <folding>
+            <element signature="method#addAddFriendButton#0;class#ProfileInfoViewer#0" expanded="false" />
+            <element signature="method#createButton#0;class#ProfileInfoViewer#0" expanded="false" />
+            <element signature="method#addConfirmationButton#0;class#ProfileInfoViewer#0" expanded="false" />
+            <element signature="method#addRemoveFriendButton#0;class#ProfileInfoViewer#0" expanded="false" />
+            <element signature="method#addCancelRequestButton#0;class#ProfileInfoViewer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/CommandRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1144#1349#0" expanded="false" />
+            <element signature="e#1348#1349#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1428">
+          <caret line="92" column="20" selection-start-line="92" selection-start-column="20" selection-end-line="92" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppGeneral/Relations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ProfilePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1139">
+          <caret line="75" column="22" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/EditInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1462">
+          <caret line="104" column="45" selection-start-line="104" selection-start-column="45" selection-end-line="104" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#6552#6553#0" expanded="false" />
+            <element signature="e#6625#6626#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppGeneral/LoggedUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -639,11 +646,237 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ProfileInfoViewer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1479">
+          <caret line="96" column="88" selection-start-line="96" selection-start-column="88" selection-end-line="96" selection-end-column="88" />
+          <folding>
+            <element signature="method#addAddFriendButton#0;class#ProfileInfoViewer#0" expanded="false" />
+            <element signature="method#createButton#0;class#ProfileInfoViewer#0" expanded="false" />
+            <element signature="method#addConfirmationButton#0;class#ProfileInfoViewer#0" expanded="false" />
+            <element signature="method#addRemoveFriendButton#0;class#ProfileInfoViewer#0" expanded="false" />
+            <element signature="method#addCancelRequestButton#0;class#ProfileInfoViewer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/CommandRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1144#1349#0" expanded="false" />
+            <element signature="e#1348#1349#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1428">
+          <caret line="92" column="20" selection-start-line="92" selection-start-column="20" selection-end-line="92" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppGeneral/Relations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ProfilePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1139">
+          <caret line="75" column="22" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/EditInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#6552#6553#0" expanded="false" />
+            <element signature="e#6625#6626#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppGeneral/LoggedUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="65" selection-start-line="12" selection-start-column="65" selection-end-line="12" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ProfileInfoViewer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1479">
+          <caret line="96" column="88" selection-start-line="96" selection-start-column="88" selection-end-line="96" selection-end-column="88" />
+          <folding>
+            <element signature="method#addAddFriendButton#0;class#ProfileInfoViewer#0" expanded="false" />
+            <element signature="method#createButton#0;class#ProfileInfoViewer#0" expanded="false" />
+            <element signature="method#addConfirmationButton#0;class#ProfileInfoViewer#0" expanded="false" />
+            <element signature="method#addRemoveFriendButton#0;class#ProfileInfoViewer#0" expanded="false" />
+            <element signature="method#addCancelRequestButton#0;class#ProfileInfoViewer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/CommandRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1144#1349#0" expanded="false" />
+            <element signature="e#1348#1349#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppGeneral/Relations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ProfilePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="55" column="51" selection-start-line="55" selection-start-column="51" selection-end-line="55" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppGeneral/LoggedUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="65" selection-start-line="12" selection-start-column="65" selection-end-line="12" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ProfileInfoViewer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="39" column="58" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
+          <folding>
+            <element signature="method#addAddFriendButton#0;class#ProfileInfoViewer#0" expanded="false" />
+            <element signature="method#createButton#0;class#ProfileInfoViewer#0" expanded="false" />
+            <element signature="method#addConfirmationButton#0;class#ProfileInfoViewer#0" expanded="false" />
+            <element signature="method#addRemoveFriendButton#0;class#ProfileInfoViewer#0" expanded="false" />
+            <element signature="method#addCancelRequestButton#0;class#ProfileInfoViewer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/MainWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ProfilePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppGeneral/SocialArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/EditInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="61" column="68" selection-start-line="61" selection-start-column="68" selection-end-line="61" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#6552#6553#0" expanded="false" />
+            <element signature="e#6625#6626#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/NavBar.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/SocialArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppGeneral/LoggedUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ImageViewer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="52" column="12" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -658,7 +891,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3087">
           <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -670,37 +902,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/CommandRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/UserPicker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ImageViewer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="52" column="12" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialAppGeneral/LoggedUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -708,15 +916,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ProfilePage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -724,46 +923,99 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/EditInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="61" column="68" selection-start-line="61" selection-start-column="68" selection-end-line="61" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ProfileInfoViewer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="39" column="58" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-120">
+        <state relative-caret-position="204">
           <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/NavBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-299">
+          <caret line="39" column="39" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ImageViewer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppGeneral/Relations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="33" column="17" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+        <state relative-caret-position="1428">
+          <caret line="92" column="20" selection-start-line="92" selection-start-column="20" selection-end-line="92" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/EditInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1462">
+          <caret line="104" column="45" selection-start-line="104" selection-start-column="45" selection-end-line="104" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#6552#6553#0" expanded="false" />
+            <element signature="e#6625#6626#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/CommandRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1144#1349#0" expanded="false" />
+            <element signature="e#1348#1349#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ProfilePage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1139">
+          <caret line="75" column="22" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/NavBar.java">
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ProfileInfoViewer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="39" column="39" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
+        <state relative-caret-position="137">
+          <caret line="151" column="56" selection-start-line="151" selection-start-column="56" selection-end-line="151" selection-end-column="56" />
+          <folding>
+            <element signature="method#addAddFriendButton#0;class#ProfileInfoViewer#0" expanded="false" />
+            <element signature="method#createButton#0;class#ProfileInfoViewer#0" expanded="false" />
+            <element signature="method#addConfirmationButton#0;class#ProfileInfoViewer#0" expanded="false" />
+            <element signature="method#addRemoveFriendButton#0;class#ProfileInfoViewer#0" expanded="false" />
+            <element signature="method#addCancelRequestButton#0;class#ProfileInfoViewer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppGeneral/LoggedUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="69" />
           <folding />
         </state>
       </provider>
