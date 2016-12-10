@@ -20,8 +20,7 @@ public class ProfilePage extends GridPane {
     {
         this.id = id;
         /**IT WILL TAKE AN ID IN THE CONSTRUCTOR*/
-        setBackground(new Background(new BackgroundFill(Color.web("#eeeeee"), CornerRadii.EMPTY, Insets.EMPTY)));
-
+        setStyle(Styles.DEFAULT_BACKGROUND);
         setGridLinesVisible(true);
         setConstraint();
         new UserPicker().new InfoPicker(id) {

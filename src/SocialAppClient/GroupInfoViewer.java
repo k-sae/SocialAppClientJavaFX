@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 /**
  * Created by billy on 2016-11-26.
  */
-public class GroupInfoViewer extends InfoViewer {
+public class GroupInfoViewer extends InfoViewer{
     protected Button RelationBTN;
     protected Button Edit;
     private int id;
@@ -21,23 +21,23 @@ public class GroupInfoViewer extends InfoViewer {
         for(long i : group.getMember()) {
             if (MainWindow.id.equals(""+i)){
                 RelationBTN = new Button("LEAVE");
-                RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;");
-                RelationBTN.setOnMouseEntered(event -> RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff;"));
-                RelationBTN.setOnMouseExited(event -> RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;"));
+                RelationBTN.setStyle(Styles.NAV_BUTTON);
+                RelationBTN.setOnMouseEntered(event -> RelationBTN.setStyle(Styles.NAV_BUTTON_HOVER));
+                RelationBTN.setOnMouseExited(event -> RelationBTN.setStyle(Styles.NAV_BUTTON));
 
             }else{
                 RelationBTN = new Button("JOIN");
-                RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;");
-                RelationBTN.setOnMouseEntered(event -> RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff;"));
-                RelationBTN.setOnMouseExited(event -> RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;"));
+                RelationBTN.setStyle(Styles.NAV_BUTTON);
+                RelationBTN.setOnMouseEntered(event -> RelationBTN.setStyle(Styles.NAV_BUTTON_HOVER));
+                RelationBTN.setOnMouseExited(event -> RelationBTN.setStyle(Styles.NAV_BUTTON));
 
             }
         }
         /*
         Edit = new Button("Edit");
-        Edit.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;");
-        Edit.setOnMouseEntered(event -> Edit.setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff;"));
-        Edit.setOnMouseExited(event -> Edit.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;"));
+        Edit.setStyle(Styles.NAV_BUTTON);
+        Edit.setOnMouseEntered(event -> Edit.setStyle(Styles.NAV_BUTTON_HOVER));
+        Edit.setOnMouseExited(event -> Edit.setStyle(Styles.NAV_BUTTON));
 */
         getChildren().addAll(RelationBTN);
     }

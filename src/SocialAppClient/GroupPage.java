@@ -14,14 +14,14 @@ public class GroupPage extends GridPane {
     private Group group;
     public GroupPage(Group group) {
         this.group = group;
-        setBackground(new Background(new BackgroundFill(Color.web("#eeeeee"), CornerRadii.EMPTY, Insets.EMPTY)));
+        setStyle(Styles.DEFAULT_BACKGROUND);
         //updateColor(this);
         setGridLinesVisible(true);
         setConstraint();
         setPanels();
     }
     public  GroupPage(){
-        setBackground(new Background(new BackgroundFill(Color.web("#eeeeee"), CornerRadii.EMPTY, Insets.EMPTY)));
+        setStyle(Styles.DEFAULT_BACKGROUND);
         //updateColor(this);
         setGridLinesVisible(true);
         setConstraint();

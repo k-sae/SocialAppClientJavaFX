@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
 
 import java.util.ArrayList;
 
@@ -24,10 +25,8 @@ class FriendList extends VBox {
     }
     private void setLayout(){
         setAlignment(Pos.TOP_CENTER);
-        setBackground(new Background(new BackgroundFill(Color.web("#eeeeee"), CornerRadii.EMPTY, Insets.EMPTY)));
-
         Label friendLabel = new Label("FRIENDS");
-        friendLabel.setStyle("-fx-font: 30 verdana; -fx-text-fill: #666666;");
+        friendLabel.setFont(Font.font(36));
         friendLabel.setPadding(new Insets(30,0,10,0));
         getChildren().addAll(friendLabel, new Separator());
         for (String id:ids) {

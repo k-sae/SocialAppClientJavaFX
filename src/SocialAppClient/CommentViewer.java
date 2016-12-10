@@ -13,7 +13,7 @@ import javafx.scene.text.Font;
 /**
  * Created by billy on 2016-12-08.
  */
-public class CommentViewer extends VBox {
+public class CommentViewer extends VBox{
     private Comment comment;
     private TextArea postComments;
     public CommentViewer(Comment comment){
@@ -23,15 +23,14 @@ public class CommentViewer extends VBox {
     }
     private void setLayout(){
         postComments.setFont(Font.font(18));
-        postComments.setStyle("-fx-background-color: #ffffff;");
+        postComments.setStyle(Styles.WHITE_BACKGROUND);
         postComments.setEditable(false);
         postComments.setWrapText(true);
         postComments.setPrefHeight(postComments.getText().length());
-        postComments.setOnKeyTyped(event ->
-                postComments.setPrefHeight(postComments.getText().length()));
+        postComments.setOnKeyTyped(event -> postComments.setPrefHeight(postComments.getText().length()));
 
         ChoiceBox<String> edit = new ChoiceBox<>();
-        edit.setStyle("-fx-background-color: transparent");
+        edit.setStyle(Styles.TRANSPARENT_BACKGROUND);
         edit.setPrefWidth(1);
         edit.getItems().addAll("Edit","Delete");
 
@@ -44,7 +43,7 @@ public class CommentViewer extends VBox {
                         if (event.getCode().equals(KeyCode.ENTER)) {
                             ((CallBack) getParent().getParent()).setCommentCommend(0,postComments.getText(),comment.getCommentId());
                             postComments.setEditable(false);
-                            postComments.setStyle("-fx-background-color: #ffffff;");
+                            postComments.setStyle(Styles.WHITE_BACKGROUND);
                         }
                     });
                 }else if(newValue.equals("Delete")){

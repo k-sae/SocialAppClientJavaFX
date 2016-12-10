@@ -41,9 +41,9 @@ public class PostWriter extends VBox{
         HBox option = new HBox();
         addImage = new Button("Choose an image");
         postBtn = new Button("Post");
-        addImage.setStyle("-fx-font: 12 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;");
-        addImage.setOnMouseEntered(event -> addImage.setStyle("-fx-font: 12 arial; -fx-background-color: #999999; -fx-text-fill: #000000;"));
-        addImage.setOnMouseExited(event -> addImage.setStyle("-fx-font: 12 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;"));
+        addImage.setStyle(Styles.BLACK_BUTTON);
+        addImage.setOnMouseEntered(event -> addImage.setStyle(Styles.BLACK_BUTTON_HOVER));
+        addImage.setOnMouseExited(event -> addImage.setStyle(Styles.BLACK_BUTTON));
 
         addImage.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
@@ -62,11 +62,9 @@ public class PostWriter extends VBox{
 
         });
 
-        postBtn.setStyle("-fx-font: 12 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;");
-        postBtn.setOnMouseEntered(event -> postBtn.setStyle("-fx-font: 12 arial; -fx-background-color: #999999; -fx-text-fill: #000000;"));
-        postBtn.setOnMouseExited(event -> postBtn.setStyle("-fx-font: 12 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;"));
-
-
+        postBtn.setStyle(Styles.BLACK_BUTTON);
+        postBtn.setOnMouseEntered(event -> postBtn.setStyle(Styles.BLACK_BUTTON_HOVER));
+        postBtn.setOnMouseExited(event -> postBtn.setStyle(Styles.BLACK_BUTTON));
 
 
         option.setSpacing(150);

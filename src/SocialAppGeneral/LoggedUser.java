@@ -20,23 +20,18 @@ public abstract class LoggedUser extends AppUser {
     protected ArrayList<Integer> requests;
     protected ArrayList<String> notifactions;
     protected ArrayList<String> groups;
-    public LoggedUser() {
+    public LoggedUser(String id) {
         friends = new ArrayList<>();
         requests = new ArrayList<>();
         notifactions = new ArrayList<>();
         groups = new ArrayList<>();
+        setID(id);
     }
     public abstract void createGroup(String name);
     public abstract void joinGroup();
     public abstract void exitGroup();
-    public abstract void addFriend();
-    public abstract void removeFriend();
-    public abstract void acceptFriend();
-    public abstract void declineFriend();
-    public abstract void cancelFriendReq();
     public abstract void setFriends();
     public abstract void getFriends();
-    public abstract void getRequests();
     public abstract void getNotfications();
     public abstract void getgroups();
 }

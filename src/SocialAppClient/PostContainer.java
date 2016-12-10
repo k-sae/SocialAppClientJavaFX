@@ -21,11 +21,7 @@ import javafx.scene.text.Font;
  */
 public class PostContainer extends VBox implements CallBack {
     Button loadPostBtn;
-    PostViewer postViewer;
-
-    int number = 1;//هنا دة بيعد عدد مرات دوسوة علي الزرار
-
-    //int c=0;
+    int number = 1;
 
     public PostContainer() {
 
@@ -47,6 +43,9 @@ public class PostContainer extends VBox implements CallBack {
         }
         if(posts.getPosts().size() == 10) {
             loadPostBtn = new Button("LOAD MORE");
+            loadPostBtn.setStyle(Styles.BLACK_BUTTON);
+            loadPostBtn.setOnMouseEntered(event -> loadPostBtn.setStyle(Styles.BLACK_BUTTON_HOVER));
+            loadPostBtn.setOnMouseExited(event -> loadPostBtn.setStyle(Styles.BLACK_BUTTON));
             getChildren().add(loadPostBtn);
             loadPostBtn.setOnMouseClicked(event -> {
                 number++;
@@ -74,10 +73,6 @@ public class PostContainer extends VBox implements CallBack {
         }
     }
 
-
-
-
-
     @Override
     public void showPostDetails(Post post) {
 
@@ -92,6 +87,5 @@ public class PostContainer extends VBox implements CallBack {
     public void setCommentCommend(int show, String text, long id) {
 
     }
-
 
 }
