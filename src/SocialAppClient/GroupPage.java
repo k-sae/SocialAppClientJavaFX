@@ -20,14 +20,6 @@ public class GroupPage extends GridPane {
         setConstraint();
         setPanels();
     }
-    public  GroupPage(){
-        setStyle(Styles.DEFAULT_BACKGROUND);
-        //updateColor(this);
-        setGridLinesVisible(true);
-        setConstraint();
-        setPanels();
-
-    }
 
     synchronized static void updateColor(Pane pane) {
         //TODO #prototype
@@ -61,12 +53,12 @@ public class GroupPage extends GridPane {
     }
     private void setPanels(){
 
-        GroupInfoViewer Info = new GroupInfoViewer((int) group.getId());
+        GroupInfoViewer Info = new GroupInfoViewer(group);
 
         /**PUT THE PICTURE PATH*/
         Info.setPicture(""+group.getImageId());
         /**PUT SOME INFO AS STRING*/
-        Info.setLabel(group.getName());
+        Info.setLabel("GROUP NAME: "+group.getName());
         /**ADD JOIN AND EDIT BUTTON -- EDIT THEM IN GROUPINFOVIEWER*/
         Info.setButtons();
 

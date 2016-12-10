@@ -9,28 +9,29 @@ import javafx.scene.control.Button;
 public class GroupInfoViewer extends InfoViewer{
     protected Button RelationBTN;
     protected Button Edit;
-    private int id;
+    private long id;
     private Group group;
-    public GroupInfoViewer(int id){
-        this.id = id;
-        group.setId(this.id);
+    public GroupInfoViewer(Group group){
+        this.group = group;
+        RelationBTN = new Button();
     }
 
     @Override
     public void setButtons() {
         for(long i : group.getMember()) {
             if (MainWindow.id.equals(""+i)){
-                RelationBTN = new Button("LEAVE");
+                RelationBTN.setText("LEAVE");
                 RelationBTN.setStyle(Styles.NAV_BUTTON);
                 RelationBTN.setOnMouseEntered(event -> RelationBTN.setStyle(Styles.NAV_BUTTON_HOVER));
                 RelationBTN.setOnMouseExited(event -> RelationBTN.setStyle(Styles.NAV_BUTTON));
+                getChildren().add(RelationBTN);
 
             }else{
-                RelationBTN = new Button("JOIN");
+                RelationBTN.setText("JOIN");
                 RelationBTN.setStyle(Styles.NAV_BUTTON);
                 RelationBTN.setOnMouseEntered(event -> RelationBTN.setStyle(Styles.NAV_BUTTON_HOVER));
                 RelationBTN.setOnMouseExited(event -> RelationBTN.setStyle(Styles.NAV_BUTTON));
-
+                getChildren().add(RelationBTN);
             }
         }
         /*
@@ -39,6 +40,5 @@ public class GroupInfoViewer extends InfoViewer{
         Edit.setOnMouseEntered(event -> Edit.setStyle(Styles.NAV_BUTTON_HOVER));
         Edit.setOnMouseExited(event -> Edit.setStyle(Styles.NAV_BUTTON));
 */
-        getChildren().addAll(RelationBTN);
     }
 }
