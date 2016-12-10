@@ -23,6 +23,7 @@ public class MainWindow extends GridPane {
     public MainWindow(String id)
     {
         MainWindow.id = id;
+        clientLoggedUser = new ClientLoggedUser(id);
         mainFrame = new Pane();
         mainWindow = this;
         setWindowConstrain();
