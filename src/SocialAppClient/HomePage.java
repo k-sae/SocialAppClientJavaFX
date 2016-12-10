@@ -75,21 +75,24 @@ public class HomePage extends GridPane {
 
         Info.CreateGroupBtn.setOnMouseClicked(event -> {
 
-            Optional<String> check = Utility.createWindow("Group Name", "Create Group");
+            Optional<String> check = Utility.createWindow("Group Name", Group.CREATE_GROUP);
             if (!check.equals(Optional.empty())) {
-                if (check.get().equals("")) {
-                    Utility.errorWindow("No name you enter");
+                if (check.get().equals("")||!validator.valdiateName(check.get())) {
+                    Utility.errorWindow("not correct name");
                 } else {
                     Command command = new Command();
                     command.setKeyWord(Group.CREATE_GROUP);
-                    command.setSharableObject(check.get());
+                    Group group=new Group(check.get());
+                    group.setAdminId(Long.parseLong(MainWindow.id));
+                    command.setSharableObject(group.convertToJsonString());
                     CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
                         @Override
                         void analyze(Command cmd) {
                             if (cmd.getKeyWord().equals(Group.CREATE_GROUP)) {
-                                Group group = Group.fromJsonString(cmd.getObjectStr());
+                                 Group group1 = Group.fromJsonString(cmd.getObjectStr());
                                 //TODO #Fix
                                 //fix error on threading
+
                                 Platform.runLater(() -> MainWindow.navigateTo(new GroupPage()));
 
                             }

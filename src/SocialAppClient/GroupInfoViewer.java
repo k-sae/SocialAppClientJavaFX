@@ -18,7 +18,7 @@ public class GroupInfoViewer extends InfoViewer {
 
     @Override
     public void setButtons() {
-        for(int i : group.getMember()) {
+        for(long i : group.getMember()) {
             if (MainWindow.id.equals(""+i)){
                 RelationBTN = new Button("LEAVE");
                 RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;");

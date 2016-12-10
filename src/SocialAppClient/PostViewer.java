@@ -4,6 +4,7 @@ import SocialAppGeneral.Command;
 import SocialAppGeneral.Comment;
 import SocialAppGeneral.Like;
 import SocialAppGeneral.Post;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -291,7 +292,10 @@ public class PostViewer extends VBox {
                         }
 
                     } else {
-                       Utility.errorWindow("please refresh window");
+                        System.out.println(Boolean.parseBoolean(cmd.getObjectStr()));
+                        Platform.runLater(() ->  Utility.errorWindow("please refresh window"));
+
+
                     }
 
                 }
@@ -331,7 +335,13 @@ public class PostViewer extends VBox {
                     @Override
                     void analyze(Command cmd) {
                         if (cmd.getKeyWord().equals(Post.EDIT_POST_USERS)) {
-                            System.out.println(cmd.getObjectStr());
+
+                            boolean b= Boolean.parseBoolean(cmd.getObjectStr());
+                            if (!b) {
+                                Platform.runLater(() ->  Utility.errorWindow("please refresh window"));
+
+
+                            }
                         }
                     }
                 };
