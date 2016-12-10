@@ -59,6 +59,7 @@ public class GroupPage extends GridPane {
         Info.setPicture(""+group.getImageId());
         /**PUT SOME INFO AS STRING*/
         Info.setLabel("GROUP NAME: "+group.getName());
+        Info.search();
         /**ADD JOIN AND EDIT BUTTON -- EDIT THEM IN GROUPINFOVIEWER*/
         Info.setButtons();
 
