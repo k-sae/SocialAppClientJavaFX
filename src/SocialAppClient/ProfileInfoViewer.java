@@ -72,9 +72,8 @@ public class ProfileInfoViewer extends InfoViewer {
     {
         createButton("Add Friend");
         RelationBTN.setOnAction(e->{
-            Command command = new Command();
+            Command command = initialize();
             command.setKeyWord(LoggedUser.ADD_FRIEND);
-            command.setSharableObject(id);
             CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
                 @Override
                 void analyze(Command commandFromServer) {
@@ -97,13 +96,12 @@ public class ProfileInfoViewer extends InfoViewer {
     {
         createButton("Accept");
         RelationBTN.setOnAction(e->{
-            Command command = new Command();
+            Command command = initialize();
             command.setKeyWord(LoggedUser.ACCEPT_FRIEND);
-            command.setSharableObject(id);
             CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
                 @Override
                 void analyze(Command commandFromServer) {
-                    Platform.runLater(() -> MainWindow.navigateTo(new ProfilePage(id)));
+                    Platform.runLater(() -> Main.refresh(MainWindow.id,new ProfilePage(id)));
                 }
             };
             CommandsExecutor.getInstance().add(commandRequest);
@@ -114,13 +112,12 @@ public class ProfileInfoViewer extends InfoViewer {
     {
         createButton("Remove Friend");
         RelationBTN.setOnAction(e->{
-            Command command = new Command();
+            Command command = initialize();
             command.setKeyWord(LoggedUser.REMOVE_FRIEND);
-            command.setSharableObject(id);
             CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
                 @Override
                 void analyze(Command commandFromServer) {
-                    Platform.runLater(() -> MainWindow.navigateTo(new ProfilePage(id)));
+                    Platform.runLater(() -> Main.refresh(MainWindow.id,new ProfilePage(id)));
                 }
             };
             CommandsExecutor.getInstance().add(commandRequest);
@@ -131,9 +128,8 @@ public class ProfileInfoViewer extends InfoViewer {
     {
         createButton("Cancel Request");
         RelationBTN.setOnAction(e->{
-            Command command = new Command();
+            Command command = initialize();
             command.setKeyWord(LoggedUser.CANCEL_FRIEND_REQ);
-            command.setSharableObject(id);
             CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
                 @Override
                 void analyze(Command commandFromServer) {
@@ -148,9 +144,8 @@ public class ProfileInfoViewer extends InfoViewer {
     {
         createButton("Decline");
         RelationBTN.setOnAction(e->{
-            Command command = new Command();
+            Command command = initialize();
             command.setKeyWord(LoggedUser.DECLINE_FRIEND);
-            command.setSharableObject(id);
             CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
                 @Override
                 void analyze(Command commandFromServer) {
@@ -160,5 +155,11 @@ public class ProfileInfoViewer extends InfoViewer {
             CommandsExecutor.getInstance().add(commandRequest);
         });
         getChildren().add(RelationBTN);
+    }
+    private Command initialize()
+    {
+        Command command = new Command();
+        command.setSharableObject(id);
+        return command;
     }
 }

@@ -17,11 +17,12 @@ public class MainWindow extends GridPane {
 
    private static Pane mainFrame;
    private static Pane mainWindow;
-    NavBar navBar;
+    private NavBar navBar;
     static String id;
+    static ClientLoggedUser clientLoggedUser;
     public MainWindow(String id)
     {
-        this.id = id;
+        MainWindow.id = id;
         mainFrame = new Pane();
         mainWindow = this;
         setWindowConstrain();

@@ -2,26 +2,17 @@ package SocialAppClient;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.layout.GridPane;
-
-import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import static SocialAppClient.MainWindow.id;
+
 public class Main extends Application {
 
-
-
-
+   private static Pane mainPane;
     public static void main(String[] args) {
         launch(args);
     }
@@ -29,7 +20,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
 
-        Pane mainPane = new StackPane();
+        mainPane = new StackPane();
         Pane GP=new RegisterPage(mainPane);
         mainPane.getChildren().add(GP);
 
@@ -47,7 +38,14 @@ public class Main extends Application {
         //this will close all active threads with error code of 0
         System.exit(0);
     }
-
+    //Important sent the logged user iD
+    public static void refresh(String loggedUserId,Pane page)
+    {
+        mainPane.getChildren().clear();
+        MainWindow mainWindow = new MainWindow(loggedUserId);
+        mainPane.getChildren().add(mainWindow);
+        MainWindow.navigateTo(page);
+    }
 
 }
 
