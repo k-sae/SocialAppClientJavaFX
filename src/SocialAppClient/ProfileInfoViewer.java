@@ -1,7 +1,6 @@
 package SocialAppClient;
 
 import SocialAppGeneral.Command;
-import SocialAppGeneral.LoggedUser;
 import SocialAppGeneral.Relations;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
@@ -24,64 +23,43 @@ public class ProfileInfoViewer extends InfoViewer {
     @Override
     public void setButtons() {
 
-        if(MainWindow.id.equals(id)){
+        if (MainWindow.id.equals(id)) {
 
             Edit.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;");
             Edit.setOnMouseEntered(event -> Edit.setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff;"));
             Edit.setOnMouseExited(event -> Edit.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;"));
 
             getChildren().add(Edit);
-        }else {
-            Command command = new Command();
-            command.setKeyWord(LoggedUser.GET_RELATION_STATUS);
-            command.setSharableObject(id);
-            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+        } else {
+            MainWindow.clientLoggedUser.new GetStatus(id) {
                 @Override
-                void analyze(Command cmd) {
-                    String s = cmd.getObjectStr();
-                    System.out.println(s);
+                void onFinish(String s) {
                     Platform.runLater(() -> {
-                        if(s.equals(Relations.NOT_FRIEND.toString()))
-                        {
+                        if (s.equals(Relations.NOT_FRIEND.toString())) {
                             addAddFriendButton();
-                        }
-                        else if(s.equals(Relations.FRIEND_REQ.toString()))
-                        {
+                        } else if (s.equals(Relations.FRIEND_REQ.toString())) {
 
                             addConfirmationButton();
                             addDeclineButton();
-                        }
-                        else if(s.equals(Relations.FRIEND.toString()))
-                        {
+                        } else if (s.equals(Relations.FRIEND.toString())) {
                             addRemoveFriendButton();
-                        }
-                        else if(s.equals(Relations.PENDING.toString()))
-                        {
+                        } else if (s.equals(Relations.PENDING.toString())) {
                             addCancelRequestButton();
                         }
-
                     });
-
                 }
-            };
-            CommandsExecutor.getInstance().add(commandRequest);
 
+            };
         }
     }
     private void addAddFriendButton()
     {
         createButton("Add Friend");
-        RelationBTN.setOnAction(e->{
-            Command command = initialize();
-            command.setKeyWord(LoggedUser.ADD_FRIEND);
-            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
-                @Override
-                void analyze(Command commandFromServer) {
-                    Platform.runLater(() -> MainWindow.navigateTo(new ProfilePage(id)));
-
-                }
-            };
-            CommandsExecutor.getInstance().add(commandRequest);
+        RelationBTN.setOnAction(e-> MainWindow.clientLoggedUser.new addFriend(id) {
+            @Override
+            void onFinish(Command cmd) {
+                Platform.runLater(() -> Main.refresh(MainWindow.id,new ProfilePage(id)));
+            }
         });
         getChildren().add(RelationBTN);
     }
@@ -95,71 +73,46 @@ public class ProfileInfoViewer extends InfoViewer {
     private void addConfirmationButton()
     {
         createButton("Accept");
-        RelationBTN.setOnAction(e->{
-            Command command = initialize();
-            command.setKeyWord(LoggedUser.ACCEPT_FRIEND);
-            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
-                @Override
-                void analyze(Command commandFromServer) {
-                    Platform.runLater(() -> Main.refresh(MainWindow.id,new ProfilePage(id)));
-                }
-            };
-            CommandsExecutor.getInstance().add(commandRequest);
+        RelationBTN.setOnAction(e-> MainWindow.clientLoggedUser.new AcceptFriendReq(id) {
+            @Override
+            void onFinish(Command cmd) {
+                Platform.runLater(() -> Main.refresh(MainWindow.id,new ProfilePage(id)));
+            }
         });
         getChildren().add(RelationBTN);
     }
     private void addRemoveFriendButton()
     {
         createButton("Remove Friend");
-        RelationBTN.setOnAction(e->{
-            Command command = initialize();
-            command.setKeyWord(LoggedUser.REMOVE_FRIEND);
-            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+            RelationBTN.setOnAction(e-> MainWindow.clientLoggedUser.new RemoveFriend(id) {
                 @Override
-                void analyze(Command commandFromServer) {
+                void onFinish(Command cmd) {
                     Platform.runLater(() -> Main.refresh(MainWindow.id,new ProfilePage(id)));
                 }
-            };
-            CommandsExecutor.getInstance().add(commandRequest);
-        });
+            });
         getChildren().add(RelationBTN);
     }
     private void addCancelRequestButton()
     {
         createButton("Cancel Request");
-        RelationBTN.setOnAction(e->{
-            Command command = initialize();
-            command.setKeyWord(LoggedUser.CANCEL_FRIEND_REQ);
-            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
-                @Override
-                void analyze(Command commandFromServer) {
-                    Platform.runLater(() -> MainWindow.navigateTo(new ProfilePage(id)));
-                }
-            };
-            CommandsExecutor.getInstance().add(commandRequest);
+        RelationBTN.setOnAction(e-> MainWindow.clientLoggedUser.new CancelFriendReq(id) {
+            @Override
+            void onFinish(Command cmd) {
+                Platform.runLater(() ->  MainWindow.navigateTo(new ProfilePage(id)));
+            }
         });
         getChildren().add(RelationBTN);
     }
     private void addDeclineButton()
     {
         createButton("Decline");
-        RelationBTN.setOnAction(e->{
-            Command command = initialize();
-            command.setKeyWord(LoggedUser.DECLINE_FRIEND);
-            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
-                @Override
-                void analyze(Command commandFromServer) {
-                    Platform.runLater(() -> MainWindow.navigateTo(new ProfilePage(id)));
-                }
-            };
-            CommandsExecutor.getInstance().add(commandRequest);
+        RelationBTN.setOnAction(e-> MainWindow.clientLoggedUser.new DeclineFriendReq(id) {
+            @Override
+            void onFinish(Command cmd) {
+                Platform.runLater(() ->  MainWindow.navigateTo(new ProfilePage(id)));
+            }
         });
         getChildren().add(RelationBTN);
     }
-    private Command initialize()
-    {
-        Command command = new Command();
-        command.setSharableObject(id);
-        return command;
-    }
+
 }

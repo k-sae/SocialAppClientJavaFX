@@ -1,7 +1,8 @@
 package SocialAppClient;
 
-import SocialAppGeneral.*;
+import SocialAppGeneral.Command;
 import SocialAppGeneral.SocialArrayList;
+import SocialAppGeneral.UserInfo;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,9 +15,6 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-
-import java.util.ArrayList;
-import java.util.Objects;
 
 import static javafx.scene.layout.GridPane.setColumnSpan;
 import static javafx.scene.layout.GridPane.setConstraints;
@@ -38,20 +36,16 @@ public class NavBar extends HBox {
     //moheim
     private void requestServerFriendRequests()
     {
-        Command command = new Command();
-        command.setKeyWord(LoggedUser.FETCH_REQS);
-        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+        MainWindow.clientLoggedUser.new GetFriendReq() {
             @Override
-            void analyze(Command cmd) {
+            void onFinish(Command cmd) {
                 SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(cmd.getObjectStr());
                 for (Object o: socialArrayList.getItems()
-                     ) {
+                        ) {
                     addFriendRequest((String)o);
                 }
-
             }
         };
-        CommandsExecutor.getInstance().add(commandRequest);
     }
     private void setLayout()
     {
