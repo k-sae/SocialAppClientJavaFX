@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by mosta on 27-Nov-16.
  */
-public class LoggedUser extends AppUser {
+public abstract class LoggedUser extends AppUser {
     public static final String ADD_FRIEND="add_Friend";
     public static final String FRIEND_REQ = "friend_req";
     public static final String FETCH_REQS = "fetch_reqs";
@@ -16,13 +16,27 @@ public class LoggedUser extends AppUser {
     public static final String CANCEL_FRIEND_REQ = "cancel_friend_req";
     //TO DO
     // may change later check with kareem
-    ArrayList<Integer> friends;
-    ArrayList<Integer> Requests;
-    ArrayList<String> Notifactions;
+    protected ArrayList<Integer> friends;
+    protected ArrayList<Integer> requests;
+    protected ArrayList<String> notifactions;
+    protected ArrayList<String> groups;
     public LoggedUser() {
         friends = new ArrayList<>();
-        Requests = new ArrayList<>();
-        Notifactions = new ArrayList<>();
+        requests = new ArrayList<>();
+        notifactions = new ArrayList<>();
+        groups = new ArrayList<>();
     }
-
+    public abstract void createGroup();
+    public abstract void joinGroup();
+    public abstract void exitGroup();
+    public abstract void addFriend();
+    public abstract void removeFriend();
+    public abstract void acceptFriend();
+    public abstract void declineFriend();
+    public abstract void cancelFriendReq();
+    public abstract void setFriends();
+    public abstract void getFriends();
+    public abstract void getRequests();
+    public abstract void getNotfications();
+    public abstract void getgroups();
 }
