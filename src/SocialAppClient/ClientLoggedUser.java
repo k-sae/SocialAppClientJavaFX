@@ -28,6 +28,7 @@ public class ClientLoggedUser extends LoggedUser {
         Group group=new Group(check);
         group.setAdminId(Long.parseLong(MainWindow.id));
         command.setSharableObject(group.convertToJsonString());
+
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
             @Override
             void analyze(Command cmd) {
