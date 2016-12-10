@@ -82,7 +82,7 @@ public class MainWindow extends GridPane {
         ScrollPane scrollPane = new ScrollPane(friendList);
         scrollPane.setFitToWidth(true);
         scrollPane.setStyle("-fx-background: #ffffff;");
-        scrollPane.getContent().setStyle("-fx-background-color: #ffffff;");
+        scrollPane.getContent().setStyle(Styles.WHITE_BACKGROUND);
         GridPane.setConstraints(scrollPane,1,1);
 
         getChildren().addAll(navBar,mainFrame,scrollPane);

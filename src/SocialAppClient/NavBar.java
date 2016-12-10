@@ -24,7 +24,7 @@ import static javafx.scene.layout.GridPane.setConstraints;
 /**
  * Created by kemo on 09/11/2016.
  */
-public class NavBar extends HBox {
+public class NavBar extends HBox{
 
     public NavBar(String id)
     {
@@ -147,9 +147,9 @@ public class NavBar extends HBox {
 
         Button homeBtn = new Button("Home");
 
-        homeBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;");
-        homeBtn.setOnMouseEntered(event -> homeBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;"));
-        homeBtn.setOnMouseExited(event -> homeBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;"));
+        homeBtn.setStyle(Styles.NAVBAR_BUTTON);
+        homeBtn.setOnMouseEntered(event -> homeBtn.setStyle(Styles.NAVBAR_BUTTON_HOVER));
+        homeBtn.setOnMouseExited(event -> homeBtn.setStyle(Styles.NAVBAR_BUTTON));
 
 
         homeBtn.setOnMouseClicked(event -> {
@@ -159,9 +159,9 @@ public class NavBar extends HBox {
 
         Button profileBtn = new Button("Profile");
 
-        profileBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;");
-        profileBtn.setOnMouseEntered(event -> profileBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;"));
-        profileBtn.setOnMouseExited(event -> profileBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;"));
+        profileBtn.setStyle(Styles.NAVBAR_BUTTON);
+        profileBtn.setOnMouseEntered(event -> profileBtn.setStyle(Styles.NAVBAR_BUTTON_HOVER));
+        profileBtn.setOnMouseExited(event -> profileBtn.setStyle(Styles.NAVBAR_BUTTON));
 
         profileBtn.setOnMouseClicked(event -> {
             MainWindow.navigateTo(new ProfilePage(MainWindow.id));
@@ -170,9 +170,9 @@ public class NavBar extends HBox {
 /*
         Button groupsBtn = new Button("Groups");
 
-        groupsBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #0000cc; -fx-text-fill: #eeeeee;");
-        groupsBtn.setOnMouseEntered(event -> groupsBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;"));
-        groupsBtn.setOnMouseExited(event -> groupsBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #0000cc; -fx-text-fill: #eeeeee;"));
+        groupsBtn.setStyle(Styles.NAVBAR_BUTTON);
+        groupsBtn.setOnMouseEntered(event -> groupsBtn.setStyle(Styles.NAVBAR_BUTTON_HOVER));
+        groupsBtn.setOnMouseExited(event -> groupsBtn.setStyle(Styles.NAVBAR_BUTTON));
 
         groupsBtn.setOnMouseClicked(event -> {
             ((MainWindow)getParent()).navigateTo(new GroupPage());
@@ -181,9 +181,9 @@ public class NavBar extends HBox {
 
         Button logoutBtn = new Button("Logout");
 
-        logoutBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;");
-        logoutBtn.setOnMouseEntered(event -> logoutBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #999999; -fx-text-fill: #000000;"));
-        logoutBtn.setOnMouseExited(event -> logoutBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;"));
+        logoutBtn.setStyle(Styles.NAVBAR_BUTTON);
+        logoutBtn.setOnMouseEntered(event -> logoutBtn.setStyle(Styles.NAVBAR_BUTTON_HOVER));
+        logoutBtn.setOnMouseExited(event -> logoutBtn.setStyle(Styles.NAVBAR_BUTTON));
 
         logoutBtn.setOnMouseClicked(event -> {
             getScene().getWindow().hide();

@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 /**
  * Created by billy on 2016-11-26.
  */
-public class ProfileInfoViewer extends InfoViewer {
+public class ProfileInfoViewer extends InfoViewer{
     private String id;
     protected Button RelationBTN;
     protected Button Edit;
@@ -19,16 +19,15 @@ public class ProfileInfoViewer extends InfoViewer {
         Edit = new Button("Edit");
         this.id = id;
 
-
     }
     @Override
     public void setButtons() {
 
         if(MainWindow.id.equals(id)){
 
-            Edit.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;");
-            Edit.setOnMouseEntered(event -> Edit.setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff;"));
-            Edit.setOnMouseExited(event -> Edit.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;"));
+            Edit.setStyle(Styles.NAV_BUTTON);
+            Edit.setOnMouseEntered(event -> Edit.setStyle(Styles.NAV_BUTTON_HOVER));
+            Edit.setOnMouseExited(event -> Edit.setStyle(Styles.NAV_BUTTON));
 
             getChildren().add(Edit);
         }else {
@@ -88,9 +87,9 @@ public class ProfileInfoViewer extends InfoViewer {
     private void createButton(String content)
     {
         RelationBTN = new Button(content);
-        RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;");
-        RelationBTN.setOnMouseEntered(event -> RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff;"));
-        RelationBTN.setOnMouseExited(event -> RelationBTN.setStyle("-fx-font: 20 arial; -fx-background-color: #eeeeee;"));
+        RelationBTN.setStyle(Styles.NAV_BUTTON);
+        RelationBTN.setOnMouseEntered(event -> RelationBTN.setStyle(Styles.NAV_BUTTON_HOVER));
+        RelationBTN.setOnMouseExited(event -> RelationBTN.setStyle(Styles.NAV_BUTTON));
     }
     private void addConfirmationButton()
     {
