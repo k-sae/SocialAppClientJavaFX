@@ -62,9 +62,9 @@ class EditInfo extends GridPane{
         profilePicture.setClip(new Circle(profilePicture.getFitWidth()/2,profilePicture.getFitWidth()/2,profilePicture.getFitWidth()/2));
 
         Button uploadImg = new Button("Change Photo");
-        uploadImg.setStyle("-fx-font: 12 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;");
-        uploadImg.setOnMouseEntered(event -> uploadImg.setStyle("-fx-font: 12 arial; -fx-background-color: #999999; -fx-text-fill: #000000;"));
-        uploadImg.setOnMouseExited(event -> uploadImg.setStyle("-fx-font: 12 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;"));
+        uploadImg.setStyle(Styles.BLACK_BUTTON);
+        uploadImg.setOnMouseEntered(event -> uploadImg.setStyle(Styles.BLACK_BUTTON_HOVER));
+        uploadImg.setOnMouseExited(event -> uploadImg.setStyle(Styles.BLACK_BUTTON));
         final BufferedImage[] bufferedImage = {null};
         uploadImg.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
@@ -85,9 +85,9 @@ class EditInfo extends GridPane{
         });
 
         Button removePP = new Button("Remove");
-        removePP.setStyle("-fx-font: 12 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;");
-        removePP.setOnMouseEntered(event -> removePP.setStyle("-fx-font: 12 arial; -fx-background-color: #999999; -fx-text-fill: #000000;"));
-        removePP.setOnMouseExited(event -> removePP.setStyle("-fx-font: 12 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;"));
+        removePP.setStyle(Styles.BLACK_BUTTON);
+        removePP.setOnMouseEntered(event -> removePP.setStyle(Styles.BLACK_BUTTON_HOVER));
+        removePP.setOnMouseExited(event -> removePP.setStyle(Styles.BLACK_BUTTON));
 
         removePP.setOnAction(event -> {
             userInfo.setProfileImage("default");
@@ -135,9 +135,9 @@ class EditInfo extends GridPane{
             female.setSelected(true);
 
         Button saveBtn = new Button("save");
-        saveBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;");
-        saveBtn.setOnMouseEntered(event -> saveBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #999999; -fx-text-fill: #000000;"));
-        saveBtn.setOnMouseExited(event -> saveBtn.setStyle("-fx-font: 20 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;"));
+        saveBtn.setStyle(Styles.BLACK_BUTTON);
+        saveBtn.setOnMouseEntered(event -> saveBtn.setStyle(Styles.BLACK_BUTTON_HOVER));
+        saveBtn.setOnMouseExited(event -> saveBtn.setStyle(Styles.BLACK_BUTTON));
 
         saveBtn.setOnMouseClicked(event -> {
             UserInfo  userInfo = new UserInfo();

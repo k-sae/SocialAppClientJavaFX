@@ -12,6 +12,7 @@ import javafx.scene.shape.Circle;
  * Created by billy on 2016-12-03.
  */
 public class FriendView extends Label {
+
     String id;
     FriendView(String id)
     {
@@ -41,10 +42,12 @@ public class FriendView extends Label {
         friendImg.setCache(true);
         friendImg.setClip(new Circle(friendImg.getFitWidth()/2,friendImg.getFitWidth()/2,friendImg.getFitWidth()/2));
         setWrapText(true);
+
         setPadding(new Insets(8,11,8,11));
-        setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;");
-        setOnMouseEntered(event -> setStyle("-fx-font: 20 arial; -fx-background-color: #dddddd; -fx-text-fill: #000000;"));
-        setOnMouseExited(event -> setStyle("-fx-font: 20 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;"));
+
+        setStyle(Styles.USER_VIEW);
+        setOnMouseEntered(event -> setStyle(Styles.USER_VIEW_HOVER));
+        setOnMouseExited(event -> setStyle(Styles.USER_VIEW));
         setOnMouseClicked(event -> Platform.runLater(() -> MainWindow.navigateTo(new ProfilePage(id))));
         setText(userInfo.getFullName());
         setGraphic(friendImg);

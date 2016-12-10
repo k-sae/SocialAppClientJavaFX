@@ -24,8 +24,7 @@ public class HomePage extends GridPane {
     {
         this.id = id;
         //setBackground(new Background(new BackgroundFill(Color.web(ClientTheme.BackGround, 1), CornerRadii.EMPTY, Insets.EMPTY)));
-        setBackground(new Background(new BackgroundFill(Color.web("#eeeeee"), CornerRadii.EMPTY, Insets.EMPTY)));
-
+        setStyle(Styles.DEFAULT_BACKGROUND);
         setGridLinesVisible(true);
         setConstraint();
 

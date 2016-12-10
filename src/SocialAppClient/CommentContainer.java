@@ -24,7 +24,6 @@ public class CommentContainer extends VBox{
     public CommentContainer(ArrayList<Comment> comments){
         this.comments = comments;
         commentText = new TextField();
-        commentText.setPromptText("Write a comment...");
         setLayout();
     }
     private void setLayout(){
@@ -32,7 +31,9 @@ public class CommentContainer extends VBox{
         //setAlignment(Pos.TOP_CENTER);
         setSpacing(5);
         setPadding(new Insets(10,0,20,0));
-        setStyle("-fx-background-color: #ffffff;");
+        setStyle(Styles.WHITE_BACKGROUND);
+        commentText.setPromptText("Write a comment...");
+        commentText.setFont(Font.font(14));
 
         for (Comment comment: comments) {
             CommentViewer commentViewer = new CommentViewer(comment);
