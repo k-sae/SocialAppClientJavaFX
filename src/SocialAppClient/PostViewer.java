@@ -54,31 +54,37 @@ public class PostViewer extends VBox{
         edit.getItems().addAll("Edit", "Delete");
 
         edit.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.equals("Edit")) {
-                postText.setEditable(true);
-                postText.requestFocus();
-                postText.setStyle(null);
-                postText.setOnKeyPressed(event -> {
-                    if (event.getCode().equals(KeyCode.ENTER)) {
-                        editpost(postText.getText());
-                        postText.setEditable(false);
-                        postText.setStyle(Styles.WHITE_BACKGROUND);
-                    }
-                });
-            } else if (newValue.equals("Delete")) {
-
-                Command command = new Command();
-                command.setKeyWord(Post.DELETE_POST_USERS);
-                command.setSharableObject(post.convertToJsonString());
-                CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
-                    @Override
-                    void analyze(Command cmd) {
-                        if (cmd.getKeyWord().equals(Post.DELETE_POST_USERS)) {
-
+            try {
+                if (newValue.equals("Edit")) {
+                    postText.setEditable(true);
+                    postText.requestFocus();
+                    postText.setStyle(null);
+                    postText.setOnKeyPressed(event -> {
+                        if (event.getCode().equals(KeyCode.ENTER)) {
+                            editpost(postText.getText());
+                            postText.setEditable(false);
+                            postText.setStyle(Styles.WHITE_BACKGROUND);
+                            edit.setValue(null);
                         }
-                    }
-                };
-                CommandsExecutor.getInstance().add(commandRequest);
+                    });
+                } else if (newValue.equals("Delete")) {
+
+                    Command command = new Command();
+                    command.setKeyWord(Post.DELETE_POST_USERS);
+                    command.setSharableObject(post.convertToJsonString());
+                    CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+                        @Override
+                        void analyze(Command cmd) {
+                            if (cmd.getKeyWord().equals(Post.DELETE_POST_USERS)) {
+
+                            }
+                        }
+                    };
+                    CommandsExecutor.getInstance().add(commandRequest);
+                    edit.setValue(null);
+                }
+            }catch (NullPointerException e){
+
             }
         });
         if(!MainWindow.id.equals(""+post.getOwnerId()))

@@ -35,20 +35,24 @@ public class CommentViewer extends VBox{
         edit.getItems().addAll("Edit","Delete");
 
         edit.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-                if(newValue.equals("Edit")){
+            try {
+                if (newValue.equals("Edit")) {
                     postComments.setEditable(true);
                     postComments.requestFocus();
                     postComments.setStyle(null);
                     postComments.setOnKeyPressed(event -> {
                         if (event.getCode().equals(KeyCode.ENTER)) {
-                            ((CallBack) getParent().getParent()).setCommentCommend(0,postComments.getText(),comment.getCommentId());
+                            ((CallBack) getParent().getParent()).setCommentCommend(0, postComments.getText(), comment.getCommentId());
                             postComments.setEditable(false);
                             postComments.setStyle(Styles.WHITE_BACKGROUND);
+                            edit.setValue(null);
                         }
                     });
-                }else if(newValue.equals("Delete")){
-                    ((CallBack) getParent().getParent()).setCommentCommend(-1,postComments.getText(),comment.getCommentId());
+                } else if (newValue.equals("Delete")) {
+                    ((CallBack) getParent().getParent()).setCommentCommend(-1, postComments.getText(), comment.getCommentId());
+                    edit.setValue(null);
                 }
+            }catch (NullPointerException e){}
         });
 
         if(!MainWindow.id.equals(""+comment.getOwnerID()))
