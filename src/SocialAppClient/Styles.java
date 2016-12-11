@@ -21,10 +21,12 @@ public interface Styles {
     String BLACK_BUTTON = "-fx-font: 15 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;";
     String BLACK_BUTTON_HOVER = "-fx-font: 15 arial; -fx-background-color: #bbbbbb; -fx-text-fill: #000000;";
 
-    String USER_VIEW = "-fx-font: 20 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;";
+    String USER_VIEW = "-fx-font: 20 arial; -fx-background-color: transparent; -fx-text-fill: #000000;";
     String USER_VIEW_HOVER = "-fx-font: 20 arial; -fx-background-color: #dddddd; -fx-text-fill: #000000;";
 
     String NAV_BUTTON = "-fx-font: 20 arial; -fx-background-color: #eeeeee;";
     String NAV_BUTTON_HOVER = "-fx-font: 20 arial; -fx-background-color: #ffffff;";
 
+    String MSG_SENDER = "-fx-font:18 arial; -fx-background-color: #eeeeee; -fx-background-radius: 15 0 15 15";
+    String MSG_RECEIVER = "-fx-font:18 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee; -fx-background-radius: 0 15 15 15;";
 }

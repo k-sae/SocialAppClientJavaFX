@@ -49,6 +49,7 @@ public class ProfileInfoViewer extends InfoViewer{
                 }
 
             };
+            startChatButton();
         }
     }
     private void addAddFriendButton()
@@ -112,6 +113,15 @@ public class ProfileInfoViewer extends InfoViewer{
             }
         });
         getChildren().add(RelationBTN);
+    }
+    private void startChatButton()
+    {
+        Button chatBtn = new Button("Send Message");
+        chatBtn.setStyle(Styles.NAV_BUTTON);
+        chatBtn.setOnMouseEntered(event -> chatBtn.setStyle(Styles.NAV_BUTTON_HOVER));
+        chatBtn.setOnMouseExited(event -> chatBtn.setStyle(Styles.NAV_BUTTON));
+        chatBtn.setOnMouseClicked(event -> new ChatWindow(id));
+        getChildren().add(chatBtn);
     }
 
 }
