@@ -190,7 +190,16 @@ public class NavBar extends HBox{
         logoutBtn.setOnMouseClicked(event -> {
             getScene().getWindow().hide();
         });
-        getChildren().addAll(homeBtn, profileBtn, /*groupsBtn,*/ logoutBtn);
+
+        Button approveBtn = new Button("Approves");
+        approveBtn.setStyle(Styles.NAVBAR_BUTTON);
+        approveBtn.setOnMouseEntered(event -> approveBtn.setStyle(Styles.NAVBAR_BUTTON_HOVER));
+        approveBtn.setOnMouseExited(event -> approveBtn.setStyle(Styles.NAVBAR_BUTTON));
+
+        approveBtn.setOnMouseClicked(event -> {
+            Platform.runLater(() -> MainWindow.navigateTo(new AdminApprovalPage()));
+        });
+        getChildren().addAll(homeBtn, profileBtn, /*groupsBtn,*/ logoutBtn, approveBtn);
     }
     //////////////////////////start of my area
 
