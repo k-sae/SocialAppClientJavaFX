@@ -190,7 +190,7 @@ public class NavBar extends HBox{
         logoutBtn.setOnMouseClicked(event -> {
             getScene().getWindow().hide();
         });
-
+        //TODO: hazem
         Button approveBtn = new Button("Approves");
         approveBtn.setStyle(Styles.NAVBAR_BUTTON);
         approveBtn.setOnMouseEntered(event -> approveBtn.setStyle(Styles.NAVBAR_BUTTON_HOVER));
