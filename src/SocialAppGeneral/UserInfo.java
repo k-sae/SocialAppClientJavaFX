@@ -8,7 +8,7 @@ import com.google.gson.Gson;
  */
 //created it for debugging
 public class UserInfo implements Shareable {
-
+    private Boolean adminship;
     private String profileImage;
     private String fullName;
     private String birthDate;
@@ -24,7 +24,9 @@ public class UserInfo implements Shareable {
         this.gender = "";
         profileImage = "";
     }
+    public void setAdminShip(Boolean adminship){this.adminship=adminship;}
 
+    public boolean getAdminShip(){return adminship;}
     public String getFullName() {
         return fullName;
     }
