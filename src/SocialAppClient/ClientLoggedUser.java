@@ -1,13 +1,12 @@
 package SocialAppClient;
 
-import SocialAppGeneral.Command;
-import SocialAppGeneral.Group;
+import SocialAppGeneral.*;
 
 import SocialAppGeneral.Command;
 
-import SocialAppGeneral.LoggedUser;
 import javafx.application.Platform;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 /**
@@ -30,6 +29,8 @@ public class ClientLoggedUser extends LoggedUser {
         command.setSharableObject(group.convertToJsonString());
 
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+
+
             @Override
             void analyze(Command cmd) {
                 if (cmd.getKeyWord().equals(Group.CREATE_GROUP)) {
@@ -38,6 +39,10 @@ public class ClientLoggedUser extends LoggedUser {
                     //TODO #Fix
                     //fix error on threading
                     groups.add(""+group1.getId());
+                    SocialArrayList socialArrayList = new SocialArrayList();
+                    socialArrayList.getItems().addAll(groups);
+                    //inorder to recieve in server
+                 //   @SuppressWarnings("unchecked") ArrayList<String>s=(ArrayList<String>)(ArrayList<?>) socialArrayList.getItems();
                     Platform.runLater(() -> MainWindow.navigateTo(new GroupPage(group1)));
 
                 }

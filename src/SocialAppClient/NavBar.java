@@ -76,7 +76,6 @@ public class NavBar extends HBox{
         ImageView searchImg = new ImageView(new Image("file:Resources/search.png"));
         searchImg.setFitWidth(17);
         searchImg.setPreserveRatio(true);
-        SearchMenu = new Menu("");
         Button searchBtn = new Button("", searchImg);
         searchBtn.setOnAction(e->{
 
@@ -91,7 +90,11 @@ public class NavBar extends HBox{
                     Search.getItems().clear();
                     for (Object o: socialArrayList.getItems()) {
                         Search.getItems().addAll(new FriendView((String)o));
-                        SearchMenu.getItems().addAll(new MenuItem((String)o));
+                        Search.setOnAction(e->{
+                            Platform.runLater(() -> MainWindow.navigateTo(new ProfilePage((String)o)));
+                            Search.setPromptText("Search...");
+                        });
+                       // SearchMenu.getItems().addAll(new MenuItem((String)o));
                      //   addFriendRequest((String)o);
                     }
                 }
@@ -129,7 +132,7 @@ public class NavBar extends HBox{
         notification.getItems().addAll(new MenuItem("Belal liked your photo"));
 
         /** Add a menu bar to contain all menus */
-        MenuBar notificationsBar = new MenuBar(SearchMenu,friendRequests, msg, notification);
+        MenuBar notificationsBar = new MenuBar(friendRequests, msg, notification);
         notificationsBar.setBackground(null);
         notificationsBar.setPadding(new Insets(0,0,0,10));
 
@@ -189,7 +192,6 @@ public class NavBar extends HBox{
     private Menu friendRequests;
     private Menu notification;
     private Menu msg;
-    private Menu SearchMenu;
     public void addFriendRequest(String... ids)
     {
         for (String id: ids

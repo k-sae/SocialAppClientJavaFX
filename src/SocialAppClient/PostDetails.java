@@ -45,12 +45,12 @@ public class PostDetails extends VBox implements CallBack{
         post1.setPostPos(post.getPostPos());
         post1.addcomment(comment);
         Command command = new Command();
-        command.setKeyWord(Post.EDIT_POST_USERS);
+        command.setKeyWord(Post.EDITE_POST_USERS);
         command.setSharableObject(post1.convertToJsonString());
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
             @Override
             void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.EDIT_POST_USERS)) {
+                if (cmd.getKeyWord().equals(Post.EDITE_POST_USERS)) {
 
                 }
             }

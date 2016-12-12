@@ -234,12 +234,12 @@ public class PostViewer extends VBox{
         post1.setPostPos(post.getPostPos());
         post1.addlike(like);
         Command command = new Command();
-        command.setKeyWord(Post.EDIT_POST_USERS);
+        command.setKeyWord(Post.EDITE_POST_USERS);
         command.setSharableObject(post1.convertToJsonString());
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
             @Override
             void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.EDIT_POST_USERS)) {
+                if (cmd.getKeyWord().equals(Post.EDITE_POST_USERS)) {
                     int check = checkID();
                        boolean b= Boolean.parseBoolean(cmd.getObjectStr());
                     if (b) {
@@ -283,12 +283,12 @@ public class PostViewer extends VBox{
         post1.setPostPos(post.getPostPos());
         post1.setContent(text);
         Command command = new Command();
-        command.setKeyWord(Post.EDIT_POST_USERS);
+        command.setKeyWord(Post.EDITE_POST_USERS);
         command.setSharableObject(post1.convertToJsonString());
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
             @Override
             void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.EDIT_POST_USERS)) {
+                if (cmd.getKeyWord().equals(Post.EDITE_POST_USERS)) {
 
                     boolean b = Boolean.parseBoolean(cmd.getObjectStr());
                     if (!b) {
