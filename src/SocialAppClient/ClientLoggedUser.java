@@ -2,6 +2,7 @@ package SocialAppClient;
 
 import SocialAppGeneral.Command;
 import SocialAppGeneral.LoggedUser;
+import SocialAppGeneral.Post;
 
 /**
  * Created by kemo on 10/12/2016.
@@ -172,5 +173,42 @@ public class ClientLoggedUser extends LoggedUser {
         Command command = new Command();
         command.setSharableObject(id);
         return command;
+    }
+
+    public void savePostUser(String text){
+        Post post=new Post();
+        post.setOwnerId(Long.parseLong(MainWindow.id));
+        post.setContent(text);
+        post.setPostPos(Long.parseLong(MainWindow.id));
+        Command command = new Command();
+        command.setKeyWord(Post.SAVE_POST_USER);
+        command.setSharableObject(post.convertToJsonString());
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+            @Override
+            void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Post.SAVE_POST_USER)) {
+
+                }
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
+    }
+    public void savePostGroup(String text, String id){
+        Post post=new Post();
+        post.setOwnerId(Long.parseLong(MainWindow.id));
+        post.setContent(text);
+        post.setPostPos(Long.parseLong(id));
+        Command command = new Command();
+        command.setKeyWord(Post.SAVE_POST_GROUP);
+        command.setSharableObject(post.convertToJsonString());
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+            @Override
+            void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Post.SAVE_POST_GROUP)) {
+
+                }
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
     }
 }

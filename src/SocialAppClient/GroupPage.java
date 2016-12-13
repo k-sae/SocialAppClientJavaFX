@@ -1,7 +1,7 @@
 package SocialAppClient;
 
-import SocialAppGeneral.Command;
-import SocialAppGeneral.Group;
+import SocialAppGeneral.*;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
@@ -74,6 +74,29 @@ public class GroupPage extends GridPane {
 
         Content content = new Content();
 
+        ArraylistPost posts =new ArraylistPost();
+        posts.setOwnerPosts(group.getId());
+        posts.setNumberpost(1);
+        Command command = new Command();
+        command.setKeyWord(Post.LOAD_POST_GROUPS);
+        command.setSharableObject(posts.convertToJsonString());
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+            @Override
+            void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Post.LOAD_POST_GROUPS)){
+                    ArraylistPost posts = (ArraylistPost.fromJsonString(cmd.getObjectStr()));
+                    if(!posts.getPosts().isEmpty()) {
+                        Platform.runLater(() -> content.postContainer.addPosts(posts));
+                    }
+
+                }
+            }
+        };
+
+        CommandsExecutor.getInstance().add(commandRequest);
+
+
+        content.postWriter.SavePost(Relations.GROUP.toString(), ""+group.getId());
         add(content,1,0);
 
         /**THE SCROLL BAR KEEPS TRACK THE CONTENT*/

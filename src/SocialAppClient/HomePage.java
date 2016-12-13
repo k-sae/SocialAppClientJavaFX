@@ -117,7 +117,7 @@ public class HomePage extends GridPane {
                                 Group group = Group.fromJsonString(cmd.getObjectStr());
                                 //TODO #Fix
                                 //fix error on threading
-                                Platform.runLater(() -> MainWindow.navigateTo(new GroupPage()));
+                                Platform.runLater(() -> MainWindow.navigateTo(new GroupPage(group)));
 
                             }
                         }
@@ -156,7 +156,7 @@ public class HomePage extends GridPane {
 */
         Content content = new Content();
         //to add post
-        content.postWriter.SavePost(id);
+        content.postWriter.SavePost(Relations.USERS.toString(), id);
         add(content,1,0);
         ScrollPane sp = new ScrollPane(content);
         sp.setFitToWidth(true);

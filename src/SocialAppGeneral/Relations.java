@@ -7,5 +7,7 @@ public enum Relations {
     FRIEND,
     NOT_FRIEND,
     PENDING,
-    FRIEND_REQ
+    FRIEND_REQ,
+    USERS,
+    GROUP
 }
