@@ -199,7 +199,11 @@ public class PostViewer extends VBox{
         setMaxWidth(450);
         setMargin(postText, new Insets(0, 30, 0, 30));
         //setMargin(img, new Insets(10,0,20,0));
-        getChildren().addAll(new HBox(new FriendView("" + post.getOwnerId()), new Label(post.getDate().toString()), edit), postText, /*img,*/ new Separator(), buttons);
+        HBox h = new HBox(new Label(post.getDate().toString()), edit);
+        h.setAlignment(Pos.TOP_RIGHT);
+        HBox hBox = new HBox(new FriendView("" + post.getOwnerId()), h);
+        hBox.setHgrow(h, Priority.ALWAYS);
+        getChildren().addAll(hBox, postText, /*img,*/ new Separator(), buttons);
 
     }
 

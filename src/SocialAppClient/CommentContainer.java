@@ -27,13 +27,9 @@ public class CommentContainer extends VBox{
         setLayout();
     }
     private void setLayout(){
-
-        //setAlignment(Pos.TOP_CENTER);
-        setSpacing(5);
-        setPadding(new Insets(10,0,20,0));
-        setStyle(Styles.WHITE_BACKGROUND);
+        setPadding(new Insets(0,0,10,0));
+        setStyle(Styles.DEFAULT_BACKGROUND);
         commentText.setPromptText("Write a comment...");
-        commentText.setFont(Font.font(14));
 
         for (Comment comment: comments) {
             CommentViewer commentViewer = new CommentViewer(comment);
