@@ -1,12 +1,8 @@
 package SocialAppClient;
 
-import SocialAppGeneral.Command;
+import SocialAppGeneral.*;
 import SocialAppGeneral.LoggedUser;
-import SocialAppGeneral.Post;
 import SocialAppGeneral.LoggedUser;
-import SocialAppGeneral.Group;
-import SocialAppGeneral.LoggedUser;
-import SocialAppGeneral.SocialArrayList;
 import javafx.application.Platform;
 
 import java.util.ArrayList;
@@ -269,6 +265,146 @@ public class ClientLoggedUser extends LoggedUser {
             void analyze(Command cmd) {
                 if (cmd.getKeyWord().equals(Post.SAVE_POST_GROUP)) {
 
+                }
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
+    }
+
+    public void editPostUser(long postid, long postpos, String text) {
+        Post post1 = new Post();
+        post1.setId(postid);
+        post1.setPostPos(postpos);
+        post1.setContent(text);
+        Command command = new Command();
+        command.setKeyWord(Post.EDITE_POST_USERS);
+        command.setSharableObject(post1.convertToJsonString());
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+            @Override
+            void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Post.EDITE_POST_USERS)) {
+
+                    Post b = Post.fromJsonString(cmd.getObjectStr());
+                    System.out.println(cmd.getObjectStr()+"khaled");
+                    if (b.getId() ==0) {
+                        Platform.runLater(() -> Utility.errorWindow("please refresh window"));
+
+
+                    }
+                }
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
+    }
+    public void editPostGroup(long postid, long postpos, String text) {
+        Post post1 = new Post();
+        post1.setId(postid);
+        post1.setPostPos(postpos);
+        post1.setContent(text);
+        Command command = new Command();
+        command.setKeyWord(Post.EDITE_POST_GROUPS);
+        command.setSharableObject(post1.convertToJsonString());
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+            @Override
+            void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Post.EDITE_POST_GROUPS)) {
+
+                    Post b = Post.fromJsonString(cmd.getObjectStr());
+                    System.out.println(cmd.getObjectStr()+"khaled");
+                    if (b.getId() ==0) {
+                        Platform.runLater(() -> Utility.errorWindow("please refresh window"));
+
+
+                    }
+                }
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
+    }
+
+    public void deletePostUser(Post post){
+        Command command = new Command();
+        command.setKeyWord(Post.DELETE_POST_USERS);
+        command.setSharableObject(post.convertToJsonString());
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+            @Override
+            void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Post.DELETE_POST_USERS)) {
+
+                }
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
+    }
+    public void deletePostGroup(Post post){
+        Command command = new Command();
+        command.setKeyWord(Post.DELETE_POST_GROUPS);
+        command.setSharableObject(post.convertToJsonString());
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+            @Override
+            void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Post.DELETE_POST_GROUPS)) {
+
+                }
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
+    }
+
+    public void setCommentCommendUser(int show, String text, long commentid, long postid, long postPos){
+        Comment comment=new Comment();
+        comment.setCommentcontent(text);
+        comment.setOwnerID(Long.parseLong(MainWindow.id));
+        comment.setShow(show);
+        comment.setCommentId(commentid);
+        Post post1 = new Post();
+        post1.setId(postid);
+        post1.setPostPos(postPos);
+        post1.addcomment(comment);
+        Command command = new Command();
+        command.setKeyWord(Post.EDITE_POST_USERS);
+        command.setSharableObject(post1.convertToJsonString());
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+            @Override
+            void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Post.EDITE_POST_USERS)) {
+                    Post b= Post.fromJsonString(cmd.getObjectStr());
+                    if(b.getId() !=0) {
+                        //Platform.runLater(() -> ((CallBack) getParent()).showPostDetails(b));
+                    }
+                    else{
+                        Platform.runLater(() ->  Utility.errorWindow("please refresh window"));
+                    }
+                }
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
+    }
+
+    public void setCommentCommendGroup(int show, String text, long commentid, long postid, long postPos){
+        Comment comment=new Comment();
+        comment.setCommentcontent(text);
+        comment.setOwnerID(Long.parseLong(MainWindow.id));
+        comment.setShow(show);
+        comment.setCommentId(commentid);
+        Post post1 = new Post();
+        post1.setId(postid);
+        post1.setPostPos(postPos);
+        post1.addcomment(comment);
+        Command command = new Command();
+        command.setKeyWord(Post.EDITE_POST_GROUPS);
+        command.setSharableObject(post1.convertToJsonString());
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+            @Override
+            void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Post.EDITE_POST_GROUPS)) {
+                    Post b= Post.fromJsonString(cmd.getObjectStr());
+                    if(b.getId() !=0) {
+                        //Platform.runLater(() -> ((CallBack) getParent()).showPostDetails(b));
+                    }
+                    else{
+                        Platform.runLater(() ->  Utility.errorWindow("please refresh window"));
+                    }
                 }
             }
         };

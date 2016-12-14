@@ -9,5 +9,10 @@ public enum Relations {
     PENDING,
     FRIEND_REQ,
     USERS,
-    GROUP
+    GROUP,
+    PROFILE_PAGE,
+    HOME_PAGE,
+    ADD,
+    EDIT,
+    DELETE
 }

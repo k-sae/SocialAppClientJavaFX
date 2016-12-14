@@ -118,7 +118,7 @@ public class HomePage extends GridPane {
 
                 }});
 
-        Content content = new Content();
+        Content content = new Content(Relations.HOME_PAGE.toString());
         //to add post
         content.postWriter.SavePost(Relations.USERS.toString(), id);
         add(content,1,0);

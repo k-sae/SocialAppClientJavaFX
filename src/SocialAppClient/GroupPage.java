@@ -65,7 +65,7 @@ public class GroupPage extends GridPane {
 
         add(Info,0,0);
 
-        Content content = new Content();
+        Content content = new Content(Relations.GROUP.toString());
 
         ArraylistPost posts =new ArraylistPost();
         posts.setOwnerPosts(group.getId());

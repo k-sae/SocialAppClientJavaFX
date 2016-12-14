@@ -1,9 +1,6 @@
 package SocialAppClient;
 
-import SocialAppGeneral.Command;
-import SocialAppGeneral.Comment;
-import SocialAppGeneral.Like;
-import SocialAppGeneral.Post;
+import SocialAppGeneral.*;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -27,9 +24,11 @@ public class PostViewer extends VBox{
     protected Button comment;
     protected Button share;
     private Post post;
+    private String relation;
 
-    public PostViewer(Post post) {
+    public PostViewer(String relation, Post post) {
         this.post = post;
+        this.relation = relation;
         System.out.println(post.convertToJsonString());
         setLayout();
     }
@@ -62,26 +61,22 @@ public class PostViewer extends VBox{
                     postText.setStyle(null);
                     postText.setOnKeyPressed(event -> {
                         if (event.getCode().equals(KeyCode.ENTER)) {
-                            editpost(postText.getText());
                             postText.setEditable(false);
                             postText.setStyle(Styles.WHITE_BACKGROUND);
+                            if(relation.equals(Relations.PROFILE_PAGE.toString())) {
+                                MainWindow.clientLoggedUser.editPostUser(post.getId(), post.getPostPos(), postText.getText());
+                            }else if(relation.equals(Relations.GROUP.toString())){
+                                MainWindow.clientLoggedUser.editPostGroup(post.getId(), post.getPostPos(), postText.getText());
+                            }
                             edit.setValue(null);
                         }
                     });
                 } else if (newValue.equals("Delete")) {
-
-                    Command command = new Command();
-                    command.setKeyWord(Post.DELETE_POST_USERS);
-                    command.setSharableObject(post.convertToJsonString());
-                    CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
-                        @Override
-                        void analyze(Command cmd) {
-                            if (cmd.getKeyWord().equals(Post.DELETE_POST_USERS)) {
-
-                            }
-                        }
-                    };
-                    CommandsExecutor.getInstance().add(commandRequest);
+                    if(relation.equals(Relations.PROFILE_PAGE.toString())) {
+                        MainWindow.clientLoggedUser.deletePostUser(post);
+                    }else if(relation.equals(Relations.GROUP.toString())){
+                        MainWindow.clientLoggedUser.deletePostGroup(post);
+                    }
                     edit.setValue(null);
                 }
             }catch (NullPointerException e){
@@ -175,22 +170,7 @@ public class PostViewer extends VBox{
         share.setOnMouseEntered(event -> share.setStyle(Styles.POST_BUTTONS_HOVER));
         share.setOnMouseExited(event -> share.setStyle(Styles.POST_BUTTONS));
         share.setOnMouseClicked(event -> {
-            Post post1 = new Post();
-            post1.setOwnerId(Long.parseLong(MainWindow.id));
-            post1.setContent(post.getContent());
-            post1.setPostPos(Long.parseLong(MainWindow.id));
-            Command command = new Command();
-            command.setKeyWord(Post.SAVE_POST_USER);
-            command.setSharableObject(post1.convertToJsonString());
-            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
-                @Override
-                void analyze(Command cmd) {
-                    if (cmd.getKeyWord().equals(Post.SAVE_POST_USER)) {
-
-                    }
-                }
-            };
-            CommandsExecutor.getInstance().add(commandRequest);
+            MainWindow.clientLoggedUser.savePostUser(postText.getText());
         });
 
         HBox buttons = new HBox(thumbsUp, thumbsDown, comment, share);
@@ -285,32 +265,6 @@ public class PostViewer extends VBox{
             while (i < post.getLike().size() && post.getLike().get(i).getOwnerID() != Long.parseLong(MainWindow.id));
         }
         return check;
-    }
-
-    private void editpost(String text) {
-        Post post1 = new Post();
-        post1.setId(post.getId());
-        post1.setPostPos(post.getPostPos());
-        post1.setContent(text);
-        Command command = new Command();
-        command.setKeyWord(Post.EDITE_POST_USERS);
-        command.setSharableObject(post1.convertToJsonString());
-        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
-            @Override
-            void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.EDITE_POST_USERS)) {
-
-                    Post b = Post.fromJsonString(cmd.getObjectStr());
-                    System.out.println(cmd.getObjectStr()+"khaled");
-                    if (b.getId() ==0) {
-                        Platform.runLater(() -> Utility.errorWindow("please refresh window"));
-
-
-                    }
-                }
-            }
-        };
-        CommandsExecutor.getInstance().add(commandRequest);
     }
 
 }

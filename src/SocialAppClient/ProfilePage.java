@@ -56,7 +56,7 @@ public class ProfilePage extends GridPane {
         Info.setLabel("Name: " +userInfo.getFullName(),
                 "BirthDate: " + userInfo.getBirthDate(),
                 "Gender: " + userInfo.getGender());
-        Content content = new Content();
+        Content content = new Content(Relations.PROFILE_PAGE.toString());
 
 
         ArraylistPost posts =new ArraylistPost();

@@ -22,9 +22,9 @@ import javafx.scene.text.Font;
 public class PostContainer extends VBox implements CallBack {
     Button loadPostBtn;
     int number = 1;
-
-    public PostContainer() {
-
+    private String relation;
+    public PostContainer(String relation) {
+        this.relation = relation;
         setLayout();
     }
 
@@ -38,7 +38,7 @@ public class PostContainer extends VBox implements CallBack {
 
 
         for (int i = 0; i < posts.getPosts().size(); i++) {
-            PostViewer postViewer = new PostViewer(posts.getPosts().get(i));
+            PostViewer postViewer = new PostViewer(relation, posts.getPosts().get(i));
             getChildren().add(postViewer);
         }
         if(posts.getPosts().size() == 10) {
@@ -78,7 +78,7 @@ public class PostContainer extends VBox implements CallBack {
 
         getChildren().clear();
         ((CallBack)getParent()).removePostWriter();
-        getChildren().addAll(new PostDetails(post));
+        getChildren().addAll(new PostDetails(relation,post));
     }
     public void removePostWriter(){
     }
