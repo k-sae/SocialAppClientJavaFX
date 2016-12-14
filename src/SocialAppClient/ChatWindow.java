@@ -1,5 +1,6 @@
 package SocialAppClient;
 
+import SocialAppGeneral.Command;
 import SocialAppGeneral.UserInfo;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -41,7 +42,7 @@ public class ChatWindow {
         scrollPane.vvalueProperty().bind(msgs.heightProperty());
 
         testBtn = new Button("Testing");
-        layout.getChildren().addAll(new FriendView(id), scrollPane, container, testBtn);
+        layout.getChildren().addAll(new FriendView(id,30), scrollPane, container, testBtn);
         window.setScene(new Scene(layout, 500,600));
         window.show();
 
@@ -49,17 +50,29 @@ public class ChatWindow {
             @Override
             void pick(UserInfo userInfo) {
                 loggedUser = userInfo;
-                Platform.runLater(()->{
+                Platform.runLater(() -> {
                     new UserPicker().new InfoPicker(id) {
                         @Override
                         void pick(UserInfo userInfo) {
                             ChatWindow.this.chatUser = userInfo;
+
+                            //>>>>>>>>>>>>>>>>>>>>> start of connection #kareem
+                            try {
+                                new ReceiveServerNotification(new UtilityConnection(MainWindow.id, 6020, id).getConnectionSocket()) {
+                                    @Override
+                                    public void Analyze(Command command) {
+                                        receiver(command.getObjectStr());
+                                    }
+                                }.start();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
                     };
                 });
             }
         };
-
+        //<<<<<<<<<<<<<<<<<<<<<
         setLayout();
     }
     private void setLayout(){
@@ -110,7 +123,7 @@ public class ChatWindow {
         senderMsg.setWrapText(true);
         senderMsg.setMinHeight(Region.USE_PREF_SIZE);
         senderMsg.setPadding(new Insets(8,13,8,13));
-        sender.getChildren().addAll(senderMsg, UserImage.getCircularImage(loggedUser.getProfileImage()));
+        sender.getChildren().addAll(senderMsg, UserImage.getCircularImage(loggedUser.getProfileImage(),20));
         msgs.getChildren().add(sender);
     }
     public void receiver(String text){
@@ -122,7 +135,8 @@ public class ChatWindow {
         receiverMsg.setWrapText(true);
         receiverMsg.setMinHeight(Region.USE_PREF_SIZE);
         receiverMsg.setPadding(new Insets(8,13,8,13));
-        receiver.getChildren().addAll(UserImage.getCircularImage(chatUser.getProfileImage()), receiverMsg);
-        msgs.getChildren().add(receiver);
+        receiver.getChildren().addAll(UserImage.getCircularImage(chatUser.getProfileImage(),20), receiverMsg);
+        Platform.runLater(() -> msgs.getChildren().add(receiver));
+
     }
 }

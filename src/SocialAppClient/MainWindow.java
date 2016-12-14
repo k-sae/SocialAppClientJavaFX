@@ -41,7 +41,7 @@ public class MainWindow extends GridPane {
             try {
                 ReceiveServerNotification receiveServerCommand = new ReceiveServerNotification(
                         new UtilityConnection(id, PORT_NO)
-                                .getConnectionsocket()) {
+                                .getConnectionSocket()) {
                     @Override
                     public void Analyze(Command command) {
                         if (command.getKeyWord().equals(LoggedUser.FRIEND_REQ))
@@ -65,13 +65,11 @@ public class MainWindow extends GridPane {
                 ReceiveServerNotification receiveServerNotification =
                         new ReceiveServerNotification(
                                 new UtilityConnection(id,PORT_NO)
-                                        .getConnectionsocket()) {
+                                        .getConnectionSocket()) {
                     @Override
                     public void Analyze(Command command) {
                         if(command.getKeyWord().equals(Message.FETCH_MESSAGES)){
-
-
-                            SocialAppGeneral.SocialArrayList list = SocialArrayList.convertFromJsonString(command.getObjectStr());
+                        SocialAppGeneral.SocialArrayList list = SocialArrayList.convertFromJsonString(command.getObjectStr());
                         navBar.addNewMessage(Arrays.copyOf( list.getItems().toArray(),list.getItems().toArray().length,String[].class));
                         }
                     }

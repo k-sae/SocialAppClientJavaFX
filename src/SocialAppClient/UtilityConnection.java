@@ -9,16 +9,20 @@ import java.net.Socket;
  */
 public class UtilityConnection extends ServerConnection {
     public UtilityConnection(String id, int port) throws Exception {
-        //connect to server port 6100 which responsible for notifications
         //TODO #config
         super("127.0.0.1",port);
         sendId(id);
     }
+    public UtilityConnection(String senderId, int port, String receiverId) throws Exception
+    {
+        //TODO #config
+        super("127.0.0.1",port);
+        sendId(senderId);
+        sendId(receiverId);
+    }
     @Override
     public void startConnection() {
         //start listening to server commands in another Thread
-
-
     }
     private void sendId(String id)
     {
@@ -29,7 +33,7 @@ public class UtilityConnection extends ServerConnection {
             e.printStackTrace();
         }
     }
-    Socket getConnectionsocket()
+    Socket getConnectionSocket()
     {
         return connectionSocket;
     }
