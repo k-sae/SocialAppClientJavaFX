@@ -96,7 +96,11 @@ public class HomePage extends GridPane {
             ListView l=new ListView();
             Info .getChildren().addAll(l);
         }
-        add(Info,0,0);
+
+        ScrollPane scrollPane = new ScrollPane(Info);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(true);
+        add(scrollPane,0,0);
             ArrayList<Group> list=MainWindow.clientLoggedUser.loadGroups();
         if(list.size() !=0) {
             Info.setGroupsBtn(list);
