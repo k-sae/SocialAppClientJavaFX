@@ -19,19 +19,30 @@ public abstract class LoggedUser extends AppUser {
     protected ArrayList<Integer> friends;
     protected ArrayList<Integer> requests;
     protected ArrayList<String> notifactions;
-    protected ArrayList<String> groups;
+    protected ArrayList<Group> groups;
+    protected ArrayList<String> groupsId;
     public LoggedUser(String id) {
         friends = new ArrayList<>();
         requests = new ArrayList<>();
         notifactions = new ArrayList<>();
         groups = new ArrayList<>();
+        groupsId = new ArrayList<>();
         setID(id);
     }
+
+    public ArrayList<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(ArrayList<Group> groups) {
+        this.groups = groups;
+    }
+
     public abstract void createGroup(String name);
     public abstract void joinGroup();
     public abstract void exitGroup();
     public abstract void setFriends();
     public abstract void getFriends();
     public abstract void getNotfications();
-    public abstract void getgroups();
+    public abstract void getgroup();
 }

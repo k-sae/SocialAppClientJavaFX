@@ -55,31 +55,37 @@ public class PostViewer extends VBox{
         edit.getItems().addAll("Edit", "Delete");
 
         edit.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.equals("Edit")) {
-                postText.setEditable(true);
-                postText.requestFocus();
-                postText.setStyle(null);
-                postText.setOnKeyPressed(event -> {
-                    if (event.getCode().equals(KeyCode.ENTER)) {
-                        editpost(postText.getText());
-                        postText.setEditable(false);
-                        postText.setStyle(Styles.WHITE_BACKGROUND);
-                    }
-                });
-            } else if (newValue.equals("Delete")) {
-
-                Command command = new Command();
-                command.setKeyWord(Post.DELETE_POST_USERS);
-                command.setSharableObject(post.convertToJsonString());
-                CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
-                    @Override
-                    void analyze(Command cmd) {
-                        if (cmd.getKeyWord().equals(Post.DELETE_POST_USERS)) {
-
+            try {
+                if (newValue.equals("Edit")) {
+                    postText.setEditable(true);
+                    postText.requestFocus();
+                    postText.setStyle(null);
+                    postText.setOnKeyPressed(event -> {
+                        if (event.getCode().equals(KeyCode.ENTER)) {
+                            editpost(postText.getText());
+                            postText.setEditable(false);
+                            postText.setStyle(Styles.WHITE_BACKGROUND);
+                            edit.setValue(null);
                         }
-                    }
-                };
-                CommandsExecutor.getInstance().add(commandRequest);
+                    });
+                } else if (newValue.equals("Delete")) {
+
+                    Command command = new Command();
+                    command.setKeyWord(Post.DELETE_POST_USERS);
+                    command.setSharableObject(post.convertToJsonString());
+                    CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+                        @Override
+                        void analyze(Command cmd) {
+                            if (cmd.getKeyWord().equals(Post.DELETE_POST_USERS)) {
+
+                            }
+                        }
+                    };
+                    CommandsExecutor.getInstance().add(commandRequest);
+                    edit.setValue(null);
+                }
+            }catch (NullPointerException e){
+
             }
         });
         if(!MainWindow.id.equals(""+post.getOwnerId()))
@@ -241,8 +247,8 @@ public class PostViewer extends VBox{
             void analyze(Command cmd) {
                 if (cmd.getKeyWord().equals(Post.EDITE_POST_USERS)) {
                     int check = checkID();
-                       boolean b= Boolean.parseBoolean(cmd.getObjectStr());
-                    if (b) {
+                      Post b= Post.fromJsonString(cmd.getObjectStr());
+                    if (b.getId() !=0) {
                         if (check == -1) {
                             post.getLike().add(like);
                         } else {
@@ -250,7 +256,7 @@ public class PostViewer extends VBox{
                         }
 
                     } else {
-                        System.out.println(Boolean.parseBoolean(cmd.getObjectStr()));
+
                         Platform.runLater(() ->  Utility.errorWindow("please refresh window"));
 
 
@@ -290,8 +296,9 @@ public class PostViewer extends VBox{
             void analyze(Command cmd) {
                 if (cmd.getKeyWord().equals(Post.EDITE_POST_USERS)) {
 
-                    boolean b = Boolean.parseBoolean(cmd.getObjectStr());
-                    if (!b) {
+                    Post b = Post.fromJsonString(cmd.getObjectStr());
+                    System.out.println(cmd.getObjectStr()+"khaled");
+                    if (b.getId() ==0) {
                         Platform.runLater(() -> Utility.errorWindow("please refresh window"));
 
 

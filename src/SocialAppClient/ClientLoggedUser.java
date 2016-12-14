@@ -7,7 +7,6 @@ import SocialAppGeneral.Command;
 import javafx.application.Platform;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 /**
  * Created by kemo on 10/12/2016.
@@ -38,11 +37,11 @@ public class ClientLoggedUser extends LoggedUser {
                     System.out.println(cmd.getObjectStr());
                     //TODO #Fix
                     //fix error on threading
-                    groups.add(""+group1.getId());
+                    groupsId.add(""+group1.getId());
                     SocialArrayList socialArrayList = new SocialArrayList();
-                    socialArrayList.getItems().addAll(groups);
-                    //inorder to recieve in server
-                 //   @SuppressWarnings("unchecked") ArrayList<String>s=(ArrayList<String>)(ArrayList<?>) socialArrayList.getItems();
+                    socialArrayList.getItems().addAll(groupsId);
+                 //   inorder to recieve in server
+                   //@SuppressWarnings("unchecked") ArrayList<String>s=(ArrayList<String>)(ArrayList<?>) socialArrayList.getItems();
                     Platform.runLater(() -> MainWindow.navigateTo(new GroupPage(group1)));
 
                 }
@@ -82,7 +81,32 @@ public class ClientLoggedUser extends LoggedUser {
     }
 
     @Override
-    public void getgroups() {
+    public void getgroup() {
+           ArrayList<Group> groupArrayList=new ArrayList<>();
+        Command command = new Command();
+        command.setKeyWord(Group.LOAD_GROUP);
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+            @Override
+            void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Group.LOAD_GROUP)) {
+                    SocialArrayList list=SocialArrayList.convertFromJsonString(cmd.getObjectStr());
+                    setGroups( (ArrayList<Group>)(ArrayList<?>) list.getItems());
+                    System.out.println(cmd.getObjectStr());
+                }
+            }
+
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
+
+
+
+
+
+    }
+    public ArrayList<Group> loadGroups(){
+        getgroup();
+        System.out.println("Load");
+        return  getGroups();
     }
     //<<<<<<<<<<<<<<<<<<<<<<<<<<
     //Using inner abstract class to get results

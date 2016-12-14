@@ -67,11 +67,10 @@ public class NavBar extends HBox{
         Title.setPadding(new Insets(0,10,0,5));
 
         /** Search Text */
-        ComboBox Search = new ComboBox();
+        ComboBox<FriendView> Search = new ComboBox<>();
         Search.setPromptText("Search...");
         Search.setEditable(true);
-
-
+        Search.setVisibleRowCount(5);
         /** Search Button with Icon */
         ImageView searchImg = new ImageView(new Image("file:Resources/search.png"));
         searchImg.setFitWidth(17);
@@ -89,9 +88,15 @@ public class NavBar extends HBox{
                   SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(cmd.getObjectStr());
                     Search.getItems().clear();
                     for (Object o: socialArrayList.getItems()) {
-                        Search.getItems().addAll(new FriendView((String)o));
+                        Platform.runLater(() ->{
+                            Search.getItems().add(new FriendView((String)o));
+                            Search.show();
+                        });
                         Search.setOnAction(e->{
-                            Platform.runLater(() -> MainWindow.navigateTo(new ProfilePage((String)o)));
+                            Platform.runLater(() -> {
+                                MainWindow.navigateTo(new ProfilePage((String)o));
+                                Search.setValue(null);
+                            });
                             Search.setPromptText("Search...");
                         });
                        // SearchMenu.getItems().addAll(new MenuItem((String)o));
@@ -185,7 +190,16 @@ public class NavBar extends HBox{
         logoutBtn.setOnMouseClicked(event -> {
             getScene().getWindow().hide();
         });
-        getChildren().addAll(homeBtn, profileBtn, /*groupsBtn,*/ logoutBtn);
+        //TODO: hazem
+        Button approveBtn = new Button("Approves");
+        approveBtn.setStyle(Styles.NAVBAR_BUTTON);
+        approveBtn.setOnMouseEntered(event -> approveBtn.setStyle(Styles.NAVBAR_BUTTON_HOVER));
+        approveBtn.setOnMouseExited(event -> approveBtn.setStyle(Styles.NAVBAR_BUTTON));
+
+        approveBtn.setOnMouseClicked(event -> {
+            Platform.runLater(() -> MainWindow.navigateTo(new AdminApprovalPage()));
+        });
+        getChildren().addAll(homeBtn, profileBtn, /*groupsBtn,*/ logoutBtn, approveBtn);
     }
     //////////////////////////start of my area
 

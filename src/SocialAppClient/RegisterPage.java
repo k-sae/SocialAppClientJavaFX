@@ -84,7 +84,6 @@ class RegisterPage extends StackPane {
              public void handle(ActionEvent event) {
                  //TODO #hazem
                  //check for input
-
                  LoginInfo log=new LoginInfo();
                  log.setEmail(email.getText());
                  log.setPassword(pass.getText());
@@ -188,9 +187,14 @@ class RegisterPage extends StackPane {
         RadioButton FeMale = new RadioButton("FEMale");
         FeMale.setToggleGroup(group);
         FeMale.setTextFill(Color.WHITE);
+        Label request=createTxt("Request Adminship:",20,true);
+        RadioButton RequestAdminShip = new RadioButton("Request");
+        RequestAdminShip.setTextFill(Color.WHITE);
+        HBox Admin_Hbox =new HBox(10);
+        Admin_Hbox.getChildren().addAll(request,RequestAdminShip);
         HBox Gender_Hbox=new HBox(20);
         Gender_Hbox.getChildren().addAll(Gender,Male,FeMale);
-        vb.setMargin(Gender_Hbox,(new Insets(0,0,10,0)));
+        vb.setMargin(Admin_Hbox,(new Insets(0,0,10,0)));
         Button B=new Button("Register");
         B.setOnAction(e->{
             int exceptions=0;
@@ -240,6 +244,7 @@ class RegisterPage extends StackPane {
                 send.setLoginInfo(log);
                 user.setFullName(FRname_verify.getText()+" "+LRname_verify.getText());
                 user.setBirthDate(dp.getValue().toString());
+                user.setAdminShip(RequestAdminShip.isSelected());
                 send.setUserInfo(user);
                 //hna hb3t el command
                 Command command = new Command();
@@ -258,7 +263,7 @@ class RegisterPage extends StackPane {
 
 
 
-        vb.getChildren().addAll(name_Hbox,nameverify,password_HBox,passverify,email_Hbox,emailverfiy,hdate,dateverify,Gender_Hbox,B);
+        vb.getChildren().addAll(name_Hbox,nameverify,password_HBox,passverify,email_Hbox,emailverfiy,hdate,dateverify,Gender_Hbox,Admin_Hbox,B);
         return vb;
     }
 

@@ -2,13 +2,15 @@ package SocialAppGeneral;
 
 import com.google.gson.Gson;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by kemo on 04/12/2016.
  */
-public class SocialArrayList {
+public class SocialArrayList implements Shareable,Serializable {
+    private static final long serialVersionUID = 6529685098267757690L;
     private Object extra;
     private Object target;
     private List<Object> items;
