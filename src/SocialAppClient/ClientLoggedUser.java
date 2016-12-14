@@ -106,7 +106,6 @@ public class ClientLoggedUser extends LoggedUser {
     }
     public ArrayList<Group> loadGroups(){
         getgroup();
-        System.out.println("Load");
         return  getGroups();
     }
     //<<<<<<<<<<<<<<<<<<<<<<<<<<
