@@ -20,6 +20,7 @@ public class HomePageInfoViewer extends InfoViewer{
         for(Group group: groups){
             createGroupBtns(group);
         }
+
     }
 
     private void createGroupBtns(Group group){
@@ -29,6 +30,7 @@ public class HomePageInfoViewer extends InfoViewer{
         groupBtn.setOnMouseExited(event -> groupBtn.setStyle(Styles.NAV_BUTTON));
         groupBtn.setOnMouseClicked(event ->
                 Platform.runLater(() -> MainWindow.navigateTo(new GroupPage(group))));
+        getChildren().add(groupBtn);
     }
 
     @Override

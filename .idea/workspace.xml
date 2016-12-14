@@ -3,14 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="a68e158f-0d3e-40b7-abc4-ebe8f97dba5c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/ChatWindow.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/ChatWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/CommentContainer.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/CommentContainer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/CommentViewer.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/CommentViewer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/FriendView.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/FriendView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/InfoViewer.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/InfoViewer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/PostViewer.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/PostViewer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/Styles.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/Styles.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/UserImage.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/UserImage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/ClientLoggedUser.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/ClientLoggedUser.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/HomePage.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/HomePage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/HomePageInfoViewer.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/HomePageInfoViewer.java" />
     </list>
     <ignored path="SocialAppClientJavaFX.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,16 +31,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="65">
               <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Styles.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Styles.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -771,7 +756,7 @@
           <caret line="0" column="24" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1481741104311" expanded="true" signature="9277:9284" ph="{...}" />
+            <marker date="1481741245362" expanded="true" signature="9455:9462" ph="{...}" />
           </folding>
         </state>
       </provider>
