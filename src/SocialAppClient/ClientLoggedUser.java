@@ -87,6 +87,7 @@ public class ClientLoggedUser extends LoggedUser {
         command.setKeyWord(Group.LOAD_GROUP);
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
             @Override
+                //TODO #ُERORE
             void analyze(Command cmd) {
                 if (cmd.getKeyWord().equals(Group.LOAD_GROUP)) {
                     SocialArrayList list=SocialArrayList.convertFromJsonString(cmd.getObjectStr());
