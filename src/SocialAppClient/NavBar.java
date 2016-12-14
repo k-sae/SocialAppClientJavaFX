@@ -124,7 +124,7 @@ public class NavBar extends HBox{
 
         msg = new Menu("",msgIcon);
         /** Add an item when you clicked on the menu */
-        msg.getItems().addAll(new MenuItem("Belal sent you a message"));
+//        msg.getItems().addAll(new MenuItem("Belal sent you a message"));
 
         /** Notification menu icon */
         ImageView notiIcon = new ImageView(new Image("file:Resources/noti.png"));
@@ -213,26 +213,38 @@ public class NavBar extends HBox{
             new UserPicker().new InfoPicker(id) {
                 @Override
                 void pick(UserInfo userInfo) {
-                    ImageViewer profilePicture = new ImageViewer(userInfo.getProfileImage());
-                    profilePicture.setFitWidth(20);
-                    profilePicture.setFitHeight(20);
-                    profilePicture.setPreserveRatio(false);
-                    profilePicture.setSmooth(true);
-                    profilePicture.setCache(true);
-                    profilePicture.setClip(new Circle(profilePicture.getFitWidth()/2,profilePicture.getFitWidth()/2,profilePicture.getFitWidth()/2));
-                    Platform.runLater(() -> {
-                        MenuItem menuItem = new MenuItem(
-                                userInfo.getFullName()
-                                ,profilePicture);
-                        menuItem.setOnAction(event -> {
-                            MainWindow.navigateTo(new ProfilePage(id));
-                        });
-                        friendRequests.getItems().
-                                add(menuItem);
-                    });
+
+                    MenuItem menuItem = createMenuItem(userInfo);
+                    menuItem.setOnAction(event -> MainWindow.navigateTo(new ProfilePage(id)));
+                    Platform.runLater(() -> friendRequests.getItems().add(menuItem));
                 }
             };
         }
 
+    }
+    void addNewMessage(String... ids){
+        for (String id: ids
+                ) {
+            new UserPicker().new InfoPicker(id) {
+                @Override
+                void pick(UserInfo userInfo) {
+                    MenuItem menuItem = createMenuItem(userInfo);
+                    menuItem.setText(menuItem.getText() + " Sent a message");
+//                    menuItem.setOnAction(event -> /******/);
+                    Platform.runLater(() -> msg.getItems().add(menuItem));
+                }
+            };
+        }
+    }
+    private MenuItem createMenuItem(UserInfo userInfo)
+    {
+        ImageViewer profilePicture = new ImageViewer(userInfo.getProfileImage());
+        profilePicture.setFitWidth(20);
+        profilePicture.setFitHeight(20);
+        profilePicture.setPreserveRatio(false);
+        profilePicture.setSmooth(true);
+        profilePicture.setCache(true);
+        profilePicture.setClip(new Circle(profilePicture.getFitWidth()/2,profilePicture.getFitWidth()/2,profilePicture.getFitWidth()/2));
+        return new MenuItem(userInfo.getFullName(),profilePicture);
     }
 }

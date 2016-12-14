@@ -27,7 +27,8 @@ public abstract class ReceiveCommand extends Thread {
                     Analyze(command); //send it to the abstract function Analyze so other team members do there work
                 } catch (Exception e) {
                     //Export to log
-                    System.out.println("ReadClientData\t" + e.getMessage());
+//                    System.out.println("ReadClientData\t" +
+                    e.printStackTrace();
                 }
             }
     }

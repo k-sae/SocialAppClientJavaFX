@@ -2,6 +2,8 @@ package SocialAppClient;
 
 import SocialAppGeneral.Command;
 import SocialAppGeneral.LoggedUser;
+import SocialAppGeneral.Message;
+import SocialAppGeneral.SocialArrayList;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -9,6 +11,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by kemo on 09/11/2016.
@@ -29,13 +32,15 @@ public class MainWindow extends GridPane {
         setWindowConstrain();
         setPanels();
         startNotifications();
+        startChat();
     }
     private void startNotifications()
     {
+        final int PORT_NO = 6100;
         new Thread(() -> {
             try {
                 ReceiveServerNotification receiveServerCommand = new ReceiveServerNotification(
-                        new NotificationConnection(id)
+                        new UtilityConnection(id, PORT_NO)
                                 .getConnectionsocket()) {
                     @Override
                     public void Analyze(Command command) {
@@ -46,6 +51,32 @@ public class MainWindow extends GridPane {
                     }
                 };
                 receiveServerCommand.start();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+    private void startChat()
+    {
+        final int PORT_NO = 6030;
+        new Thread(() -> {
+            try {
+                //i should rename this later
+                ReceiveServerNotification receiveServerNotification =
+                        new ReceiveServerNotification(
+                                new UtilityConnection(id,PORT_NO)
+                                        .getConnectionsocket()) {
+                    @Override
+                    public void Analyze(Command command) {
+                        if(command.getKeyWord().equals(Message.FETCH_MESSAGES)){
+
+
+                            SocialAppGeneral.SocialArrayList list = SocialArrayList.convertFromJsonString(command.getObjectStr());
+                        navBar.addNewMessage(Arrays.copyOf( list.getItems().toArray(),list.getItems().toArray().length,String[].class));
+                        }
+                    }
+                };
+                receiveServerNotification.start();
             } catch (Exception e) {
                 e.printStackTrace();
             }

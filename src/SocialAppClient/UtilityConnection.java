@@ -7,10 +7,11 @@ import java.net.Socket;
 /**
  * Created by kemo on 08/11/2016.
  */
-public class NotificationConnection extends ServerConnection {
-    public NotificationConnection(String id) throws Exception {
+public class UtilityConnection extends ServerConnection {
+    public UtilityConnection(String id, int port) throws Exception {
         //connect to server port 6100 which responsible for notifications
-        super("127.0.0.1",6100);
+        //TODO #config
+        super("127.0.0.1",port);
         sendId(id);
     }
     @Override
