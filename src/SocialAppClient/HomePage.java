@@ -101,6 +101,7 @@ public class HomePage extends GridPane {
         if(list.size() !=0) {
             Info.setGroupsBtn(list);
         }
+        
         Info.CreateGroupBtn.setOnMouseClicked(event -> {
 
             Optional<String> check =  Utility.createWindow("Group Name", Group.CREATE_GROUP);
