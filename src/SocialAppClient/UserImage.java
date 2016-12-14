@@ -9,11 +9,11 @@ public class UserImage{
     public UserImage(){
 
     }
-    public static ImageViewer getCircularImage(String imgid){
+    public static ImageViewer getCircularImage(String imgid, double size){
 
         ImageViewer img = new ImageViewer(imgid);
-        img.setFitWidth(40);
-        img.setFitHeight(40);
+        img.setFitWidth(size*2);
+        img.setFitHeight(size*2);
         img.setSmooth(true);
         img.setCache(true);
         img.setClip(new Circle(img.getFitWidth()/2,img.getFitHeight()/2,img.getFitWidth()/2));

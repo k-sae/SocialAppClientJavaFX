@@ -2,11 +2,15 @@ package SocialAppClient;
 
 import SocialAppGeneral.Comment;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
@@ -22,8 +26,7 @@ public class CommentViewer extends VBox{
         setLayout();
     }
     private void setLayout(){
-        postComments.setFont(Font.font(18));
-        postComments.setStyle(Styles.WHITE_BACKGROUND);
+        postComments.setStyle(Styles.TEXT_AREA);
         postComments.setEditable(false);
         postComments.setWrapText(true);
         postComments.setPrefHeight(postComments.getText().length());
@@ -44,7 +47,7 @@ public class CommentViewer extends VBox{
                         if (event.getCode().equals(KeyCode.ENTER)) {
                             ((CallBack) getParent().getParent()).setCommentCommend(0, postComments.getText(), comment.getCommentId());
                             postComments.setEditable(false);
-                            postComments.setStyle(Styles.WHITE_BACKGROUND);
+                            postComments.setStyle(Styles.TEXT_AREA);
                             edit.setValue(null);
                         }
                     });
@@ -57,9 +60,13 @@ public class CommentViewer extends VBox{
 
         if(!MainWindow.id.equals(""+comment.getOwnerID()))
             edit.setVisible(false);
-        setMargin(postComments, new Insets(0,20,0,20));
-        setMargin(edit, new Insets(0,20,0,400));
-        getChildren().addAll(new Separator(),edit, new FriendView("" + comment.getOwnerID()), postComments);
+
+        setMargin(postComments, new Insets(0,20,0,50));
+        HBox h = new HBox(edit);
+        h.setAlignment(Pos.TOP_RIGHT);
+        HBox hbox = new HBox(new FriendView("" + comment.getOwnerID(),16),h);
+        hbox.setHgrow(h, Priority.ALWAYS);
+        getChildren().addAll(hbox, postComments);
 
     }
 }

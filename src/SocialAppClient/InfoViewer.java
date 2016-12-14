@@ -11,11 +11,9 @@ import javafx.scene.text.Font;
  * Created by billy on 2016-11-22.
  */
 public abstract class InfoViewer extends VBox{
-    ImageViewer img;
     public InfoViewer(){
 
         setLayout();
-//        setPicture("file:Resources/avatar.jpg");
     }
 
     private void setLayout(){
@@ -25,22 +23,16 @@ public abstract class InfoViewer extends VBox{
         setPadding(new Insets(30,0,30,0));
 
     }
-    public void setPicture(String Path){
-        getChildren().remove(img);
-        img = new ImageViewer(Path);
-        img.setFitWidth(100);
-        img.setPreserveRatio(true);
-        img.setSmooth(true);
-        img.setCache(true);
-        img.setClip(new Circle(img.getFitWidth()/2,img.getFitWidth()/2,img.getFitWidth()/2));
+    public void setPicture(String imgid){
 
-        getChildren().add(img);
+        getChildren().add(UserImage.getCircularImage(imgid,60));
     }
 
     public void setLabel(String... LabelName){
         for(String name : LabelName){
             Label Info = new Label(name);
             Info.setFont(Font.font(16));
+            Info.setWrapText(true);
             getChildren().add(Info);
         }
     }
