@@ -1,15 +1,12 @@
 package SocialAppClient;
 
-import SocialAppGeneral.*;
-
 import SocialAppGeneral.Command;
-
+import SocialAppGeneral.Group;
+import SocialAppGeneral.LoggedUser;
+import SocialAppGeneral.SocialArrayList;
 import javafx.application.Platform;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 /**
  * Created by kemo on 10/12/2016.
@@ -95,7 +92,7 @@ public class ClientLoggedUser extends LoggedUser {
                 if (cmd.getKeyWord().equals(Group.LOAD_GROUP)) {
                     SocialArrayList list=SocialArrayList.convertFromJsonString(cmd.getObjectStr());
                     for(int i=0;i<list.getItems().size();i++) {
-                        getGroups().add((Group) list.getItems().get(i));
+                        getGroups().add(Group.fromJsonString((String)list.getItems().get(i)));
                     }
                     System.out.println(cmd.getObjectStr());
                 }
