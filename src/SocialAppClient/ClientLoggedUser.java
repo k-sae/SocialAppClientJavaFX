@@ -7,6 +7,9 @@ import SocialAppGeneral.Command;
 import javafx.application.Platform;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * Created by kemo on 10/12/2016.
@@ -91,7 +94,9 @@ public class ClientLoggedUser extends LoggedUser {
             void analyze(Command cmd) {
                 if (cmd.getKeyWord().equals(Group.LOAD_GROUP)) {
                     SocialArrayList list=SocialArrayList.convertFromJsonString(cmd.getObjectStr());
-                    setGroups( (ArrayList<Group>)(ArrayList<?>) list.getItems());
+                    for(int i=0;i<list.getItems().size();i++) {
+                        getGroups().add((Group) list.getItems().get(i));
+                    }
                     System.out.println(cmd.getObjectStr());
                 }
             }

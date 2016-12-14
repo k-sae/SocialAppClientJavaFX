@@ -17,9 +17,14 @@ public class HomePageInfoViewer extends InfoViewer{
 
     }
     public void setGroupsBtn(ArrayList<Group> groups){
-        for(Group group: groups){
+        groups.get(0).getName();
+        groups.get(0).getName();
+
+        System.out.println( groups.get(0).getName());
+        /*for(Group group: groups){
             createGroupBtns(group);
         }
+        */
     }
 
     private void createGroupBtns(Group group){
