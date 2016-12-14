@@ -1,12 +1,20 @@
 package SocialAppClient;
 
+import SocialAppGeneral.*;
+
 import SocialAppGeneral.Command;
 import SocialAppGeneral.LoggedUser;
 import SocialAppGeneral.Post;
+import SocialAppGeneral.LoggedUser;
+
+import javafx.application.Platform;
+
+import java.util.ArrayList;
 
 /**
  * Created by kemo on 10/12/2016.
  */
+
 public class ClientLoggedUser extends LoggedUser {
     public ClientLoggedUser(String id) {
         super(id);
@@ -15,7 +23,35 @@ public class ClientLoggedUser extends LoggedUser {
     //TODO #khaled
     //>>>>>>>>>>>>>>>>>>>>>>>>
     @Override
-    public void createGroup() {
+    public void createGroup(String check) {
+        Command command = new Command();
+        command.setKeyWord(Group.CREATE_GROUP);
+        Group group=new Group(check);
+        group.setAdminId(Long.parseLong(MainWindow.id));
+        command.setSharableObject(group.convertToJsonString());
+
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+
+
+            @Override
+            void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Group.CREATE_GROUP)) {
+                    Group group1 = Group.fromJsonString(cmd.getObjectStr());
+                    System.out.println(cmd.getObjectStr());
+                    //TODO #Fix
+                    //fix error on threading
+                    groupsId.add(""+group1.getId());
+                    SocialArrayList socialArrayList = new SocialArrayList();
+                    socialArrayList.getItems().addAll(groupsId);
+                 //   inorder to recieve in server
+                   //@SuppressWarnings("unchecked") ArrayList<String>s=(ArrayList<String>)(ArrayList<?>) socialArrayList.getItems();
+                    Platform.runLater(() -> MainWindow.navigateTo(new GroupPage(group1)));
+
+                }
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
+
 
     }
 
@@ -48,7 +84,32 @@ public class ClientLoggedUser extends LoggedUser {
     }
 
     @Override
-    public void getgroups() {
+    public void getgroup() {
+           ArrayList<Group> groupArrayList=new ArrayList<>();
+        Command command = new Command();
+        command.setKeyWord(Group.LOAD_GROUP);
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+            @Override
+                //TODO #ُERORE
+            void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Group.LOAD_GROUP)) {
+                    SocialArrayList list=SocialArrayList.convertFromJsonString(cmd.getObjectStr());
+                    setGroups( (ArrayList<Group>)(ArrayList<?>) list.getItems());
+                    System.out.println(cmd.getObjectStr());
+                }
+            }
+
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
+
+
+
+
+
+    }
+    public ArrayList<Group> loadGroups(){
+        getgroup();
+        return  getGroups();
     }
     //<<<<<<<<<<<<<<<<<<<<<<<<<<
     //Using inner abstract class to get results

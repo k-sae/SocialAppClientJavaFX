@@ -3,6 +3,7 @@ package SocialAppClient;
 import SocialAppGeneral.Command;
 import SocialAppGeneral.Comment;
 import SocialAppGeneral.Post;
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
@@ -24,7 +25,6 @@ public class PostDetails extends VBox implements CallBack{
             if(event.getCode().equals(KeyCode.ENTER)){
                 setCommentCommend(1, CommentContainer.commentText.getText(),0);
                 CommentContainer.commentText.setText("");
-                ((CallBack)getParent()).showPostDetails(post);
             }
         });
         setLayout();
@@ -45,13 +45,19 @@ public class PostDetails extends VBox implements CallBack{
         post1.setPostPos(post.getPostPos());
         post1.addcomment(comment);
         Command command = new Command();
-        command.setKeyWord(Post.EDIT_POST_USERS);
+        command.setKeyWord(Post.EDITE_POST_USERS);
         command.setSharableObject(post1.convertToJsonString());
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
             @Override
             void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.EDIT_POST_USERS)) {
-
+                if (cmd.getKeyWord().equals(Post.EDITE_POST_USERS)) {
+                    Post b= Post.fromJsonString(cmd.getObjectStr());
+                    if(b.getId() !=0) {
+                        Platform.runLater(() -> ((CallBack) getParent()).showPostDetails(b));
+                    }
+                    else{
+                        Platform.runLater(() ->  Utility.errorWindow("please refresh window"));
+                    }
                 }
             }
         };

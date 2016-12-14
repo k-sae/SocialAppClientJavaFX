@@ -4,6 +4,7 @@ import SocialAppGeneral.Command;
 import SocialAppGeneral.Comment;
 import SocialAppGeneral.Like;
 import SocialAppGeneral.Post;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
@@ -239,15 +240,15 @@ public class PostViewer extends VBox{
         post1.setPostPos(post.getPostPos());
         post1.addlike(like);
         Command command = new Command();
-        command.setKeyWord(Post.EDIT_POST_USERS);
+        command.setKeyWord(Post.EDITE_POST_USERS);
         command.setSharableObject(post1.convertToJsonString());
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
             @Override
             void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.EDIT_POST_USERS)) {
+                if (cmd.getKeyWord().equals(Post.EDITE_POST_USERS)) {
                     int check = checkID();
-                       boolean b= Boolean.parseBoolean(cmd.getObjectStr());
-                    if (b) {
+                      Post b= Post.fromJsonString(cmd.getObjectStr());
+                    if (b.getId() !=0) {
                         if (check == -1) {
                             post.getLike().add(like);
                         } else {
@@ -255,7 +256,10 @@ public class PostViewer extends VBox{
                         }
 
                     } else {
-                       Utility.errorWindow("please refresh window");
+
+                        Platform.runLater(() ->  Utility.errorWindow("please refresh window"));
+
+
                     }
 
                 }
@@ -285,13 +289,20 @@ public class PostViewer extends VBox{
         post1.setPostPos(post.getPostPos());
         post1.setContent(text);
         Command command = new Command();
-        command.setKeyWord(Post.EDIT_POST_USERS);
+        command.setKeyWord(Post.EDITE_POST_USERS);
         command.setSharableObject(post1.convertToJsonString());
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
             @Override
             void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.EDIT_POST_USERS)) {
-                    System.out.println(cmd.getObjectStr());
+                if (cmd.getKeyWord().equals(Post.EDITE_POST_USERS)) {
+
+                    Post b = Post.fromJsonString(cmd.getObjectStr());
+                    System.out.println(cmd.getObjectStr()+"khaled");
+                    if (b.getId() ==0) {
+                        Platform.runLater(() -> Utility.errorWindow("please refresh window"));
+
+
+                    }
                 }
             }
         };
