@@ -20,16 +20,10 @@ public class PostDetails extends VBox implements CallBack{
     public PostDetails(String relation, Post post){
         this.post = post;
         this.relation = relation;
-        postViewer = new PostViewer(Relations.USERS.toString(), this.post);
+        postViewer = new PostViewer(relation, this.post);
         postViewer.comment.setOnMouseClicked(null);
 
         CommentContainer = new CommentContainer(this.post.getComments());
-        CommentContainer.commentText.setOnKeyPressed(event -> {
-            if(event.getCode().equals(KeyCode.ENTER)){
-                setCommentCommend(1, CommentContainer.commentText.getText(),0);
-                CommentContainer.commentText.setText("");
-            }
-        });
         setLayout();
     }
     private void setLayout(){
@@ -43,6 +37,7 @@ public class PostDetails extends VBox implements CallBack{
         }else if(relation.equals(Relations.GROUP.toString())){
             MainWindow.clientLoggedUser.setCommentCommendGroup(show, text, id, post.getId(), post.getPostPos());
         }
+
     }
 
     @Override

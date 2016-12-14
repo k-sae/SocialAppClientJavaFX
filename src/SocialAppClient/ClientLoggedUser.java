@@ -2,7 +2,6 @@ package SocialAppClient;
 
 import SocialAppGeneral.*;
 import SocialAppGeneral.LoggedUser;
-import SocialAppGeneral.LoggedUser;
 import javafx.application.Platform;
 
 import java.util.ArrayList;
@@ -371,6 +370,7 @@ public class ClientLoggedUser extends LoggedUser {
                     Post b= Post.fromJsonString(cmd.getObjectStr());
                     if(b.getId() !=0) {
                         //Platform.runLater(() -> ((CallBack) getParent()).showPostDetails(b));
+                        Platform.runLater(() -> PostContainer.reloadPostDetails(b));
                     }
                     else{
                         Platform.runLater(() ->  Utility.errorWindow("please refresh window"));

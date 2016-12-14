@@ -65,8 +65,10 @@ public class PostViewer extends VBox{
                             postText.setStyle(Styles.WHITE_BACKGROUND);
                             if(relation.equals(Relations.PROFILE_PAGE.toString())) {
                                 MainWindow.clientLoggedUser.editPostUser(post.getId(), post.getPostPos(), postText.getText());
+                                MainWindow.navigateTo(new ProfilePage(""+post.getPostPos()));
                             }else if(relation.equals(Relations.GROUP.toString())){
                                 MainWindow.clientLoggedUser.editPostGroup(post.getId(), post.getPostPos(), postText.getText());
+                                //MainWindow.navigateTo(new GroupPage());
                             }
                             edit.setValue(null);
                         }
@@ -74,8 +76,10 @@ public class PostViewer extends VBox{
                 } else if (newValue.equals("Delete")) {
                     if(relation.equals(Relations.PROFILE_PAGE.toString())) {
                         MainWindow.clientLoggedUser.deletePostUser(post);
+                        MainWindow.navigateTo(new ProfilePage(""+post.getPostPos()));
                     }else if(relation.equals(Relations.GROUP.toString())){
                         MainWindow.clientLoggedUser.deletePostGroup(post);
+                        //MainWindow.navigateTo(new GroupPage());
                     }
                     edit.setValue(null);
                 }

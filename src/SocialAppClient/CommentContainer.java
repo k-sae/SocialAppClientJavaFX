@@ -39,6 +39,13 @@ public class CommentContainer extends VBox{
         setMaxWidth(450);
         setMargin(commentText, new Insets(0,20,0,20));
 
+        commentText.setOnKeyPressed(event -> {
+            if(event.getCode().equals(KeyCode.ENTER)){
+                ((CallBack) getParent()).setCommentCommend(1, commentText.getText(),0);
+                commentText.setText("");
+            }
+        });
+
         getChildren().add(commentText);
     }
 }

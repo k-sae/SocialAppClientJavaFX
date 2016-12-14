@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Border;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
@@ -22,9 +23,11 @@ import javafx.scene.text.Font;
 public class PostContainer extends VBox implements CallBack {
     Button loadPostBtn;
     int number = 1;
-    private String relation;
+    private static String relation;
+    private static Pane mainWindow;
     public PostContainer(String relation) {
         this.relation = relation;
+        mainWindow = this;
         setLayout();
     }
 
@@ -86,6 +89,10 @@ public class PostContainer extends VBox implements CallBack {
     @Override
     public void setCommentCommend(int show, String text, long id) {
 
+    }
+    public static void reloadPostDetails(Post post){
+        mainWindow.getChildren().clear();
+        mainWindow.getChildren().addAll(new PostDetails(relation,post));
     }
 
 }
