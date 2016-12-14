@@ -20,6 +20,7 @@ public class HomePageInfoViewer extends InfoViewer{
         for(Group group: groups){
             createGroupBtns(group);
         }
+
     }
 
     private void createGroupBtns(Group group){
@@ -29,16 +30,19 @@ public class HomePageInfoViewer extends InfoViewer{
         groupBtn.setOnMouseExited(event -> groupBtn.setStyle(Styles.NAV_BUTTON));
         groupBtn.setOnMouseClicked(event ->
                 Platform.runLater(() -> MainWindow.navigateTo(new GroupPage(group))));
+        getChildren().add(groupBtn);
     }
 
     @Override
     public void setButtons() {
 
+        Button g = new Button("group");
+        g.setOnMouseClicked(event -> Platform.runLater(()->MainWindow.navigateTo(new GroupPage(new Group("hey")))));
         CreateGroupBtn = new Button("Create Group");
         CreateGroupBtn.setStyle(Styles.NAV_BUTTON);
         CreateGroupBtn.setOnMouseEntered(event -> CreateGroupBtn.setStyle(Styles.NAV_BUTTON_HOVER));
         CreateGroupBtn.setOnMouseExited(event -> CreateGroupBtn.setStyle(Styles.NAV_BUTTON));
 
-        getChildren().addAll(CreateGroupBtn);
+        getChildren().addAll(g,CreateGroupBtn);
     }
 }

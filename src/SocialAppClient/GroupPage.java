@@ -1,7 +1,7 @@
 package SocialAppClient;
 
-import SocialAppGeneral.Command;
-import SocialAppGeneral.Group;
+import SocialAppGeneral.*;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
@@ -19,14 +19,6 @@ public class GroupPage extends GridPane {
         setGridLinesVisible(true);
         setConstraint();
         setPanels();
-    }
-    public  GroupPage(){
-        setStyle(Styles.DEFAULT_BACKGROUND);
-        //updateColor(this);
-        setGridLinesVisible(true);
-        setConstraint();
-        setPanels();
-
     }
 
     synchronized static void updateColor(Pane pane) {
@@ -61,19 +53,43 @@ public class GroupPage extends GridPane {
     }
     private void setPanels(){
 
-        GroupInfoViewer Info = new GroupInfoViewer(group.getId());
+        GroupInfoViewer Info = new GroupInfoViewer(group);
 
         /**PUT THE PICTURE PATH*/
         Info.setPicture(""+group.getImageId());
         /**PUT SOME INFO AS STRING*/
-        Info.setLabel(group.getName());
+        Info.setLabel("GROUP NAME: "+group.getName());
+        Info.search();
         /**ADD JOIN AND EDIT BUTTON -- EDIT THEM IN GROUPINFOVIEWER*/
         Info.setButtons();
 
         add(Info,0,0);
 
-        Content content = new Content();
+        Content content = new Content(Relations.GROUP.toString());
 
+        ArraylistPost posts =new ArraylistPost();
+        posts.setOwnerPosts(group.getId());
+        posts.setNumberpost(1);
+        Command command = new Command();
+        command.setKeyWord(Post.LOAD_POST_GROUPS);
+        command.setSharableObject(posts.convertToJsonString());
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+            @Override
+            void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Post.LOAD_POST_GROUPS)){
+                    ArraylistPost posts = (ArraylistPost.fromJsonString(cmd.getObjectStr()));
+                    if(!posts.getPosts().isEmpty()) {
+                        Platform.runLater(() -> content.postContainer.addPosts(posts));
+                    }
+
+                }
+            }
+        };
+
+        CommandsExecutor.getInstance().add(commandRequest);
+
+
+        content.postWriter.SavePost(Relations.GROUP.toString(), ""+group.getId());
         add(content,1,0);
 
         /**THE SCROLL BAR KEEPS TRACK THE CONTENT*/

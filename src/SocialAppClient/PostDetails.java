@@ -3,6 +3,8 @@ package SocialAppClient;
 import SocialAppGeneral.Command;
 import SocialAppGeneral.Comment;
 import SocialAppGeneral.Post;
+import SocialAppGeneral.Relations;
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
@@ -14,19 +16,14 @@ public class PostDetails extends VBox implements CallBack{
     protected PostViewer postViewer;
     protected CommentContainer CommentContainer;
     private Post post;
-    public PostDetails(Post post){
+    String relation;
+    public PostDetails(String relation, Post post){
         this.post = post;
-        postViewer = new PostViewer(this.post);
+        this.relation = relation;
+        postViewer = new PostViewer(relation, this.post);
         postViewer.comment.setOnMouseClicked(null);
 
         CommentContainer = new CommentContainer(this.post.getComments());
-        CommentContainer.commentText.setOnKeyPressed(event -> {
-            if(event.getCode().equals(KeyCode.ENTER)){
-                setCommentCommend(1, CommentContainer.commentText.getText(),0);
-                CommentContainer.commentText.setText("");
-                ((CallBack)getParent()).showPostDetails(post);
-            }
-        });
         setLayout();
     }
     private void setLayout(){
@@ -35,27 +32,12 @@ public class PostDetails extends VBox implements CallBack{
         getChildren().addAll(postViewer,CommentContainer);
     }
     public void setCommentCommend(int show, String text, long id){
-        Comment comment=new Comment();
-        comment.setCommentcontent(text);
-        comment.setOwnerID(Long.parseLong(MainWindow.id));
-        comment.setShow(show);
-        comment.setCommentId(id);
-        Post post1 = new Post();
-        post1.setId(post.getId());
-        post1.setPostPos(post.getPostPos());
-        post1.addcomment(comment);
-        Command command = new Command();
-        command.setKeyWord(Post.EDIT_POST_USERS);
-        command.setSharableObject(post1.convertToJsonString());
-        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
-            @Override
-            void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.EDIT_POST_USERS)) {
+        if(relation.equals(Relations.PROFILE_PAGE.toString())) {
+            MainWindow.clientLoggedUser.setCommentCommendUser(show, text, id, post.getId(), post.getPostPos());
+        }else if(relation.equals(Relations.GROUP.toString())){
+            MainWindow.clientLoggedUser.setCommentCommendGroup(show, text, id, post.getId(), post.getPostPos());
+        }
 
-                }
-            }
-        };
-        CommandsExecutor.getInstance().add(commandRequest);
     }
 
     @Override

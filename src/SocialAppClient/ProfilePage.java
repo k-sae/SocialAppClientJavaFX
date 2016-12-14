@@ -1,9 +1,6 @@
 package SocialAppClient;
 
-import SocialAppGeneral.ArraylistPost;
-import SocialAppGeneral.Command;
-import SocialAppGeneral.Post;
-import SocialAppGeneral.UserInfo;
+import SocialAppGeneral.*;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
@@ -59,7 +56,7 @@ public class ProfilePage extends GridPane {
         Info.setLabel("Name: " +userInfo.getFullName(),
                 "BirthDate: " + userInfo.getBirthDate(),
                 "Gender: " + userInfo.getGender());
-        Content content = new Content();
+        Content content = new Content(Relations.PROFILE_PAGE.toString());
 
 
         ArraylistPost posts =new ArraylistPost();
@@ -83,7 +80,7 @@ public class ProfilePage extends GridPane {
 
         CommandsExecutor.getInstance().add(commandRequest);
 
-        content.postWriter.SavePost(id);
+        content.postWriter.SavePost(Relations.USERS.toString(), id);
         add(content,1,0);
         add(Info,0,0);
         ScrollPane sp = new ScrollPane(content);

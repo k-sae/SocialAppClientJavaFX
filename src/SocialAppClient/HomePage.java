@@ -94,69 +94,33 @@ public class HomePage extends GridPane {
             Button B3= new Button();
             hb.getChildren().addAll(email,B1,B2,B3);
             ListView l=new ListView();
-            l.getItems().addAll("a7a","a7tein",hb);
             Info .getChildren().addAll(l);
         }
-        add(Info,0,0);
 
-
+        ScrollPane scrollPane = new ScrollPane(Info);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(true);
+        add(scrollPane,0,0);
+            ArrayList<Group> list=MainWindow.clientLoggedUser.loadGroups();
+        if(list.size() !=0) {
+            Info.setGroupsBtn(list);
+        }
+        
         Info.CreateGroupBtn.setOnMouseClicked(event -> {
 
-            Optional<String> check = Utility.createWindow("Group Name", "Create Group");
-            if (!check.equals(Optional.empty())) {
-                if (check.get().equals("")) {
-                    Utility.errorWindow("No name you enter");
-                } else {
-                    Command command = new Command();
-                    command.setKeyWord(Group.CREATE_GROUP);
-                    command.setSharableObject(check.get());
-                    CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
-                        @Override
-                        void analyze(Command cmd) {
-                            if (cmd.getKeyWord().equals(Group.CREATE_GROUP)) {
-                                Group group = Group.fromJsonString(cmd.getObjectStr());
-                                //TODO #Fix
-                                //fix error on threading
-                                Platform.runLater(() -> MainWindow.navigateTo(new GroupPage()));
-
-                            }
+            Optional<String> check =  Utility.createWindow("Group Name", Group.CREATE_GROUP);
+                    if (!check.equals(Optional.empty())) {
+                        if (check.get().equals("") || !validator.valdiateName(check.get())) {
+                            Platform.runLater(() -> Utility.errorWindow("not correct name"));
+                        } else {
+                            MainWindow.clientLoggedUser.createGroup(check.get());
                         }
-                    };
-                    CommandsExecutor.getInstance().add(commandRequest);
-                }
-            }
 
-        });
+                }});
 
-            /*
-            Post post=new Post();
-            post.setOwnerId(2);
-            post.setPostPos(1);
-            post.setId(1);
-            Like like =new Like();
-            like.setLike(1);
-            like.setOwnerID(2);
-            System.out.println(like);
-            post.addlike(like);
-            Command command = new Command();
-            command.setKeyWord(Post.Add_COMMENT);
-            command.setSharableObject(post.convertToJsonString());
-            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
-                @Override
-                void analyze(Command cmd) {
-                    if (cmd.getKeyWord().equals(Post.Add_COMMENT)){
-                        post.equals(Post.fromJsonString(cmd.getObjectStr())) ;
-                        System.out.println(cmd.getObjectStr());
-                    }
-                }
-            };
-            CommandsExecutor.getInstance().add(commandRequest);
-
-        });
-*/
-        Content content = new Content();
+        Content content = new Content(Relations.HOME_PAGE.toString());
         //to add post
-        content.postWriter.SavePost(id);
+        content.postWriter.SavePost(Relations.USERS.toString(), id);
         add(content,1,0);
         ScrollPane sp = new ScrollPane(content);
         sp.setFitToWidth(true);
@@ -164,3 +128,5 @@ public class HomePage extends GridPane {
 
     }
 }
+
+
