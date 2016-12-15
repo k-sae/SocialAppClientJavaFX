@@ -23,7 +23,6 @@ import java.util.Optional;
  */
 public class HomePage extends GridPane {
     private String id;
-    private String Isadmin;
     private UserInfo userInfo;
     public HomePage(String id) {
         this.id = id;
@@ -40,19 +39,6 @@ public class HomePage extends GridPane {
             void analyze(Command cmd) {
                 userInfo = UserInfo.fromJsonString(cmd.getObjectStr());
                 HomePage.this.userInfo = userInfo;
-                Command command = new Command();
-                command.setKeyWord("ADMIN_CHECK");
-                command.setSharableObject(id);
-                CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
-                    @Override
-                    void analyze(Command cmd) {
-                   System.out.print(cmd.getObjectStr());
-                        Isadmin=cmd.getObjectStr();
-                        Platform.runLater(() -> setPanels());
-                    }
-                };
-                CommandsExecutor.getInstance().add(commandRequest);
-
             }
         };
         CommandsExecutor.getInstance().add(commandRequest);
@@ -84,20 +70,7 @@ public class HomePage extends GridPane {
         Info.setLabel(userInfo.getFullName());
         //Info.setGroupsBtn(userInfo);
         Info.setButtons();
-        if(Isadmin.equals("true")){
-            HBox hb =new HBox(10);
-            Label email=new Label("blab blab blab");
-            //Image I=new Image("C:\\Users\\mosta\\Desktop\\1245686792938124914raemi_Check_mark.svg.hi.png");
-            Button B1 =new Button();
-           // B1.setBackground(new Background(new BackgroundImage(I,BackgroundRepeat.NO_REPEAT,BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER,BackgroundSize.DEFAULT)));
-            Button B2 =new Button();
-            Button B3= new Button();
-            hb.getChildren().addAll(email,B1,B2,B3);
-            ListView l=new ListView();
-            Info .getChildren().addAll(l);
-        }
-
-        ScrollPane scrollPane = new ScrollPane(Info);
+ScrollPane scrollPane = new ScrollPane(Info);
         scrollPane.setFitToWidth(true);
         scrollPane.setFitToHeight(true);
         add(scrollPane,0,0);
@@ -105,7 +78,6 @@ public class HomePage extends GridPane {
         if(list.size() !=0) {
             Info.setGroupsBtn(list);
         }
-        
         Info.CreateGroupBtn.setOnMouseClicked(event -> {
 
             Optional<String> check =  Utility.createWindow("Group Name", Group.CREATE_GROUP);

@@ -16,6 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
+import static SocialAppClient.MainWindow.clientLoggedUser;
 import static javafx.scene.layout.GridPane.setColumnSpan;
 import static javafx.scene.layout.GridPane.setConstraints;
 
@@ -36,7 +37,7 @@ public class NavBar extends HBox{
     //moheim
     private void requestServerFriendRequests()
     {
-        MainWindow.clientLoggedUser.new GetFriendReq() {
+        clientLoggedUser.new GetFriendReq() {
             @Override
             void onFinish(Command cmd) {
                 SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(cmd.getObjectStr());
@@ -191,15 +192,19 @@ public class NavBar extends HBox{
             getScene().getWindow().hide();
         });
         //TODO: hazem
-        Button approveBtn = new Button("Approves");
+if (clientLoggedUser instanceof ClientAdmin)
+{        Button approveBtn = new Button("Approves");
         approveBtn.setStyle(Styles.NAVBAR_BUTTON);
         approveBtn.setOnMouseEntered(event -> approveBtn.setStyle(Styles.NAVBAR_BUTTON_HOVER));
         approveBtn.setOnMouseExited(event -> approveBtn.setStyle(Styles.NAVBAR_BUTTON));
 
         approveBtn.setOnMouseClicked(event -> {
+
             Platform.runLater(() -> MainWindow.navigateTo(new AdminApprovalPage()));
         });
-        getChildren().addAll(homeBtn, profileBtn, /*groupsBtn,*/ logoutBtn, approveBtn);
+    getChildren().addAll(homeBtn, profileBtn, /*groupsBtn,*/ logoutBtn, approveBtn);
+}else
+        getChildren().addAll(homeBtn, profileBtn, /*groupsBtn,*/ logoutBtn);
     }
     //////////////////////////start of my area
 
