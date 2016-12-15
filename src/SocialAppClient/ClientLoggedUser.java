@@ -81,23 +81,6 @@ public class ClientLoggedUser extends LoggedUser {
     @Override
     public void getgroup() {
            ArrayList<Group> groupArrayList=new ArrayList<>();
-        Command command = new Command();
-        command.setKeyWord(Group.LOAD_GROUP);
-        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
-            @Override
-                //TODO #ُERORE
-            void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Group.LOAD_GROUP)) {
-                    SocialArrayList list=SocialArrayList.convertFromJsonString(cmd.getObjectStr());
-                    for(int i=0;i<list.getItems().size();i++) {
-                        getGroups().add(Group.fromJsonString((String)list.getItems().get(i)));
-                    }
-                    System.out.println(cmd.getObjectStr());
-                }
-            }
-
-        };
-        CommandsExecutor.getInstance().add(commandRequest);
 
 
 
@@ -107,6 +90,33 @@ public class ClientLoggedUser extends LoggedUser {
     public ArrayList<Group> loadGroups(){
         getgroup();
         return  getGroups();
+    }
+    abstract class GetGroups
+    {
+        GetGroups()
+        {
+            Command command = new Command();
+            command.setKeyWord(Group.LOAD_GROUP);
+            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+                @Override
+                    //TODO #ُERORE
+                void analyze(Command cmd) {
+                    if (cmd.getKeyWord().equals(Group.LOAD_GROUP)) {
+                        getGroups().clear();
+                        SocialArrayList list=SocialArrayList.convertFromJsonString(cmd.getObjectStr());
+                        for(int i=0;i<list.getItems().size();i++) {
+                         getGroups().add(Group.fromJsonString((String)list.getItems().get(i)));
+                        }
+                        onFinish(getGroups());
+                        System.out.println(cmd.getObjectStr());
+                    }
+                }
+
+            };
+            CommandsExecutor.getInstance().add(commandRequest);
+        }
+
+        abstract void onFinish(ArrayList<Group> groups);
     }
     //<<<<<<<<<<<<<<<<<<<<<<<<<<
     //Using inner abstract class to get results

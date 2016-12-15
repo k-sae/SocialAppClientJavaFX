@@ -1,19 +1,14 @@
 package SocialAppClient;
 
-import SocialAppGeneral.*;
 import SocialAppGeneral.Command;
-import SocialAppGeneral.Like;
-import SocialAppGeneral.Post;
+import SocialAppGeneral.Group;
+import SocialAppGeneral.Relations;
 import SocialAppGeneral.UserInfo;
 import javafx.application.Platform;
-import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -75,10 +70,15 @@ ScrollPane scrollPane = new ScrollPane(Info);
         scrollPane.setFitToWidth(true);
         scrollPane.setFitToHeight(true);
         add(scrollPane,0,0);
-            ArrayList<Group> list=MainWindow.clientLoggedUser.loadGroups();
-        if(list.size() !=0) {
-            Info.setGroupsBtn(list);
-        }
+        MainWindow.clientLoggedUser.new GetGroups() {
+            @Override
+            void onFinish(ArrayList<Group> groups) {
+                Platform.runLater(() -> Info.setGroupsBtn(groups));
+
+            }
+        };
+
+
         Info.CreateGroupBtn.setOnMouseClicked(event -> {
 
             Optional<String> check =  Utility.createWindow("Group Name", Group.CREATE_GROUP);
