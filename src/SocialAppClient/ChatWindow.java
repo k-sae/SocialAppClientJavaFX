@@ -1,7 +1,7 @@
 package SocialAppClient;
 
-import SocialAppGeneral.Command;
-import SocialAppGeneral.UserInfo;
+import SocialAppGeneral.*;
+import SocialAppGeneral.SocialArrayList;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -61,7 +61,7 @@ public class ChatWindow {
                                 new ReceiveServerNotification(new UtilityConnection(MainWindow.id, 6020, id).getConnectionSocket()) {
                                     @Override
                                     public void Analyze(Command command) {
-                                        receiver(command.getObjectStr());
+                                        messengerReceiver(command);
                                     }
                                 }.start();
                             } catch (Exception e) {
@@ -106,7 +106,7 @@ public class ChatWindow {
         testBtn.setOnMouseExited(event -> testBtn.setStyle(Styles.BLACK_BUTTON));
         testBtn.setOnMouseClicked(event -> {
             if(!message.getText().equals("")){
-                receiver(message.getText());
+//                receiver(message.getText());
                 message.setText("");
             }
         });
@@ -126,11 +126,11 @@ public class ChatWindow {
         sender.getChildren().addAll(senderMsg, UserImage.getCircularImage(loggedUser.getProfileImage(),20));
         msgs.getChildren().add(sender);
     }
-    public void receiver(String text){
+    public void receiver(Message message){
         HBox receiver = new HBox(10);
         receiver.setAlignment(Pos.CENTER_LEFT);
 
-        Label receiverMsg = new Label(text);
+        Label receiverMsg = new Label(message.getMessage());
         receiverMsg.setStyle(Styles.MSG_RECEIVER);
         receiverMsg.setWrapText(true);
         receiverMsg.setMinHeight(Region.USE_PREF_SIZE);
@@ -139,4 +139,21 @@ public class ChatWindow {
         Platform.runLater(() -> msgs.getChildren().add(receiver));
 
     }
+    //check whether to make messenger class or just on function is enough
+    private void messengerReceiver(Command cmd)
+    {
+        if (cmd.getKeyWord().equals(Message.FETCH_MESSAGES))
+        {
+            SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(cmd.getObjectStr());
+            for (Object o: socialArrayList.getItems()
+                 ) {
+                receiver(Message.FromJson((String)o));
+            }
+        }
+    }
+    private void messengerSender(Message message)
+    {
+
+    }
 }
+
