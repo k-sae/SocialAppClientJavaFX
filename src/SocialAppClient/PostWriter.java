@@ -78,8 +78,8 @@ public class PostWriter extends VBox{
 
     public void SavePost(String relation, String id){
         postBtn.setOnAction(e->{
-            if(relation.equals(Relations.USERS.toString())){
-                MainWindow.clientLoggedUser.savePostUser(postText.getText());
+            if(relation.equals(Relations.HOME_PAGE.toString())||relation.equals(Relations.PROFILE_PAGE.toString())){
+                MainWindow.clientLoggedUser.savePostUser(relation,postText.getText());
             }else if(relation.equals(Relations.GROUP.toString())){
                 MainWindow.clientLoggedUser.savePostGroup(postText.getText(), id);
             }

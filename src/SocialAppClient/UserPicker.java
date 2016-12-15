@@ -1,6 +1,7 @@
 package SocialAppClient;
 
 import SocialAppGeneral.Command;
+import SocialAppGeneral.Group;
 import SocialAppGeneral.UserInfo;
 
 /**
@@ -26,5 +27,26 @@ class UserPicker {
         abstract void pick(UserInfo userInfo);
     }
 
+}
 
+class GroupPicker
+{
+     abstract class InfoPicker
+     {
+         InfoPicker(long id){
+             Command command = new Command();
+             command.setKeyWord(Group.LOAD_GROUP);
+             command.setSharableObject(""+id);
+             CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+                 @Override
+                 void analyze(Command cmd) {
+                     Group group = Group.fromJsonString(cmd.getObjectStr());
+                     pick(group);
+                 }
+             };
+             CommandsExecutor.getInstance().add(commandRequest);
+         }
+         abstract void pick(Group group);
+
+     }
 }

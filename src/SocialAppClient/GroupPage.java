@@ -20,6 +20,19 @@ public class GroupPage extends GridPane {
         setConstraint();
         setPanels();
     }
+    public GroupPage(long id) {
+        setStyle(Styles.DEFAULT_BACKGROUND);
+        //updateColor(this);
+        setGridLinesVisible(true);
+        setConstraint();
+        new GroupPicker().new InfoPicker(id) {
+            @Override
+            void pick(Group group) {
+                GroupPage.this.group = group;
+                Platform.runLater(() -> setPanels());
+            }
+        };
+    }
 
     synchronized static void updateColor(Pane pane) {
         //TODO #prototype

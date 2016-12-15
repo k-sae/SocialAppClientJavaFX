@@ -82,12 +82,12 @@ public class ClientLoggedUser extends LoggedUser {
     public void getgroup() {
            ArrayList<Group> groupArrayList=new ArrayList<>();
         Command command = new Command();
-        command.setKeyWord(Group.LOAD_GROUP);
+        command.setKeyWord(Group.LOAD_GROUPS);
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
             @Override
                 //TODO #ُERORE
             void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Group.LOAD_GROUP)) {
+                if (cmd.getKeyWord().equals(Group.LOAD_GROUPS)) {
                     SocialArrayList list=SocialArrayList.convertFromJsonString(cmd.getObjectStr());
                     for(int i=0;i<list.getItems().size();i++) {
                         getGroups().add(Group.fromJsonString((String)list.getItems().get(i)));
@@ -233,7 +233,7 @@ public class ClientLoggedUser extends LoggedUser {
         return command;
     }
 
-    public void savePostUser(String text){
+    public void savePostUser(String relation, String text){
         Post post=new Post();
         post.setOwnerId(Long.parseLong(MainWindow.id));
         post.setContent(text);
@@ -245,6 +245,10 @@ public class ClientLoggedUser extends LoggedUser {
             @Override
             void analyze(Command cmd) {
                 if (cmd.getKeyWord().equals(Post.SAVE_POST_USER)) {
+                    if(relation.equals(Relations.HOME_PAGE.toString()))
+                        Platform.runLater(() -> MainWindow.navigateTo(new HomePage(MainWindow.id)));
+                    else
+                        Platform.runLater(() -> MainWindow.navigateTo(new ProfilePage(""+post.getPostPos())));
 
                 }
             }
@@ -263,6 +267,7 @@ public class ClientLoggedUser extends LoggedUser {
             @Override
             void analyze(Command cmd) {
                 if (cmd.getKeyWord().equals(Post.SAVE_POST_GROUP)) {
+                    Platform.runLater(() -> MainWindow.navigateTo(new GroupPage(Long.parseLong(id))));
 
                 }
             }
@@ -309,11 +314,8 @@ public class ClientLoggedUser extends LoggedUser {
                 if (cmd.getKeyWord().equals(Post.EDITE_POST_GROUPS)) {
 
                     Post b = Post.fromJsonString(cmd.getObjectStr());
-                    System.out.println(cmd.getObjectStr()+"khaled");
                     if (b.getId() ==0) {
                         Platform.runLater(() -> Utility.errorWindow("please refresh window"));
-
-
                     }
                 }
             }
@@ -369,7 +371,6 @@ public class ClientLoggedUser extends LoggedUser {
                 if (cmd.getKeyWord().equals(Post.EDITE_POST_USERS)) {
                     Post b= Post.fromJsonString(cmd.getObjectStr());
                     if(b.getId() !=0) {
-                        //Platform.runLater(() -> ((CallBack) getParent()).showPostDetails(b));
                         Platform.runLater(() -> PostContainer.reloadPostDetails(b));
                     }
                     else{
@@ -400,11 +401,84 @@ public class ClientLoggedUser extends LoggedUser {
                 if (cmd.getKeyWord().equals(Post.EDITE_POST_GROUPS)) {
                     Post b= Post.fromJsonString(cmd.getObjectStr());
                     if(b.getId() !=0) {
-                        //Platform.runLater(() -> ((CallBack) getParent()).showPostDetails(b));
+                        Platform.runLater(() -> PostContainer.reloadPostDetails(b));
                     }
                     else{
                         Platform.runLater(() ->  Utility.errorWindow("please refresh window"));
                     }
+                }
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
+    }
+
+    public void setLikecommendUsers(int i, Post post) {
+        Like like = new Like();
+        like.setLike(i);
+        like.setOwnerID(Long.parseLong(MainWindow.id));
+        Post post1 = new Post();
+        post1.setId(post.getId());
+        post1.setPostPos(post.getPostPos());
+        post1.addlike(like);
+        Command command = new Command();
+        command.setKeyWord(Post.EDITE_POST_USERS);
+        command.setSharableObject(post1.convertToJsonString());
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+            @Override
+            void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Post.EDITE_POST_USERS)) {
+                    int check = Utility.checkID(post);
+                    Post b= Post.fromJsonString(cmd.getObjectStr());
+                    if (b.getId() !=0) {
+                        if (check == -1) {
+                            post.getLike().add(like);
+                        } else {
+                            post.getLike().get(check).setLike(i);
+                        }
+
+                    } else {
+
+                        Platform.runLater(() ->  Utility.errorWindow("please refresh window"));
+
+
+                    }
+
+                }
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
+    }
+    public void setLikecommendGroup(int i, Post post) {
+        Like like = new Like();
+        like.setLike(i);
+        like.setOwnerID(Long.parseLong(MainWindow.id));
+        Post post1 = new Post();
+        post1.setId(post.getId());
+        post1.setPostPos(post.getPostPos());
+        post1.addlike(like);
+        Command command = new Command();
+        command.setKeyWord(Post.EDITE_POST_GROUPS);
+        command.setSharableObject(post1.convertToJsonString());
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+            @Override
+            void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Post.EDITE_POST_GROUPS)) {
+                    int check = Utility.checkID(post);
+                    Post b= Post.fromJsonString(cmd.getObjectStr());
+                    if (b.getId() !=0) {
+                        if (check == -1) {
+                            post.getLike().add(like);
+                        } else {
+                            post.getLike().get(check).setLike(i);
+                        }
+
+                    } else {
+
+                        Platform.runLater(() ->  Utility.errorWindow("please refresh window"));
+
+
+                    }
+
                 }
             }
         };

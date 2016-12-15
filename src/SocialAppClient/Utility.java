@@ -1,6 +1,7 @@
 package SocialAppClient;
 
 import SocialAppGeneral.Command;
+import SocialAppGeneral.Post;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.StageStyle;
@@ -64,6 +65,20 @@ public class Utility {
             e.printStackTrace();
         }
         return id[0];
+    }
+    public static int checkID(Post post) {
+        int i = 0;
+        int check = -1;
+        if (post.getLike().size() != 0) {
+            do {
+                if (post.getLike().get(i).getOwnerID() == Long.parseLong(MainWindow.id)) {
+                    check = i;
+                }
+                i++;
+            }
+            while (i < post.getLike().size() && post.getLike().get(i).getOwnerID() != Long.parseLong(MainWindow.id));
+        }
+        return check;
     }
 }
 

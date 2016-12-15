@@ -35,14 +35,11 @@ public class HomePageInfoViewer extends InfoViewer{
 
     @Override
     public void setButtons() {
-
-        Button g = new Button("group");
-        g.setOnMouseClicked(event -> Platform.runLater(()->MainWindow.navigateTo(new GroupPage(new Group("hey")))));
         CreateGroupBtn = new Button("Create Group");
         CreateGroupBtn.setStyle(Styles.NAV_BUTTON);
         CreateGroupBtn.setOnMouseEntered(event -> CreateGroupBtn.setStyle(Styles.NAV_BUTTON_HOVER));
         CreateGroupBtn.setOnMouseExited(event -> CreateGroupBtn.setStyle(Styles.NAV_BUTTON));
 
-        getChildren().addAll(g,CreateGroupBtn);
+        getChildren().add(CreateGroupBtn);
     }
 }

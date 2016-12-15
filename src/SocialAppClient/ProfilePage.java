@@ -80,7 +80,7 @@ public class ProfilePage extends GridPane {
 
         CommandsExecutor.getInstance().add(commandRequest);
 
-        content.postWriter.SavePost(Relations.USERS.toString(), id);
+        content.postWriter.SavePost(Relations.PROFILE_PAGE.toString(), id);
         add(content,1,0);
         add(Info,0,0);
         ScrollPane sp = new ScrollPane(content);

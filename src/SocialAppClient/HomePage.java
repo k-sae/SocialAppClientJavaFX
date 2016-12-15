@@ -93,7 +93,7 @@ ScrollPane scrollPane = new ScrollPane(Info);
 
         Content content = new Content(Relations.HOME_PAGE.toString());
         //to add post
-        content.postWriter.SavePost(Relations.USERS.toString(), id);
+        content.postWriter.SavePost(Relations.HOME_PAGE.toString(), id);
         add(content,1,0);
         ScrollPane sp = new ScrollPane(content);
         sp.setFitToWidth(true);

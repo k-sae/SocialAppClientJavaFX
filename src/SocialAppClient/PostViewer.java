@@ -1,16 +1,12 @@
 package SocialAppClient;
 
 import SocialAppGeneral.*;
-import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 
 /**
@@ -29,7 +25,6 @@ public class PostViewer extends VBox{
     public PostViewer(String relation, Post post) {
         this.post = post;
         this.relation = relation;
-        System.out.println(post.convertToJsonString());
         setLayout();
     }
 
@@ -63,23 +58,23 @@ public class PostViewer extends VBox{
                         if (event.getCode().equals(KeyCode.ENTER)) {
                             postText.setEditable(false);
                             postText.setStyle(Styles.WHITE_BACKGROUND);
-                            if(relation.equals(Relations.PROFILE_PAGE.toString())) {
+                            if(relation.equals(Relations.HOME_PAGE.toString()) || relation.equals(Relations.PROFILE_PAGE.toString())) {
                                 MainWindow.clientLoggedUser.editPostUser(post.getId(), post.getPostPos(), postText.getText());
                                 MainWindow.navigateTo(new ProfilePage(""+post.getPostPos()));
                             }else if(relation.equals(Relations.GROUP.toString())){
                                 MainWindow.clientLoggedUser.editPostGroup(post.getId(), post.getPostPos(), postText.getText());
-                                //MainWindow.navigateTo(new GroupPage());
+                                MainWindow.navigateTo(new GroupPage(post.getPostPos()));
                             }
                             edit.setValue(null);
                         }
                     });
                 } else if (newValue.equals("Delete")) {
-                    if(relation.equals(Relations.PROFILE_PAGE.toString())) {
+                    if(relation.equals(Relations.HOME_PAGE.toString()) || relation.equals(Relations.PROFILE_PAGE.toString())) {
                         MainWindow.clientLoggedUser.deletePostUser(post);
                         MainWindow.navigateTo(new ProfilePage(""+post.getPostPos()));
                     }else if(relation.equals(Relations.GROUP.toString())){
                         MainWindow.clientLoggedUser.deletePostGroup(post);
-                        //MainWindow.navigateTo(new GroupPage());
+                        MainWindow.navigateTo(new GroupPage(post.getPostPos()));
                     }
                     edit.setValue(null);
                 }
@@ -110,7 +105,7 @@ public class PostViewer extends VBox{
 
         thumbsDown = new Button("Thumb Down", TDicon);
 
-        int check = checkID();
+        int check = Utility.checkID(post);
         if (check == -1 || post.getLike().get(check).getLike() == -1) {
             setLikeStyle(check);
 
@@ -123,34 +118,66 @@ public class PostViewer extends VBox{
         }
         final int[] finalCheck = new int[1];
         thumbsUp.setOnAction(event -> {
-            finalCheck[0] = checkID();
-            if (finalCheck[0] == -1 || post.getLike().get(finalCheck[0]).getLike() == -1) {
-                setLikeStyle(1);
-                setLikecommend(1);
-            } else if (post.getLike().get(finalCheck[0]).getLike() == 1) {
+            if(relation.equals(Relations.HOME_PAGE.toString()) || relation.equals(Relations.PROFILE_PAGE.toString())) {
+                finalCheck[0] = Utility.checkID(post);
+                if (finalCheck[0] == -1 || post.getLike().get(finalCheck[0]).getLike() == -1) {
+                    setLikeStyle(1);
+                    MainWindow.clientLoggedUser.setLikecommendUsers(1, post);
+                } else if (post.getLike().get(finalCheck[0]).getLike() == 1) {
 
-                setLikeStyle(-1);
-                setLikecommend(-1);
+                    setLikeStyle(-1);
+                    MainWindow.clientLoggedUser.setLikecommendUsers(-1, post);
 
-            } else if (post.getLike().get(finalCheck[0]).getLike() == 0) {
+                } else if (post.getLike().get(finalCheck[0]).getLike() == 0) {
 
-                setLikeStyle(1);
-                setLikecommend(1);
+                    setLikeStyle(1);
+                    MainWindow.clientLoggedUser.setLikecommendUsers(1, post);
+                }
+            }else if(relation.equals(Relations.GROUP.toString())){
+                finalCheck[0] = Utility.checkID(post);
+                if (finalCheck[0] == -1 || post.getLike().get(finalCheck[0]).getLike() == -1) {
+                    setLikeStyle(1);
+                    MainWindow.clientLoggedUser.setLikecommendGroup(1, post);
+                } else if (post.getLike().get(finalCheck[0]).getLike() == 1) {
+
+                    setLikeStyle(-1);
+                    MainWindow.clientLoggedUser.setLikecommendGroup(-1, post);
+
+                } else if (post.getLike().get(finalCheck[0]).getLike() == 0) {
+
+                    setLikeStyle(1);
+                    MainWindow.clientLoggedUser.setLikecommendGroup(1, post);
+                }
             }
         });
 
         thumbsDown.setOnAction(event -> {
-            finalCheck[0] = checkID();
-            if (finalCheck[0] == -1 || post.getLike().get(finalCheck[0]).getLike() == -1) {
-                setLikeStyle(0);
-                setLikecommend(0);
-            } else if (post.getLike().get(finalCheck[0]).getLike() == 1) {
-                setLikeStyle(0);
-                setLikecommend(0);
-            } else if (post.getLike().get(finalCheck[0]).getLike() == 0) {
-                setLikeStyle(-1);
-                setLikecommend(-1);
+            if(relation.equals(Relations.HOME_PAGE.toString()) || relation.equals(Relations.PROFILE_PAGE.toString())) {
+                finalCheck[0] = Utility.checkID(post);
+                if (finalCheck[0] == -1 || post.getLike().get(finalCheck[0]).getLike() == -1) {
+                    setLikeStyle(0);
+                    MainWindow.clientLoggedUser.setLikecommendUsers(0, post);
+                } else if (post.getLike().get(finalCheck[0]).getLike() == 1) {
+                    setLikeStyle(0);
+                    MainWindow.clientLoggedUser.setLikecommendUsers(0, post);
+                } else if (post.getLike().get(finalCheck[0]).getLike() == 0) {
+                    setLikeStyle(-1);
+                    MainWindow.clientLoggedUser.setLikecommendUsers(-1, post);
 
+                }
+            }else if(relation.equals(Relations.GROUP.toString())){
+                finalCheck[0] = Utility.checkID(post);
+                if (finalCheck[0] == -1 || post.getLike().get(finalCheck[0]).getLike() == -1) {
+                    setLikeStyle(0);
+                    MainWindow.clientLoggedUser.setLikecommendGroup(0, post);
+                } else if (post.getLike().get(finalCheck[0]).getLike() == 1) {
+                    setLikeStyle(0);
+                    MainWindow.clientLoggedUser.setLikecommendGroup(0, post);
+                } else if (post.getLike().get(finalCheck[0]).getLike() == 0) {
+                    setLikeStyle(-1);
+                    MainWindow.clientLoggedUser.setLikecommendGroup(-1, post);
+
+                }
             }
         });
 
@@ -174,7 +201,7 @@ public class PostViewer extends VBox{
         share.setOnMouseEntered(event -> share.setStyle(Styles.POST_BUTTONS_HOVER));
         share.setOnMouseExited(event -> share.setStyle(Styles.POST_BUTTONS));
         share.setOnMouseClicked(event -> {
-            MainWindow.clientLoggedUser.savePostUser(postText.getText());
+            MainWindow.clientLoggedUser.savePostUser(relation, postText.getText());
         });
 
         HBox buttons = new HBox(thumbsUp, thumbsDown, comment, share);
@@ -217,58 +244,6 @@ public class PostViewer extends VBox{
             thumbsUp.setOnMouseExited(event -> thumbsUp.setStyle(Styles.POST_BUTTONS));
 
         }
-    }
-
-    private void setLikecommend(int i) {
-        Like like = new Like();
-        like.setLike(i);
-        like.setOwnerID(Long.parseLong(MainWindow.id));
-        Post post1 = new Post();
-        post1.setId(post.getId());
-        post1.setPostPos(post.getPostPos());
-        post1.addlike(like);
-        Command command = new Command();
-        command.setKeyWord(Post.EDITE_POST_USERS);
-        command.setSharableObject(post1.convertToJsonString());
-        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
-            @Override
-            void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.EDITE_POST_USERS)) {
-                    int check = checkID();
-                      Post b= Post.fromJsonString(cmd.getObjectStr());
-                    if (b.getId() !=0) {
-                        if (check == -1) {
-                            post.getLike().add(like);
-                        } else {
-                            post.getLike().get(check).setLike(i);
-                        }
-
-                    } else {
-
-                        Platform.runLater(() ->  Utility.errorWindow("please refresh window"));
-
-
-                    }
-
-                }
-            }
-        };
-        CommandsExecutor.getInstance().add(commandRequest);
-    }
-
-    private int checkID() {
-        int i = 0;
-        int check = -1;
-        if (post.getLike().size() != 0) {
-            do {
-                if (post.getLike().get(i).getOwnerID() == Long.parseLong(MainWindow.id)) {
-                    check = i;
-                }
-                i++;
-            }
-            while (i < post.getLike().size() && post.getLike().get(i).getOwnerID() != Long.parseLong(MainWindow.id));
-        }
-        return check;
     }
 
 }
