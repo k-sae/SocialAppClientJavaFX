@@ -1,5 +1,6 @@
 package SocialAppClient;
 
+import SocialAppGeneral.Admin;
 import SocialAppGeneral.Command;
 import SocialAppGeneral.LoggedUser;
 import SocialAppGeneral.Message;
@@ -26,8 +27,23 @@ public class MainWindow extends GridPane {
     public MainWindow(String id)
     {
         MainWindow.id = id;
-        clientLoggedUser = new ClientLoggedUser(id);
-        mainFrame = new Pane();
+        //if not admin
+
+        //if admin
+        Command command = new Command();
+        command.setKeyWord(Admin.KEYWORD);
+        command.setSharableObject(id);
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+            @Override
+            void analyze(Command commandFromServer) {
+                if(commandFromServer.getObjectStr().equals("true"))
+                    clientLoggedUser=new ClientAdmin(id);
+                else
+                    clientLoggedUser = new ClientLoggedUser(id);
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
+        mainFrame = new Pane() ;
         mainWindow = this;
         setWindowConstrain();
         setPanels();

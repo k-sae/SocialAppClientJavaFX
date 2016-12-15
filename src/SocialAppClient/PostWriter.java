@@ -2,6 +2,7 @@ package SocialAppClient;
 
 import SocialAppGeneral.Command;
 import SocialAppGeneral.Post;
+import SocialAppGeneral.Relations;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -74,29 +75,14 @@ public class PostWriter extends VBox{
 
         getChildren().addAll(postText, option);
     }
-    public String getPostText(){
 
-        return postText.getText();
-    }
-    public void SavePost(String id){
+    public void SavePost(String relation, String id){
         postBtn.setOnAction(e->{
-            Post post=new Post();
-            post.setOwnerId(Long.parseLong(MainWindow.id));
-            post.setContent(getPostText());
-            post.setPostPos(Long.parseLong(MainWindow.id));
-            Command command = new Command();
-            command.setKeyWord(Post.SAVE_POST_USER);
-            command.setSharableObject(post.convertToJsonString());
-            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
-                @Override
-                void analyze(Command cmd) {
-                    if (cmd.getKeyWord().equals(Post.SAVE_POST_USER)) {
-
-
-                    }
-                }
-            };
-            CommandsExecutor.getInstance().add(commandRequest);
+            if(relation.equals(Relations.USERS.toString())){
+                MainWindow.clientLoggedUser.savePostUser(postText.getText());
+            }else if(relation.equals(Relations.GROUP.toString())){
+                MainWindow.clientLoggedUser.savePostGroup(postText.getText(), id);
+            }
             postText.setText("");
 
         });

@@ -13,15 +13,16 @@ public class Content extends VBox implements CallBack{
     protected PostWriter postWriter;
     protected PostContainer postContainer;
 
-    public Content(){
+    public Content(String relation){
+
+        postWriter = new PostWriter();
+        postContainer = new PostContainer(relation);
         setLayout();
     }
 
     private void setLayout(){
         setAlignment(Pos.TOP_CENTER);
 
-        postWriter = new PostWriter();
-        postContainer = new PostContainer();
         getChildren().addAll(postWriter, postContainer);
     }
 

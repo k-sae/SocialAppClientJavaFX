@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.Border;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
@@ -22,9 +23,11 @@ import javafx.scene.text.Font;
 public class PostContainer extends VBox implements CallBack {
     Button loadPostBtn;
     int number = 1;
-
-    public PostContainer() {
-
+    private static String relation;
+    private static Pane mainWindow;
+    public PostContainer(String relation) {
+        this.relation = relation;
+        mainWindow = this;
         setLayout();
     }
 
@@ -38,7 +41,7 @@ public class PostContainer extends VBox implements CallBack {
 
 
         for (int i = 0; i < posts.getPosts().size(); i++) {
-            PostViewer postViewer = new PostViewer(posts.getPosts().get(i));
+            PostViewer postViewer = new PostViewer(relation, posts.getPosts().get(i));
             getChildren().add(postViewer);
         }
         if(posts.getPosts().size() == 10) {
@@ -78,7 +81,7 @@ public class PostContainer extends VBox implements CallBack {
 
         getChildren().clear();
         ((CallBack)getParent()).removePostWriter();
-        getChildren().addAll(new PostDetails(post));
+        getChildren().addAll(new PostDetails(relation,post));
     }
     public void removePostWriter(){
     }
@@ -86,6 +89,10 @@ public class PostContainer extends VBox implements CallBack {
     @Override
     public void setCommentCommend(int show, String text, long id) {
 
+    }
+    public static void reloadPostDetails(Post post){
+        mainWindow.getChildren().clear();
+        mainWindow.getChildren().addAll(new PostDetails(relation,post));
     }
 
 }

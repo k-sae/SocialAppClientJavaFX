@@ -7,5 +7,12 @@ public enum Relations {
     FRIEND,
     NOT_FRIEND,
     PENDING,
-    FRIEND_REQ
+    FRIEND_REQ,
+    USERS,
+    GROUP,
+    PROFILE_PAGE,
+    HOME_PAGE,
+    ADD,
+    EDIT,
+    DELETE
 }
