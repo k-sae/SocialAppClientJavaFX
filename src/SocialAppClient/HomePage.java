@@ -39,6 +39,7 @@ public class HomePage extends GridPane {
             void analyze(Command cmd) {
                 userInfo = UserInfo.fromJsonString(cmd.getObjectStr());
                 HomePage.this.userInfo = userInfo;
+                Platform.runLater(() -> setPanels());
             }
         };
         CommandsExecutor.getInstance().add(commandRequest);
