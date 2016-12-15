@@ -4,6 +4,7 @@ import SocialAppGeneral.Command;
 import SocialAppGeneral.Post;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.shape.Circle;
 import javafx.stage.StageStyle;
 
 import javax.imageio.ImageIO;
@@ -79,6 +80,18 @@ public class Utility {
             while (i < post.getLike().size() && post.getLike().get(i).getOwnerID() != Long.parseLong(MainWindow.id));
         }
         return check;
+    }
+
+    public static ImageViewer getCircularImage(String imgid, double size){
+
+        ImageViewer img = new ImageViewer(imgid);
+        img.setFitWidth(size*2);
+        img.setFitHeight(size*2);
+        img.setSmooth(true);
+        img.setCache(true);
+        img.setClip(new Circle(img.getFitWidth()/2,img.getFitHeight()/2,img.getFitWidth()/2));
+
+        return img;
     }
 }
 

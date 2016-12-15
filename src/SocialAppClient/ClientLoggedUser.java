@@ -32,7 +32,6 @@ public class ClientLoggedUser extends LoggedUser {
             void analyze(Command cmd) {
                 if (cmd.getKeyWord().equals(Group.CREATE_GROUP)) {
                     Group group1 = Group.fromJsonString(cmd.getObjectStr());
-                    System.out.println(cmd.getObjectStr());
                     //TODO #Fix
                     //fix error on threading
                     groupsId.add(""+group1.getId());
@@ -80,33 +79,53 @@ public class ClientLoggedUser extends LoggedUser {
 
     @Override
     public void getgroup() {
-           ArrayList<Group> groupArrayList=new ArrayList<>();
         Command command = new Command();
-        command.setKeyWord(Group.LOAD_GROUPS);
+        command.setKeyWord(Group.LOAD_GROUP);
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
             @Override
                 //TODO #ُERORE
             void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Group.LOAD_GROUPS)) {
+                if (cmd.getKeyWord().equals(Group.LOAD_GROUP)) {
                     SocialArrayList list=SocialArrayList.convertFromJsonString(cmd.getObjectStr());
                     for(int i=0;i<list.getItems().size();i++) {
                         getGroups().add(Group.fromJsonString((String)list.getItems().get(i)));
                     }
-                    System.out.println(cmd.getObjectStr());
                 }
             }
 
         };
         CommandsExecutor.getInstance().add(commandRequest);
 
-
-
-
-
     }
     public ArrayList<Group> loadGroups(){
         getgroup();
         return  getGroups();
+    }
+    abstract class GetGroups
+    {
+        GetGroups()
+        {
+            Command command = new Command();
+            command.setKeyWord(Group.LOAD_GROUPS);
+            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+                @Override
+                    //TODO #ُERORE
+                void analyze(Command cmd) {
+                    if (cmd.getKeyWord().equals(Group.LOAD_GROUPS)) {
+                        getGroups().clear();
+                        SocialArrayList list=SocialArrayList.convertFromJsonString(cmd.getObjectStr());
+                        for(int i=0;i<list.getItems().size();i++) {
+                         getGroups().add(Group.fromJsonString((String)list.getItems().get(i)));
+                        }
+                        onFinish(getGroups());
+                    }
+                }
+
+            };
+            CommandsExecutor.getInstance().add(commandRequest);
+        }
+
+        abstract void onFinish(ArrayList<Group> groups);
     }
     //<<<<<<<<<<<<<<<<<<<<<<<<<<
     //Using inner abstract class to get results
@@ -289,7 +308,6 @@ public class ClientLoggedUser extends LoggedUser {
                 if (cmd.getKeyWord().equals(Post.EDITE_POST_USERS)) {
 
                     Post b = Post.fromJsonString(cmd.getObjectStr());
-                    System.out.println(cmd.getObjectStr()+"khaled");
                     if (b.getId() ==0) {
                         Platform.runLater(() -> Utility.errorWindow("please refresh window"));
 

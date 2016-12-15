@@ -25,7 +25,7 @@ public abstract class InfoViewer extends VBox{
     }
     public void setPicture(String imgid){
 
-        getChildren().add(UserImage.getCircularImage(imgid,60));
+        getChildren().add(Utility.getCircularImage(imgid,60));
     }
 
     public void setLabel(String... LabelName){

@@ -65,6 +65,6 @@ public class FriendView extends Label {
         setOnMouseClicked(event -> Platform.runLater(() -> MainWindow.navigateTo(new ProfilePage(id))));
         setFont(Font.font(size));
         setText(userInfo.getFullName());
-        setGraphic(UserImage.getCircularImage(userInfo.getProfileImage(),size));
+        setGraphic(Utility.getCircularImage(userInfo.getProfileImage(),size));
     }
 }
