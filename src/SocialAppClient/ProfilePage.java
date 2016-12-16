@@ -7,6 +7,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
+
 /**
  * Created by kemo on 10/11/2016.
  */
@@ -47,8 +49,6 @@ public class ProfilePage extends GridPane {
     }
 
     private void setPanels(){
-
-
         ProfileInfoViewer Info = new ProfileInfoViewer(id);
         /**ADD PICTURE*/
         Info.setPicture(userInfo.getProfileImage());
@@ -58,29 +58,12 @@ public class ProfilePage extends GridPane {
                 "Gender: " + userInfo.getGender());
         Content content = new Content(Relations.PROFILE_PAGE.toString());
 
-
-        ArraylistPost posts =new ArraylistPost();
-        posts.setOwnerPosts(Long.parseLong(id)) ;
-        posts.setNumberpost(1);
-        Command command = new Command();
-        command.setKeyWord(Post.LOAD_POST_USERS);
-        command.setSharableObject(posts.convertToJsonString());
-        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+        MainWindow.clientLoggedUser.new GetPostsProfile(1,id){
             @Override
-            void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.LOAD_POST_USERS)){
-                    ArraylistPost posts = (ArraylistPost.fromJsonString(cmd.getObjectStr()));
-                    int loadMoreNum = 1;
-                    if(!posts.getPosts().isEmpty()) {
-                        Platform.runLater(() -> content.postContainer.addPosts(posts,loadMoreNum));
-                    }
-
-                }
+            void onFinish(ArrayList<Post> posts) {
+                Platform.runLater(() -> content.postContainer.addPosts(posts));
             }
         };
-
-        CommandsExecutor.getInstance().add(commandRequest);
-
         content.postWriter.SavePost(Relations.PROFILE_PAGE.toString(), id);
         add(content,1,0);
         add(Info,0,0);

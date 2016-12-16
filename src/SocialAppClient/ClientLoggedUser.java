@@ -137,9 +137,10 @@ public class ClientLoggedUser extends LoggedUser {
                 void analyze(Command cmd) {
                     if (cmd.getKeyWord().equals(Post.LOAD_POST_HOME)) {
                         SocialArrayList list=SocialArrayList.convertFromJsonString(cmd.getObjectStr());
+                        getPosts().clear();
                         for(int i=0;i<list.getItems().size();i++) {
 
-                            getPosts().add(Post.fromJsonString((String)list.getItems().get(i).toString()));
+                            getPosts().add(Post.fromJsonString((String)list.getItems().get(i)));
                         }
                         onFinish( getPosts());
                     }
@@ -150,7 +151,59 @@ public class ClientLoggedUser extends LoggedUser {
         }
         abstract void onFinish(ArrayList<Post> posts);
         }
+    abstract class GetPostsProfile{
+        GetPostsProfile(long numberPost,String id){
+            SocialArrayList posts=new SocialArrayList();
+            posts.setExtra(id);
+            posts.setTarget(String.valueOf(numberPost));
+            Command command = new Command();
+            command.setKeyWord(Post.LOAD_POST_USERS);
+            command.setSharableObject(posts.convertToJsonString());
+            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+                @Override
+                void analyze(Command cmd) {
+                    if (cmd.getKeyWord().equals(Post.LOAD_POST_USERS)) {
+                        SocialArrayList list=SocialArrayList.convertFromJsonString(cmd.getObjectStr());
+                        getPosts().clear();
+                        for(int i=0;i<list.getItems().size();i++) {
+                            getPosts().add(Post.fromJsonString((String)list.getItems().get(i)));
+                        }
 
+                        onFinish( getPosts());
+                    }
+                }
+
+            };
+            CommandsExecutor.getInstance().add(commandRequest);
+        }
+        abstract void onFinish(ArrayList<Post> posts);
+    }
+    abstract class GetPostsGroup{
+        GetPostsGroup(long numberPost,long id){
+            SocialArrayList posts=new SocialArrayList();
+            posts.setExtra(String.valueOf(id));
+            posts.setTarget(String.valueOf(numberPost));
+            Command command = new Command();
+            command.setKeyWord(Post.LOAD_POST_GROUPS);
+            command.setSharableObject(posts.convertToJsonString());
+            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+                @Override
+                void analyze(Command cmd) {
+                    if (cmd.getKeyWord().equals(Post.LOAD_POST_GROUPS)) {
+                        SocialArrayList list=SocialArrayList.convertFromJsonString(cmd.getObjectStr());
+                        getPosts().clear();
+                        for(int i=0;i<list.getItems().size();i++) {
+                            getPosts().add(Post.fromJsonString((String)list.getItems().get(i)));
+                        }
+                        onFinish( getPosts());
+                    }
+                }
+
+            };
+            CommandsExecutor.getInstance().add(commandRequest);
+        }
+        abstract void onFinish(ArrayList<Post> posts);
+    }
 
     //<<<<<<<<<<<<<<<<<<<<<<<<<<
     //Using inner abstract class to get results
@@ -527,29 +580,9 @@ public class ClientLoggedUser extends LoggedUser {
         };
         CommandsExecutor.getInstance().add(commandRequest);
     }
-    public void loadMorePostsUser(ArraylistPost posts, int number){
-        posts.getPosts().clear();
-        posts.setNumberpost(number);
-        Command command1 = new Command();
-        command1.setKeyWord(Post.LOAD_POST_USERS);
-        command1.setSharableObject(posts.convertToJsonString());
-        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command1) {
-            @Override
-            void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.LOAD_POST_USERS)) {
-                    ArraylistPost posts = (ArraylistPost.fromJsonString(cmd.getObjectStr()));
-                    if (!posts.getPosts().isEmpty()) {
-                        Platform.runLater(() -> PostContainer.addPosts(posts, number));
-                    }
-
-                }
-            }
-        };
-        CommandsExecutor.getInstance().add(commandRequest);
-    }
-    public void loadMorePostsGroup(ArraylistPost posts, int number){
-        posts.getPosts().clear();
-        posts.setNumberpost(number);
+    public void loadMorePostsUser( SocialArrayList posts, int number){
+        posts.getItems().clear();
+        posts.setTarget(String.valueOf(number));
         Command command1 = new Command();
         command1.setKeyWord(Post.LOAD_POST_GROUPS);
         command1.setSharableObject(posts.convertToJsonString());
@@ -557,9 +590,37 @@ public class ClientLoggedUser extends LoggedUser {
             @Override
             void analyze(Command cmd) {
                 if (cmd.getKeyWord().equals(Post.LOAD_POST_GROUPS)) {
-                    ArraylistPost posts = (ArraylistPost.fromJsonString(cmd.getObjectStr()));
-                    if (!posts.getPosts().isEmpty()) {
-                        Platform.runLater(() -> PostContainer.addPosts(posts, number));
+                    SocialArrayList posts = (SocialArrayList.convertFromJsonString(cmd.getObjectStr()));
+                    ArrayList<Post> posts1=new ArrayList<>();
+                    for(int i=0;i<posts.getItems().size();i++) {
+                        posts1.add(Post.fromJsonString((String)posts.getItems().get(i)));
+                    }
+                    if (!posts1.isEmpty()) {
+                        Platform.runLater(() -> PostContainer.addPosts(posts1, number));
+                    }
+
+                }
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
+    }
+    public void loadMorePostsGroup(SocialArrayList posts, int number) {
+        posts.getItems().clear();
+        posts.setTarget(String.valueOf(number));
+        Command command1 = new Command();
+        command1.setKeyWord(Post.LOAD_POST_USERS);
+        command1.setSharableObject(posts.convertToJsonString());
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command1) {
+            @Override
+            void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Post.LOAD_POST_USERS)) {
+                    SocialArrayList posts = (SocialArrayList.convertFromJsonString(cmd.getObjectStr()));
+                    ArrayList<Post> posts1 = new ArrayList<>();
+                    for (int i = 0; i < posts.getItems().size(); i++) {
+                        posts1.add(Post.fromJsonString((String) posts.getItems().get(i)));
+                    }
+                    if (!posts1.isEmpty()) {
+                        Platform.runLater(() -> PostContainer.addPosts(posts1, number));
                     }
 
                 }
