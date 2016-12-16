@@ -39,6 +39,14 @@ public class Utility {
         alert.initStyle(StageStyle.UTILITY);
         alert.showAndWait();
     }
+    public static void alertWindow(String title, String alertMsg){//show error window
+        Alert alert=new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(alertMsg);
+        alert.initStyle(StageStyle.UTILITY);
+        alert.showAndWait();
+    }
     public static String uploadImage(BufferedImage bufferedImage) {
        final String[] id = new String[1];
         try {

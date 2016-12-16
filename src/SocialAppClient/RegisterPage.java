@@ -253,7 +253,9 @@ class RegisterPage extends StackPane {
                 CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
                     @Override
                     void analyze(Command commandFromServer) {
+
                         System.out.println(commandFromServer.getObjectStr());
+                        Platform.runLater(()-> Utility.alertWindow(" Registration","Thanks for signing up, We will send you an E-mail informing you the admin choice!"));
                     }
                 };
                 CommandsExecutor.getInstance().add(commandRequest);
