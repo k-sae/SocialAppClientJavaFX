@@ -1,17 +1,26 @@
 package SocialAppClient;
 
-import SocialAppGeneral.*;
+import SocialAppGeneral.Command;
+import SocialAppGeneral.Message;
 import SocialAppGeneral.SocialArrayList;
+import SocialAppGeneral.UserInfo;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
 
 /**
  * Created by billy on 2016-12-11.
@@ -26,6 +35,8 @@ public class ChatWindow {
     private UserInfo loggedUser;
     private UserInfo chatUser;
     private Button testBtn;
+    private Socket connectionSocket;
+    private ReceiveServerNotification runningThread;
     public ChatWindow(String id){
         this.id = id;
         window.setTitle("Messenger");
@@ -35,7 +46,7 @@ public class ChatWindow {
 
         msgs = new VBox(20);
         container = new HBox(50);
-
+        window.setOnCloseRequest(event -> runningThread.kill());
         ScrollPane scrollPane = new ScrollPane(msgs);
         scrollPane.setFitToHeight(true);
         scrollPane.setFitToWidth(true);
@@ -58,12 +69,14 @@ public class ChatWindow {
 
                             //>>>>>>>>>>>>>>>>>>>>> start of connection #kareem
                             try {
-                                new ReceiveServerNotification(new UtilityConnection(MainWindow.id, 6020, id).getConnectionSocket()) {
+                                connectionSocket = new UtilityConnection(MainWindow.id, 6020, id).getConnectionSocket();
+                                runningThread = new ReceiveServerNotification(connectionSocket) {
                                     @Override
                                     public void Analyze(Command command) {
                                         messengerReceiver(command);
                                     }
-                                }.start();
+                                };
+                                runningThread.start();
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
@@ -96,7 +109,7 @@ public class ChatWindow {
         sendBtn.setOnMouseExited(event -> sendBtn.setStyle(Styles.BLACK_BUTTON));
         sendBtn.setOnMouseClicked(event -> {
             if(!message.getText().equals("")){
-                sender(message.getText());
+                messengerSender(message.getText());
                 message.setText("");
             }
         });
@@ -117,20 +130,20 @@ public class ChatWindow {
     public void sender(String text){
         HBox sender = new HBox(10);
         sender.setAlignment(Pos.CENTER_RIGHT);
-
         Label senderMsg = new Label(text);
         senderMsg.setStyle(Styles.MSG_SENDER);
         senderMsg.setWrapText(true);
         senderMsg.setMinHeight(Region.USE_PREF_SIZE);
         senderMsg.setPadding(new Insets(8,13,8,13));
         sender.getChildren().addAll(senderMsg, Utility.getCircularImage(loggedUser.getProfileImage(),20));
-        msgs.getChildren().add(sender);
+        Platform.runLater(() -> msgs.getChildren().add(sender));
+
     }
-    public void receiver(Message message){
+    public void receiver(String message){
         HBox receiver = new HBox(10);
         receiver.setAlignment(Pos.CENTER_LEFT);
 
-        Label receiverMsg = new Label(message.getMessage());
+        Label receiverMsg = new Label(message);
         receiverMsg.setStyle(Styles.MSG_RECEIVER);
         receiverMsg.setWrapText(true);
         receiverMsg.setMinHeight(Region.USE_PREF_SIZE);
@@ -147,13 +160,37 @@ public class ChatWindow {
             SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(cmd.getObjectStr());
             for (Object o: socialArrayList.getItems()
                  ) {
-                receiver(Message.FromJson((String)o));
+                Message message = Message.FromJson((String)o);
+                if (message.getSender().equals(MainWindow.id))
+                {
+                    sender(message.getMessage());
+                }
+                else
+                receiver(message.getMessage());
             }
+        }else if(cmd.getKeyWord().equals(Message.RECEIVE_MESSAGE))
+        {
+            receiver(Message.FromJson(cmd.getObjectStr()).getMessage());
         }
-    }
-    private void messengerSender(Message message)
-    {
 
+    }
+    private void messengerSender(String text)
+    {
+        sender(text);
+
+        try {
+            DataOutputStream dataOutputStream = new DataOutputStream(connectionSocket.getOutputStream());
+            Command command = new Command();
+            command.setKeyWord(Message.SEND_MESSAGE);
+            Message message = new Message();
+            message.setSender(MainWindow.id);
+            message.setReceiver(id);
+            message.setMessage(text);
+            command.setSharableObject(message);
+            dataOutputStream.writeUTF(command.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 
