@@ -166,7 +166,13 @@ class EditInfo extends GridPane{
             //send to server
         });
 
-        info.getChildren().addAll(title,new Separator(), profilePicture, pictureOption,FnameLBL,FnameTXT,LnameLBL,LnameTXT,passwordLBL,passwordTXT,birthDateLBL,datePicker,genderLBL,genderHbox,saveBtn);
+        Button deactivate = new Button("Deactivate");
+        deactivate.setStyle(Styles.BLACK_BUTTON);
+        deactivate.setOnMouseEntered(event -> deactivate.setStyle(Styles.BLACK_BUTTON_HOVER));
+        deactivate.setOnMouseExited(event -> deactivate.setStyle(Styles.BLACK_BUTTON));
+        deactivate.setOnMouseClicked(event -> MainWindow.clientLoggedUser.deactivate(userInfo));
+
+        info.getChildren().addAll(title,new Separator(), profilePicture, pictureOption,FnameLBL,FnameTXT,LnameLBL,LnameTXT,passwordLBL,passwordTXT,birthDateLBL,datePicker,genderLBL,genderHbox,saveBtn,deactivate);
 
         add(info,1,0);
     }
