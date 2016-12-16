@@ -56,12 +56,13 @@ public class HomePage extends GridPane {
         Info.setPicture(userInfo.getProfileImage());
         /**PUT SOME INFO AS STRING*/
         Info.setLabel(userInfo.getFullName());
-        //Info.setGroupsBtn(userInfo);
         Info.setButtons();
-ScrollPane scrollPane = new ScrollPane(Info);
+
+        ScrollPane scrollPane = new ScrollPane(Info);
         scrollPane.setFitToWidth(true);
         scrollPane.setFitToHeight(true);
-        add(scrollPane,0,0);
+        add(Info,0,0);
+
         MainWindow.clientLoggedUser.new GetGroups() {
             @Override
             void onFinish(ArrayList<Group> groups) {
@@ -87,6 +88,7 @@ ScrollPane scrollPane = new ScrollPane(Info);
         //to add post
         content.postWriter.SavePost(Relations.HOME_PAGE.toString(), id);
         add(content,1,0);
+
         ScrollPane sp = new ScrollPane(content);
         sp.setFitToWidth(true);
         add(sp,1,0);
