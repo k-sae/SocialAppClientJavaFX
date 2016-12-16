@@ -627,5 +627,19 @@ public class ClientLoggedUser extends LoggedUser {
             }
         };
         CommandsExecutor.getInstance().add(commandRequest);
+
     }*/
+
+    public void deactivate(UserInfo userInfo){
+        Command command = new Command();
+        command.setKeyWord(LoggedUser.DEACTIVATE);
+        command.setSharableObject(userInfo.convertToJsonString());
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+            @Override
+            void analyze(Command commandFromServer) {
+
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
+    }
 }

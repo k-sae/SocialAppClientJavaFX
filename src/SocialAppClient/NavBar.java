@@ -243,13 +243,6 @@ if (clientLoggedUser instanceof ClientAdmin)
     }
     private MenuItem createMenuItem(UserInfo userInfo)
     {
-        ImageViewer profilePicture = new ImageViewer(userInfo.getProfileImage());
-        profilePicture.setFitWidth(20);
-        profilePicture.setFitHeight(20);
-        profilePicture.setPreserveRatio(false);
-        profilePicture.setSmooth(true);
-        profilePicture.setCache(true);
-        profilePicture.setClip(new Circle(profilePicture.getFitWidth()/2,profilePicture.getFitWidth()/2,profilePicture.getFitWidth()/2));
-        return new MenuItem(userInfo.getFullName(),profilePicture);
+        return new MenuItem(userInfo.getFullName(),Utility.getCircularImage(userInfo.getProfileImage(),10));
     }
 }
