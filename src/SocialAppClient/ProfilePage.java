@@ -70,9 +70,10 @@ public class ProfilePage extends GridPane {
             void analyze(Command cmd) {
                 if (cmd.getKeyWord().equals(Post.LOAD_POST_USERS)){
                     ArraylistPost posts = (ArraylistPost.fromJsonString(cmd.getObjectStr()));
-                      if(!posts.getPosts().isEmpty()) {
-                          Platform.runLater(() -> content.postContainer.addPosts(posts));
-                      }
+                    int loadMoreNum = 1;
+                    if(!posts.getPosts().isEmpty()) {
+                        Platform.runLater(() -> content.postContainer.addPosts(posts,loadMoreNum));
+                    }
 
                 }
             }
