@@ -91,8 +91,9 @@ public class GroupPage extends GridPane {
             void analyze(Command cmd) {
                 if (cmd.getKeyWord().equals(Post.LOAD_POST_GROUPS)){
                     ArraylistPost posts = (ArraylistPost.fromJsonString(cmd.getObjectStr()));
+                    int loadMoreNum = 1;
                     if(!posts.getPosts().isEmpty()) {
-                        Platform.runLater(() -> content.postContainer.addPosts(posts));
+                        Platform.runLater(() -> content.postContainer.addPosts(posts,loadMoreNum));
                     }
 
                 }
