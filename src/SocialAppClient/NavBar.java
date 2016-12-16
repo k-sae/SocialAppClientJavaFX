@@ -235,8 +235,8 @@ if (clientLoggedUser instanceof ClientAdmin)
                 void pick(UserInfo userInfo) {
                     MenuItem menuItem = createMenuItem(userInfo);
                     menuItem.setText(menuItem.getText() + " Sent a message");
-//                    menuItem.setOnAction(event -> /******/);
-                    Platform.runLater(() -> msg.getItems().add(menuItem));
+                    menuItem.setOnAction(event -> new ChatWindow(id));
+                    Platform.runLater(() -> msg.getItems().add(0,menuItem));
                 }
             };
         }
