@@ -579,7 +579,7 @@ public class ClientLoggedUser extends LoggedUser {
             }
         };
         CommandsExecutor.getInstance().add(commandRequest);
-    }
+    }/*MALOSH LAZMA
     public void loadMorePostsUser( SocialArrayList posts, int number){
         posts.getItems().clear();
         posts.setTarget(String.valueOf(number));
@@ -627,5 +627,5 @@ public class ClientLoggedUser extends LoggedUser {
             }
         };
         CommandsExecutor.getInstance().add(commandRequest);
-    }
+    }*/
 }

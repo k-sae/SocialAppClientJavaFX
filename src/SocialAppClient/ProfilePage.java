@@ -57,14 +57,15 @@ public class ProfilePage extends GridPane {
                 "BirthDate: " + userInfo.getBirthDate(),
                 "Gender: " + userInfo.getGender());
         Content content = new Content(Relations.PROFILE_PAGE.toString());
+        content.postWriter.SavePost(Relations.PROFILE_PAGE.toString(), id);
 
         MainWindow.clientLoggedUser.new GetPostsProfile(1,id){
             @Override
             void onFinish(ArrayList<Post> posts) {
-                Platform.runLater(() -> content.postContainer.addPosts(posts));
+                Platform.runLater(() -> content.postContainer.addPosts(posts,id));
             }
         };
-        content.postWriter.SavePost(Relations.PROFILE_PAGE.toString(), id);
+
         add(content,1,0);
         add(Info,0,0);
         ScrollPane sp = new ScrollPane(content);

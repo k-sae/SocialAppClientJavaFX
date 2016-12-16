@@ -83,14 +83,12 @@ public class HomePage extends GridPane {
                 }});
 
         Content content = new Content(Relations.HOME_PAGE.toString());
-        //to add post
         content.postWriter.SavePost(Relations.HOME_PAGE.toString(), id);
 
-        /**************************************/
         MainWindow.clientLoggedUser.new GetPosts(1){
             @Override
             void onFinish(ArrayList<Post> posts) {
-                Platform.runLater(() -> content.postContainer.addPosts(posts));
+                Platform.runLater(() -> content.postContainer.addPosts(posts,MainWindow.id));
             }
         };
 
