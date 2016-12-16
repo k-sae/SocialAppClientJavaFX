@@ -139,7 +139,7 @@ public class ClientLoggedUser extends LoggedUser {
                         SocialArrayList list=SocialArrayList.convertFromJsonString(cmd.getObjectStr());
                         for(int i=0;i<list.getItems().size();i++) {
 
-                            getPosts().add(Post.fromJsonString((String)list.getItems().get(i).toString()));
+                            getPosts().add(Post.fromJsonString((String)list.getItems().get(i)));
                         }
                         onFinish( getPosts());
                     }

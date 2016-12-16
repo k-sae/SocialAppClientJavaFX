@@ -68,16 +68,7 @@ public class HomePage extends GridPane {
 
             }
         };
-        MainWindow.clientLoggedUser.new GetPosts(2){
 
-            @Override
-            void onFinish(ArrayList<Post> posts) {
-               for(int  i=0;i<posts.size();i++){
-                   System.out.println(posts.get(i).convertToJsonString());
-
-               }
-            }
-        };
 
         Info.CreateGroupBtn.setOnMouseClicked(event -> {
 
@@ -94,6 +85,19 @@ public class HomePage extends GridPane {
         Content content = new Content(Relations.HOME_PAGE.toString());
         //to add post
         content.postWriter.SavePost(Relations.HOME_PAGE.toString(), id);
+
+        /**************************************/
+        MainWindow.clientLoggedUser.new GetPosts(1){
+            @Override
+            void onFinish(ArrayList<Post> posts) {
+                for(int  i=0;i<1;i++){
+                    System.out.println(posts.get(i).convertToJsonString());
+                    Platform.runLater(() -> content.postContainer.addPosts(posts));
+
+                }
+            }
+        };
+
         add(content,1,0);
 
         ScrollPane sp = new ScrollPane(content);

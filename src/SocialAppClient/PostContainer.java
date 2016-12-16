@@ -18,6 +18,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 
+import java.util.ArrayList;
+
 /**
  * Created by billy on 2016-11-26.
  */
@@ -59,6 +61,14 @@ public class PostContainer extends VBox implements CallBack {
                     MainWindow.clientLoggedUser.loadMorePostsGroup(posts,loadMoreNum);
 
             });
+        }
+    }
+    /**FUNCTION FOR HOME PAGE WITHOUT LOAD MORE BUTTON*/
+    public void addPosts(ArrayList<Post> posts) {
+
+        for (int i = 0; i < posts.size(); i++) {
+            PostViewer postViewer = new PostViewer(relation, posts.get(i));
+            getChildren().add(postViewer);
         }
     }
 
