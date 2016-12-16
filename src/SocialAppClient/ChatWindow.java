@@ -5,7 +5,6 @@ import SocialAppGeneral.Message;
 import SocialAppGeneral.SocialArrayList;
 import SocialAppGeneral.UserInfo;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -18,7 +17,6 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -38,6 +36,7 @@ public class ChatWindow {
     private UserInfo chatUser;
     private Button testBtn;
     private Socket connectionSocket;
+    private ReceiveServerNotification runningThread;
     public ChatWindow(String id){
         this.id = id;
         window.setTitle("Messenger");
@@ -47,16 +46,7 @@ public class ChatWindow {
 
         msgs = new VBox(20);
         container = new HBox(50);
-        window.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                try {
-                    connectionSocket.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+        window.setOnCloseRequest(event -> runningThread.kill());
         ScrollPane scrollPane = new ScrollPane(msgs);
         scrollPane.setFitToHeight(true);
         scrollPane.setFitToWidth(true);
@@ -80,12 +70,13 @@ public class ChatWindow {
                             //>>>>>>>>>>>>>>>>>>>>> start of connection #kareem
                             try {
                                 connectionSocket = new UtilityConnection(MainWindow.id, 6020, id).getConnectionSocket();
-                                new ReceiveServerNotification(connectionSocket) {
+                                runningThread = new ReceiveServerNotification(connectionSocket) {
                                     @Override
                                     public void Analyze(Command command) {
                                         messengerReceiver(command);
                                     }
-                                }.start();
+                                };
+                                runningThread.start();
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
