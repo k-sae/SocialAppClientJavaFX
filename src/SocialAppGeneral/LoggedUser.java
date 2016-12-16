@@ -20,6 +20,7 @@ public abstract class LoggedUser extends AppUser {
     protected ArrayList<Integer> requests;
     protected ArrayList<String> notifactions;
     protected ArrayList<Group> groups;
+    protected ArrayList<Post> Posts;
     protected ArrayList<String> groupsId;
     public LoggedUser(String id) {
         friends = new ArrayList<>();
@@ -27,13 +28,16 @@ public abstract class LoggedUser extends AppUser {
         notifactions = new ArrayList<>();
         groups = new ArrayList<>();
         groupsId = new ArrayList<>();
+        Posts=new ArrayList<>();
         setID(id);
     }
 
     public ArrayList<Group> getGroups() {
         return groups;
     }
-
+    public ArrayList<Post> getPosts() {
+        return Posts;
+    }
     public void setGroups(ArrayList<Group> groups) {
         this.groups = groups;
     }

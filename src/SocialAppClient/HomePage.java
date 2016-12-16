@@ -1,8 +1,6 @@
 package SocialAppClient;
 
-import SocialAppGeneral.Group;
-import SocialAppGeneral.Relations;
-import SocialAppGeneral.UserInfo;
+import SocialAppGeneral.*;
 import javafx.application.Platform;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.ColumnConstraints;
@@ -69,7 +67,16 @@ ScrollPane scrollPane = new ScrollPane(Info);
 
             }
         };
+        MainWindow.clientLoggedUser.new GetPosts(2){
 
+            @Override
+            void onFinish(ArrayList<Post> posts) {
+               for(int  i=0;i<posts.size();i++){
+                   System.out.println(posts.get(i).convertToJsonString());
+
+               }
+            }
+        };
 
         Info.CreateGroupBtn.setOnMouseClicked(event -> {
 

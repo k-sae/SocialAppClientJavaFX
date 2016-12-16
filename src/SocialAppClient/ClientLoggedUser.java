@@ -127,6 +127,31 @@ public class ClientLoggedUser extends LoggedUser {
 
         abstract void onFinish(ArrayList<Group> groups);
     }
+    abstract class GetPosts{
+        GetPosts(long numberPost){
+            Command command = new Command();
+            command.setKeyWord(Post.LOAD_POST_HOME);
+            command.setSharableObject(String.valueOf(numberPost));
+            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+                @Override
+                void analyze(Command cmd) {
+                    if (cmd.getKeyWord().equals(Post.LOAD_POST_HOME)) {
+                        SocialArrayList list=SocialArrayList.convertFromJsonString(cmd.getObjectStr());
+                        for(int i=0;i<list.getItems().size();i++) {
+
+                            getPosts().add(Post.fromJsonString((String)list.getItems().get(i).toString()));
+                        }
+                        onFinish( getPosts());
+                    }
+                }
+
+            };
+            CommandsExecutor.getInstance().add(commandRequest);
+        }
+        abstract void onFinish(ArrayList<Post> posts);
+        }
+
+
     //<<<<<<<<<<<<<<<<<<<<<<<<<<
     //Using inner abstract class to get results
     //as these functions run in another threads
