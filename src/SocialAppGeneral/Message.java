@@ -9,6 +9,7 @@ public class Message implements Shareable {
     public final static String FETCH_MESSAGES = "fetch_messages";
     public final static String SEND_MESSAGE = "send_message";
     public final static String RECEIVE_MESSAGE = "receive_message";
+    public final static String NEW_NOTIFICATION = "new_notification";
     private String Sender;
     private String Message;
     private String Receiver;

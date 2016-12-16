@@ -118,7 +118,7 @@ public class ChatWindow {
         sendBtn.setOnMouseExited(event -> sendBtn.setStyle(Styles.BLACK_BUTTON));
         sendBtn.setOnMouseClicked(event -> {
             if(!message.getText().equals("")){
-                sender(message.getText());
+                messengerSender(message.getText());
                 message.setText("");
             }
         });
@@ -139,7 +139,6 @@ public class ChatWindow {
     public void sender(String text){
         HBox sender = new HBox(10);
         sender.setAlignment(Pos.CENTER_RIGHT);
-        messengerSender(text);
         Label senderMsg = new Label(text);
         senderMsg.setStyle(Styles.MSG_SENDER);
         senderMsg.setWrapText(true);
@@ -186,6 +185,7 @@ public class ChatWindow {
     }
     private void messengerSender(String text)
     {
+        sender(text);
 
         try {
             DataOutputStream dataOutputStream = new DataOutputStream(connectionSocket.getOutputStream());

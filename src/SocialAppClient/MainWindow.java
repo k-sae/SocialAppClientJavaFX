@@ -88,6 +88,10 @@ public class MainWindow extends GridPane {
                         SocialAppGeneral.SocialArrayList list = SocialArrayList.convertFromJsonString(command.getObjectStr());
                         navBar.addNewMessage(Arrays.copyOf( list.getItems().toArray(),list.getItems().toArray().length,String[].class));
                         }
+                        else if (command.getKeyWord().equals(Message.NEW_NOTIFICATION))
+                        {
+                            navBar.addNewMessage(command.getObjectStr());
+                        }
                     }
                 };
                 receiveServerNotification.start();
