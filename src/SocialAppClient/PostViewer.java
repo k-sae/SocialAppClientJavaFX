@@ -9,6 +9,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 
+import java.text.SimpleDateFormat;
+
 /**
  * Created by billy on 2016-11-30.
  */
@@ -246,7 +248,8 @@ public class PostViewer extends VBox{
         setMaxWidth(450);
         setMargin(postText, new Insets(0, 30, 0, 30));
         //setMargin(img, new Insets(10,0,20,0));
-        HBox h = new HBox(new Label(post.getDate().toString()), edit);
+        String date = new SimpleDateFormat("yyyy MMMMM dd hh:mm aaa").format(post.getDate());
+        HBox h = new HBox(new Label(date), edit);
         h.setAlignment(Pos.TOP_RIGHT);
         HBox hBox = new HBox(new FriendView("" + post.getOwnerId()), h);
         hBox.setHgrow(h, Priority.ALWAYS);
