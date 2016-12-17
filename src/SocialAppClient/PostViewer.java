@@ -196,7 +196,7 @@ public class PostViewer extends VBox{
         comment.setOnMouseEntered(event -> comment.setStyle(Styles.POST_BUTTONS_HOVER));
         comment.setOnMouseExited(event -> comment.setStyle(Styles.POST_BUTTONS));
 
-        comment.setOnMouseClicked(event -> ((CallBack) getParent()).showPostDetails(post));
+        comment.setOnMouseClicked(event -> PostContainer.showPostDetails(post));
 
         ImageView shareicon = new ImageView("file:Resources/share.png");
         shareicon.setFitWidth(15);
@@ -220,7 +220,10 @@ public class PostViewer extends VBox{
         h.setAlignment(Pos.TOP_RIGHT);
         HBox hBox = new HBox(new FriendView("" + post.getOwnerId()), h);
         hBox.setHgrow(h, Priority.ALWAYS);
-        getChildren().addAll(hBox, postText, /*img,*/ new Separator(), buttons);
+
+        Button noti = new Button("NOTIFICATION");
+        noti.setOnMouseClicked(event -> NavBar.addNotification("4", "liked",post));
+        getChildren().addAll(noti, hBox, postText, /*img,*/ new Separator(), buttons);
 
     }
 

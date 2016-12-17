@@ -14,7 +14,7 @@ import java.util.ArrayList;
 /**
  * Created by billy on 2016-11-26.
  */
-public class PostContainer extends VBox implements CallBack {
+public class PostContainer extends VBox{
     private Button loadPostBtn;
     private static String relation;
     private static Pane mainWindow;
@@ -70,23 +70,14 @@ public class PostContainer extends VBox implements CallBack {
             }
         }
     }
-
-    @Override
-    public void showPostDetails(Post post) {
-
-        getChildren().clear();
-        ((CallBack)getParent()).removePostWriter();
-        getChildren().addAll(new PostDetails(relation,post));
-    }
-    public void removePostWriter(){
-    }
-
-    @Override
-    public void setCommentCommend(int show, String text, long id) {
-
-    }
     public static void reloadPostDetails(Post post){
         mainWindow.getChildren().clear();
+        mainWindow.getChildren().addAll(new PostDetails(relation,post));
+    }
+
+    public static void showPostDetails(Post post) {
+        mainWindow.getChildren().clear();
+        ((CallBack)mainWindow.getParent()).removePostWriter();
         mainWindow.getChildren().addAll(new PostDetails(relation,post));
     }
 

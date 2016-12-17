@@ -1,9 +1,6 @@
 package SocialAppClient;
 
-import SocialAppGeneral.Command;
-import SocialAppGeneral.Group;
-import SocialAppGeneral.SocialArrayList;
-import SocialAppGeneral.UserInfo;
+import SocialAppGeneral.*;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -177,7 +174,7 @@ public class NavBar extends HBox{
 
          notification = new Menu("",notiIcon);
         /** Add an item when you clicked on the menu */
-        notification.getItems().addAll(new MenuItem("Belal liked your photo"));
+//        notification.getItems().addAll(new MenuItem("Belal liked your photo"));
 
         /** Add a menu bar to contain all menus */
         MenuBar notificationsBar = new MenuBar(friendRequests, msg, notification);
@@ -251,7 +248,7 @@ if (clientLoggedUser instanceof ClientAdmin)
     //////////////////////////start of my area
 
     private Menu friendRequests;
-    private Menu notification;
+    private static Menu notification;
     private Menu msg;
     public void addFriendRequest(String... ids)
     {
@@ -283,8 +280,22 @@ if (clientLoggedUser instanceof ClientAdmin)
             };
         }
     }
-    private MenuItem createMenuItem(UserInfo userInfo)
+    private static MenuItem createMenuItem(UserInfo userInfo)
     {
         return new MenuItem(userInfo.getFullName(),Utility.getCircularImage(userInfo.getProfileImage(),10));
+    }
+
+    public static void addNotification(String id, String keyword, Post post){
+        new UserPicker().new InfoPicker(id) {
+            @Override
+            void pick(UserInfo userInfo) {
+                MenuItem menuItem = createMenuItem(userInfo);
+                menuItem.setText(menuItem.getText() + " " + keyword);
+                menuItem.setOnAction(event -> {
+                    Platform.runLater(()-> PostContainer.showPostDetails(post));
+                });
+                Platform.runLater(() -> notification.getItems().add(menuItem));
+            }
+        };
     }
 }
