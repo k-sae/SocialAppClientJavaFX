@@ -329,6 +329,30 @@ public class ClientLoggedUser extends LoggedUser {
         command.setSharableObject(id);
         return command;
     }
+    abstract class getFriends
+    {
+        getFriends()
+        {
+            Command command = new Command();
+            command.setKeyWord(LoggedUser.GET_FRIENDS);
+            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command ) {
+                @Override
+                void analyze(Command cmd) {
+                    //TODO #lastly
+                    SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(cmd.getObjectStr());
+
+                    ArrayList<String> strings = new ArrayList<>();
+                    for (Object o: socialArrayList.getItems()
+                         ) {
+                        strings.add((String)o);
+                    }
+                    onFinish(strings);
+                }
+            };
+            CommandsExecutor.getInstance().add(commandRequest);
+        }
+        abstract void onFinish(ArrayList<String> friends);
+    }
 
     public void savePostUser(String relation, String text){
         Post post=new Post();
