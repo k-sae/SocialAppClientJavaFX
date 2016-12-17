@@ -172,10 +172,9 @@ class EditInfo extends GridPane{
         deactivate.setOnMouseEntered(event -> deactivate.setStyle(Styles.BLACK_BUTTON_HOVER));
         deactivate.setOnMouseExited(event -> deactivate.setStyle(Styles.BLACK_BUTTON));
         deactivate.setOnMouseClicked(event -> {
-            MainWindow.clientLoggedUser.deactivate(userInfo);
-            Utility.alertWindow(" Deactivation","We are sorry about that feeling, Please check your E-mail!");
+            MainWindow.clientLoggedUser.deactivate();
             /**CLOSE THE WINDOW TILL WE KNOW HOW TO GO BACK TO THE REGISTER PAGE*/
-            getScene().getWindow().hide();
+//            getScene().getWindow().hide();
         });
 
         info.getChildren().addAll(title,new Separator(), profilePicture, pictureOption,FnameLBL,FnameTXT,LnameLBL,LnameTXT,passwordLBL,passwordTXT,birthDateLBL,datePicker,genderLBL,genderHbox,saveBtn,deactivate);

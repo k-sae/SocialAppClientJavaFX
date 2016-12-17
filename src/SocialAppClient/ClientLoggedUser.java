@@ -581,14 +581,15 @@ public class ClientLoggedUser extends LoggedUser {
         CommandsExecutor.getInstance().add(commandRequest);
     }
 
-    public void deactivate(UserInfo userInfo){
+    public void deactivate(){
         Command command = new Command();
         command.setKeyWord(LoggedUser.DEACTIVATE);
-        command.setSharableObject(userInfo.convertToJsonString());
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
             @Override
             void analyze(Command commandFromServer) {
-
+                Utility.alertWindow(" Deactivation","We are sorry about that feeling, Please check your E-mail!");
+                //TODO #Belal
+                //navigate to register page
             }
         };
         CommandsExecutor.getInstance().add(commandRequest);
