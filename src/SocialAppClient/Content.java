@@ -25,19 +25,9 @@ public class Content extends VBox implements CallBack{
 
         getChildren().addAll(postWriter, postContainer);
     }
-
     @Override
-    public void showPostDetails(Post post) {
-
-    }
-
     public void removePostWriter(){
         getChildren().remove(postWriter);
-    }
-
-    @Override
-    public void setCommentCommend(int show, String text, long id) {
-
     }
 
 }
