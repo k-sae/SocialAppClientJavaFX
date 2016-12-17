@@ -593,4 +593,15 @@ public class ClientLoggedUser extends LoggedUser {
         };
         CommandsExecutor.getInstance().add(commandRequest);
     }
+    public  void loadNotification(){
+        Command command = new Command();
+        command.setKeyWord(Notification.LOAD_NOTI);
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+            @Override
+            void analyze(Command commandFromServer) {
+              System.out.println(command.getObjectStr());
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
+    }
 }
