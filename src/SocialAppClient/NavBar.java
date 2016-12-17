@@ -1,6 +1,7 @@
 package SocialAppClient;
 
 import SocialAppGeneral.Command;
+import SocialAppGeneral.Group;
 import SocialAppGeneral.SocialArrayList;
 import SocialAppGeneral.UserInfo;
 import javafx.application.Platform;
@@ -68,7 +69,7 @@ public class NavBar extends HBox{
         Title.setPadding(new Insets(0,10,0,5));
 
         /** Search Text */
-        ComboBox<FriendView> Search = new ComboBox<>();
+        ComboBox<Object> Search = new ComboBox<>();
         Search.setPromptText("Search...");
         Search.setEditable(true);
         Search.setVisibleRowCount(5);
@@ -88,6 +89,8 @@ public class NavBar extends HBox{
                 void analyze(Command cmd) {
                   SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(cmd.getObjectStr());
                     Search.getItems().clear();
+                    Label l=new Label("FRIENDS&EMAILS");
+                    Search.getItems().add(l);
                     for (Object o: socialArrayList.getItems()) {
                         Platform.runLater(() ->{
                             Search.getItems().add(new FriendView((String)o));
@@ -100,9 +103,48 @@ public class NavBar extends HBox{
                             });
                             Search.setPromptText("Search...");
                         });
+
                        // SearchMenu.getItems().addAll(new MenuItem((String)o));
                      //   addFriendRequest((String)o);
                     }
+                    Platform.runLater(() ->{
+                        Label k=new Label("GRoup NAMES");
+                        Search.getItems().add(k);
+                    });
+                    Command command = new Command();
+                    command.setKeyWord("Search_Group");
+                    command.setSharableObject(Search.getEditor().getText());
+                    CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+                        @Override
+                        void analyze(Command commandFromServer) {
+                            SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(commandFromServer.getObjectStr());
+                 //           System.out.print(command.getObjectStr());
+                            for (Object o: socialArrayList.getItems()) {
+
+                               Platform.runLater(() ->{
+
+                                   new GroupPicker().new InfoPicker(Long.parseLong((String) o)) {
+                                       @Override
+                                       void pick(Group group) {
+                                           Search.getItems().add(group.getName());
+                                           Search.show();
+                                       }
+                                   };
+
+                               ;
+
+                                });
+                                Search.setOnAction(e->{
+                                    Platform.runLater(() -> {
+                                        MainWindow.navigateTo(new GroupPage(Long.parseLong((String)o)));
+                                        Search.setValue(null);
+                                    });
+                                    Search.setPromptText("Search...");
+                                });
+                            }
+                        }
+                    };
+                    CommandsExecutor.getInstance().add(commandRequest);
                 }
             };
             CommandsExecutor.getInstance().add(commandRequest);
