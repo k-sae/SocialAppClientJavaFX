@@ -1,6 +1,7 @@
 package SocialAppClient;
 
 import SocialAppGeneral.Command;
+import SocialAppGeneral.Group;
 import SocialAppGeneral.SocialArrayList;
 import SocialAppGeneral.UserInfo;
 import javafx.application.Platform;
@@ -122,9 +123,16 @@ public class NavBar extends HBox{
 
                                Platform.runLater(() ->{
 
+                                   new GroupPicker().new InfoPicker(Long.parseLong((String) o)) {
+                                       @Override
+                                       void pick(Group group) {
+                                           Search.getItems().add(group.getName());
+                                           Search.show();
+                                       }
+                                   };
 
-                                //    Search.getItems().add(new Group((String)o));
-                                  //  Search.show();
+                               ;
+
                                 });
                                 Search.setOnAction(e->{
                                     Platform.runLater(() -> {
