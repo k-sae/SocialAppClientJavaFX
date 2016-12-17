@@ -9,6 +9,8 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 
+import java.text.SimpleDateFormat;
+
 /**
  * Created by billy on 2016-11-30.
  */
@@ -21,17 +23,32 @@ public class PostViewer extends VBox{
     protected Button share;
     private Post post;
     private String relation;
+    int likeNum;
+    int dislikeNum;
+    int commentNum;
 
     public PostViewer(String relation, Post post) {
         this.post = post;
         this.relation = relation;
+        likeNum = 0;
+        dislikeNum = 0;
+        commentNum = 0;
         setLayout();
     }
 
     private void setLayout() {
-        setAlignment(Pos.TOP_CENTER);
         setPadding(new Insets(10, 0, 10, 0));
         setStyle(Styles.WHITE_BACKGROUND);
+
+        for(Like like: post.getLike()){
+            if(like.getLike() == 1)
+                likeNum++;
+            else
+                dislikeNum++;
+        }
+        for(Comment comment:post.getComments()){
+            commentNum++;
+        }
 
         postText = new TextArea();
         postText.setText(post.getContent());
@@ -99,6 +116,9 @@ public class PostViewer extends VBox{
         img.setSmooth(true);
         img.setCache(true);
 */
+
+        Label likeNumLBL = new Label("\tThumbs up " + likeNum + "\tThumbs down " + dislikeNum);
+
         ImageView TUicon = new ImageView("file:Resources/TU.png");
         TUicon.setFitWidth(15);
         TUicon.setPreserveRatio(true);
@@ -129,30 +149,36 @@ public class PostViewer extends VBox{
                 if (finalCheck[0] == -1 || post.getLike().get(finalCheck[0]).getLike() == -1) {
                     setLikeStyle(1);
                     MainWindow.clientLoggedUser.setLikecommendUsers(1, post);
+                    likeNumLBL.setText("\tThumbs up " + ++likeNum + "\tThumbs down " + dislikeNum);
                 } else if (post.getLike().get(finalCheck[0]).getLike() == 1) {
 
                     setLikeStyle(-1);
                     MainWindow.clientLoggedUser.setLikecommendUsers(-1, post);
+                    likeNumLBL.setText("\tThumbs up " + --likeNum + "\tThumbs down " + dislikeNum);
 
                 } else if (post.getLike().get(finalCheck[0]).getLike() == 0) {
 
                     setLikeStyle(1);
                     MainWindow.clientLoggedUser.setLikecommendUsers(1, post);
+                    likeNumLBL.setText("\tThumbs up " + ++likeNum + "\tThumbs down " + --dislikeNum);
                 }
             }else if(relation.equals(Relations.GROUP.toString())){
                 finalCheck[0] = Utility.checkID(post);
                 if (finalCheck[0] == -1 || post.getLike().get(finalCheck[0]).getLike() == -1) {
                     setLikeStyle(1);
                     MainWindow.clientLoggedUser.setLikecommendGroup(1, post);
+                    likeNumLBL.setText("\tThumbs up " + ++likeNum + "\tThumbs down " + dislikeNum);
                 } else if (post.getLike().get(finalCheck[0]).getLike() == 1) {
 
                     setLikeStyle(-1);
                     MainWindow.clientLoggedUser.setLikecommendGroup(-1, post);
+                    likeNumLBL.setText("\tThumbs up " + --likeNum + "\tThumbs down " + dislikeNum);
 
                 } else if (post.getLike().get(finalCheck[0]).getLike() == 0) {
 
                     setLikeStyle(1);
                     MainWindow.clientLoggedUser.setLikecommendGroup(1, post);
+                    likeNumLBL.setText("\tThumbs up " + ++likeNum + "\tThumbs down " + --dislikeNum);
                 }
             }
         });
@@ -163,12 +189,15 @@ public class PostViewer extends VBox{
                 if (finalCheck[0] == -1 || post.getLike().get(finalCheck[0]).getLike() == -1) {
                     setLikeStyle(0);
                     MainWindow.clientLoggedUser.setLikecommendUsers(0, post);
+                    likeNumLBL.setText("\tThumbs up " + likeNum + "\tThumbs down " + ++dislikeNum);
                 } else if (post.getLike().get(finalCheck[0]).getLike() == 1) {
                     setLikeStyle(0);
                     MainWindow.clientLoggedUser.setLikecommendUsers(0, post);
+                    likeNumLBL.setText("\tThumbs up " + --likeNum + "\tThumbs down " + ++dislikeNum);
                 } else if (post.getLike().get(finalCheck[0]).getLike() == 0) {
                     setLikeStyle(-1);
                     MainWindow.clientLoggedUser.setLikecommendUsers(-1, post);
+                    likeNumLBL.setText("\tThumbs up " + likeNum + "\tThumbs down " + --dislikeNum);
 
                 }
             }else if(relation.equals(Relations.GROUP.toString())){
@@ -176,12 +205,15 @@ public class PostViewer extends VBox{
                 if (finalCheck[0] == -1 || post.getLike().get(finalCheck[0]).getLike() == -1) {
                     setLikeStyle(0);
                     MainWindow.clientLoggedUser.setLikecommendGroup(0, post);
+                    likeNumLBL.setText("\tThumbs up " + likeNum + "\tThumbs down " + ++dislikeNum);
                 } else if (post.getLike().get(finalCheck[0]).getLike() == 1) {
                     setLikeStyle(0);
                     MainWindow.clientLoggedUser.setLikecommendGroup(0, post);
+                    likeNumLBL.setText("\tThumbs up " + --likeNum + "\tThumbs down " + ++dislikeNum);
                 } else if (post.getLike().get(finalCheck[0]).getLike() == 0) {
                     setLikeStyle(-1);
                     MainWindow.clientLoggedUser.setLikecommendGroup(-1, post);
+                    likeNumLBL.setText("\tThumbs up " + likeNum + "\tThumbs down " + --dislikeNum);
 
                 }
             }
@@ -196,7 +228,7 @@ public class PostViewer extends VBox{
         comment.setOnMouseEntered(event -> comment.setStyle(Styles.POST_BUTTONS_HOVER));
         comment.setOnMouseExited(event -> comment.setStyle(Styles.POST_BUTTONS));
 
-        comment.setOnMouseClicked(event -> ((CallBack) getParent()).showPostDetails(post));
+        comment.setOnMouseClicked(event -> PostContainer.showPostDetails(post));
 
         ImageView shareicon = new ImageView("file:Resources/share.png");
         shareicon.setFitWidth(15);
@@ -216,11 +248,12 @@ public class PostViewer extends VBox{
         setMaxWidth(450);
         setMargin(postText, new Insets(0, 30, 0, 30));
         //setMargin(img, new Insets(10,0,20,0));
-        HBox h = new HBox(new Label(post.getDate().toString()), edit);
+        String date = new SimpleDateFormat("yyyy MMMMM dd hh:mm aaa").format(post.getDate());
+        HBox h = new HBox(new Label(date), edit);
         h.setAlignment(Pos.TOP_RIGHT);
         HBox hBox = new HBox(new FriendView("" + post.getOwnerId()), h);
         hBox.setHgrow(h, Priority.ALWAYS);
-        getChildren().addAll(hBox, postText, /*img,*/ new Separator(), buttons);
+        getChildren().addAll(hBox, postText, /*img,*/new HBox(5,likeNumLBL,new Label("Comments "+commentNum)), new Separator(), buttons);
 
     }
 
