@@ -32,7 +32,7 @@ public class PostDetails extends VBox implements CallBack{
         getChildren().addAll(postViewer,CommentContainer);
     }
     public void setCommentCommend(int show, String text, long id){
-        if(relation.equals(Relations.PROFILE_PAGE.toString())) {
+        if(relation.equals(Relations.HOME_PAGE.toString()) || relation.equals(Relations.PROFILE_PAGE.toString())) {
             MainWindow.clientLoggedUser.setCommentCommendUser(show, text, id, post.getId(), post.getPostPos());
         }else if(relation.equals(Relations.GROUP.toString())){
             MainWindow.clientLoggedUser.setCommentCommendGroup(show, text, id, post.getId(), post.getPostPos());
