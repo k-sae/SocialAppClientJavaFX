@@ -579,56 +579,7 @@ public class ClientLoggedUser extends LoggedUser {
             }
         };
         CommandsExecutor.getInstance().add(commandRequest);
-    }/*MALOSH LAZMA
-    public void loadMorePostsUser( SocialArrayList posts, int number){
-        posts.getItems().clear();
-        posts.setTarget(String.valueOf(number));
-        Command command1 = new Command();
-        command1.setKeyWord(Post.LOAD_POST_GROUPS);
-        command1.setSharableObject(posts.convertToJsonString());
-        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command1) {
-            @Override
-            void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.LOAD_POST_GROUPS)) {
-                    SocialArrayList posts = (SocialArrayList.convertFromJsonString(cmd.getObjectStr()));
-                    ArrayList<Post> posts1=new ArrayList<>();
-                    for(int i=0;i<posts.getItems().size();i++) {
-                        posts1.add(Post.fromJsonString((String)posts.getItems().get(i)));
-                    }
-                    if (!posts1.isEmpty()) {
-                        Platform.runLater(() -> PostContainer.addPosts(posts1, number));
-                    }
-
-                }
-            }
-        };
-        CommandsExecutor.getInstance().add(commandRequest);
     }
-    public void loadMorePostsGroup(SocialArrayList posts, int number) {
-        posts.getItems().clear();
-        posts.setTarget(String.valueOf(number));
-        Command command1 = new Command();
-        command1.setKeyWord(Post.LOAD_POST_USERS);
-        command1.setSharableObject(posts.convertToJsonString());
-        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command1) {
-            @Override
-            void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.LOAD_POST_USERS)) {
-                    SocialArrayList posts = (SocialArrayList.convertFromJsonString(cmd.getObjectStr()));
-                    ArrayList<Post> posts1 = new ArrayList<>();
-                    for (int i = 0; i < posts.getItems().size(); i++) {
-                        posts1.add(Post.fromJsonString((String) posts.getItems().get(i)));
-                    }
-                    if (!posts1.isEmpty()) {
-                        Platform.runLater(() -> PostContainer.addPosts(posts1, number));
-                    }
-
-                }
-            }
-        };
-        CommandsExecutor.getInstance().add(commandRequest);
-
-    }*/
 
     public void deactivate(UserInfo userInfo){
         Command command = new Command();
