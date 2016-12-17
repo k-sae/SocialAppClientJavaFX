@@ -23,12 +23,14 @@ public class PostViewer extends VBox{
     private String relation;
     int likeNum;
     int dislikeNum;
+    int commentNum;
 
     public PostViewer(String relation, Post post) {
         this.post = post;
         this.relation = relation;
         likeNum = 0;
         dislikeNum = 0;
+        commentNum = 0;
         setLayout();
     }
 
@@ -41,6 +43,9 @@ public class PostViewer extends VBox{
                 likeNum++;
             else
                 dislikeNum++;
+        }
+        for(Comment comment:post.getComments()){
+            commentNum++;
         }
 
         postText = new TextArea();
@@ -245,7 +250,7 @@ public class PostViewer extends VBox{
         h.setAlignment(Pos.TOP_RIGHT);
         HBox hBox = new HBox(new FriendView("" + post.getOwnerId()), h);
         hBox.setHgrow(h, Priority.ALWAYS);
-        getChildren().addAll(hBox, postText, /*img,*/likeNumLBL, new Separator(), buttons);
+        getChildren().addAll(hBox, postText, /*img,*/new HBox(5,likeNumLBL,new Label("Comments "+commentNum)), new Separator(), buttons);
 
     }
 
