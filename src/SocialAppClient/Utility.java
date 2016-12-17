@@ -86,7 +86,7 @@ public class Utility {
                 }
 
             }
-            while (i < post.getLike().size() && post.getLike().get(i).getOwnerID() != Long.parseLong(MainWindow.id));
+            while (i < post.getLike().size()-1 && post.getLike().get(i).getOwnerID() != Long.parseLong(MainWindow.id));
         }
         return check;
     }
