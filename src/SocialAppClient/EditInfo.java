@@ -20,6 +20,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.time.LocalDate;
 
+import static javax.swing.text.html.HTML.Tag.HEAD;
+
 /**
  * Created by billy on 2016-11-28.
  */
@@ -173,8 +175,6 @@ class EditInfo extends GridPane{
         deactivate.setOnMouseExited(event -> deactivate.setStyle(Styles.BLACK_BUTTON));
         deactivate.setOnMouseClicked(event -> {
             MainWindow.clientLoggedUser.deactivate();
-            /**CLOSE THE WINDOW TILL WE KNOW HOW TO GO BACK TO THE REGISTER PAGE*/
-//            getScene().getWindow().hide();
         });
 
         info.getChildren().addAll(title,new Separator(), profilePicture, pictureOption,FnameLBL,FnameTXT,LnameLBL,LnameTXT,passwordLBL,passwordTXT,birthDateLBL,datePicker,genderLBL,genderHbox,saveBtn,deactivate);

@@ -227,7 +227,7 @@ public class NavBar extends HBox{
         logoutBtn.setOnMouseExited(event -> logoutBtn.setStyle(Styles.NAVBAR_BUTTON));
 
         logoutBtn.setOnMouseClicked(event -> {
-            getScene().getWindow().hide();
+            Main.logout();
         });
         //TODO: hazem
 if (clientLoggedUser instanceof ClientAdmin)

@@ -587,9 +587,11 @@ public class ClientLoggedUser extends LoggedUser {
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
             @Override
             void analyze(Command commandFromServer) {
-                Utility.alertWindow(" Deactivation","We are sorry about that feeling, Please check your E-mail!");
-                //TODO #Belal
-                //navigate to register page
+                Platform.runLater(() -> {
+                    Utility.alertWindow(" Deactivation","We are sorry about that feeling, Please check your E-mail!");
+                    Main.logout();
+                });
+
             }
         };
         CommandsExecutor.getInstance().add(commandRequest);

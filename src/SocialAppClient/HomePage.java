@@ -30,8 +30,7 @@ public class HomePage extends GridPane {
                     Platform.runLater(() -> {
                         Utility.alertWindow("Error","its seems that this account is deactivated or" +
                                 " banned pls contact us for more info or requesting reactivation");
-                        //TODO #Belal
-                        //navigate to the login window
+                        Main.logout();
                     });
                 }
                 HomePage.this.userInfo = userInfo;

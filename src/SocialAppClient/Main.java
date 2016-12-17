@@ -46,6 +46,10 @@ public class Main extends Application {
         mainPane.getChildren().add(mainWindow);
         MainWindow.navigateTo(page);
     }
+    public static void logout(){
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(new RegisterPage(mainPane));
+    }
 
 }
 
