@@ -76,14 +76,15 @@ public class Utility {
         return id[0];
     }
     public static int checkID(Post post) {
-        int i = 0;
+        int i = -1;
         int check = -1;
         if (post.getLike().size() != 0) {
             do {
+                i++;
                 if (post.getLike().get(i).getOwnerID() == Long.parseLong(MainWindow.id)) {
                     check = i;
                 }
-                i++;
+
             }
             while (i < post.getLike().size() && post.getLike().get(i).getOwnerID() != Long.parseLong(MainWindow.id));
         }
