@@ -164,9 +164,21 @@ class EditInfo extends GridPane{
             //TODO #belal
             //TODO: #kareem
             //send to server
+            MainWindow.navigateTo(new ProfilePage(MainWindow.id));
         });
 
-        info.getChildren().addAll(title,new Separator(), profilePicture, pictureOption,FnameLBL,FnameTXT,LnameLBL,LnameTXT,passwordLBL,passwordTXT,birthDateLBL,datePicker,genderLBL,genderHbox,saveBtn);
+        Button deactivate = new Button("Deactivate");
+        deactivate.setStyle(Styles.BLACK_BUTTON);
+        deactivate.setOnMouseEntered(event -> deactivate.setStyle(Styles.BLACK_BUTTON_HOVER));
+        deactivate.setOnMouseExited(event -> deactivate.setStyle(Styles.BLACK_BUTTON));
+        deactivate.setOnMouseClicked(event -> {
+            MainWindow.clientLoggedUser.deactivate(userInfo);
+            Utility.alertWindow(" Deactivation","We are sorry about that feeling, Please check your E-mail!");
+            /**CLOSE THE WINDOW TILL WE KNOW HOW TO GO BACK TO THE REGISTER PAGE*/
+            getScene().getWindow().hide();
+        });
+
+        info.getChildren().addAll(title,new Separator(), profilePicture, pictureOption,FnameLBL,FnameTXT,LnameLBL,LnameTXT,passwordLBL,passwordTXT,birthDateLBL,datePicker,genderLBL,genderHbox,saveBtn,deactivate);
 
         add(info,1,0);
     }

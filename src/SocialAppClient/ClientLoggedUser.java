@@ -502,4 +502,57 @@ public class ClientLoggedUser extends LoggedUser {
         };
         CommandsExecutor.getInstance().add(commandRequest);
     }
+    public void loadMorePostsUser(ArraylistPost posts, int number){
+        posts.getPosts().clear();
+        posts.setNumberpost(number);
+        Command command1 = new Command();
+        command1.setKeyWord(Post.LOAD_POST_USERS);
+        command1.setSharableObject(posts.convertToJsonString());
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command1) {
+            @Override
+            void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Post.LOAD_POST_USERS)) {
+                    ArraylistPost posts = (ArraylistPost.fromJsonString(cmd.getObjectStr()));
+                    if (!posts.getPosts().isEmpty()) {
+                        Platform.runLater(() -> PostContainer.addPosts(posts, number));
+                    }
+
+                }
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
+    }
+    public void loadMorePostsGroup(ArraylistPost posts, int number){
+        posts.getPosts().clear();
+        posts.setNumberpost(number);
+        Command command1 = new Command();
+        command1.setKeyWord(Post.LOAD_POST_GROUPS);
+        command1.setSharableObject(posts.convertToJsonString());
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command1) {
+            @Override
+            void analyze(Command cmd) {
+                if (cmd.getKeyWord().equals(Post.LOAD_POST_GROUPS)) {
+                    ArraylistPost posts = (ArraylistPost.fromJsonString(cmd.getObjectStr()));
+                    if (!posts.getPosts().isEmpty()) {
+                        Platform.runLater(() -> PostContainer.addPosts(posts, number));
+                    }
+
+                }
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
+    }
+
+    public void deactivate(UserInfo userInfo){
+        Command command = new Command();
+        command.setKeyWord(LoggedUser.DEACTIVATE);
+        command.setSharableObject(userInfo.convertToJsonString());
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+            @Override
+            void analyze(Command commandFromServer) {
+
+            }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
+    }
 }
