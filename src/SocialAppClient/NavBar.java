@@ -13,6 +13,8 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
+
 import static SocialAppClient.MainWindow.clientLoggedUser;
 import static javafx.scene.layout.GridPane.setColumnSpan;
 import static javafx.scene.layout.GridPane.setConstraints;
@@ -233,18 +235,35 @@ public class NavBar extends HBox{
             Main.logout();
         });
         //TODO: hazem
-if (clientLoggedUser instanceof ClientAdmin)
-{        Button approveBtn = new Button("Approves");
-        approveBtn.setStyle(Styles.NAVBAR_BUTTON);
-        approveBtn.setOnMouseEntered(event -> approveBtn.setStyle(Styles.NAVBAR_BUTTON_HOVER));
-        approveBtn.setOnMouseExited(event -> approveBtn.setStyle(Styles.NAVBAR_BUTTON));
+        if (clientLoggedUser instanceof ClientAdmin)
+        {
+            Button approveBtn = new Button("Approves");
+            approveBtn.setStyle(Styles.NAVBAR_BUTTON);
+            approveBtn.setOnMouseEntered(event -> approveBtn.setStyle(Styles.NAVBAR_BUTTON_HOVER));
+            approveBtn.setOnMouseExited(event -> approveBtn.setStyle(Styles.NAVBAR_BUTTON));
 
-        approveBtn.setOnMouseClicked(event -> {
+            approveBtn.setOnMouseClicked(event -> {
 
-            Platform.runLater(() -> MainWindow.navigateTo(new AdminApprovalPage()));
-        });
-    getChildren().addAll(homeBtn, profileBtn, /*groupsBtn,*/ logoutBtn, approveBtn);
-}else
+                Platform.runLater(() -> PostContainer.navigateTo(new AdminApprovalPage()));
+            });
+
+
+            Button logBtn = new Button("Log");
+            logBtn.setStyle(Styles.NAVBAR_BUTTON);
+            logBtn.setOnMouseEntered(event -> logBtn.setStyle(Styles.NAVBAR_BUTTON_HOVER));
+            logBtn.setOnMouseExited(event -> logBtn.setStyle(Styles.NAVBAR_BUTTON));
+            logBtn.setOnMouseClicked(event -> {
+                MainWindow.clientLoggedUser.new GetLogs() {
+                    @Override
+                    void onFinish(ArrayList<Log> logs) {
+                        Platform.runLater(() -> PostContainer.navigateTo(new LogHistory(logs)));
+
+                    }
+                };
+            });
+
+            getChildren().addAll(homeBtn, profileBtn, /*groupsBtn,*/ logoutBtn, approveBtn ,logBtn);
+        }else
         getChildren().addAll(homeBtn, profileBtn, /*groupsBtn,*/ logoutBtn);
     }
     //////////////////////////start of my area

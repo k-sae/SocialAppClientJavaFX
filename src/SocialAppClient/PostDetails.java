@@ -31,7 +31,7 @@ public class PostDetails extends VBox{
 
         getChildren().addAll(postViewer,CommentContainer);
     }
-    public static void setCommentCommend(int show, String text, long id){
+    public static void setCommentCommend(Relations show, String text, long id){
         if(relation.equals(Relations.HOME_PAGE.toString()) || relation.equals(Relations.PROFILE_PAGE.toString())) {
             MainWindow.clientLoggedUser.setCommentCommendUser(show, text, id, post.getId(), post.getPostPos());
         }else if(relation.equals(Relations.GROUP.toString())){

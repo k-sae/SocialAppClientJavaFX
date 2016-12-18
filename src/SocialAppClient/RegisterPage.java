@@ -245,6 +245,10 @@ class RegisterPage extends StackPane {
                 user.setFullName(FRname_verify.getText()+" "+LRname_verify.getText());
                 user.setBirthDate(dp.getValue().toString());
                 user.setAdminShip(RequestAdminShip.isSelected());
+                if(Male.isSelected())
+                    user.setGender(Male.getText());
+                else
+                    user.setGender(FeMale.getText());
                 send.setUserInfo(user);
                 //hna hb3t el command
                 Command command = new Command();

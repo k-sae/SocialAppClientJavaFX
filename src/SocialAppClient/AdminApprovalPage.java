@@ -35,31 +35,21 @@ public class AdminApprovalPage extends VBox {
     }
     private void setLayout(){
         setAlignment(Pos.TOP_CENTER);
-        setPadding(new Insets(10,40,40,40));
+        setPadding(new Insets(0,10,0,10));
         setSpacing(2);
         Label title = new Label("USERS TO APPROVE");
-        title.setFont(Font.font(36));
-        title.setPadding(new Insets(20,0,0,0));
+        title.setFont(Font.font(30));
 
         getChildren().addAll(title, new Separator());
-        /**set();*/
 
     }
-
-    /**
-     * private void set(){
-     * for (RegisterInfo registerInfo:registerInfos) {
-     * HBox container = new HBox();
-     * container.setStyle(Styles.WHITE_BACKGROUND);
-     * Label name = new Label(registerInfo.getUserInfo().getFullName());
-     *
-     */
 
     private void set(ArrayList<String> names){
         for (String Name:names) {
             HBox container = new HBox();
             container.setStyle(Styles.WHITE_BACKGROUND);
             Label name = new Label(Name);
+            name.setWrapText(true);
             name.setFont(Font.font(20));
 
             Button approveBtn = new Button("Approve");
@@ -67,8 +57,8 @@ public class AdminApprovalPage extends VBox {
             approveBtn.setOnMouseEntered(event -> approveBtn.setStyle(Styles.BLACK_BUTTON_HOVER));
             approveBtn.setOnMouseExited(event -> approveBtn.setStyle(Styles.BLACK_BUTTON));
             approveBtn.setOnAction(event -> {
-                System.out.print(Name);
                 ((ClientAdmin)MainWindow.clientLoggedUser).approve(Name);
+                Platform.runLater(() -> MainWindow.navigateTo(new AdminApprovalPage()));
 
             });
 
@@ -78,6 +68,7 @@ public class AdminApprovalPage extends VBox {
             approveAsAdminBtn.setOnMouseExited(event -> approveAsAdminBtn.setStyle(Styles.BLACK_BUTTON));
             approveAsAdminBtn.setOnAction(e->{
                 ((ClientAdmin)MainWindow.clientLoggedUser).approveAsAdmin(Name);
+                Platform.runLater(() -> MainWindow.navigateTo(new AdminApprovalPage()));
             });
 
             Button rejectBtn = new Button("Reject");
@@ -86,14 +77,15 @@ public class AdminApprovalPage extends VBox {
             rejectBtn.setOnMouseExited(event -> rejectBtn.setStyle(Styles.BLACK_BUTTON));
             rejectBtn.setOnAction(e->{
                 ((ClientAdmin)MainWindow.clientLoggedUser).reject(Name);
+                Platform.runLater(() -> MainWindow.navigateTo(new AdminApprovalPage()));
             });
 
-            HBox btns = new HBox(20);
+            HBox btns = new HBox(10);
             btns.setAlignment(Pos.CENTER_RIGHT);
             btns.getChildren().addAll(approveBtn,approveAsAdminBtn, rejectBtn);
 
             container.setHgrow(btns, Priority.ALWAYS);
-            container.setPadding(new Insets(5,50,5,50));
+            container.setPadding(new Insets(5,10,5,10));
             container.getChildren().addAll(name, btns);
 
             getChildren().add(container);

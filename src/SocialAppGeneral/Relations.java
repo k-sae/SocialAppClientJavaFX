@@ -12,7 +12,11 @@ public enum Relations {
     GROUP,
     PROFILE_PAGE,
     HOME_PAGE,
+    POST,
     ADD,
     EDIT,
-    DELETE
+    DELETE,
+    THUMP_UP,
+    THUMP_DOWN,
+    COMMENT
 }

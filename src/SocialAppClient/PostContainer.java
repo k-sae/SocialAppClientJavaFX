@@ -80,5 +80,10 @@ public class PostContainer extends VBox{
         ((CallBack)mainWindow.getParent()).removePostWriter();
         mainWindow.getChildren().addAll(new PostDetails(relation,post));
     }
+    public static void navigateTo(Pane frame) {
+        mainWindow.getChildren().clear();
+        ((CallBack)mainWindow.getParent()).removePostWriter();
+        mainWindow.getChildren().addAll(frame);
+    }
 
 }
