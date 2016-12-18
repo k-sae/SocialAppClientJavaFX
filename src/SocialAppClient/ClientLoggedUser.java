@@ -596,11 +596,18 @@ public class ClientLoggedUser extends LoggedUser {
     public  void loadNotification(){
         Command command = new Command();
         command.setKeyWord(Notification.LOAD_NOTI);
+
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
             @Override
             void analyze(Command commandFromServer) {
-
-                System.out.println(commandFromServer.getObjectStr());
+                SocialArrayList socialArrayList=SocialArrayList.convertFromJsonString(commandFromServer.getObjectStr());
+                Notification notification;
+                for (Object o :
+                        socialArrayList.getItems()) {
+                    System.out.println(Notification.fromJsonString((String)o).convertToJsonString());
+                    notification = Notification.fromJsonString(Notification.fromJsonString((String)o).convertToJsonString());
+                    NavBar.addNotification(notification.getIdSender(),notification.getKeyword(),notification.getPost());
+                }
             }
         };
         CommandsExecutor.getInstance().add(commandRequest);
