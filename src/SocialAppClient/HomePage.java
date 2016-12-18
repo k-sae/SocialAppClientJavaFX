@@ -25,6 +25,14 @@ public class HomePage extends GridPane {
         new UserPicker().new InfoPicker(id) {
             @Override
             void pick(UserInfo userInfo) {
+                if (userInfo.getProfileImage().equals("unknown"))
+                {
+                    Platform.runLater(() -> {
+                        Utility.alertWindow("Error","its seems that this account is deactivated or" +
+                                " banned pls contact us for more info or requesting reactivation");
+                        Main.logout();
+                    });
+                }
                 HomePage.this.userInfo = userInfo;
                 Platform.runLater(() -> setPanels());
             }
