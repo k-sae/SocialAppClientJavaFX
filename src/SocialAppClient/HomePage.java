@@ -76,7 +76,7 @@ public class HomePage extends GridPane {
 
             }
         };
-
+          MainWindow.clientLoggedUser.loadNotification();
 
         Info.CreateGroupBtn.setOnMouseClicked(event -> {
 
