@@ -46,6 +46,7 @@ public class MainWindow extends GridPane {
         setPanels();
         startNotifications();
         startChat();
+        clientLoggedUser.loadNotification();
     }
     private void startNotifications()
     {

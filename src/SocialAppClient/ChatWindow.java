@@ -46,7 +46,15 @@ public class ChatWindow {
 
         msgs = new VBox(20);
         container = new HBox(50);
-        window.setOnCloseRequest(event -> runningThread.kill());
+        window.setOnCloseRequest(event -> {
+            try {
+                runningThread.kill();
+            }catch (Exception ignored)
+            {
+                //entering up here means that the thread is already dead
+            }
+
+        });
         ScrollPane scrollPane = new ScrollPane(msgs);
         scrollPane.setFitToHeight(true);
         scrollPane.setFitToWidth(true);
