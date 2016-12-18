@@ -68,7 +68,6 @@ public class HomePage extends GridPane {
         scrollPane.setFitToWidth(true);
         scrollPane.setFitToHeight(true);
         add(Info,0,0);
-        MainWindow.clientLoggedUser.loadLog();
 
         MainWindow.clientLoggedUser.new GetGroups() {
             @Override

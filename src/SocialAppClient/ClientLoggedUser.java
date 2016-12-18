@@ -638,7 +638,7 @@ public class ClientLoggedUser extends LoggedUser {
             }
         };
         CommandsExecutor.getInstance().add(commandRequest);
-    }
+    }/*
     public  void loadLog(){
         Command command = new Command();
         command.setKeyWord(Log.LOAD_LOG);
@@ -651,6 +651,7 @@ public class ClientLoggedUser extends LoggedUser {
                 for (Object o :
                         socialArrayList.getItems()) {
                     System.out.println(Log.fromJsonString((String)o).convertToJsonString());
+                    logs.add(Log.fromJsonString((String)o).convertToJsonString());
                     log = Log.fromJsonString(Notification.fromJsonString((String)o).convertToJsonString());
                     //Platform.runLater(()-> MainWindow.navigateTo(new LogHistory(log.getSenderId(),log.getOwnerId(),log.getKeyword().toString())));
 
@@ -658,5 +659,28 @@ public class ClientLoggedUser extends LoggedUser {
                 }
         };
         CommandsExecutor.getInstance().add(commandRequest);
+    }*/
+
+    abstract class GetLogs
+    {
+        GetLogs()
+        {
+            Command command = new Command();
+            command.setKeyWord(Log.LOAD_LOG);
+            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+                @Override
+                void analyze(Command commandFromServer) {
+                    getLogs().clear();
+                    SocialArrayList list=SocialArrayList.convertFromJsonString(commandFromServer.getObjectStr());
+                    for(int i=0;i<list.getItems().size();i++) {
+                        getLogs().add(Log.fromJsonString((String)list.getItems().get(i)));
+                    }
+                    onFinish(getLogs());
+                }
+            };
+            CommandsExecutor.getInstance().add(commandRequest);
+        }
+
+        abstract void onFinish(ArrayList<Log> logs);
     }
 }

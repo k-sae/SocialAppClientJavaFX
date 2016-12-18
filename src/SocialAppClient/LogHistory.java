@@ -17,43 +17,34 @@ import java.util.ArrayList;
 public class LogHistory extends VBox {
 
     private ArrayList<Log> logs;
-    public LogHistory(){
-        setLayout();
-    }
-    public LogHistory(String ownerId, String posId, String keyword){
-        setLayout();
-    }
-    public LogHistory(String ownerId, String posId, String keyword, String extraId){
-        setLayout();
-    }
     public LogHistory(ArrayList<Log> logs){
         this.logs = logs;
+        setLayout();
+        set();
     }
     private void setLayout(){
         setAlignment(Pos.TOP_CENTER);
-        setPadding(new Insets(10,40,40,40));
+        setPadding(new Insets(0,10,0,10));
         setSpacing(2);
         Label title = new Label("LOG HISTORY");
-        title.setFont(Font.font(36));
-        title.setPadding(new Insets(20,0,0,0));
+        title.setFont(Font.font(30));
 
         getChildren().addAll(title, new Separator());
-        set("liked ", "commented on ", "liked ");
     }
 
-    private void set(String... strings){
-        for (String s: strings) {
+    private void set(){
+        for (Log log: logs) {
             HBox container = new HBox();
-            container.setAlignment(Pos.CENTER_LEFT);
+            container.setAlignment(Pos.CENTER);
             container.setStyle(Styles.WHITE_BACKGROUND);
-            Label keyword1 = new Label(s);
-            keyword1.setFont(Font.font(20));
+            Label keyword1 = new Label(log.getKeyword().toString().toLowerCase() + " on ");
+            keyword1.setFont(Font.font(15));
             Label keyword2 = new Label("post");
-            keyword2.setFont(Font.font(20));
+            keyword2.setFont(Font.font(15));
 
-            container.getChildren().addAll(new FriendView("1", 20), keyword1, new FriendView("4", 20), keyword2);
+            container.getChildren().addAll(new FriendView(log.getSenderId(), 15), keyword1, new FriendView(log.getOwnerId(), 15), keyword2);
 
-            container.setPadding(new Insets(5, 20, 5, 20));
+            container.setPadding(new Insets(5, 5, 5, 0));
             getChildren().add(container);
         }
     }

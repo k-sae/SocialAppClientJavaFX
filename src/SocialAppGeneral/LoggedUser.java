@@ -23,6 +23,7 @@ public abstract class LoggedUser extends AppUser {
     protected ArrayList<String> notifactions;
     protected ArrayList<Group> groups;
     protected ArrayList<Post> Posts;
+    protected ArrayList<Log> logs;
     protected ArrayList<String> groupsId;
     public LoggedUser(String id) {
         friends = new ArrayList<>();
@@ -31,6 +32,7 @@ public abstract class LoggedUser extends AppUser {
         groups = new ArrayList<>();
         groupsId = new ArrayList<>();
         Posts=new ArrayList<>();
+        logs = new ArrayList<>();
         setID(id);
     }
 
@@ -42,6 +44,9 @@ public abstract class LoggedUser extends AppUser {
     }
     public void setGroups(ArrayList<Group> groups) {
         this.groups = groups;
+    }
+    public ArrayList<Log> getLogs() {
+        return logs;
     }
 
     public abstract void createGroup(String name);

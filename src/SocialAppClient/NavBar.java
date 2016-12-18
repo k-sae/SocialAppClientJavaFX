@@ -13,6 +13,8 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
+
 import static SocialAppClient.MainWindow.clientLoggedUser;
 import static javafx.scene.layout.GridPane.setColumnSpan;
 import static javafx.scene.layout.GridPane.setConstraints;
@@ -239,15 +241,22 @@ public class NavBar extends HBox{
 
             approveBtn.setOnMouseClicked(event -> {
 
-                Platform.runLater(() -> MainWindow.navigateTo(new AdminApprovalPage()));
+                Platform.runLater(() -> PostContainer.navigateTo(new AdminApprovalPage()));
             });
+
 
             Button logBtn = new Button("Log");
             logBtn.setStyle(Styles.NAVBAR_BUTTON);
             logBtn.setOnMouseEntered(event -> logBtn.setStyle(Styles.NAVBAR_BUTTON_HOVER));
             logBtn.setOnMouseExited(event -> logBtn.setStyle(Styles.NAVBAR_BUTTON));
             logBtn.setOnMouseClicked(event -> {
-                Platform.runLater(() -> MainWindow.navigateTo(new LogHistory()));
+                MainWindow.clientLoggedUser.new GetLogs() {
+                    @Override
+                    void onFinish(ArrayList<Log> logs) {
+                        Platform.runLater(() -> PostContainer.navigateTo(new LogHistory(logs)));
+
+                    }
+                };
             });
 
             getChildren().addAll(homeBtn, profileBtn, /*groupsBtn,*/ logoutBtn, approveBtn ,logBtn);
