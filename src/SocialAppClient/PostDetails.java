@@ -5,6 +5,7 @@ import SocialAppGeneral.Comment;
 import SocialAppGeneral.Post;
 import SocialAppGeneral.Relations;
 import javafx.application.Platform;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
@@ -28,7 +29,7 @@ public class PostDetails extends VBox{
     }
     private void setLayout(){
         setAlignment(Pos.TOP_CENTER);
-
+        setPadding(new Insets(30, 0, 30, 0));
         getChildren().addAll(postViewer,CommentContainer);
     }
     public static void setCommentCommend(Relations show, String text, long id){

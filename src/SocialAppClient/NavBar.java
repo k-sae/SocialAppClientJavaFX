@@ -241,7 +241,7 @@ public class NavBar extends HBox{
 
             approveBtn.setOnMouseClicked(event -> {
 
-                Platform.runLater(() -> PostContainer.navigateTo(new AdminApprovalPage()));
+                Platform.runLater(() -> Content.navigateTo(new AdminApprovalPage()));
             });
 /*
 
@@ -318,7 +318,7 @@ public class NavBar extends HBox{
                 MenuItem menuItem = createMenuItem(userInfo);
                 menuItem.setText(menuItem.getText() + " " + keyword + " on your post");
                 menuItem.setOnAction(event -> {
-                    Platform.runLater(()-> PostContainer.showPostDetails(post));
+                    Platform.runLater(()-> Content.showPostDetails(post));
                 });
                 Platform.runLater(() -> notification.getItems().add(menuItem));
             }

@@ -135,7 +135,7 @@ public class ProfileInfoViewer extends InfoViewer{
             MainWindow.clientLoggedUser.new GetLogs() {
                 @Override
                 void onFinish(ArrayList<Log> logs) {
-                    Platform.runLater(() -> PostContainer.navigateTo(new LogHistory(id, logs)));
+                    Platform.runLater(() -> Content.navigateTo(new LogHistory(id, logs)));
 
                 }
             };
