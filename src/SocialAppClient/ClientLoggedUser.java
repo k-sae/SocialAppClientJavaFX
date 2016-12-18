@@ -599,7 +599,8 @@ public class ClientLoggedUser extends LoggedUser {
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
             @Override
             void analyze(Command commandFromServer) {
-              System.out.println(command.getObjectStr());
+
+                System.out.println(commandFromServer.getObjectStr());
             }
         };
         CommandsExecutor.getInstance().add(commandRequest);
