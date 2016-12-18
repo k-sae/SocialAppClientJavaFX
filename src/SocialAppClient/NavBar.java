@@ -75,7 +75,10 @@ public class NavBar extends HBox{
         searchImg.setPreserveRatio(true);
         Button searchBtn = new Button("", searchImg);
         searchBtn.setOnAction(e->{
-
+            if(Search.getEditor().getText().equals(""))
+            {
+                return;
+            }
             /** Add an item when you clicked on the menu */
             Command command = new Command();
             command.setKeyWord("Search");
@@ -247,11 +250,11 @@ if (clientLoggedUser instanceof ClientAdmin)
     //////////////////////////start of my area
 
     private Menu friendRequests;
-    private static ImageView FRIcon;
-    private static Menu notification;
-    private static ImageView notiIcon;
+    private  ImageView FRIcon;
+    private  Menu notification;
+    private  ImageView notiIcon;
     private Menu msg;
-    private static ImageView msgIcon;
+    private  ImageView msgIcon;
 
     public void addFriendRequest(String... ids)
     {   FRIcon.setImage(new Image("file:Resources/FRN.png"));
@@ -291,19 +294,22 @@ if (clientLoggedUser instanceof ClientAdmin)
         return new MenuItem(userInfo.getFullName(),Utility.getCircularImage(userInfo.getProfileImage(),10));
     }
 
-    public static void addNotification(String id, String keyword, Post post){
+    void addNotification(Notification... notifications){
         notiIcon.setImage(new Image("file:Resources/notiN.png"));
-        new UserPicker().new InfoPicker(id) {
-            @Override
-            void pick(UserInfo userInfo) {
-                MenuItem menuItem = createMenuItem(userInfo);
-                menuItem.setText(menuItem.getText() + " " + keyword + " on your post");
-                menuItem.setOnAction(event -> {
-                    Platform.runLater(()-> PostContainer.showPostDetails(post));
-                });
-                Platform.runLater(() -> notification.getItems().add(menuItem));
-            }
-        };
+        for (Notification notification: notifications
+             ){
+            new UserPicker().new InfoPicker(notification.getIdSender()) {
+                @Override
+                void pick(UserInfo userInfo) {
+                    MenuItem menuItem = createMenuItem(userInfo);
+                    menuItem.setText(menuItem.getText() + " " + notification.getKeyword() + " on your post");
+                    menuItem.setOnAction(event -> {
+                        Platform.runLater(() -> PostContainer.showPostDetails(notification.getPost()));
+                    });
+                    Platform.runLater(() -> NavBar.this.notification.getItems().add(menuItem));
+                }
+            };
+        }
         notification.setOnShowing(event ->notiIcon.setImage(new Image("file:Resources/noti.png")));
     }
 }

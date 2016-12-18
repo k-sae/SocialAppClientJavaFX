@@ -627,14 +627,14 @@ public class ClientLoggedUser extends LoggedUser {
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
             @Override
             void analyze(Command commandFromServer) {
-                SocialArrayList socialArrayList=SocialArrayList.convertFromJsonString(commandFromServer.getObjectStr());
-                Notification notification;
-                for (Object o :
-                        socialArrayList.getItems()) {
-                    System.out.println(Notification.fromJsonString((String)o).convertToJsonString());
-                    notification = Notification.fromJsonString(Notification.fromJsonString((String)o).convertToJsonString());
-                    NavBar.addNotification(notification.getIdSender(),notification.getKeyword(),notification.getPost());
-                }
+//                SocialArrayList socialArrayList=SocialArrayList.convertFromJsonString(commandFromServer.getObjectStr());
+//                Notification notification;
+//                for (Object o :
+//                        socialArrayList.getItems()) {
+//                    System.out.println(Notification.fromJsonString((String)o).convertToJsonString());
+//                    notification = Notification.fromJsonString(Notification.fromJsonString((String)o).convertToJsonString());
+//                    NavBar.addNotification(notification.getIdSender(),notification.getKeyword(),notification.getPost());
+//                }
             }
         };
         CommandsExecutor.getInstance().add(commandRequest);
