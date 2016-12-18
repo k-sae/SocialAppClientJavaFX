@@ -639,4 +639,24 @@ public class ClientLoggedUser extends LoggedUser {
         };
         CommandsExecutor.getInstance().add(commandRequest);
     }
+    public  void loadLog(){
+        Command command = new Command();
+        command.setKeyWord(Log.LOAD_LOG);
+        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+            @Override
+            void analyze(Command commandFromServer) {
+                SocialArrayList socialArrayList=SocialArrayList.convertFromJsonString(commandFromServer.getObjectStr());
+                Log log;
+                ArrayList<Log> logs;
+                for (Object o :
+                        socialArrayList.getItems()) {
+                    System.out.println(Log.fromJsonString((String)o).convertToJsonString());
+                    log = Log.fromJsonString(Notification.fromJsonString((String)o).convertToJsonString());
+                    //Platform.runLater(()-> MainWindow.navigateTo(new LogHistory(log.getSenderId(),log.getOwnerId(),log.getKeyword().toString())));
+
+                }
+                }
+        };
+        CommandsExecutor.getInstance().add(commandRequest);
+    }
 }
