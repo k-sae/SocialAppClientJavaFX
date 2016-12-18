@@ -244,9 +244,9 @@ public class NavBar extends HBox{
 
             approveBtn.setOnMouseClicked(event -> {
 
-                Platform.runLater(() -> PostContainer.navigateTo(new AdminApprovalPage()));
+                Platform.runLater(() -> Content.navigateTo(new AdminApprovalPage()));
             });
-
+/*
 
             Button logBtn = new Button("Log");
             logBtn.setStyle(Styles.NAVBAR_BUTTON);
@@ -260,9 +260,9 @@ public class NavBar extends HBox{
 
                     }
                 };
-            });
+            });*/
 
-            getChildren().addAll(homeBtn, profileBtn, /*groupsBtn,*/ logoutBtn, approveBtn ,logBtn);
+            getChildren().addAll(homeBtn, profileBtn, /*groupsBtn,*/ logoutBtn, approveBtn/*, logBtn */);
         }else
         getChildren().addAll(homeBtn, profileBtn, /*groupsBtn,*/ logoutBtn);
     }
@@ -321,9 +321,9 @@ public class NavBar extends HBox{
                 @Override
                 void pick(UserInfo userInfo) {
                     MenuItem menuItem = createMenuItem(userInfo);
-                    menuItem.setText(menuItem.getText() + " " + notification.getKeyword() + " on your post");
+                    menuItem.setText(menuItem.getText() + " " + notification.getKeyword().toString().toLowerCase() + " on your post");
                     menuItem.setOnAction(event -> {
-                        Platform.runLater(() -> PostContainer.showPostDetails(notification.getPost()));
+                        Platform.runLater(() -> Content.showPostDetails(notification.getPost()));
                     });
                     Platform.runLater(() -> NavBar.this.notification.getItems().add(menuItem));
                 }

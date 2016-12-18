@@ -228,7 +228,7 @@ public class PostViewer extends VBox{
         comment.setOnMouseEntered(event -> comment.setStyle(Styles.POST_BUTTONS_HOVER));
         comment.setOnMouseExited(event -> comment.setStyle(Styles.POST_BUTTONS));
 
-        comment.setOnMouseClicked(event -> PostContainer.showPostDetails(post));
+        comment.setOnMouseClicked(event -> Content.showPostDetails(post));
 
         ImageView shareicon = new ImageView("file:Resources/share.png");
         shareicon.setFitWidth(15);

@@ -491,7 +491,7 @@ public class ClientLoggedUser extends LoggedUser {
                 if (cmd.getKeyWord().equals(Post.EDITE_POST_USERS)) {
                     Post b= Post.fromJsonString(cmd.getObjectStr());
                     if(b.getId() !=0) {
-                        Platform.runLater(() -> PostContainer.reloadPostDetails(b));
+                        Platform.runLater(() -> Content.showPostDetails(b));
                     }
                     else{
                         Platform.runLater(() ->  Utility.errorWindow("please refresh window"));
@@ -521,7 +521,7 @@ public class ClientLoggedUser extends LoggedUser {
                 if (cmd.getKeyWord().equals(Post.EDITE_POST_GROUPS)) {
                     Post b= Post.fromJsonString(cmd.getObjectStr());
                     if(b.getId() !=0) {
-                        Platform.runLater(() -> PostContainer.reloadPostDetails(b));
+                        Platform.runLater(() -> Content.showPostDetails(b));
                     }
                     else{
                         Platform.runLater(() ->  Utility.errorWindow("please refresh window"));

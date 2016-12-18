@@ -17,8 +17,10 @@ import java.util.ArrayList;
 public class LogHistory extends VBox {
 
     private ArrayList<Log> logs;
-    public LogHistory(ArrayList<Log> logs){
+    String id;
+    public LogHistory(String id, ArrayList<Log> logs){
         this.logs = logs;
+        this.id = id;
         setLayout();
         set();
     }
@@ -34,18 +36,20 @@ public class LogHistory extends VBox {
 
     private void set(){
         for (Log log: logs) {
-            HBox container = new HBox();
-            container.setAlignment(Pos.CENTER);
-            container.setStyle(Styles.WHITE_BACKGROUND);
-            Label keyword1 = new Label(log.getKeyword().toString().toLowerCase() + " on ");
-            keyword1.setFont(Font.font(15));
-            Label keyword2 = new Label("post");
-            keyword2.setFont(Font.font(15));
+            if(id.equals(log.getSenderId())) {
+                HBox container = new HBox();
+                container.setAlignment(Pos.CENTER);
+                container.setStyle(Styles.WHITE_BACKGROUND);
+                Label keyword1 = new Label(log.getKeyword().toString().toLowerCase() + " on ");
+                keyword1.setFont(Font.font(15));
+                Label keyword2 = new Label("post");
+                keyword2.setFont(Font.font(15));
 
-            container.getChildren().addAll(new FriendView(log.getSenderId(), 15), keyword1, new FriendView(log.getOwnerId(), 15), keyword2);
+                container.getChildren().addAll(new FriendView(log.getSenderId(), 15), keyword1, new FriendView(log.getOwnerId(), 15), keyword2);
 
-            container.setPadding(new Insets(5, 5, 5, 0));
-            getChildren().add(container);
+                container.setPadding(new Insets(5, 5, 5, 0));
+                getChildren().add(container);
+            }
         }
     }
 }

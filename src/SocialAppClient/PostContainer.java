@@ -17,11 +17,9 @@ import java.util.ArrayList;
 public class PostContainer extends VBox{
     private Button loadPostBtn;
     private static String relation;
-    private static Pane mainWindow;
     long loadMoreNum;
     public PostContainer(String relation) {
         this.relation = relation;
-        mainWindow = this;
         loadMoreNum =1;
         setLayout();
     }
@@ -69,21 +67,6 @@ public class PostContainer extends VBox{
 
             }
         }
-    }
-    public static void reloadPostDetails(Post post){
-        mainWindow.getChildren().clear();
-        mainWindow.getChildren().addAll(new PostDetails(relation,post));
-    }
-
-    public static void showPostDetails(Post post) {
-        mainWindow.getChildren().clear();
-        ((CallBack)mainWindow.getParent()).removePostWriter();
-        mainWindow.getChildren().addAll(new PostDetails(relation,post));
-    }
-    public static void navigateTo(Pane frame) {
-        mainWindow.getChildren().clear();
-        ((CallBack)mainWindow.getParent()).removePostWriter();
-        mainWindow.getChildren().addAll(frame);
     }
 
 }
