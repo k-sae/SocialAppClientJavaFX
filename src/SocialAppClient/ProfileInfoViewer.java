@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 
 import java.util.ArrayList;
 
+import static SocialAppClient.MainWindow.clientLoggedUser;
+
 /**
  * Created by billy on 2016-11-26.
  */
@@ -20,7 +22,9 @@ public class ProfileInfoViewer extends InfoViewer{
 
         Edit = new Button("Edit");
         this.id = id;
-        Platform.runLater(() -> logButton());
+        if (clientLoggedUser instanceof ClientAdmin && !MainWindow.id.equals(id)) {
+            Platform.runLater(() -> logButton());
+        }
 
     }
     @Override
