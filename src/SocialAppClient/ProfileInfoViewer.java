@@ -98,7 +98,7 @@ public class ProfileInfoViewer extends InfoViewer{
         RelationBTN.setOnAction(e-> MainWindow.clientLoggedUser.new CancelFriendReq(id) {
             @Override
             void onFinish(Command cmd) {
-                Platform.runLater(() ->  MainWindow.navigateTo(new ProfilePage(id)));
+                Platform.runLater(() ->  Main.refresh(MainWindow.id,(new ProfilePage(id))));
             }
         });
         getChildren().add(RelationBTN);
@@ -109,7 +109,7 @@ public class ProfileInfoViewer extends InfoViewer{
         RelationBTN.setOnAction(e-> MainWindow.clientLoggedUser.new DeclineFriendReq(id) {
             @Override
             void onFinish(Command cmd) {
-                Platform.runLater(() ->  MainWindow.navigateTo(new ProfilePage(id)));
+                Platform.runLater(() ->  Main.refresh(MainWindow.id,(new ProfilePage(id))));
             }
         });
         getChildren().add(RelationBTN);

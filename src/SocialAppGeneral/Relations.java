@@ -14,5 +14,8 @@ public enum Relations {
     HOME_PAGE,
     ADD,
     EDIT,
-    DELETE
+    DELETE,
+    THUMP_UP,
+    THUMP_DOWN,
+    COMMENT,
 }

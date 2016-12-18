@@ -472,7 +472,7 @@ public class ClientLoggedUser extends LoggedUser {
         CommandsExecutor.getInstance().add(commandRequest);
     }
 
-    public void setCommentCommendUser(int show, String text, long commentid, long postid, long postPos){
+    public void setCommentCommendUser(Relations show, String text, long commentid, long postid, long postPos){
         Comment comment=new Comment();
         comment.setCommentcontent(text);
         comment.setOwnerID(Long.parseLong(MainWindow.id));
@@ -502,7 +502,7 @@ public class ClientLoggedUser extends LoggedUser {
         CommandsExecutor.getInstance().add(commandRequest);
     }
 
-    public void setCommentCommendGroup(int show, String text, long commentid, long postid, long postPos){
+    public void setCommentCommendGroup(Relations show, String text, long commentid, long postid, long postPos){
         Comment comment=new Comment();
         comment.setCommentcontent(text);
         comment.setOwnerID(Long.parseLong(MainWindow.id));
@@ -532,7 +532,7 @@ public class ClientLoggedUser extends LoggedUser {
         CommandsExecutor.getInstance().add(commandRequest);
     }
 
-    public void setLikecommendUsers(int i, Post post) {
+    public void setLikecommendUsers(Relations i, Post post) {
         Like like = new Like();
         like.setLike(i);
         like.setOwnerID(Long.parseLong(MainWindow.id));
@@ -568,7 +568,7 @@ public class ClientLoggedUser extends LoggedUser {
         };
         CommandsExecutor.getInstance().add(commandRequest);
     }
-    public void setLikecommendGroup(int i, Post post) {
+    public void setLikecommendGroup(Relations i, Post post) {
         Like like = new Like();
         like.setLike(i);
         like.setOwnerID(Long.parseLong(MainWindow.id));
@@ -633,7 +633,7 @@ public class ClientLoggedUser extends LoggedUser {
                         socialArrayList.getItems()) {
                     System.out.println(Notification.fromJsonString((String)o).convertToJsonString());
                     notification = Notification.fromJsonString(Notification.fromJsonString((String)o).convertToJsonString());
-                    NavBar.addNotification(notification.getIdSender(),notification.getKeyword(),notification.getPost());
+                    NavBar.addNotification(notification.getIdSender(),notification.getKeyword().toString().toLowerCase(),notification.getPost());
                 }
             }
         };

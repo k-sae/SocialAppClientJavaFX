@@ -69,6 +69,7 @@ public class AdminApprovalPage extends VBox {
             approveBtn.setOnAction(event -> {
                 System.out.print(Name);
                 ((ClientAdmin)MainWindow.clientLoggedUser).approve(Name);
+                Platform.runLater(() -> MainWindow.navigateTo(new AdminApprovalPage()));
 
             });
 
@@ -78,6 +79,7 @@ public class AdminApprovalPage extends VBox {
             approveAsAdminBtn.setOnMouseExited(event -> approveAsAdminBtn.setStyle(Styles.BLACK_BUTTON));
             approveAsAdminBtn.setOnAction(e->{
                 ((ClientAdmin)MainWindow.clientLoggedUser).approveAsAdmin(Name);
+                Platform.runLater(() -> MainWindow.navigateTo(new AdminApprovalPage()));
             });
 
             Button rejectBtn = new Button("Reject");
@@ -86,6 +88,7 @@ public class AdminApprovalPage extends VBox {
             rejectBtn.setOnMouseExited(event -> rejectBtn.setStyle(Styles.BLACK_BUTTON));
             rejectBtn.setOnAction(e->{
                 ((ClientAdmin)MainWindow.clientLoggedUser).reject(Name);
+                Platform.runLater(() -> MainWindow.navigateTo(new AdminApprovalPage()));
             });
 
             HBox btns = new HBox(20);
