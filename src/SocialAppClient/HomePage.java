@@ -76,8 +76,6 @@ public class HomePage extends GridPane {
 
             }
         };
-          MainWindow.clientLoggedUser.loadNotification();
-
         Info.CreateGroupBtn.setOnMouseClicked(event -> {
 
             Optional<String> check =  Utility.createWindow("Group Name", Group.CREATE_GROUP);
