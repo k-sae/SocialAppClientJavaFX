@@ -54,12 +54,27 @@ public class MainWindow extends GridPane {
             try {
                 ReceiveServerNotification receiveServerCommand = new ReceiveServerNotification(
                         new UtilityConnection(id, PORT_NO)
+                        {
+                            //TODO #Polymorphism #override
+                            @Override
+                            public void startConnection() {
+                                super.startConnection();
+                                clientLoggedUser.getNotfications();
+                            }
+                        }
                                 .getConnectionSocket()) {
                     @Override
                     public void Analyze(Command command) {
                         if (command.getKeyWord().equals(LoggedUser.FRIEND_REQ))
                         {
                             navBar.addFriendRequest(command.getObjectStr());
+                        }
+                        else if (command.getKeyWord().equals(Notification.LOAD_NOTI))
+                        {
+                            for (Object o : SocialArrayList.convertFromJsonString(command.getObjectStr()).getItems()
+                                    ) {
+                                navBar.addNotification(Notification.fromJsonString((String)o));
+                            }
                         }
                     }
                 };
