@@ -12,7 +12,6 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 
 import static SocialAppClient.MainWindow.clientLoggedUser;
 import static javafx.scene.layout.GridPane.setColumnSpan;
@@ -128,7 +127,7 @@ public class NavBar extends HBox{
                                        }
                                    };
 
-                               ;
+
 
                                 });
                                 Search.setOnAction(e->{
