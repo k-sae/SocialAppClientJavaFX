@@ -1,9 +1,12 @@
 package SocialAppClient;
 
 import SocialAppGeneral.Command;
+import SocialAppGeneral.Log;
 import SocialAppGeneral.Relations;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
+
+import java.util.ArrayList;
 
 /**
  * Created by billy on 2016-11-26.
@@ -17,6 +20,7 @@ public class ProfileInfoViewer extends InfoViewer{
 
         Edit = new Button("Edit");
         this.id = id;
+        Platform.runLater(() -> logButton());
 
     }
     @Override
@@ -122,6 +126,21 @@ public class ProfileInfoViewer extends InfoViewer{
         chatBtn.setOnMouseExited(event -> chatBtn.setStyle(Styles.NAV_BUTTON));
         chatBtn.setOnMouseClicked(event -> new ChatWindow(id));
         getChildren().add(chatBtn);
+    }private void logButton(){
+        Button logBtn = new Button("Logs");
+        logBtn.setStyle(Styles.NAV_BUTTON);
+        logBtn.setOnMouseEntered(event -> logBtn.setStyle(Styles.NAV_BUTTON_HOVER));
+        logBtn.setOnMouseExited(event -> logBtn.setStyle(Styles.NAV_BUTTON));
+        logBtn.setOnMouseClicked(event -> {
+            MainWindow.clientLoggedUser.new GetLogs() {
+                @Override
+                void onFinish(ArrayList<Log> logs) {
+                    Platform.runLater(() -> PostContainer.navigateTo(new LogHistory(id, logs)));
+
+                }
+            };
+        });
+        getChildren().add(logBtn);
     }
 
 }

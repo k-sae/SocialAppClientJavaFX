@@ -243,7 +243,7 @@ public class NavBar extends HBox{
 
                 Platform.runLater(() -> PostContainer.navigateTo(new AdminApprovalPage()));
             });
-
+/*
 
             Button logBtn = new Button("Log");
             logBtn.setStyle(Styles.NAVBAR_BUTTON);
@@ -257,9 +257,9 @@ public class NavBar extends HBox{
 
                     }
                 };
-            });
+            });*/
 
-            getChildren().addAll(homeBtn, profileBtn, /*groupsBtn,*/ logoutBtn, approveBtn ,logBtn);
+            getChildren().addAll(homeBtn, profileBtn, /*groupsBtn,*/ logoutBtn, approveBtn/*, logBtn */);
         }else
         getChildren().addAll(homeBtn, profileBtn, /*groupsBtn,*/ logoutBtn);
     }
