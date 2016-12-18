@@ -148,7 +148,7 @@ public class NavBar extends HBox{
         });
 
         /** Friend request menu icon */
-        ImageView FRIcon = new ImageView(new Image("file:Resources/FR.png"));
+        FRIcon = new ImageView(new Image("file:Resources/FR.png"));
         FRIcon.setFitWidth(25);
         FRIcon.setPreserveRatio(true);
 
@@ -156,7 +156,7 @@ public class NavBar extends HBox{
         /** Add an item when you clicked on the menu */
 
         /** messages menu icon */
-        ImageView msgIcon = new ImageView(new Image("file:Resources/msg.png"));
+        msgIcon = new ImageView(new Image("file:Resources/msg.png"));
         msgIcon.setFitWidth(25);
         msgIcon.setPreserveRatio(true);
 
@@ -166,7 +166,7 @@ public class NavBar extends HBox{
 //        msg.getItems().addAll(new MenuItem("Belal sent you a message"));
 
         /** Notification menu icon */
-        ImageView notiIcon = new ImageView(new Image("file:Resources/noti.png"));
+        notiIcon = new ImageView(new Image("file:Resources/noti.png"));
         notiIcon.setFitWidth(25);
         notiIcon.setPreserveRatio(true);
 
@@ -247,10 +247,14 @@ if (clientLoggedUser instanceof ClientAdmin)
     //////////////////////////start of my area
 
     private Menu friendRequests;
+    private static ImageView FRIcon;
     private static Menu notification;
+    private static ImageView notiIcon;
     private Menu msg;
+    private static ImageView msgIcon;
+
     public void addFriendRequest(String... ids)
-    {
+    {   FRIcon.setImage(new Image("file:Resources/FRN.png"));
         for (String id: ids
              ) {
             new UserPicker().new InfoPicker(id) {
@@ -263,9 +267,11 @@ if (clientLoggedUser instanceof ClientAdmin)
                 }
             };
         }
+        friendRequests.setOnShowing(event ->FRIcon.setImage(new Image("file:Resources/FR.png")));
 
     }
     void addNewMessage(String... ids){
+        msgIcon.setImage(new Image("file:Resources/msgN.png"));
         for (String id: ids
                 ) {
             new UserPicker().new InfoPicker(id) {
@@ -278,6 +284,7 @@ if (clientLoggedUser instanceof ClientAdmin)
                 }
             };
         }
+        msg.setOnShowing(event ->msgIcon.setImage(new Image("file:Resources/msg.png")));
     }
     private static MenuItem createMenuItem(UserInfo userInfo)
     {
@@ -285,16 +292,18 @@ if (clientLoggedUser instanceof ClientAdmin)
     }
 
     public static void addNotification(String id, String keyword, Post post){
+        notiIcon.setImage(new Image("file:Resources/notiN.png"));
         new UserPicker().new InfoPicker(id) {
             @Override
             void pick(UserInfo userInfo) {
                 MenuItem menuItem = createMenuItem(userInfo);
-                menuItem.setText(menuItem.getText() + " " + keyword);
+                menuItem.setText(menuItem.getText() + " " + keyword + " on your post");
                 menuItem.setOnAction(event -> {
                     Platform.runLater(()-> PostContainer.showPostDetails(post));
                 });
                 Platform.runLater(() -> notification.getItems().add(menuItem));
             }
         };
+        notification.setOnShowing(event ->notiIcon.setImage(new Image("file:Resources/noti.png")));
     }
 }
