@@ -80,22 +80,36 @@ public class GroupPage extends GridPane {
 
         add(Info,0,0);
 
-        Content content = new Content(Relations.GROUP.toString());
-        content.postWriter.SavePost(Relations.GROUP.toString(), ""+group.getId());
 
-        MainWindow.clientLoggedUser.new GetPostsGroup(1,group.getId()){
+
+        new GroupMember.GetStatus(Long.toString(group.getId())) {
             @Override
-            void onFinish(ArrayList<Post> posts) {
-                Platform.runLater(() -> content.postContainer.addPosts(posts,""+group.getId()));
+            void onFinish(String s) {
+                if (s.equals(RelationGroup.MEMBER.toString())) {
+                    Platform.runLater(() -> {
+                        Content content = new Content(Relations.GROUP.toString());
+                        content.postWriter.SavePost(Relations.GROUP.toString(), "" + group.getId());
+                        //add(content,1,0);
+                        ScrollPane sp = new ScrollPane(content);
+                        sp.setFitToWidth(true);
+                        add(sp,1,0);
+
+
+                        MainWindow.clientLoggedUser.new GetPostsGroup(1, group.getId()) {
+                            @Override
+                            void onFinish(ArrayList<Post> posts) {
+                                Platform.runLater(() -> content.postContainer.addPosts(posts, "" + group.getId()));
+                            }
+                        };
+                    });
+                }
             }
         };
 
-        add(content,1,0);
+
 
         /**THE SCROLL BAR KEEPS TRACK THE CONTENT*/
-        ScrollPane sp = new ScrollPane(content);
-        sp.setFitToWidth(true);
-        add(sp,1,0);
+
 /*
         Info.Edit.setOnAction(event -> {
             getChildren().remove(content);

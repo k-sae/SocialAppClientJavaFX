@@ -4,10 +4,7 @@ import SocialAppGeneral.*;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 /**
@@ -16,7 +13,7 @@ import javafx.scene.layout.HBox;
 public class GroupInfoViewer extends InfoViewer{
     protected Button RelationBTN;
     protected ListView List;
-    protected Button postBtn;
+    protected Button approveBtn;
     protected Button Edit;
     private long id;
     private Group group;
@@ -24,7 +21,7 @@ public class GroupInfoViewer extends InfoViewer{
         this.group = group;
         RelationBTN = new Button();
         List=new ListView();
-        postBtn=new Button("approve");
+        approveBtn =new Button("approve");
     }
 //    public void search(){
 //        ComboBox Search = new ComboBox();
@@ -83,17 +80,18 @@ public class GroupInfoViewer extends InfoViewer{
                              SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(s);
                              for (Object o: socialArrayList.getItems()) {
                               Platform.runLater(()->{
-                                  HBox h = new HBox(5,new FriendView((String) o,15),postBtn);
+                                  HBox h = new HBox(5,new FriendView((String) o,15), approveBtn);
                                   h.setAlignment(Pos.CENTER_LEFT);
                                   List.getItems().add(h);
-                                  postBtn.setStyle(Styles.BLACK_BUTTON);
-                                  postBtn.setOnMouseEntered(event -> postBtn.setStyle(Styles.BLACK_BUTTON_HOVER));
-                                  postBtn.setOnMouseExited(event -> postBtn.setStyle(Styles.BLACK_BUTTON));
-                                  postBtn.setOnAction(e->{
+                                  approveBtn.setStyle(Styles.BLACK_BUTTON);
+                                  approveBtn.setOnMouseEntered(event -> approveBtn.setStyle(Styles.BLACK_BUTTON_HOVER));
+                                  approveBtn.setOnMouseExited(event -> approveBtn.setStyle(Styles.BLACK_BUTTON));
+                                  approveBtn.setOnAction(e->{
                                       new GroupMember.AcceptRequest(Long.toString(group.getId())+":"+(String)o) {
                                           @Override
                                           void onFinish(String s) {
                                               System.out.print(s);
+                                              Platform.runLater(() -> MainWindow.navigateTo(new GroupPage(group)));
                                           }
                                       };
                                   });
@@ -112,7 +110,8 @@ public class GroupInfoViewer extends InfoViewer{
                              new GroupMember.LeaveGroup(Long.toString(group.getId())) {
                                  @Override
                                  void onFinish(String s) {
-                                     System.out.print(true);
+                                     Platform.runLater(() -> MainWindow.navigateTo(new GroupPage(group)));
+
                                  }
                              };
                          });
@@ -129,6 +128,26 @@ public class GroupInfoViewer extends InfoViewer{
                                  @Override
                                  void onFinish(String s) {
                                      System.out.print(s);
+                                     Platform.runLater(() -> MainWindow.navigateTo(new GroupPage(group)));
+                                 }
+                             };
+                         });
+                         getChildren().add(RelationBTN);
+                     } );
+                 }
+                 else if(s.equals(RelationGroup.PENDING_MEMBER.toString())){
+                     Platform.runLater(() ->{
+                         RelationBTN.setText("Cancel Request");
+                         RelationBTN.setStyle(Styles.NAV_BUTTON);
+                         RelationBTN.setOnMouseEntered(event -> RelationBTN.setStyle(Styles.NAV_BUTTON_HOVER));
+                         RelationBTN.setOnMouseExited(event -> RelationBTN.setStyle(Styles.NAV_BUTTON));
+                         RelationBTN.setOnAction(e->{
+                             new GroupMember.cancelRequest(Long.toString(group.getId())) {
+                                 @Override
+                                 void onFinish(String s) {
+
+                                     System.out.print(s);
+                                     Platform.runLater(() -> MainWindow.navigateTo(new GroupPage(group)));
                                  }
                              };
                          });
