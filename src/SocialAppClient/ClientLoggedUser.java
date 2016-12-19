@@ -620,18 +620,24 @@ public class ClientLoggedUser extends LoggedUser {
         };
         CommandsExecutor.getInstance().add(commandRequest);
     }
-    public  void loadNotification(){
-        Command command = new Command();
-        command.setKeyWord(Notification.LOAD_NOTI);
+    abstract class LoadNotification
+    {
+        LoadNotification()
+        {
+            Command command = new Command();
+            command.setKeyWord(Notification.LOAD_NOTI);
 
-        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
-            @Override
-            void analyze(Command commandFromServer) {
-                //ignore
-            }
-        };
-        CommandsExecutor.getInstance().add(commandRequest);
-    }/*
+            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+                @Override
+                void analyze(Command commandFromServer) {
+                    onFinish (SocialArrayList.convertFromJsonString(commandFromServer.getObjectStr()));
+                }
+            };
+            CommandsExecutor.getInstance().add(commandRequest);
+        }
+        public abstract void onFinish(SocialArrayList list );
+    }
+    /*
     public  void loadLog(){
         Command command = new Command();
         command.setKeyWord(Log.LOAD_LOG);

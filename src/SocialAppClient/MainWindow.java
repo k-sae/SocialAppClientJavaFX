@@ -46,7 +46,6 @@ public class MainWindow extends GridPane {
         setPanels();
         startNotifications();
         startChat();
-        clientLoggedUser.loadNotification();
     }
     private void startNotifications()
     {
@@ -60,7 +59,15 @@ public class MainWindow extends GridPane {
                             @Override
                             public void startConnection() {
                                 super.startConnection();
-                                clientLoggedUser.getNotfications();
+                                clientLoggedUser.new LoadNotification() {
+                                    @Override
+                                    public void onFinish(SocialArrayList list) {
+                                        for (Object o : list.getItems()
+                                                ) {
+                                            navBar.addNotification(Notification.fromJsonString((String)o));
+                                        }
+                                    }
+                                };
                             }
                         }
                                 .getConnectionSocket()) {
@@ -70,12 +77,9 @@ public class MainWindow extends GridPane {
                         {
                             navBar.addFriendRequest(command.getObjectStr());
                         }
-                        else if (command.getKeyWord().equals(Notification.LOAD_NOTI))
+                        else if (command.getKeyWord().equals(Notification.NEW_NOTIFICATION))
                         {
-                            for (Object o : SocialArrayList.convertFromJsonString(command.getObjectStr()).getItems()
-                                    ) {
-                                navBar.addNotification(Notification.fromJsonString((String)o));
-                            }
+                            navBar.addNotification(Notification.fromJsonString(command.getObjectStr()));
                         }
                     }
                 };

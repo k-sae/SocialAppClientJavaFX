@@ -13,6 +13,7 @@ public class Notification implements Shareable,Serializable {
     private  Relations keyword;
     private  String  idSender;//id whose  send noftication
     public static final String LOAD_NOTI = "loadNoti";
+    public  static final String NEW_NOTIFICATION = "new_notification";
     public Notification() {
         this.post=new Post();
         this.idSender="";
