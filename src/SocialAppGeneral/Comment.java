@@ -5,7 +5,7 @@ package SocialAppGeneral;
  */
 public class Comment extends PostAtachmment {
     private static final long serialVersionUID = 6529685098267757690L;
-    private String commentcontent;
+    private String commentContent;
     private  long CommentId;
      private Relations show;
 
@@ -19,11 +19,11 @@ public class Comment extends PostAtachmment {
     }
 
     public String getCommentcontent() {
-        return commentcontent;
+        return commentContent;
     }
 
     public void setCommentcontent(String commentcontent) {
-        this.commentcontent = commentcontent;
+        this.commentContent = commentcontent;
     }
 
     public long getCommentId() {
