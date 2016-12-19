@@ -81,75 +81,77 @@ public class NavBar extends HBox{
         searchBtn.setOnAction(e->{
 
             /** Add an item when you clicked on the menu */
-            Command command = new Command();
-            command.setKeyWord("Search");
-            command.setSharableObject(Search.getEditor().getText());
-            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
-                @Override
-                void analyze(Command cmd) {
-                  SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(cmd.getObjectStr());
-                    Search.getItems().clear();
-                    Label l=new Label("FRIENDS&EMAILS");
-                    Search.getItems().add(l);
-                    for (Object o: socialArrayList.getItems()) {
-                        Platform.runLater(() ->{
-                            Search.getItems().add(new FriendView((String)o));
-                            Search.show();
-                        });
-                        Search.setOnAction(e->{
+            if(Search.getEditor().getText().length()>1) {
+                Command command = new Command();
+                command.setKeyWord("Search");
+                command.setSharableObject(Search.getEditor().getText());
+                CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+                    @Override
+                    void analyze(Command cmd) {
+                        SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(cmd.getObjectStr());
+                        Search.getItems().clear();
+                        Label l = new Label("FRIENDS&EMAILS");
+                        Search.getItems().add(l);
+                        for (Object o : socialArrayList.getItems()) {
                             Platform.runLater(() -> {
-                                MainWindow.navigateTo(new ProfilePage((String)o));
-                                Search.setValue(null);
+                                Search.getItems().add(new FriendView((String) o));
+                                Search.show();
                             });
-                            Search.setPromptText("Search...");
-                        });
-
-                       // SearchMenu.getItems().addAll(new MenuItem((String)o));
-                     //   addFriendRequest((String)o);
-                    }
-                    Platform.runLater(() ->{
-                        Label k=new Label("GRoup NAMES");
-                        Search.getItems().add(k);
-                    });
-                    Command command = new Command();
-                    command.setKeyWord("Search_Group");
-                    command.setSharableObject(Search.getEditor().getText());
-                    CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
-                        @Override
-                        void analyze(Command commandFromServer) {
-                            SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(commandFromServer.getObjectStr());
-                 //           System.out.print(command.getObjectStr());
-                            for (Object o: socialArrayList.getItems()) {
-
-                               Platform.runLater(() ->{
-
-                                   new GroupPicker().new InfoPicker(Long.parseLong((String) o)) {
-                                       @Override
-                                       void pick(Group group) {
-                                           Search.getItems().add(group.getName());
-                                           Search.show();
-                                       }
-                                   };
-
-                               ;
-
+                            Search.setOnAction(e -> {
+                                Platform.runLater(() -> {
+                                    MainWindow.navigateTo(new ProfilePage((String) o));
+                                    Search.setValue("");
                                 });
-                                Search.setOnAction(e->{
-                                    Platform.runLater(() -> {
-                                        MainWindow.navigateTo(new GroupPage(Long.parseLong((String)o)));
-                                        Search.setValue(null);
-                                    });
-                                    Search.setPromptText("Search...");
-                                });
-                            }
+                                Search.setPromptText("Search...");
+                            });
+
+                            // SearchMenu.getItems().addAll(new MenuItem((String)o));
+                            //   addFriendRequest((String)o);
                         }
-                    };
-                    CommandsExecutor.getInstance().add(commandRequest);
-                }
-            };
-            CommandsExecutor.getInstance().add(commandRequest);
+                        Platform.runLater(() -> {
+                            Label k = new Label("GRoup NAMES");
+                            Search.getItems().add(k);
+                        });
+                        Command command = new Command();
+                        command.setKeyWord("Search_Group");
+                        command.setSharableObject(Search.getEditor().getText());
+                        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+                            @Override
+                            void analyze(Command commandFromServer) {
+                                SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(commandFromServer.getObjectStr());
+                                //           System.out.print(command.getObjectStr());
+                                for (Object o : socialArrayList.getItems()) {
 
+                                    Platform.runLater(() -> {
+
+                                        new GroupPicker().new InfoPicker(Long.parseLong((String) o)) {
+                                            @Override
+                                            void pick(Group group) {
+                                                Search.getItems().add(group.getName());
+                                                Search.show();
+                                            }
+                                        };
+
+                                    });
+                                    Search.setOnAction(e -> {
+                                        Platform.runLater(() -> {
+                                            MainWindow.navigateTo(new GroupPage(Long.parseLong((String) o)));
+                                            Search.setValue("");
+                                        });
+                                        Search.setPromptText("Search...");
+                                    });
+                                }
+                            }
+                        };
+
+
+                        CommandsExecutor.getInstance().add(commandRequest);
+                    }
+                };
+                CommandsExecutor.getInstance().add(commandRequest);
+            }
         });
+        Search.setOnHiding(e->{Search.getItems().clear();});
 
         /** Friend request menu icon */
         ImageView FRIcon = new ImageView(new Image("file:Resources/FR.png"));

@@ -53,9 +53,9 @@ public class GroupPage extends GridPane {
     private void setConstraint(){
 
         ColumnConstraints columnConstraints0 = new ColumnConstraints();
-        columnConstraints0.setPercentWidth(25);
+        columnConstraints0.setPercentWidth(30);
         ColumnConstraints columnConstraints1 = new ColumnConstraints();
-        columnConstraints1.setPercentWidth(75);
+        columnConstraints1.setPercentWidth(70);
 
         getColumnConstraints().addAll(columnConstraints0,columnConstraints1);
 
@@ -72,7 +72,7 @@ public class GroupPage extends GridPane {
         Info.setPicture(""+group.getImageId());
         /**PUT SOME INFO AS STRING*/
         Info.setLabel("GROUP NAME: "+group.getName());
-        Info.search();
+        //Info.search();
         /**ADD JOIN AND EDIT BUTTON -- EDIT THEM IN GROUPINFOVIEWER*/
         Info.setButtons();
 
