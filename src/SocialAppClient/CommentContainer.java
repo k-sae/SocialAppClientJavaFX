@@ -2,6 +2,7 @@ package SocialAppClient;
 
 import SocialAppGeneral.Comment;
 import SocialAppGeneral.Post;
+import SocialAppGeneral.Relations;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ChoiceBox;
@@ -41,7 +42,7 @@ public class CommentContainer extends VBox{
 
         commentText.setOnKeyPressed(event -> {
             if(event.getCode().equals(KeyCode.ENTER)){
-                ((CallBack) getParent()).setCommentCommend(1, commentText.getText(),0);
+                PostDetails.setCommentCommend(Relations.ADD, commentText.getText(),0);
                 commentText.setText("");
             }
         });

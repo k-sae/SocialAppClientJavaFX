@@ -1,8 +1,6 @@
 package SocialAppClient;
 
-import SocialAppGeneral.Group;
-import SocialAppGeneral.Relations;
-import SocialAppGeneral.UserInfo;
+import SocialAppGeneral.*;
 import javafx.application.Platform;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.ColumnConstraints;
@@ -27,6 +25,14 @@ public class HomePage extends GridPane {
         new UserPicker().new InfoPicker(id) {
             @Override
             void pick(UserInfo userInfo) {
+                if (userInfo.getProfileImage().equals("unknown"))
+                {
+                    Platform.runLater(() -> {
+                        Utility.alertWindow("Error","its seems that this account is deactivated or" +
+                                " banned pls contact us for more info or requesting reactivation");
+                        Main.logout();
+                    });
+                }
                 HomePage.this.userInfo = userInfo;
                 Platform.runLater(() -> setPanels());
             }
@@ -70,8 +76,6 @@ public class HomePage extends GridPane {
 
             }
         };
-
-
         Info.CreateGroupBtn.setOnMouseClicked(event -> {
 
             Optional<String> check =  Utility.createWindow("Group Name", Group.CREATE_GROUP);
@@ -85,8 +89,15 @@ public class HomePage extends GridPane {
                 }});
 
         Content content = new Content(Relations.HOME_PAGE.toString());
-        //to add post
         content.postWriter.SavePost(Relations.HOME_PAGE.toString(), id);
+
+        MainWindow.clientLoggedUser.new GetPosts(1){
+            @Override
+            void onFinish(ArrayList<Post> posts) {
+                Platform.runLater(() -> content.postContainer.addPosts(posts,MainWindow.id));
+            }
+        };
+
         add(content,1,0);
 
         ScrollPane sp = new ScrollPane(content);

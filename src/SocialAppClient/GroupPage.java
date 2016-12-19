@@ -7,6 +7,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
+
 /**
  * Created by kemo on 10/11/2016.
  */
@@ -79,31 +81,15 @@ public class GroupPage extends GridPane {
         add(Info,0,0);
 
         Content content = new Content(Relations.GROUP.toString());
+        content.postWriter.SavePost(Relations.GROUP.toString(), ""+group.getId());
 
-        ArraylistPost posts =new ArraylistPost();
-        posts.setOwnerPosts(group.getId());
-        posts.setNumberpost(1);
-        Command command = new Command();
-        command.setKeyWord(Post.LOAD_POST_GROUPS);
-        command.setSharableObject(posts.convertToJsonString());
-        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+        MainWindow.clientLoggedUser.new GetPostsGroup(1,group.getId()){
             @Override
-            void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.LOAD_POST_GROUPS)){
-                    ArraylistPost posts = (ArraylistPost.fromJsonString(cmd.getObjectStr()));
-                    int loadMoreNum = 1;
-                    if(!posts.getPosts().isEmpty()) {
-                        Platform.runLater(() -> content.postContainer.addPosts(posts,loadMoreNum));
-                    }
-
-                }
+            void onFinish(ArrayList<Post> posts) {
+                Platform.runLater(() -> content.postContainer.addPosts(posts,""+group.getId()));
             }
         };
 
-        CommandsExecutor.getInstance().add(commandRequest);
-
-
-        content.postWriter.SavePost(Relations.GROUP.toString(), ""+group.getId());
         add(content,1,0);
 
         /**THE SCROLL BAR KEEPS TRACK THE CONTENT*/

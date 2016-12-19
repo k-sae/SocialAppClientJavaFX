@@ -1,10 +1,7 @@
 package SocialAppClient;
 
-import SocialAppGeneral.Admin;
-import SocialAppGeneral.Command;
-import SocialAppGeneral.LoggedUser;
-import SocialAppGeneral.Message;
-import SocialAppGeneral.SocialArrayList;
+import SocialAppGeneral.*;
+import javafx.application.Platform;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -49,6 +46,7 @@ public class MainWindow extends GridPane {
         setPanels();
         startNotifications();
         startChat();
+        clientLoggedUser.loadNotification();
     }
     private void startNotifications()
     {
@@ -57,12 +55,27 @@ public class MainWindow extends GridPane {
             try {
                 ReceiveServerNotification receiveServerCommand = new ReceiveServerNotification(
                         new UtilityConnection(id, PORT_NO)
+                        {
+                            //TODO #Polymorphism #override
+                            @Override
+                            public void startConnection() {
+                                super.startConnection();
+                                clientLoggedUser.getNotfications();
+                            }
+                        }
                                 .getConnectionSocket()) {
                     @Override
                     public void Analyze(Command command) {
                         if (command.getKeyWord().equals(LoggedUser.FRIEND_REQ))
                         {
                             navBar.addFriendRequest(command.getObjectStr());
+                        }
+                        else if (command.getKeyWord().equals(Notification.LOAD_NOTI))
+                        {
+                            for (Object o : SocialArrayList.convertFromJsonString(command.getObjectStr()).getItems()
+                                    ) {
+                                navBar.addNotification(Notification.fromJsonString((String)o));
+                            }
                         }
                     }
                 };
@@ -122,18 +135,23 @@ public class MainWindow extends GridPane {
         //on retrieve data from server send user to navBar
          navBar = new NavBar(id);
 //        mainFrame.setBackground(new Background(new BackgroundFill(Color.GREEN,CornerRadii.EMPTY, Insets.EMPTY)));
-        ArrayList<String> strings = new ArrayList<>();
-        for(int i = 0; i < 10; i++)
-            strings.add("4");
-        FriendList friendList = new FriendList(strings);
+        MainWindow.clientLoggedUser.new getFriends() {
+            @Override
+            void onFinish(ArrayList<String> friends) {
+                FriendList friendList = new FriendList(friends);
+                ScrollPane scrollPane = new ScrollPane(friendList);
+                scrollPane.setFitToWidth(true);
+                GridPane.setConstraints(scrollPane,1,1);
+                Platform.runLater(() -> MainWindow.this.getChildren().add(scrollPane));
+            }
+        };
+
 
         //friendList.setBackground(new Background(new BackgroundFill(Color.YELLOW,CornerRadii.EMPTY, Insets.EMPTY)));
 
-        ScrollPane scrollPane = new ScrollPane(friendList);
-        scrollPane.setFitToWidth(true);
-        GridPane.setConstraints(scrollPane,1,1);
 
-        getChildren().addAll(navBar,mainFrame,scrollPane);
+
+        getChildren().addAll(navBar,mainFrame);
         navigateTo(new HomePage(MainWindow.id));
     }
     static void navigateTo(Pane frame)

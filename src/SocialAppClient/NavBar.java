@@ -1,9 +1,6 @@
 package SocialAppClient;
 
-import SocialAppGeneral.Command;
-import SocialAppGeneral.Group;
-import SocialAppGeneral.SocialArrayList;
-import SocialAppGeneral.UserInfo;
+import SocialAppGeneral.*;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -15,7 +12,8 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
+
+import java.util.ArrayList;
 
 import static SocialAppClient.MainWindow.clientLoggedUser;
 import static javafx.scene.layout.GridPane.setColumnSpan;
@@ -79,7 +77,10 @@ public class NavBar extends HBox{
         searchImg.setPreserveRatio(true);
         Button searchBtn = new Button("", searchImg);
         searchBtn.setOnAction(e->{
-
+            if(Search.getEditor().getText().equals(""))
+            {
+                return;
+            }
             /** Add an item when you clicked on the menu */
             if(Search.getEditor().getText().length()>1) {
                 Command command = new Command();
@@ -104,23 +105,54 @@ public class NavBar extends HBox{
                                 });
                                 Search.setPromptText("Search...");
                             });
+//
+//<<<<<<< HEAD
+//                            // SearchMenu.getItems().addAll(new MenuItem((String)o));
+//                            //   addFriendRequest((String)o);
+//                        }
+//                        Platform.runLater(() -> {
+//                            Label k = new Label("GRoup NAMES");
+//                            Search.getItems().add(k);
+//                        });
+//                        Command command = new Command();
+//                        command.setKeyWord("Search_Group");
+//                        command.setSharableObject(Search.getEditor().getText());
+//                        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+//                            @Override
+//                            void analyze(Command commandFromServer) {
+//                                SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(commandFromServer.getObjectStr());
+//                                //           System.out.print(command.getObjectStr());
+//                                for (Object o : socialArrayList.getItems()) {
+//=======
+                       // SearchMenu.getItems().addAll(new MenuItem((String)o));
+                     //   addFriendRequest((String)o);
+                    }
+                    Platform.runLater(() ->{
+                        Label k=new Label("GRoup NAMES");
+                        Search.getItems().add(k);
+                    });
+                    Command command = new Command();
+                    command.setKeyWord("Search_Group");
+                    command.setSharableObject(Search.getEditor().getText());
+                    CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+                        @Override
+                        void analyze(Command commandFromServer) {
+                            SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(commandFromServer.getObjectStr());
+                 //           System.out.print(command.getObjectStr());
+                            for (Object o: socialArrayList.getItems()) {
 
-                            // SearchMenu.getItems().addAll(new MenuItem((String)o));
-                            //   addFriendRequest((String)o);
-                        }
-                        Platform.runLater(() -> {
-                            Label k = new Label("GRoup NAMES");
-                            Search.getItems().add(k);
-                        });
-                        Command command = new Command();
-                        command.setKeyWord("Search_Group");
-                        command.setSharableObject(Search.getEditor().getText());
-                        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
-                            @Override
-                            void analyze(Command commandFromServer) {
-                                SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(commandFromServer.getObjectStr());
-                                //           System.out.print(command.getObjectStr());
-                                for (Object o : socialArrayList.getItems()) {
+//                               Platform.runLater(() ->{
+//
+//                                   new GroupPicker().new InfoPicker(Long.parseLong((String) o)) {
+//                                       @Override
+//                                       void pick(Group group) {
+//                                           Search.getItems().add(group.getName());
+//                                           Search.show();
+//                                       }
+//                                   };
+
+
+//>>>>>>> develop
 
                                     Platform.runLater(() -> {
 
@@ -154,7 +186,7 @@ public class NavBar extends HBox{
         Search.setOnHiding(e->{Search.getItems().clear();});
 
         /** Friend request menu icon */
-        ImageView FRIcon = new ImageView(new Image("file:Resources/FR.png"));
+        FRIcon = new ImageView(new Image("file:Resources/FR.png"));
         FRIcon.setFitWidth(25);
         FRIcon.setPreserveRatio(true);
 
@@ -162,7 +194,7 @@ public class NavBar extends HBox{
         /** Add an item when you clicked on the menu */
 
         /** messages menu icon */
-        ImageView msgIcon = new ImageView(new Image("file:Resources/msg.png"));
+        msgIcon = new ImageView(new Image("file:Resources/msg.png"));
         msgIcon.setFitWidth(25);
         msgIcon.setPreserveRatio(true);
 
@@ -172,14 +204,14 @@ public class NavBar extends HBox{
 //        msg.getItems().addAll(new MenuItem("Belal sent you a message"));
 
         /** Notification menu icon */
-        ImageView notiIcon = new ImageView(new Image("file:Resources/noti.png"));
+        notiIcon = new ImageView(new Image("file:Resources/noti.png"));
         notiIcon.setFitWidth(25);
         notiIcon.setPreserveRatio(true);
 
 
          notification = new Menu("",notiIcon);
         /** Add an item when you clicked on the menu */
-        notification.getItems().addAll(new MenuItem("Belal liked your photo"));
+//        notification.getItems().addAll(new MenuItem("Belal liked your photo"));
 
         /** Add a menu bar to contain all menus */
         MenuBar notificationsBar = new MenuBar(friendRequests, msg, notification);
@@ -233,30 +265,51 @@ public class NavBar extends HBox{
         logoutBtn.setOnMouseExited(event -> logoutBtn.setStyle(Styles.NAVBAR_BUTTON));
 
         logoutBtn.setOnMouseClicked(event -> {
-            getScene().getWindow().hide();
+            Main.logout();
         });
         //TODO: hazem
-if (clientLoggedUser instanceof ClientAdmin)
-{        Button approveBtn = new Button("Approves");
-        approveBtn.setStyle(Styles.NAVBAR_BUTTON);
-        approveBtn.setOnMouseEntered(event -> approveBtn.setStyle(Styles.NAVBAR_BUTTON_HOVER));
-        approveBtn.setOnMouseExited(event -> approveBtn.setStyle(Styles.NAVBAR_BUTTON));
+        if (clientLoggedUser instanceof ClientAdmin)
+        {
+            Button approveBtn = new Button("Approves");
+            approveBtn.setStyle(Styles.NAVBAR_BUTTON);
+            approveBtn.setOnMouseEntered(event -> approveBtn.setStyle(Styles.NAVBAR_BUTTON_HOVER));
+            approveBtn.setOnMouseExited(event -> approveBtn.setStyle(Styles.NAVBAR_BUTTON));
 
-        approveBtn.setOnMouseClicked(event -> {
+            approveBtn.setOnMouseClicked(event -> {
 
-            Platform.runLater(() -> MainWindow.navigateTo(new AdminApprovalPage()));
-        });
-    getChildren().addAll(homeBtn, profileBtn, /*groupsBtn,*/ logoutBtn, approveBtn);
-}else
+                Platform.runLater(() -> Content.navigateTo(new AdminApprovalPage()));
+            });
+/*
+
+            Button logBtn = new Button("Log");
+            logBtn.setStyle(Styles.NAVBAR_BUTTON);
+            logBtn.setOnMouseEntered(event -> logBtn.setStyle(Styles.NAVBAR_BUTTON_HOVER));
+            logBtn.setOnMouseExited(event -> logBtn.setStyle(Styles.NAVBAR_BUTTON));
+            logBtn.setOnMouseClicked(event -> {
+                MainWindow.clientLoggedUser.new GetLogs() {
+                    @Override
+                    void onFinish(ArrayList<Log> logs) {
+                        Platform.runLater(() -> PostContainer.navigateTo(new LogHistory(logs)));
+
+                    }
+                };
+            });*/
+
+            getChildren().addAll(homeBtn, profileBtn, /*groupsBtn,*/ logoutBtn, approveBtn/*, logBtn */);
+        }else
         getChildren().addAll(homeBtn, profileBtn, /*groupsBtn,*/ logoutBtn);
     }
     //////////////////////////start of my area
 
     private Menu friendRequests;
-    private Menu notification;
+    private  ImageView FRIcon;
+    private  Menu notification;
+    private  ImageView notiIcon;
     private Menu msg;
+    private  ImageView msgIcon;
+
     public void addFriendRequest(String... ids)
-    {
+    {   FRIcon.setImage(new Image("file:Resources/FRN.png"));
         for (String id: ids
              ) {
             new UserPicker().new InfoPicker(id) {
@@ -269,9 +322,11 @@ if (clientLoggedUser instanceof ClientAdmin)
                 }
             };
         }
+        friendRequests.setOnShowing(event ->FRIcon.setImage(new Image("file:Resources/FR.png")));
 
     }
     void addNewMessage(String... ids){
+        msgIcon.setImage(new Image("file:Resources/msgN.png"));
         for (String id: ids
                 ) {
             new UserPicker().new InfoPicker(id) {
@@ -284,9 +339,29 @@ if (clientLoggedUser instanceof ClientAdmin)
                 }
             };
         }
+        msg.setOnShowing(event ->msgIcon.setImage(new Image("file:Resources/msg.png")));
     }
-    private MenuItem createMenuItem(UserInfo userInfo)
+    private static MenuItem createMenuItem(UserInfo userInfo)
     {
         return new MenuItem(userInfo.getFullName(),Utility.getCircularImage(userInfo.getProfileImage(),10));
+    }
+
+    void addNotification(Notification... notifications){
+        notiIcon.setImage(new Image("file:Resources/notiN.png"));
+        for (Notification notification: notifications
+             ){
+            new UserPicker().new InfoPicker(notification.getIdSender()) {
+                @Override
+                void pick(UserInfo userInfo) {
+                    MenuItem menuItem = createMenuItem(userInfo);
+                    menuItem.setText(menuItem.getText() + " " + notification.getKeyword().toString().toLowerCase() + " on your post");
+                    menuItem.setOnAction(event -> {
+                        Platform.runLater(() -> Content.showPostDetails(notification.getPost()));
+                    });
+                    Platform.runLater(() -> NavBar.this.notification.getItems().add(menuItem));
+                }
+            };
+        }
+        notification.setOnShowing(event ->notiIcon.setImage(new Image("file:Resources/noti.png")));
     }
 }

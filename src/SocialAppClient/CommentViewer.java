@@ -1,6 +1,7 @@
 package SocialAppClient;
 
 import SocialAppGeneral.Comment;
+import SocialAppGeneral.Relations;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ChoiceBox;
@@ -45,14 +46,14 @@ public class CommentViewer extends VBox{
                     postComments.setStyle(null);
                     postComments.setOnKeyPressed(event -> {
                         if (event.getCode().equals(KeyCode.ENTER)) {
-                            ((CallBack) getParent().getParent()).setCommentCommend(0, postComments.getText(), comment.getCommentId());
+                            PostDetails.setCommentCommend(Relations.EDIT, postComments.getText(), comment.getCommentId());
                             postComments.setEditable(false);
                             postComments.setStyle(Styles.TEXT_AREA);
                             edit.setValue(null);
                         }
                     });
                 } else if (newValue.equals("Delete")) {
-                    ((CallBack) getParent().getParent()).setCommentCommend(-1, postComments.getText(), comment.getCommentId());
+                    PostDetails.setCommentCommend(Relations.DELETE, postComments.getText(), comment.getCommentId());
                     edit.setValue(null);
                 }
             }catch (NullPointerException e){}

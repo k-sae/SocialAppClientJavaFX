@@ -20,8 +20,8 @@ public interface Styles {
     String NAVBAR_BUTTON = "-fx-font: 20 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;";
     String NAVBAR_BUTTON_HOVER = "-fx-font: 20 arial; -fx-background-color: #ffffff; -fx-text-fill: #000000;";
 
-    String BLACK_BUTTON = "-fx-font: 15 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;";
-    String BLACK_BUTTON_HOVER = "-fx-font: 15 arial; -fx-background-color: #bbbbbb; -fx-text-fill: #000000;";
+    String BLACK_BUTTON = "-fx-font: 13 arial; -fx-background-color: #000000; -fx-text-fill: #eeeeee;";
+    String BLACK_BUTTON_HOVER = "-fx-font: 13 arial; -fx-background-color: #bbbbbb; -fx-text-fill: #000000;";
 
     String USER_VIEW = "-fx-background-color: transparent; -fx-text-fill: #000000;";
     String USER_VIEW_HOVER = "-fx-background-color: #dddddd; -fx-text-fill: #000000;";
