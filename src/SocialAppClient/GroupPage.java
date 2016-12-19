@@ -71,7 +71,7 @@ public class GroupPage extends GridPane {
         GroupInfoViewer Info = new GroupInfoViewer(group);
 
         /**PUT THE PICTURE PATH*/
-        Info.setPicture(""+group.getImageId());
+        Info.setPicture("Group");
         /**PUT SOME INFO AS STRING*/
         Info.setLabel("GROUP NAME: "+group.getName());
         //Info.search();

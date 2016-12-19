@@ -1,6 +1,9 @@
 package SocialAppClient;
 
-import SocialAppGeneral.*;
+import SocialAppGeneral.Command;
+import SocialAppGeneral.Notification;
+import SocialAppGeneral.SocialArrayList;
+import SocialAppGeneral.UserInfo;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -80,51 +83,60 @@ public class NavBar extends HBox{
             Command command = new Command();
             command.setKeyWord("Search");
             command.setSharableObject(Search.getEditor().getText());
+            if (Search.getEditor().getText().equals("")) return;
             CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
                 @Override
                 void analyze(Command cmd) {
                     SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(cmd.getObjectStr());
                     Search.getItems().clear();
                     for (Object o: socialArrayList.getItems()) {
-                        if (((String)o).contains("-")) {
-                            new GroupPicker().new InfoPicker((Long.parseLong((String) o)) * -1) {
-                                @Override
-                                void pick(Group group) {
-                                    Label label = new Label((Long.parseLong((String) o)) * -1 + "");
-                                    label.setOnMouseClicked(event -> MainWindow.navigateTo(new GroupPage((Long.parseLong((String) o)) * -1)));
-                                    Search.getItems().add(label);
-                                }
-                            };
-                        }else
-                        {
-                            Platform.runLater(() ->{
 
+                            Platform.runLater(() ->{
                                 {
-                                    Search.getItems().add(new FriendView((String)o));
+                                    if (((String)o).contains("-")) {
+                                         new GroupView(((String) o).substring(1))
+                                        {
+                                            @Override
+                                            protected void onFinishSettingLayout(GroupView view) {
+                                                super.onFinishSettingLayout(view);
+                                                Search.getItems().add(view);
+                                            }
+                                        };
+
+                                    }else {
+                                        new FriendView((String) o)
+                                        {
+                                            @Override
+                                            protected void onFinishSettingLayout(FriendView view) {
+                                                super.onFinishSettingLayout(view);
+                                                Search.getItems().add(view);
+                                            }
+                                        };
+
+
+                                    }
                                     Search.show();
                                 }
 
                             });
-                        }
-
-                        // SearchMenu.getItems().addAll(new MenuItem((String)o));
-                        //   addFriendRequest((String)o);
                     }
+                    new Thread(() -> Platform.runLater(() -> {
+
+                    })).start();
+
                 }
             };
             CommandsExecutor.getInstance().add(commandRequest);
-
         });
         Search.setOnAction(e->{
             @SuppressWarnings("unchecked") ComboBox<Object> objectComboBox = (ComboBox<Object>) e.getSource();
             Object scene = objectComboBox.getSelectionModel().getSelectedItem();
-
             if (scene instanceof FriendView)
             {
                 MainWindow.navigateTo(new ProfilePage(((FriendView) scene).id));
             }
-            else if(scene instanceof Label) {
-               MainWindow.navigateTo(new GroupPage(Long.parseLong( ((Label)scene).getText())));
+            else if(scene instanceof GroupView) {
+               MainWindow.navigateTo(new GroupPage((Long.parseLong(((GroupView)scene).id))));
             }
 
         });
