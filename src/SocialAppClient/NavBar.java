@@ -13,8 +13,6 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 
-import java.util.ArrayList;
-
 import static SocialAppClient.MainWindow.clientLoggedUser;
 import static javafx.scene.layout.GridPane.setColumnSpan;
 import static javafx.scene.layout.GridPane.setConstraints;
@@ -77,76 +75,58 @@ public class NavBar extends HBox{
         searchImg.setPreserveRatio(true);
         Button searchBtn = new Button("", searchImg);
         searchBtn.setOnAction(e->{
-            if(Search.getEditor().getText().equals(""))
-            {
-                return;
-            }
+
             /** Add an item when you clicked on the menu */
-            if(Search.getEditor().getText().length()>1) {
-                Command command = new Command();
-                command.setKeyWord("Search");
-                command.setSharableObject(Search.getEditor().getText());
-                CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
-                    @Override
-                    void analyze(Command cmd) {
-                        SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(cmd.getObjectStr());
-                        Search.getItems().clear();
-                        Label l = new Label("FRIENDS&EMAILS");
-                        Search.getItems().add(l);
-                        for (Object o : socialArrayList.getItems()) {
-                            Platform.runLater(() -> {
-                                Search.getItems().add(new FriendView((String) o));
-                                Search.show();
-                            });
-                            Search.setOnAction(e -> {
-                                Platform.runLater(() -> {
-                                    MainWindow.navigateTo(new ProfilePage((String) o));
-                                    Search.setPromptText("Search...");
-                                });
-
-                            });
-                    }
-                    Platform.runLater(() ->{
-                        Label k=new Label("GRoup NAMES");
-                        Search.getItems().add(k);
-                    });
-                    Command command = new Command();
-                    command.setKeyWord("Search_Group");
-                    command.setSharableObject(Search.getEditor().getText());
-                    CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
-                        @Override
-                        void analyze(Command commandFromServer) {
-                            SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(commandFromServer.getObjectStr());
-                            Search.getItems().clear();
-                            for (Object o: socialArrayList.getItems()) {
-                                    Platform.runLater(() -> {
-
-                                        new GroupPicker().new InfoPicker(Long.parseLong((String) o)) {
-                                            @Override
-                                            void pick(Group group) {
-                                                Search.getItems().add(group.getName());
-                                                Search.show();
-                                            }
-                                        };
-
-                                    });
-                                    Search.setOnAction(e -> {
-                                        Platform.runLater(() -> {
-                                            MainWindow.navigateTo(new GroupPage(Long.parseLong((String) o)));
-                                            Search.setPromptText("Search...");
-                                        });
-
-                                    });
+            Command command = new Command();
+            command.setKeyWord("Search");
+            command.setSharableObject(Search.getEditor().getText());
+            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+                @Override
+                void analyze(Command cmd) {
+                    SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(cmd.getObjectStr());
+                    Search.getItems().clear();
+                    for (Object o: socialArrayList.getItems()) {
+                        if (((String)o).contains("-")) {
+                            new GroupPicker().new InfoPicker((Long.parseLong((String) o)) * -1) {
+                                @Override
+                                void pick(Group group) {
+                                    Label label = new Label((Long.parseLong((String) o)) * -1 + "");
+                                    label.setOnMouseClicked(event -> MainWindow.navigateTo(new GroupPage((Long.parseLong((String) o)) * -1)));
+                                    Search.getItems().add(label);
                                 }
-                            }
-                        };
+                            };
+                        }else
+                        {
+                            Platform.runLater(() ->{
 
+                                {
+                                    Search.getItems().add(new FriendView((String)o));
+                                    Search.show();
+                                }
 
-                        CommandsExecutor.getInstance().add(commandRequest);
+                            });
+                        }
+
+                        // SearchMenu.getItems().addAll(new MenuItem((String)o));
+                        //   addFriendRequest((String)o);
                     }
-                };
-                CommandsExecutor.getInstance().add(commandRequest);
+                }
+            };
+            CommandsExecutor.getInstance().add(commandRequest);
+
+        });
+        Search.setOnAction(e->{
+            @SuppressWarnings("unchecked") ComboBox<Object> objectComboBox = (ComboBox<Object>) e.getSource();
+            Object scene = objectComboBox.getSelectionModel().getSelectedItem();
+
+            if (scene instanceof FriendView)
+            {
+                MainWindow.navigateTo(new ProfilePage(((FriendView) scene).id));
             }
+            else if(scene instanceof Label) {
+               MainWindow.navigateTo(new GroupPage(Long.parseLong( ((Label)scene).getText())));
+            }
+
         });
         Search.setOnHiding(e->{Search.getItems().clear();});
 
