@@ -100,6 +100,7 @@ public class NavBar extends HBox{
                                             protected void onFinishSettingLayout(GroupView view) {
                                                 super.onFinishSettingLayout(view);
                                                 Search.getItems().add(view);
+                                                view.setPadding(new Insets(10,0,10,0));
                                             }
                                         };
 
@@ -110,6 +111,7 @@ public class NavBar extends HBox{
                                             protected void onFinishSettingLayout(FriendView view) {
                                                 super.onFinishSettingLayout(view);
                                                 Search.getItems().add(view);
+                                                view.setPadding(new Insets(10,0,10,0));
                                             }
                                         };
 
