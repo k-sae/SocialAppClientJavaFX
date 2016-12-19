@@ -185,7 +185,7 @@ class RegisterPage extends StackPane {
         Male.setToggleGroup(group);
         Male.setSelected(true);
         Male.setTextFill(Color.WHITE);
-        RadioButton FeMale = new RadioButton("FEMale");
+        RadioButton FeMale = new RadioButton("Female");
         FeMale.setToggleGroup(group);
         FeMale.setTextFill(Color.WHITE);
         Label request=createTxt("Request Adminship:",20,true);
