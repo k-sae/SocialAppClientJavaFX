@@ -14,8 +14,8 @@ import javafx.scene.layout.VBox;
  * Created by billy on 2016-12-07.
  */
 public class PostDetails extends VBox{
-    protected PostViewer postViewer;
-    protected CommentContainer CommentContainer;
+    private PostViewer postViewer;
+    private CommentContainer CommentContainer;
     private static Post post;
     private static String relation;
     public PostDetails(String relation, Post post){

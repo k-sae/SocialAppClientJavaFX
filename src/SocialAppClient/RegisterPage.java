@@ -8,6 +8,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -30,7 +31,7 @@ class RegisterPage extends StackPane {
              BackgroundRepeat.NO_REPEAT,
              BackgroundRepeat.NO_REPEAT,
              BackgroundPosition.DEFAULT,
-             BackgroundSize.DEFAULT)));
+             new BackgroundSize(100,100,true,true,true,true))));
     GridPane gp=new GridPane();
      setRow(gp);
      setCol(gp);
@@ -191,8 +192,10 @@ class RegisterPage extends StackPane {
         RadioButton RequestAdminShip = new RadioButton("Request");
         RequestAdminShip.setTextFill(Color.WHITE);
         HBox Admin_Hbox =new HBox(10);
+        Admin_Hbox.setAlignment(Pos.CENTER_LEFT);
         Admin_Hbox.getChildren().addAll(request,RequestAdminShip);
         HBox Gender_Hbox=new HBox(20);
+        Gender_Hbox.setAlignment(Pos.CENTER_LEFT);
         Gender_Hbox.getChildren().addAll(Gender,Male,FeMale);
         vb.setMargin(Admin_Hbox,(new Insets(0,0,10,0)));
         Button B=new Button("Register");

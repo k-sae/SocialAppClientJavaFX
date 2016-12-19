@@ -14,10 +14,19 @@ public class FriendView extends Label {
 
     String id;
     private double size;
+    private UserInfo userInfo;
     FriendView(String id)
     {
         this.size=20;
         this.id = id;
+        new UserPicker().new InfoPicker(id){
+            @Override
+            void pick(UserInfo userInfo) {
+                FriendView.this.userInfo = userInfo;
+                Platform.runLater(() -> setAttributes(userInfo));
+            }
+        };
+        /*
         //send id to server userinfo
         Command command = new Command();
         command.setKeyWord(UserInfo.PICK_INFO);
@@ -33,11 +42,20 @@ public class FriendView extends Label {
             }
         };
         CommandsExecutor.getInstance().add(commandRequest);
+        */
     }
     FriendView(String id, double size)
     {
         this.id = id;
         this.size = size;
+        new UserPicker().new InfoPicker(id){
+            @Override
+            void pick(UserInfo userInfo) {
+                FriendView.this.userInfo = userInfo;
+                Platform.runLater(() -> setAttributes(userInfo));
+            }
+        };
+        /*
         //send id to server userinfo
         Command command = new Command();
         command.setKeyWord(UserInfo.PICK_INFO);
@@ -52,7 +70,7 @@ public class FriendView extends Label {
 
             }
         };
-        CommandsExecutor.getInstance().add(commandRequest);
+        CommandsExecutor.getInstance().add(commandRequest);*/
     }
     private void setAttributes(UserInfo userInfo){
         setWrapText(true);

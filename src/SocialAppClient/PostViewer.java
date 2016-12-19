@@ -16,16 +16,16 @@ import java.text.SimpleDateFormat;
  */
 
 public class PostViewer extends VBox{
-    protected TextArea postText;
-    protected Button thumbsUp;
-    protected Button thumbsDown;
+    private TextArea postText;
+    private Button thumbsUp;
+    private Button thumbsDown;
     protected Button comment;
-    protected Button share;
+    private Button share;
     private Post post;
     private String relation;
-    int likeNum;
-    int dislikeNum;
-    int commentNum;
+    private int likeNum;
+    private int dislikeNum;
+    private int commentNum;
 
     public PostViewer(String relation, Post post) {
         this.post = post;

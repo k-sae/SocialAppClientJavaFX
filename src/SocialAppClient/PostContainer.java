@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class PostContainer extends VBox{
     private Button loadPostBtn;
     private static String relation;
-    long loadMoreNum;
+    private long loadMoreNum;
     public PostContainer(String relation) {
         this.relation = relation;
         loadMoreNum =1;

@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * Created by billy on 2016-12-07.
  */
 public class CommentContainer extends VBox{
-    protected TextField commentText;
+    private TextField commentText;
     private ArrayList<Comment> comments;
     public CommentContainer(ArrayList<Comment> comments){
         this.comments = comments;

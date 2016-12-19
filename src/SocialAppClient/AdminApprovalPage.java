@@ -21,7 +21,6 @@ import java.util.ArrayList;
  */
 public class AdminApprovalPage extends VBox {
     private ArrayList<String> registerInfos;
-    private ClientLoggedUser clientLoggedUser;
     public AdminApprovalPage(){
         setLayout();
         ((ClientAdmin) MainWindow.clientLoggedUser).new FetchRequests() {
@@ -35,7 +34,7 @@ public class AdminApprovalPage extends VBox {
     }
     private void setLayout(){
         setAlignment(Pos.TOP_CENTER);
-        setPadding(new Insets(0,10,0,10));
+        setPadding(new Insets(10,10,10,10));
         setSpacing(2);
         Label title = new Label("USERS TO APPROVE");
         title.setFont(Font.font(30));

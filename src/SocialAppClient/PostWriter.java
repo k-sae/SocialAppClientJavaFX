@@ -24,8 +24,8 @@ import java.io.IOException;
  */
 public class PostWriter extends VBox{
     private TextArea postText;
-    public Button addImage;
-    public Button postBtn;
+    private Button addImage;
+    private Button postBtn;
     public PostWriter(){
 
         setLayout();

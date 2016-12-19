@@ -1,6 +1,7 @@
 package SocialAppClient;
 
 import SocialAppGeneral.Command;
+import SocialAppGeneral.RegisterInfo;
 import SocialAppGeneral.UserInfo;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Insets;
@@ -27,7 +28,7 @@ import static javax.swing.text.html.HTML.Tag.HEAD;
  */
 class EditInfo extends GridPane{
     private ImageViewer profilePicture;
-    public UserInfo userInfo;
+    private UserInfo userInfo;
     EditInfo(UserInfo userInfo){
         this.userInfo = userInfo;
         setConstraint();
@@ -56,17 +57,13 @@ class EditInfo extends GridPane{
         Label title = new Label("INFO EDIT");
         title.setFont(Font.font(36));
 
-        profilePicture = new ImageViewer(userInfo.getProfileImage());
-        profilePicture.setFitWidth(100);
-        profilePicture.setPreserveRatio(true);
-        profilePicture.setSmooth(true);
-        profilePicture.setCache(true);
-        profilePicture.setClip(new Circle(profilePicture.getFitWidth()/2,profilePicture.getFitWidth()/2,profilePicture.getFitWidth()/2));
+        profilePicture = Utility.getCircularImage(userInfo.getProfileImage(),50);
 
         Button uploadImg = new Button("Change Photo");
         uploadImg.setStyle(Styles.BLACK_BUTTON);
         uploadImg.setOnMouseEntered(event -> uploadImg.setStyle(Styles.BLACK_BUTTON_HOVER));
         uploadImg.setOnMouseExited(event -> uploadImg.setStyle(Styles.BLACK_BUTTON));
+
         final BufferedImage[] bufferedImage = {null};
         uploadImg.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
@@ -101,16 +98,11 @@ class EditInfo extends GridPane{
         pictureOption.setSpacing(5);
         pictureOption.setAlignment(Pos.CENTER);
 
-        Label FnameLBL = new Label("First Name:");
+        Label FnameLBL = new Label("Full Name:");
         FnameLBL.setFont(Font.font(26));
 
         TextField FnameTXT = new TextField();
         FnameTXT.setText(userInfo.getFullName());
-
-        Label LnameLBL = new Label("Last Name:");
-        LnameLBL.setFont(Font.font(26));
-
-        TextField LnameTXT = new TextField();
 
         Label passwordLBL = new Label("Password:");
         passwordLBL.setFont(Font.font(26));
@@ -129,8 +121,10 @@ class EditInfo extends GridPane{
         male.setToggleGroup(genderGroup);
         RadioButton female = new RadioButton("Female");
         female.setToggleGroup(genderGroup);
+
         HBox genderHbox = new HBox(5, male, female);
         genderHbox.setAlignment(Pos.CENTER);
+
         if(userInfo.getGender().equals("Male"))
             male.setSelected(true);
         else
@@ -142,9 +136,9 @@ class EditInfo extends GridPane{
         saveBtn.setOnMouseExited(event -> saveBtn.setStyle(Styles.BLACK_BUTTON));
 
         saveBtn.setOnMouseClicked(event -> {
-            UserInfo  userInfo = new UserInfo();
+            UserInfo userInfo = new UserInfo();
             userInfo.setProfileImage(EditInfo.this.userInfo.getProfileImage());
-            userInfo.setFullName(FnameTXT.getText() + " " + LnameTXT.getText());
+            userInfo.setFullName(FnameTXT.getText());
             userInfo.setBirthDate(datePicker.getValue().toString());
             userInfo.setGender(((RadioButton) genderGroup.getSelectedToggle()).getText());
             //noinspection ConstantConditions
@@ -177,7 +171,7 @@ class EditInfo extends GridPane{
             MainWindow.clientLoggedUser.deactivate();
         });
 
-        info.getChildren().addAll(title,new Separator(), profilePicture, pictureOption,FnameLBL,FnameTXT,LnameLBL,LnameTXT,passwordLBL,passwordTXT,birthDateLBL,datePicker,genderLBL,genderHbox,saveBtn,deactivate);
+        info.getChildren().addAll(title,new Separator(), profilePicture, pictureOption,FnameLBL,FnameTXT,passwordLBL,passwordTXT,birthDateLBL,datePicker,genderLBL,genderHbox,saveBtn,deactivate);
 
         add(info,1,0);
     }

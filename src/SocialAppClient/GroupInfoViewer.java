@@ -11,11 +11,9 @@ import javafx.scene.layout.HBox;
  * Created by billy on 2016-11-26.
  */
 public class GroupInfoViewer extends InfoViewer{
-    protected Button RelationBTN;
-    protected ListView List;
-    protected Button approveBtn;
-    protected Button Edit;
-    private long id;
+    private Button RelationBTN;
+    private ListView List;
+    private Button approveBtn;
     private Group group;
     public GroupInfoViewer(Group group){
         this.group = group;

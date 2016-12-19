@@ -15,7 +15,7 @@ import static SocialAppClient.MainWindow.clientLoggedUser;
  */
 public class ProfileInfoViewer extends InfoViewer{
     private String id;
-    protected Button RelationBTN;
+    private Button RelationBTN;
     protected Button Edit;
 
     public ProfileInfoViewer(String id){
@@ -113,14 +113,17 @@ public class ProfileInfoViewer extends InfoViewer{
     }
     private void addDeclineButton()
     {
-        createButton("Decline");
-        RelationBTN.setOnAction(e-> MainWindow.clientLoggedUser.new DeclineFriendReq(id) {
+        Button declineBTN = new Button("Decline");
+        declineBTN.setStyle(Styles.NAV_BUTTON);
+        declineBTN.setOnMouseEntered(event -> declineBTN.setStyle(Styles.NAV_BUTTON_HOVER));
+        declineBTN.setOnMouseExited(event -> declineBTN.setStyle(Styles.NAV_BUTTON));
+        declineBTN.setOnAction(e-> MainWindow.clientLoggedUser.new DeclineFriendReq(id) {
             @Override
             void onFinish(Command cmd) {
                 Platform.runLater(() ->  Main.refresh(MainWindow.id,(new ProfilePage(id))));
             }
         });
-        getChildren().add(RelationBTN);
+        getChildren().add(declineBTN);
     }
     private void startChatButton()
     {
