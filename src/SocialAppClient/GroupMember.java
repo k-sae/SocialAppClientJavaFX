@@ -97,5 +97,21 @@ public class GroupMember extends AppUser {
         }
         abstract void onFinish(String s);
     }
-
+    static abstract class cancelRequest
+    {
+        cancelRequest(String id)
+        {
+            Command command = new Command();
+            command.setKeyWord(Group.GROUP_CANCEL_REQ);
+            command.setSharableObject(id);
+            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+                @Override
+                void analyze(Command cmd) {
+                    onFinish(cmd.getObjectStr());
+                }
+            };
+            CommandsExecutor.getInstance().add(commandRequest);
+        }
+        abstract void onFinish(String s);
+    }
 }

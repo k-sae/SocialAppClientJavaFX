@@ -5,5 +5,5 @@ package SocialAppGeneral;
  */
 public enum RelationGroup {
         MEMBER
-        ,NOT_MEMBER
+        ,NOT_MEMBER,PENDING_MEMBER
     }

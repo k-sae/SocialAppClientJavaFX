@@ -101,31 +101,10 @@ public class NavBar extends HBox{
                             Search.setOnAction(e -> {
                                 Platform.runLater(() -> {
                                     MainWindow.navigateTo(new ProfilePage((String) o));
-                                    Search.setValue("");
+                                    Search.setPromptText("Search...");
                                 });
-                                Search.setPromptText("Search...");
+
                             });
-//
-//<<<<<<< HEAD
-//                            // SearchMenu.getItems().addAll(new MenuItem((String)o));
-//                            //   addFriendRequest((String)o);
-//                        }
-//                        Platform.runLater(() -> {
-//                            Label k = new Label("GRoup NAMES");
-//                            Search.getItems().add(k);
-//                        });
-//                        Command command = new Command();
-//                        command.setKeyWord("Search_Group");
-//                        command.setSharableObject(Search.getEditor().getText());
-//                        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
-//                            @Override
-//                            void analyze(Command commandFromServer) {
-//                                SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(commandFromServer.getObjectStr());
-//                                //           System.out.print(command.getObjectStr());
-//                                for (Object o : socialArrayList.getItems()) {
-//=======
-                       // SearchMenu.getItems().addAll(new MenuItem((String)o));
-                     //   addFriendRequest((String)o);
                     }
                     Platform.runLater(() ->{
                         Label k=new Label("GRoup NAMES");
@@ -138,22 +117,8 @@ public class NavBar extends HBox{
                         @Override
                         void analyze(Command commandFromServer) {
                             SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(commandFromServer.getObjectStr());
-                 //           System.out.print(command.getObjectStr());
+                            Search.getItems().clear();
                             for (Object o: socialArrayList.getItems()) {
-
-//                               Platform.runLater(() ->{
-//
-//                                   new GroupPicker().new InfoPicker(Long.parseLong((String) o)) {
-//                                       @Override
-//                                       void pick(Group group) {
-//                                           Search.getItems().add(group.getName());
-//                                           Search.show();
-//                                       }
-//                                   };
-
-
-//>>>>>>> develop
-
                                     Platform.runLater(() -> {
 
                                         new GroupPicker().new InfoPicker(Long.parseLong((String) o)) {
@@ -168,9 +133,9 @@ public class NavBar extends HBox{
                                     Search.setOnAction(e -> {
                                         Platform.runLater(() -> {
                                             MainWindow.navigateTo(new GroupPage(Long.parseLong((String) o)));
-                                            Search.setValue("");
+                                            Search.setPromptText("Search...");
                                         });
-                                        Search.setPromptText("Search...");
+
                                     });
                                 }
                             }
