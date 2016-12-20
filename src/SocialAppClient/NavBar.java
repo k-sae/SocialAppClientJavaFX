@@ -285,7 +285,8 @@ public class NavBar extends HBox{
 
     }
     void addNewMessage(String... ids){
-        msgIcon.setImage(new Image("file:Resources/msgN.png"));
+        if(ids.length>0)
+            msgIcon.setImage(new Image("file:Resources/msgN.png"));
         for (String id: ids
                 ) {
             new UserPicker().new InfoPicker(id) {
