@@ -659,4 +659,20 @@ public class ClientLoggedUser extends LoggedUser {
 
         abstract void onFinish(ArrayList<Log> logs);
     }
+    abstract class ReActivate
+    {
+        ReActivate()
+        {
+            Command command = new Command();
+            command.setKeyWord(REACTIVATE);
+            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
+                @Override
+                void analyze(Command cmd) {
+                    onFinish(cmd.getObjectStr());
+                }
+            };
+            CommandsExecutor.getInstance().add(commandRequest);
+        }
+        public abstract void onFinish(String result);
+    }
 }

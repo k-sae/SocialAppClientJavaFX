@@ -3,6 +3,7 @@ package SocialAppClient;
 import SocialAppGeneral.Command;
 import SocialAppGeneral.Post;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.shape.Circle;
 import javafx.stage.StageStyle;
@@ -101,6 +102,15 @@ public class Utility {
         img.setClip(new Circle(img.getFitWidth()/2,img.getFitHeight()/2,img.getFitWidth()/2));
 
         return img;
+    }
+    public static Optional<ButtonType> confirmationMessage(String title, String header, String content)
+    {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+
+        return alert.showAndWait();
     }
 
 }

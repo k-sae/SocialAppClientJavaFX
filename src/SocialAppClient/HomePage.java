@@ -1,7 +1,11 @@
 package SocialAppClient;
 
-import SocialAppGeneral.*;
+import SocialAppGeneral.Group;
+import SocialAppGeneral.Post;
+import SocialAppGeneral.Relations;
+import SocialAppGeneral.UserInfo;
 import javafx.application.Platform;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -28,9 +32,33 @@ public class HomePage extends GridPane {
                 if (userInfo.getProfileImage().equals("unknown"))
                 {
                     Platform.runLater(() -> {
-                        Utility.alertWindow("Error","its seems that this account is deactivated or" +
-                                " banned pls contact us for more info or requesting reactivation");
-                        Main.logout();
+                       Optional<ButtonType> button = Utility.confirmationMessage("error", null,"its seems that this account is deactivated\n" +
+                                "would u like to reactivate it" );
+                        //noinspection OptionalGetWithoutIsPresent
+                        if (button.get().equals(ButtonType.OK))
+                        {
+                            MainWindow.clientLoggedUser.new ReActivate() {
+                                @Override
+                                public void onFinish(String result) {
+                                    if (result.equals("false"))
+                                    {
+                                        Platform.runLater(() -> {
+                                            Utility.alertWindow("Error","error happened while reactivating" +
+                                                " pls contact us for more info");
+                                            Main.logout();
+                                        });
+                                    }
+                                    else
+                                    {
+                                        Platform.runLater(() -> MainWindow.navigateTo(new HomePage(MainWindow.clientLoggedUser.getID())));
+                                    }
+                                }
+                            };
+                        }
+                        else
+                        {
+                            Main.logout();
+                        }
                     });
                 }
                 HomePage.this.userInfo = userInfo;
