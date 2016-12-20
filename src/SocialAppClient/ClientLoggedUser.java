@@ -49,16 +49,6 @@ class ClientLoggedUser extends LoggedUser {
 
 
     }
-
-    @Override
-    public void joinGroup() {
-
-    }
-
-    @Override
-    public void exitGroup() {
-
-    }
     //<<<<<<<<<<<<<<<<<<<<<<<<
     @Override
     public void getgroup() {
