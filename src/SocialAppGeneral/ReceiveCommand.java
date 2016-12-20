@@ -1,5 +1,7 @@
 package SocialAppGeneral;
 
+import SocialAppClient.Utility;
+
 import java.io.DataInputStream;
 import java.net.Socket;
 import java.net.SocketException;
@@ -31,7 +33,7 @@ public abstract class ReceiveCommand extends Thread {
                 }
                 catch (SocketException e)
                 {
-                    System.out.println("disconnected");
+                    Utility.cantConnectMessage();
                     break;
                 }
                 catch (Exception e) {

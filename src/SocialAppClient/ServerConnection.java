@@ -14,18 +14,15 @@ abstract class ServerConnection implements Connection{
     private int port;
     private String serverName;
     Socket connectionSocket;
-    //if no parameters passed set default connection
-    //TODO #kareem
-    //after creating users levels accept user of type registeredUser or login user
 
-    ServerConnection(String serverName, int startPort) throws Exception {
+    ServerConnection(String serverName, int startPort) throws ServerNotFound {
+        port = -1;
         this.serverName = serverName;
         findPort(startPort, startPort+10);
         if (port > -1) {
             startConnection();
-            //TODO #kareem
-            //create a class inheriting Exception do identify error
-        }else throw new Exception("Server Not Found");
+            //TODO #Exception
+        }else throw new ServerNotFound();
     }
     private void findPort(int sPort, int ePort)
     {
@@ -38,7 +35,7 @@ abstract class ServerConnection implements Connection{
             connectionSocket.setSoTimeout(5000);
         }
         catch (IOException e) {
-            System.out.println("cant find socket on "+ sPort);
+            System.out.println("Reconnecting on "+ sPort);
             findPort(sPort + 1, ePort);
         }
         catch (Exception e)

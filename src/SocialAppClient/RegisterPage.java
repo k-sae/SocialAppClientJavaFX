@@ -16,7 +16,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 import java.time.LocalDate;
-import java.util.regex.Pattern;
 
 /**
  * Created by mosta on 30-Oct-16.
@@ -41,7 +40,12 @@ class RegisterPage extends StackPane {
      //initialize the connection up here
      try {
          new MainServerConnection();
-     } catch (Exception e) {
+     }catch (ServerNotFound e)
+     {
+         Utility.cantConnectMessage();
+
+     }
+     catch (Exception e) {
          e.printStackTrace();
      }
 
@@ -100,6 +104,10 @@ class RegisterPage extends StackPane {
                              if (!commandFromServer.getObjectStr().equals("-1")) {
                                  parent.getChildren().add(new MainWindow(commandFromServer.getObjectStr()));
                                  parent.getChildren().remove(RegisterPage.this);
+                             }
+                             else
+                             {
+                                 Utility.alertWindow(" Login","wrong user name or password");
                              }
                          });
 

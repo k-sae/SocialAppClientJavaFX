@@ -84,7 +84,12 @@ public class MainWindow extends GridPane {
                     }
                 };
                 receiveServerCommand.start();
-            } catch (Exception e) {
+            }catch (ServerNotFound e)
+            {
+             Utility.cantConnectMessage();
+
+            }
+            catch (Exception e) {
                 e.printStackTrace();
             }
         }).start();
@@ -112,7 +117,12 @@ public class MainWindow extends GridPane {
                     }
                 };
                 receiveServerNotification.start();
-            } catch (Exception e) {
+            }catch (ServerNotFound e)
+            {
+                Utility.cantConnectMessage();
+
+            }
+            catch (Exception e) {
                 e.printStackTrace();
             }
         }).start();

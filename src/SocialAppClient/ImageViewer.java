@@ -40,7 +40,7 @@ class ImageViewer extends ImageView implements SocialAppImages {
                         }
                     };
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    System.out.println("Image cant be loaded");
                 }
             }
         };

@@ -2,6 +2,7 @@ package SocialAppClient;
 
 import SocialAppGeneral.Command;
 import SocialAppGeneral.Post;
+import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
@@ -112,7 +113,13 @@ public class Utility {
 
         return alert.showAndWait();
     }
-
+    public static void cantConnectMessage()
+    {
+        Platform.runLater(() -> {
+            Utility.alertWindow("error", "Connection Lost");
+            System.exit(0);
+        });
+    }
 }
 
 
