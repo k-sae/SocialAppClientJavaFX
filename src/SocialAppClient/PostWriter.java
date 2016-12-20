@@ -24,7 +24,7 @@ import java.io.IOException;
  */
 public class PostWriter extends VBox{
     private TextArea postText;
-    private Button addImage;
+//    private Button addImage;
     private Button postBtn;
     public PostWriter(){
 
@@ -40,8 +40,8 @@ public class PostWriter extends VBox{
         postText.setMaxSize(450,100);
 
         HBox option = new HBox();
-        addImage = new Button("Choose an image");
-        postBtn = new Button("Post");
+//        addImage = new Button("Choose an image");
+        postBtn = new Button("Post");/*
         addImage.setStyle(Styles.BLACK_BUTTON);
         addImage.setOnMouseEntered(event -> addImage.setStyle(Styles.BLACK_BUTTON_HOVER));
         addImage.setOnMouseExited(event -> addImage.setStyle(Styles.BLACK_BUTTON));
@@ -62,7 +62,7 @@ public class PostWriter extends VBox{
             }
 
         });
-
+*/
         postBtn.setStyle(Styles.BLACK_BUTTON);
         postBtn.setOnMouseEntered(event -> postBtn.setStyle(Styles.BLACK_BUTTON_HOVER));
         postBtn.setOnMouseExited(event -> postBtn.setStyle(Styles.BLACK_BUTTON));
@@ -70,7 +70,7 @@ public class PostWriter extends VBox{
 
         option.setSpacing(150);
         option.setAlignment(Pos.CENTER);
-        option.getChildren().addAll(addImage,postBtn);
+        option.getChildren().addAll(/*addImage,*/postBtn);
         setPadding(new Insets(30,0,0,0));
 
         getChildren().addAll(postText, option);

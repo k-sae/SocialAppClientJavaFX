@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ba75cff5-414b-45de-83db-db0bc1560e21" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/validator.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/validator.java" />
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/ChatWindow.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/ChatWindow.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/PostWriter.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/PostWriter.java" />
+>>>>>>> develop
     </list>
     <ignored path="SocialAppClientJavaFX.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,9 +35,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PostContainer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/PostContainer.java">
+      <file leaf-file-name="PostWriter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/PostWriter.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="391">
               <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
               <folding>
@@ -42,37 +48,55 @@
                 <element signature="e#2326#2327#0" expanded="false" />
                 <element signature="e#2434#2435#0" expanded="false" />
               </folding>
+=======
+            <state relative-caret-position="402">
+              <caret line="72" column="49" selection-start-line="72" selection-start-column="49" selection-end-line="72" selection-end-column="49" />
+              <folding />
+>>>>>>> develop
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PostDetails.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/PostDetails.java">
+      <file leaf-file-name="ChatWindow.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ChatWindow.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="272">
               <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="false" />
               </folding>
+=======
+            <state relative-caret-position="411">
+              <caret line="69" column="2" selection-start-line="69" selection-start-column="2" selection-end-line="69" selection-end-column="2" />
+              <folding />
+>>>>>>> develop
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PostViewer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/PostViewer.java">
+      <file leaf-file-name="CommentContainer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/CommentContainer.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="204">
               <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="false" />
               </folding>
+=======
+            <state relative-caret-position="406">
+              <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+              <folding />
+>>>>>>> develop
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProfileInfoViewer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ProfileInfoViewer.java">
+      <file leaf-file-name="Post.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SocialAppGeneral/Post.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="-348">
               <caret line="114" column="5" selection-start-line="114" selection-start-column="5" selection-end-line="114" selection-end-column="5" />
               <folding>
@@ -97,26 +121,37 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
               <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+=======
+            <state relative-caret-position="348">
+              <caret line="28" column="41" selection-start-line="13" selection-start-column="4" selection-end-line="28" selection-end-column="41" />
+>>>>>>> develop
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GroupInfoViewer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/GroupInfoViewer.java">
+      <file leaf-file-name="RegisterPage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/RegisterPage.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="170">
               <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="false" />
               </folding>
+=======
+            <state relative-caret-position="295">
+              <caret line="263" column="77" selection-start-line="263" selection-start-column="77" selection-end-line="263" selection-end-column="77" />
+              <folding />
+>>>>>>> develop
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientLoggedUser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ClientLoggedUser.java">
+      <file leaf-file-name="Group.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SocialAppGeneral/Group.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="10523">
               <caret line="639" column="7" selection-start-line="639" selection-start-column="7" selection-end-line="639" selection-end-column="7" />
               <folding>
@@ -137,19 +172,60 @@
                 <element signature="e#11342#11343#0" expanded="false" />
                 <element signature="e#11878#11879#0" expanded="false" />
                 <element signature="e#11944#11945#0" expanded="false" />
+=======
+            <state relative-caret-position="2726">
+              <caret line="104" column="5" selection-start-line="104" selection-start-column="5" selection-end-line="104" selection-end-column="5" />
+              <folding>
+                <element signature="e#1568#1569#0" expanded="true" />
+                <element signature="e#1597#1598#0" expanded="true" />
+                <element signature="e#1650#1651#0" expanded="true" />
+                <element signature="e#1686#1687#0" expanded="true" />
+                <element signature="e#1725#1726#0" expanded="true" />
+                <element signature="e#1751#1752#0" expanded="true" />
+                <element signature="e#1798#1799#0" expanded="true" />
+                <element signature="e#1828#1829#0" expanded="true" />
+                <element signature="e#1860#1861#0" expanded="true" />
+                <element signature="e#1890#1891#0" expanded="true" />
+                <element signature="e#1934#1935#0" expanded="true" />
+                <element signature="e#1972#1973#0" expanded="true" />
+                <element signature="e#2004#2005#0" expanded="true" />
+                <element signature="e#2034#2035#0" expanded="true" />
+                <element signature="e#2078#2079#0" expanded="true" />
+                <element signature="e#2116#2117#0" expanded="true" />
+                <element signature="e#2143#2144#0" expanded="true" />
+                <element signature="e#2168#2169#0" expanded="true" />
+                <element signature="e#2202#2203#0" expanded="true" />
+                <element signature="e#2225#2226#0" expanded="true" />
+                <element signature="e#2256#2257#0" expanded="true" />
+                <element signature="e#2283#2284#0" expanded="true" />
+                <element signature="e#2323#2324#0" expanded="true" />
+                <element signature="e#2355#2356#0" expanded="true" />
+                <element signature="e#2396#2397#0" expanded="true" />
+                <element signature="e#2434#2435#0" expanded="true" />
+                <element signature="e#2471#2472#0" expanded="true" />
+                <element signature="e#2519#2520#0" expanded="true" />
+                <element signature="e#2653#2654#0" expanded="true" />
+                <element signature="e#2688#2689#0" expanded="true" />
+>>>>>>> develop
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LogHistory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/LogHistory.java">
+      <file leaf-file-name="RelationGroup.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SocialAppGeneral/RelationGroup.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="629">
               <caret line="47" column="84" selection-start-line="47" selection-start-column="84" selection-end-line="47" selection-end-column="84" />
               <folding>
                 <element signature="imports" expanded="false" />
               </folding>
+=======
+            <state relative-caret-position="174">
+              <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+              <folding />
+>>>>>>> develop
             </state>
           </provider>
         </entry>
@@ -179,12 +255,18 @@
         <option value="$PROJECT_DIR$/src/SocialAppClient/LogHistory.java" />
         <option value="$PROJECT_DIR$/src/SocialAppClient/PostContainer.java" />
         <option value="$PROJECT_DIR$/src/SocialAppClient/PostDetails.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/PostWriter.java" />
         <option value="$PROJECT_DIR$/src/SocialAppClient/PostViewer.java" />
         <option value="$PROJECT_DIR$/src/SocialAppClient/ProfileInfoViewer.java" />
         <option value="$PROJECT_DIR$/src/SocialAppClient/ProfilePage.java" />
         <option value="$PROJECT_DIR$/src/SocialAppClient/RegisterPage.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/SocialAppClient/validator.java" />
+=======
+        <option value="$PROJECT_DIR$/src/SocialAppClient/PostWriter.java" />
+        <option value="$PROJECT_DIR$/src/SocialAppClient/ChatWindow.java" />
+        <option value="$PROJECT_DIR$/src/SocialAppGeneral/Post.java" />
+        <option value="$PROJECT_DIR$/src/SocialAppGeneral/Group.java" />
+>>>>>>> develop
       </list>
     </option>
   </component>
@@ -218,6 +300,11 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
+=======
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+>>>>>>> develop
       <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
@@ -605,7 +692,11 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24131945" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22974473" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+>>>>>>> develop
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -714,13 +805,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialAppGeneral/Group.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="29" column="61" selection-start-line="29" selection-start-column="3" selection-end-line="29" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ClientAdmin.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1139">
@@ -732,13 +816,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1411">
           <caret line="88" column="40" selection-start-line="88" selection-start-column="40" selection-end-line="88" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialAppGeneral/RelationGroup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -805,6 +882,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="29">
           <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+<<<<<<< HEAD
         </state>
       </provider>
     </entry>
@@ -813,6 +891,8 @@
         <state relative-caret-position="2987">
           <caret line="125" column="55" selection-start-line="125" selection-start-column="55" selection-end-line="125" selection-end-column="55" />
           <folding />
+=======
+>>>>>>> develop
         </state>
       </provider>
     </entry>
@@ -876,6 +956,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/CommentContainer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="145">
@@ -886,6 +967,11 @@
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ClientLoggedUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10523">
+=======
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ClientLoggedUser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17951">
+>>>>>>> develop
           <caret line="639" column="7" selection-start-line="639" selection-start-column="7" selection-end-line="639" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="false" />
@@ -940,7 +1026,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/LogHistory.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="629">
+=======
+        <state relative-caret-position="1073">
+>>>>>>> develop
           <caret line="47" column="84" selection-start-line="47" selection-start-column="84" selection-end-line="47" selection-end-column="84" />
           <folding>
             <element signature="imports" expanded="false" />
@@ -978,7 +1068,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/PostDetails.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="272">
+=======
+        <state relative-caret-position="464">
+>>>>>>> develop
           <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="false" />
@@ -996,6 +1090,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/PostWriter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1450">
@@ -1006,6 +1101,11 @@
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/PostViewer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
+=======
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/PostViewer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+>>>>>>> develop
           <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="false" />
@@ -1031,27 +1131,115 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ProfileInfoViewer.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="-348">
           <caret line="114" column="5" selection-start-line="114" selection-start-column="5" selection-end-line="114" selection-end-column="5" />
+=======
+        <state relative-caret-position="3103">
+          <caret line="125" column="36" selection-start-line="125" selection-start-column="36" selection-end-line="125" selection-end-column="36" />
+>>>>>>> develop
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/RegisterPage.java">
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/PostWriter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3655">
-          <caret line="23" column="6" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
+        <state relative-caret-position="402">
+          <caret line="72" column="49" selection-start-line="72" selection-start-column="49" selection-end-line="72" selection-end-column="49" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/ChatWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="69" column="2" selection-start-line="69" selection-start-column="2" selection-end-line="69" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/CommentContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppGeneral/Post.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="28" column="41" selection-start-line="13" selection-start-column="4" selection-end-line="28" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/RegisterPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="-3655">
+          <caret line="23" column="6" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
+=======
+        <state relative-caret-position="295">
+          <caret line="263" column="77" selection-start-line="263" selection-start-column="77" selection-end-line="263" selection-end-column="77" />
+>>>>>>> develop
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/validator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/SocialAppGeneral/RelationGroup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+>>>>>>> develop
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppGeneral/Group.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2726">
+          <caret line="104" column="5" selection-start-line="104" selection-start-column="5" selection-end-line="104" selection-end-column="5" />
+          <folding>
+            <element signature="e#1568#1569#0" expanded="true" />
+            <element signature="e#1597#1598#0" expanded="true" />
+            <element signature="e#1650#1651#0" expanded="true" />
+            <element signature="e#1686#1687#0" expanded="true" />
+            <element signature="e#1725#1726#0" expanded="true" />
+            <element signature="e#1751#1752#0" expanded="true" />
+            <element signature="e#1798#1799#0" expanded="true" />
+            <element signature="e#1828#1829#0" expanded="true" />
+            <element signature="e#1860#1861#0" expanded="true" />
+            <element signature="e#1890#1891#0" expanded="true" />
+            <element signature="e#1934#1935#0" expanded="true" />
+            <element signature="e#1972#1973#0" expanded="true" />
+            <element signature="e#2004#2005#0" expanded="true" />
+            <element signature="e#2034#2035#0" expanded="true" />
+            <element signature="e#2078#2079#0" expanded="true" />
+            <element signature="e#2116#2117#0" expanded="true" />
+            <element signature="e#2143#2144#0" expanded="true" />
+            <element signature="e#2168#2169#0" expanded="true" />
+            <element signature="e#2202#2203#0" expanded="true" />
+            <element signature="e#2225#2226#0" expanded="true" />
+            <element signature="e#2256#2257#0" expanded="true" />
+            <element signature="e#2283#2284#0" expanded="true" />
+            <element signature="e#2323#2324#0" expanded="true" />
+            <element signature="e#2355#2356#0" expanded="true" />
+            <element signature="e#2396#2397#0" expanded="true" />
+            <element signature="e#2434#2435#0" expanded="true" />
+            <element signature="e#2471#2472#0" expanded="true" />
+            <element signature="e#2519#2520#0" expanded="true" />
+            <element signature="e#2653#2654#0" expanded="true" />
+            <element signature="e#2688#2689#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
