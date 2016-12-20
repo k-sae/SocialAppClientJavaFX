@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba75cff5-414b-45de-83db-db0bc1560e21" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/SocialAppClient/ServerNotFound.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SocialAppGeneral/FormedLine.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SocialAppGeneral/Partition.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/ImageViewer.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/ImageViewer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/MainWindow.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/MainWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/RegisterPage.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/RegisterPage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/ServerConnection.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/ServerConnection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/Utility.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/Utility.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/UtilityConnection.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/UtilityConnection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppGeneral/ReceiveCommand.java" afterPath="$PROJECT_DIR$/src/SocialAppGeneral/ReceiveCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/validator.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/validator.java" />
     </list>
     <ignored path="SocialAppClientJavaFX.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -124,8 +114,8 @@
       <file leaf-file-name="validator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SocialAppClient/validator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+            <state relative-caret-position="136">
+              <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -187,6 +177,7 @@
         <option value="$PROJECT_DIR$/src/SocialAppClient/Utility.java" />
         <option value="$PROJECT_DIR$/src/SocialAppGeneral/ReceiveCommand.java" />
         <option value="$PROJECT_DIR$/src/SocialAppClient/ServerConnection.java" />
+        <option value="$PROJECT_DIR$/src/SocialAppClient/validator.java" />
       </list>
     </option>
   </component>
@@ -1186,8 +1177,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/validator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="16" column="43" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+        <state relative-caret-position="136">
+          <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
           <folding />
         </state>
       </provider>
