@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
  */
 public class validator {
     public static Boolean valdiateName(String name){
-        return Pattern.matches("[a-zA-Z]{1,10}",name);
+        return Pattern.matches("[a-zA-Z ]{1,10}",name);
     }
     public static Boolean valdiatePass(String pass){
         return Pattern.matches("[a-zA-Z0-9]{8,18}",pass);

@@ -87,7 +87,7 @@ class RegisterPage extends StackPane {
                  //check for input
                  LoginInfo log=new LoginInfo();
                  log.setEmail(email.getText());
-                 log.setPassword(pass.getText());
+                 log.setPassword(Encrypt(pass.getText()));
                  Command command = new Command();
                  command.setKeyWord(LoginInfo.KEYWORD);
                  command.setSharableObject(log);
@@ -243,7 +243,7 @@ class RegisterPage extends StackPane {
                 LoginInfo log =new LoginInfo();
                 UserInfo user =new UserInfo();
                 log.setEmail(email_verify.getText());
-                log.setPassword(password_verify.getText());
+                log.setPassword(Encrypt(password_verify.getText()));
                 send.setLoginInfo(log);
                 user.setFullName(FRname_verify.getText()+" "+LRname_verify.getText());
                 user.setBirthDate(dp.getValue().toString());
@@ -281,6 +281,14 @@ class RegisterPage extends StackPane {
         hb.getChildren().addAll(l,t);
 
         return hb;
+    }
+    public  String Encrypt(String pass) {
+        StringBuilder sb = new StringBuilder();
+        for (char c:pass.toCharArray()) {
+            sb.append(++c);
+        }
+
+        return sb.reverse().toString();
     }
     public HBox createnamebox(Label firstname,TextField t,Label lastname,TextField t1){
         HBox hb= new HBox(10);
