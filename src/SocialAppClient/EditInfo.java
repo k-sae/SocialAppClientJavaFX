@@ -103,12 +103,12 @@ class EditInfo extends GridPane{
 
         TextField FnameTXT = new TextField();
         FnameTXT.setText(userInfo.getFullName());
-
+/*
         Label passwordLBL = new Label("Password:");
         passwordLBL.setFont(Font.font(26));
 
         TextField passwordTXT = new TextField();
-
+*/
         Label birthDateLBL = new Label("Birth Date");
         birthDateLBL.setFont(Font.font(26));
         DatePicker datePicker = new DatePicker(LocalDate.parse(userInfo.getBirthDate()));
@@ -171,7 +171,7 @@ class EditInfo extends GridPane{
             MainWindow.clientLoggedUser.deactivate();
         });
 
-        info.getChildren().addAll(title,new Separator(), profilePicture, pictureOption,FnameLBL,FnameTXT,passwordLBL,passwordTXT,birthDateLBL,datePicker,genderLBL,genderHbox,saveBtn,deactivate);
+        info.getChildren().addAll(title,new Separator(), profilePicture, pictureOption,FnameLBL,FnameTXT/*,passwordLBL,passwordTXT*/,birthDateLBL,datePicker,genderLBL,genderHbox,saveBtn,deactivate);
 
         add(info,1,0);
     }
