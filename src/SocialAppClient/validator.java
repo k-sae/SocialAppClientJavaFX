@@ -14,7 +14,13 @@ public class validator {
     }
 
     public static Boolean valdiateEmail(String email){
-        return Pattern.matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",email);
+        if(Pattern.matches("^[a-zA-Z0-9._]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$",email))
+        {
+            if (email.contains(".."))
+                return false;
+            return true;
+        }
+        return false;
     }
     public static boolean datecheck(String date){
         return(Integer.parseInt(date.substring(0,4))<2016&&Integer.parseInt(date.substring(0,4))>1916);
