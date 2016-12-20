@@ -1,5 +1,7 @@
 package SocialAppClient;
 
+import SocialAppClient.View.MainWindow;
+import SocialAppClient.View.RegisterPage;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -37,14 +39,14 @@ public class Main extends Application {
         System.exit(0);
     }
     //Important sent the logged user iD
-    static void refresh(String loggedUserId, Pane page)
+    public static void refresh(String loggedUserId, Pane page)
     {
         mainPane.getChildren().clear();
         MainWindow mainWindow = new MainWindow(loggedUserId);
         mainPane.getChildren().add(mainWindow);
         MainWindow.navigateTo(page);
     }
-    static void logout(){
+    public static void logout(){
         mainPane.getChildren().clear();
         mainPane.getChildren().add(new RegisterPage(mainPane));
     }

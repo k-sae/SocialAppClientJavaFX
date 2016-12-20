@@ -1,5 +1,7 @@
 package SocialAppClient;
 
+import SocialAppClient.View.FriendView;
+import SocialAppClient.View.Styles;
 import SocialAppGeneral.Log;
 import SocialAppGeneral.Relations;
 import javafx.geometry.Insets;
@@ -15,11 +17,11 @@ import java.util.ArrayList;
 /**
  * Created by billy on 2016-12-17.
  */
-class LogHistory extends VBox {
+public class LogHistory extends VBox {
 
     private ArrayList<Log> logs;
     String id;
-    LogHistory(String id, ArrayList<Log> logs){
+    public LogHistory(String id, ArrayList<Log> logs){
         this.logs = logs;
         this.id = id;
         setLayout();

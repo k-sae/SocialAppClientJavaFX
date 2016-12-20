@@ -1,6 +1,6 @@
 package SocialAppGeneral;
 
-import SocialAppClient.Utility;
+import SocialAppClient.Control.Utility;
 
 import java.io.DataInputStream;
 import java.net.Socket;

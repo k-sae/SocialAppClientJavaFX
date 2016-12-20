@@ -1,13 +1,6 @@
 package SocialAppGeneral;
 
-import SocialAppClient.CommandRequest;
-import SocialAppClient.MainServerConnection;
 import com.google.gson.Gson;
-import javafx.geometry.Insets;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.paint.Color;
 
 import java.io.Serializable;
 import java.util.ArrayList;
