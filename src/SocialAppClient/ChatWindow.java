@@ -34,7 +34,6 @@ public class ChatWindow {
     private Button sendBtn;
     private UserInfo loggedUser;
     private UserInfo chatUser;
-    private Button testBtn;
     private Socket connectionSocket;
     private ReceiveServerNotification runningThread;
     public ChatWindow(String id){
@@ -60,8 +59,7 @@ public class ChatWindow {
         scrollPane.setFitToWidth(true);
         scrollPane.vvalueProperty().bind(msgs.heightProperty());
 
-        testBtn = new Button("Testing");
-        layout.getChildren().addAll(new FriendView(id,30), scrollPane, container, testBtn);
+        layout.getChildren().addAll(new FriendView(id,30), scrollPane, container);
         window.setScene(new Scene(layout, 500,600));
         window.show();
 
@@ -118,16 +116,6 @@ public class ChatWindow {
         sendBtn.setOnMouseClicked(event -> {
             if(!message.getText().equals("")){
                 messengerSender(message.getText());
-                message.setText("");
-            }
-        });
-
-        testBtn.setStyle(Styles.BLACK_BUTTON);
-        testBtn.setOnMouseEntered(event -> testBtn.setStyle(Styles.BLACK_BUTTON_HOVER));
-        testBtn.setOnMouseExited(event -> testBtn.setStyle(Styles.BLACK_BUTTON));
-        testBtn.setOnMouseClicked(event -> {
-            if(!message.getText().equals("")){
-//                receiver(message.getText());
                 message.setText("");
             }
         });
