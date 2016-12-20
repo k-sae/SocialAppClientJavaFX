@@ -5,13 +5,14 @@ import SocialAppGeneral.LoggedUser;
 import javafx.application.Platform;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 /**
  * Created by kemo on 10/12/2016.
  */
 
-public class ClientLoggedUser extends LoggedUser {
-    public ClientLoggedUser(String id) {
+class ClientLoggedUser extends LoggedUser {
+    ClientLoggedUser(String id) {
         super(id);
     }
 
@@ -59,24 +60,6 @@ public class ClientLoggedUser extends LoggedUser {
 
     }
     //<<<<<<<<<<<<<<<<<<<<<<<<
-
-    //TODO #kareem
-    //>>>>>>>>>>>>>>>>>>>>>>>>>
-    @Override
-    public void setFriends() {
-        
-    }
-
-    @Override
-    public void getFriends() {
-
-    }
-
-    @Override
-    public void getNotfications() {
-
-    }
-
     @Override
     public void getgroup() {
         Command command = new Command();
@@ -341,11 +324,7 @@ public class ClientLoggedUser extends LoggedUser {
                     //TODO #lastly
                     SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(cmd.getObjectStr());
 
-                    ArrayList<String> strings = new ArrayList<>();
-                    for (Object o: socialArrayList.getItems()
-                         ) {
-                        strings.add((String)o);
-                    }
+                    ArrayList<String> strings = socialArrayList.getItems().stream().map(o -> (String) o).collect(Collectors.toCollection(ArrayList::new));
                     onFinish(strings);
                 }
             };
@@ -354,7 +333,7 @@ public class ClientLoggedUser extends LoggedUser {
         abstract void onFinish(ArrayList<String> friends);
     }
 
-    public void savePostUser(String relation, String text){
+    void savePostUser(String relation, String text){
         Post post=new Post();
         post.setOwnerId(Long.parseLong(MainWindow.id));
         post.setContent(text);
@@ -376,7 +355,7 @@ public class ClientLoggedUser extends LoggedUser {
         };
         CommandsExecutor.getInstance().add(commandRequest);
     }
-    public void savePostGroup(String text, String id){
+    void savePostGroup(String text, String id){
         Post post=new Post();
         post.setOwnerId(Long.parseLong(MainWindow.id));
         post.setContent(text);
@@ -396,7 +375,7 @@ public class ClientLoggedUser extends LoggedUser {
         CommandsExecutor.getInstance().add(commandRequest);
     }
 
-    public void editPostUser(long postid, long postpos, String text) {
+    void editPostUser(long postid, long postpos, String text) {
         Post post1 = new Post();
         post1.setId(postid);
         post1.setPostPos(postpos);
@@ -420,7 +399,7 @@ public class ClientLoggedUser extends LoggedUser {
         };
         CommandsExecutor.getInstance().add(commandRequest);
     }
-    public void editPostGroup(long postid, long postpos, String text) {
+    void editPostGroup(long postid, long postpos, String text) {
         Post post1 = new Post();
         post1.setId(postid);
         post1.setPostPos(postpos);
@@ -443,36 +422,30 @@ public class ClientLoggedUser extends LoggedUser {
         CommandsExecutor.getInstance().add(commandRequest);
     }
 
-    public void deletePostUser(Post post){
+    void deletePostUser(Post post){
         Command command = new Command();
         command.setKeyWord(Post.DELETE_POST_USERS);
         command.setSharableObject(post.convertToJsonString());
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
             @Override
-            void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.DELETE_POST_USERS)) {
-
-                }
+            void analyze(Command cmd) { //ignore
             }
         };
         CommandsExecutor.getInstance().add(commandRequest);
     }
-    public void deletePostGroup(Post post){
+    void deletePostGroup(Post post){
         Command command = new Command();
         command.setKeyWord(Post.DELETE_POST_GROUPS);
         command.setSharableObject(post.convertToJsonString());
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
             @Override
             void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.DELETE_POST_GROUPS)) {
-
-                }
             }
         };
         CommandsExecutor.getInstance().add(commandRequest);
     }
 
-    public void setCommentCommendUser(Relations show, String text, long commentid, long postid, long postPos){
+    void setCommentCommendUser(Relations show, String text, long commentid, long postid, long postPos){
         Comment comment=new Comment();
         comment.setCommentcontent(text);
         comment.setOwnerID(Long.parseLong(MainWindow.id));
@@ -502,7 +475,7 @@ public class ClientLoggedUser extends LoggedUser {
         CommandsExecutor.getInstance().add(commandRequest);
     }
 
-    public void setCommentCommendGroup(Relations show, String text, long commentid, long postid, long postPos){
+    void setCommentCommendGroup(Relations show, String text, long commentid, long postid, long postPos){
         Comment comment=new Comment();
         comment.setCommentcontent(text);
         comment.setOwnerID(Long.parseLong(MainWindow.id));
@@ -532,7 +505,7 @@ public class ClientLoggedUser extends LoggedUser {
         CommandsExecutor.getInstance().add(commandRequest);
     }
 
-    public void setLikecommendUsers(Relations i, Post post) {
+    void setLikecommendUsers(Relations i, Post post) {
         Like like = new Like();
         like.setLike(i);
         like.setOwnerID(Long.parseLong(MainWindow.id));
@@ -568,7 +541,8 @@ public class ClientLoggedUser extends LoggedUser {
         };
         CommandsExecutor.getInstance().add(commandRequest);
     }
-    public void setLikecommendGroup(Relations i, Post post) {
+
+    void setLikecommendGroup(Relations i, Post post) {
         Like like = new Like();
         like.setLike(i);
         like.setOwnerID(Long.parseLong(MainWindow.id));
@@ -605,7 +579,7 @@ public class ClientLoggedUser extends LoggedUser {
         CommandsExecutor.getInstance().add(commandRequest);
     }
 
-    public void deactivate(){
+    void deactivate(){
         Command command = new Command();
         command.setKeyWord(LoggedUser.DEACTIVATE);
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {

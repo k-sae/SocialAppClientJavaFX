@@ -1,18 +1,20 @@
 package SocialAppClient;
 
-import SocialAppGeneral.*;
+import SocialAppGeneral.Post;
+import SocialAppGeneral.Relations;
+import SocialAppGeneral.UserInfo;
 import javafx.application.Platform;
-import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
 
 import java.util.ArrayList;
 
 /**
  * Created by kemo on 10/11/2016.
  */
-public class ProfilePage extends GridPane {
+class ProfilePage extends GridPane {
     private String id;
     private UserInfo userInfo;
     ProfilePage(String id)

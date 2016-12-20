@@ -1,24 +1,23 @@
 package SocialAppClient;
 
 import SocialAppGeneral.Post;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-/**
+/*
  * Created by billy on 2016-11-26.
  */
 /**CONTENT IS A CONTAINER OF POSTWRITER AND POSTCONTAINER*/
-public class Content extends VBox{
-    protected PostWriter postWriter;
-    protected PostContainer postContainer;
+class Content extends VBox{
+    PostWriter postWriter;
+    PostContainer postContainer;
     private static Pane mainWindow;
     private static String relation;
 
-    public Content(String relation){
+    Content(String relation){
         mainWindow = this;
-        this.relation = relation;
+        Content.relation = relation;
         postWriter = new PostWriter();
         postContainer = new PostContainer(relation);
         setLayout();
@@ -33,7 +32,7 @@ public class Content extends VBox{
         mainWindow.getChildren().clear();
         mainWindow.getChildren().addAll(frame);
     }
-    public static void showPostDetails(Post post) {
+    static void showPostDetails(Post post) {
         mainWindow.getChildren().clear();
         mainWindow.getChildren().addAll(new PostDetails(relation,post));
     }

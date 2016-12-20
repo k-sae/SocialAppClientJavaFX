@@ -1,20 +1,23 @@
 package SocialAppClient;
 
-import SocialAppGeneral.*;
+import SocialAppGeneral.Group;
+import SocialAppGeneral.Post;
+import SocialAppGeneral.RelationGroup;
+import SocialAppGeneral.Relations;
 import javafx.application.Platform;
-import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
 
 import java.util.ArrayList;
 
 /**
  * Created by kemo on 10/11/2016.
  */
-public class GroupPage extends GridPane {
+class GroupPage extends GridPane {
     private Group group;
-    public GroupPage(Group group) {
+    GroupPage(Group group) {
         this.group = group;
         setStyle(Styles.DEFAULT_BACKGROUND);
         //updateColor(this);
@@ -22,7 +25,7 @@ public class GroupPage extends GridPane {
         setConstraint();
         setPanels();
     }
-    public GroupPage(long id) {
+    GroupPage(long id) {
         setStyle(Styles.DEFAULT_BACKGROUND);
         //updateColor(this);
         setGridLinesVisible(true);
@@ -34,21 +37,6 @@ public class GroupPage extends GridPane {
                 Platform.runLater(() -> setPanels());
             }
         };
-    }
-
-    synchronized static void updateColor(Pane pane) {
-        //TODO #prototype
-        //set ur new command
-        Command command = new Command();
-        command.setKeyWord("changeColor");
-        command.setSharableObject("null");
-        CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
-            @Override
-            void analyze(Command commandFromServer) {
-                pane.setBackground(new Background(new BackgroundFill(Color.web(commandFromServer.getObjectStr()), CornerRadii.EMPTY, Insets.EMPTY)));
-            }
-        };
-        CommandsExecutor.getInstance().add(commandRequest);
     }
 
 
@@ -70,7 +58,7 @@ public class GroupPage extends GridPane {
 
         GroupInfoViewer Info = new GroupInfoViewer(group);
 
-        /**PUT THE PICTURE PATH*/
+        /*PUT THE PICTURE PATH*/
         Info.setPicture("Group");
         /**PUT SOME INFO AS STRING*/
         Info.setLabel("GROUP NAME: "+group.getName());

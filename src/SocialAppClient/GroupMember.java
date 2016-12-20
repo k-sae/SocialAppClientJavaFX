@@ -3,12 +3,11 @@ package SocialAppClient;
 import SocialAppGeneral.AppUser;
 import SocialAppGeneral.Command;
 import SocialAppGeneral.Group;
-import SocialAppGeneral.LoggedUser;
 
 /**
  * Created by mosta on 18-Dec-16.
  */
-public class GroupMember extends AppUser {
+class GroupMember extends AppUser {
     static abstract class GetStatus
     {
         GetStatus(String id)

@@ -17,10 +17,10 @@ import java.util.Optional;
 /**
  * Created by kemo on 10/11/2016.
  */
-public class HomePage extends GridPane {
+class HomePage extends GridPane {
     private String id;
     private UserInfo userInfo;
-    public HomePage(String id) {
+    HomePage(String id) {
         this.id = id;
         //setBackground(new Background(new BackgroundFill(Color.web(ClientTheme.BackGround, 1), CornerRadii.EMPTY, Insets.EMPTY)));
         setStyle(Styles.DEFAULT_BACKGROUND);
@@ -108,9 +108,11 @@ public class HomePage extends GridPane {
 
             Optional<String> check =  Utility.createWindow("Group Name", Group.CREATE_GROUP);
                     if (!check.equals(Optional.empty())) {
+                        //noinspection OptionalGetWithoutIsPresent
                         if (check.get().equals("") || !validator.valdiateName(check.get())) {
                             Platform.runLater(() -> Utility.errorWindow("not correct name"));
                         } else {
+                            //noinspection OptionalGetWithoutIsPresent
                             MainWindow.clientLoggedUser.createGroup(check.get());
                         }
 

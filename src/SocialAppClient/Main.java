@@ -8,8 +8,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-import static SocialAppClient.MainWindow.id;
-
 public class Main extends Application {
 
    private static Pane mainPane;
@@ -39,14 +37,14 @@ public class Main extends Application {
         System.exit(0);
     }
     //Important sent the logged user iD
-    public static void refresh(String loggedUserId,Pane page)
+    static void refresh(String loggedUserId, Pane page)
     {
         mainPane.getChildren().clear();
         MainWindow mainWindow = new MainWindow(loggedUserId);
         mainPane.getChildren().add(mainWindow);
         MainWindow.navigateTo(page);
     }
-    public static void logout(){
+    static void logout(){
         mainPane.getChildren().clear();
         mainPane.getChildren().add(new RegisterPage(mainPane));
     }

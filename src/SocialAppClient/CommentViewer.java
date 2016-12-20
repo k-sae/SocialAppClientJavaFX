@@ -5,23 +5,19 @@ import SocialAppGeneral.Relations;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 
 /**
  * Created by billy on 2016-12-08.
  */
-public class CommentViewer extends VBox{
+class CommentViewer extends VBox{
     private Comment comment;
     private TextArea postComments;
-    public CommentViewer(Comment comment){
+    CommentViewer(Comment comment){
         this.comment = comment;
         postComments = new TextArea(this.comment.getCommentcontent());
         setLayout();
@@ -56,7 +52,7 @@ public class CommentViewer extends VBox{
                     PostDetails.setCommentCommend(Relations.DELETE, postComments.getText(), comment.getCommentId());
                     edit.setValue(null);
                 }
-            }catch (NullPointerException e){}
+            }catch (NullPointerException ignored){}
         });
 
         if(!MainWindow.id.equals(""+comment.getOwnerID()))
@@ -66,7 +62,7 @@ public class CommentViewer extends VBox{
         HBox h = new HBox(edit);
         h.setAlignment(Pos.TOP_RIGHT);
         HBox hbox = new HBox(new FriendView("" + comment.getOwnerID(),16),h);
-        hbox.setHgrow(h, Priority.ALWAYS);
+        HBox.setHgrow(h, Priority.ALWAYS);
         getChildren().addAll(hbox, postComments);
 
     }

@@ -23,9 +23,9 @@ import static javafx.scene.layout.GridPane.setConstraints;
 /**
  * Created by kemo on 09/11/2016.
  */
-public class NavBar extends HBox{
+class NavBar extends HBox{
 
-    public NavBar(String id)
+    NavBar(String id)
     {
 
         setLayout();
@@ -142,7 +142,7 @@ public class NavBar extends HBox{
             }
 
         });
-        Search.setOnHiding(e->{Search.getItems().clear();});
+        Search.setOnHiding(e-> Search.getItems().clear());
 
         /** Friend request menu icon */
         FRIcon = new ImageView(new Image("file:Resources/FR.png"));
@@ -190,9 +190,7 @@ public class NavBar extends HBox{
         homeBtn.setOnMouseExited(event -> homeBtn.setStyle(Styles.NAVBAR_BUTTON));
 
 
-        homeBtn.setOnMouseClicked(event -> {
-            MainWindow.navigateTo(new HomePage(MainWindow.id));
-        });
+        homeBtn.setOnMouseClicked(event -> MainWindow.navigateTo(new HomePage(MainWindow.id)));
 
 
         Button profileBtn = new Button("Profile");
@@ -201,9 +199,7 @@ public class NavBar extends HBox{
         profileBtn.setOnMouseEntered(event -> profileBtn.setStyle(Styles.NAVBAR_BUTTON_HOVER));
         profileBtn.setOnMouseExited(event -> profileBtn.setStyle(Styles.NAVBAR_BUTTON));
 
-        profileBtn.setOnMouseClicked(event -> {
-            MainWindow.navigateTo(new ProfilePage(MainWindow.id));
-        });
+        profileBtn.setOnMouseClicked(event -> MainWindow.navigateTo(new ProfilePage(MainWindow.id)));
 
 /*
         Button groupsBtn = new Button("Groups");
@@ -223,9 +219,7 @@ public class NavBar extends HBox{
         logoutBtn.setOnMouseEntered(event -> logoutBtn.setStyle(Styles.NAVBAR_BUTTON_HOVER));
         logoutBtn.setOnMouseExited(event -> logoutBtn.setStyle(Styles.NAVBAR_BUTTON));
 
-        logoutBtn.setOnMouseClicked(event -> {
-            Main.logout();
-        });
+        logoutBtn.setOnMouseClicked(event -> Main.logout());
         //TODO: hazem
         if (clientLoggedUser instanceof ClientAdmin)
         {
@@ -234,10 +228,7 @@ public class NavBar extends HBox{
             approveBtn.setOnMouseEntered(event -> approveBtn.setStyle(Styles.NAVBAR_BUTTON_HOVER));
             approveBtn.setOnMouseExited(event -> approveBtn.setStyle(Styles.NAVBAR_BUTTON));
 
-            approveBtn.setOnMouseClicked(event -> {
-
-                Platform.runLater(() -> Content.navigateTo(new AdminApprovalPage()));
-            });
+            approveBtn.setOnMouseClicked(event -> Platform.runLater(() -> Content.navigateTo(new AdminApprovalPage())));
 /*
 
             Button logBtn = new Button("Log");

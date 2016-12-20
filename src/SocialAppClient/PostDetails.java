@@ -1,30 +1,26 @@
 package SocialAppClient;
 
-import SocialAppGeneral.Command;
-import SocialAppGeneral.Comment;
 import SocialAppGeneral.Post;
 import SocialAppGeneral.Relations;
-import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 
 /**
  * Created by billy on 2016-12-07.
  */
-public class PostDetails extends VBox{
+class PostDetails extends VBox{
     private PostViewer postViewer;
     private CommentContainer CommentContainer;
     private static Post post;
     private static String relation;
-    public PostDetails(String relation, Post post){
-        this.post = post;
-        this.relation = relation;
-        postViewer = new PostViewer(relation, this.post);
+    PostDetails(String relation, Post post){
+        PostDetails.post = post;
+        PostDetails.relation = relation;
+        postViewer = new PostViewer(relation, PostDetails.post);
         postViewer.comment.setOnMouseClicked(null);
 
-        CommentContainer = new CommentContainer(this.post.getComments());
+        CommentContainer = new CommentContainer(PostDetails.post.getComments());
         setLayout();
     }
     private void setLayout(){
@@ -32,7 +28,7 @@ public class PostDetails extends VBox{
         setPadding(new Insets(30, 0, 30, 0));
         getChildren().addAll(postViewer,CommentContainer);
     }
-    public static void setCommentCommend(Relations show, String text, long id){
+    static void setCommentCommend(Relations show, String text, long id){
         if(relation.equals(Relations.HOME_PAGE.toString()) || relation.equals(Relations.PROFILE_PAGE.toString())) {
             MainWindow.clientLoggedUser.setCommentCommendUser(show, text, id, post.getId(), post.getPostPos());
         }else if(relation.equals(Relations.GROUP.toString())){

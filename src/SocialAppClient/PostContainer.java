@@ -6,7 +6,6 @@ import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
@@ -14,12 +13,12 @@ import java.util.ArrayList;
 /**
  * Created by billy on 2016-11-26.
  */
-public class PostContainer extends VBox{
+class PostContainer extends VBox{
     private Button loadPostBtn;
     private static String relation;
     private long loadMoreNum;
-    public PostContainer(String relation) {
-        this.relation = relation;
+    PostContainer(String relation) {
+        PostContainer.relation = relation;
         loadMoreNum =1;
         setLayout();
     }
@@ -29,10 +28,10 @@ public class PostContainer extends VBox{
         setSpacing(20);
         setPadding(new Insets(30, 0, 30, 0));
     }
-    public void addPosts(ArrayList<Post> posts, String id) {
+    void addPosts(ArrayList<Post> posts, String id) {
 
-        for (int i = 0; i < posts.size(); i++) {
-            PostViewer postViewer = new PostViewer(relation, posts.get(i));
+        for (Post post : posts) {
+            PostViewer postViewer = new PostViewer(relation, post);
             getChildren().add(postViewer);
         }
 

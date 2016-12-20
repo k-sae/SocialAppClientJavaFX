@@ -1,28 +1,21 @@
 package SocialAppClient;
 
 import SocialAppGeneral.Comment;
-import SocialAppGeneral.Post;
 import SocialAppGeneral.Relations;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
+import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
 
 /**
  * Created by billy on 2016-12-07.
  */
-public class CommentContainer extends VBox{
+class CommentContainer extends VBox{
     private TextField commentText;
     private ArrayList<Comment> comments;
-    public CommentContainer(ArrayList<Comment> comments){
+    CommentContainer(ArrayList<Comment> comments){
         this.comments = comments;
         commentText = new TextField();
         setLayout();

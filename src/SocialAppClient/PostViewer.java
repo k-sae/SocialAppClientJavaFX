@@ -15,11 +15,11 @@ import java.text.SimpleDateFormat;
  * Created by billy on 2016-11-30.
  */
 
-public class PostViewer extends VBox{
+class PostViewer extends VBox{
     private TextArea postText;
     private Button thumbsUp;
     private Button thumbsDown;
-    protected Button comment;
+    Button comment;
     private Button share;
     private Post post;
     private String relation;
@@ -27,7 +27,7 @@ public class PostViewer extends VBox{
     private int dislikeNum;
     private int commentNum;
 
-    public PostViewer(String relation, Post post) {
+    PostViewer(String relation, Post post) {
         this.post = post;
         this.relation = relation;
         likeNum = 0;
@@ -46,7 +46,7 @@ public class PostViewer extends VBox{
             else
                 dislikeNum++;
         }
-        for(Comment comment:post.getComments()){
+        for(Comment ignored :post.getComments()){
             commentNum++;
         }
 
@@ -101,7 +101,7 @@ public class PostViewer extends VBox{
                     }
                     edit.setValue(null);
                 }
-            }catch (NullPointerException e){
+            }catch (NullPointerException ignored){
 
             }
         });
@@ -238,9 +238,7 @@ public class PostViewer extends VBox{
         share.setStyle(Styles.POST_BUTTONS);
         share.setOnMouseEntered(event -> share.setStyle(Styles.POST_BUTTONS_HOVER));
         share.setOnMouseExited(event -> share.setStyle(Styles.POST_BUTTONS));
-        share.setOnMouseClicked(event -> {
-            MainWindow.clientLoggedUser.savePostUser(relation, postText.getText());
-        });
+        share.setOnMouseClicked(event -> MainWindow.clientLoggedUser.savePostUser(relation, postText.getText()));
 
         HBox buttons = new HBox(thumbsUp, thumbsDown, comment, share);
         buttons.setAlignment(Pos.CENTER);
@@ -252,7 +250,7 @@ public class PostViewer extends VBox{
         HBox h = new HBox(new Label(date), edit);
         h.setAlignment(Pos.TOP_RIGHT);
         HBox hBox = new HBox(new FriendView("" + post.getOwnerId()), h);
-        hBox.setHgrow(h, Priority.ALWAYS);
+        HBox.setHgrow(h, Priority.ALWAYS);
         getChildren().addAll(hBox, postText, /*img,*/new HBox(5,likeNumLBL,new Label("Comments "+commentNum)), new Separator(), buttons);
 
     }

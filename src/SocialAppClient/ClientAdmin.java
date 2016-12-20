@@ -7,9 +7,9 @@ import SocialAppGeneral.SocialArrayList;
 /**
  * Created by mosta on 13-Dec-16.
  */
-public class ClientAdmin extends ClientLoggedUser implements Admin {
+class ClientAdmin extends ClientLoggedUser implements Admin {
 
-    public ClientAdmin(String id) {
+    ClientAdmin(String id) {
         super(id);
     }
 
@@ -58,9 +58,9 @@ public class ClientAdmin extends ClientLoggedUser implements Admin {
         };
         CommandsExecutor.getInstance().add(commandRequest);
     }
-    public abstract class FetchRequests
+    abstract class FetchRequests
     {
-        public FetchRequests()
+        FetchRequests()
         {
             Command command = new Command();
             command.setKeyWord(Admin.RetrieveData);

@@ -4,14 +4,13 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 
 /**
  * Created by billy on 2016-11-22.
  */
-public abstract class InfoViewer extends VBox{
-    public InfoViewer(){
+abstract class InfoViewer extends VBox{
+    InfoViewer(){
 
         setLayout();
     }
@@ -23,7 +22,7 @@ public abstract class InfoViewer extends VBox{
         setPadding(new Insets(30,0,30,0));
 
     }
-    public void setPicture(String imgid){
+    void setPicture(String imgid){
 
         getChildren().add(Utility.getCircularImage(imgid,60));
     }

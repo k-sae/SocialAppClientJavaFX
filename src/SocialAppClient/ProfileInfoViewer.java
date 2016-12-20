@@ -13,17 +13,17 @@ import static SocialAppClient.MainWindow.clientLoggedUser;
 /**
  * Created by billy on 2016-11-26.
  */
-public class ProfileInfoViewer extends InfoViewer{
+class ProfileInfoViewer extends InfoViewer{
     private String id;
     private Button RelationBTN;
-    protected Button Edit;
+    Button Edit;
 
-    public ProfileInfoViewer(String id){
+    ProfileInfoViewer(String id){
 
         Edit = new Button("Edit");
         this.id = id;
         if (clientLoggedUser instanceof ClientAdmin && !MainWindow.id.equals(id)) {
-            Platform.runLater(() -> logButton());
+            Platform.runLater(this::logButton);
         }
 
     }
@@ -138,14 +138,12 @@ public class ProfileInfoViewer extends InfoViewer{
         logBtn.setStyle(Styles.NAV_BUTTON);
         logBtn.setOnMouseEntered(event -> logBtn.setStyle(Styles.NAV_BUTTON_HOVER));
         logBtn.setOnMouseExited(event -> logBtn.setStyle(Styles.NAV_BUTTON));
-        logBtn.setOnMouseClicked(event -> {
-            MainWindow.clientLoggedUser.new GetLogs() {
-                @Override
-                void onFinish(ArrayList<Log> logs) {
-                    Platform.runLater(() -> Content.navigateTo(new LogHistory(id, logs)));
+        logBtn.setOnMouseClicked(event -> MainWindow.clientLoggedUser.new GetLogs() {
+            @Override
+            void onFinish(ArrayList<Log> logs) {
+                Platform.runLater(() -> Content.navigateTo(new LogHistory(id, logs)));
 
-                }
-            };
+            }
         });
         getChildren().add(logBtn);
     }

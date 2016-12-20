@@ -7,14 +7,14 @@ import java.net.Socket;
 /**
  * Created by kemo on 08/11/2016.
  */
-public class UtilityConnection extends ServerConnection {
+class UtilityConnection extends ServerConnection {
     //TODO #overload
-    public UtilityConnection(String id, int port) throws ServerNotFound {
+    UtilityConnection(String id, int port) throws ServerNotFound {
         //TODO #config
         super("127.0.0.1",port);
         sendId(id);
     }
-    public UtilityConnection(String senderId, int port, String receiverId) throws ServerNotFound
+    UtilityConnection(String senderId, int port, String receiverId) throws ServerNotFound
     {
         //TODO #config
         super("127.0.0.1",port);

@@ -6,7 +6,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
@@ -14,11 +13,11 @@ import java.util.ArrayList;
 /**
  * Created by billy on 2016-11-28.
  */
-public class HomePageInfoViewer extends InfoViewer{
-    protected Button CreateGroupBtn;
+class HomePageInfoViewer extends InfoViewer{
+    Button CreateGroupBtn;
     private VBox groupBtns;
     private ScrollPane scrollPane;
-    public HomePageInfoViewer(){
+    HomePageInfoViewer(){
         setPadding(new Insets(30,0,0,0));
         groupBtns = new VBox(20);
         groupBtns.setAlignment(Pos.TOP_CENTER);
@@ -29,14 +28,12 @@ public class HomePageInfoViewer extends InfoViewer{
         scrollPane.setStyle(Styles.SCROLLBAR_BACKGROUND);
 
     }
-    public void setGroupsBtn(ArrayList<Group> groups){
-        for(Group group: groups){
-            GroupBtns(group);
-        }
+    void setGroupsBtn(ArrayList<Group> groups){
+        groups.forEach(this::GroupButtons);
 
     }
 
-    private void GroupBtns(Group group){
+    private void GroupButtons(Group group){
         Button groupBtn = new Button(group.getName());
         groupBtn.setStyle(Styles.NAV_BUTTON);
         groupBtn.setOnMouseEntered(event -> groupBtn.setStyle(Styles.NAV_BUTTON_HOVER));

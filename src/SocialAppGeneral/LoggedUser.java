@@ -51,10 +51,5 @@ public abstract class LoggedUser extends AppUser {
     }
 
     public abstract void createGroup(String name);
-    public abstract void joinGroup();
-    public abstract void exitGroup();
-    public abstract void setFriends();
-    public abstract void getFriends();
-    public abstract void getNotfications();
     public abstract void getgroup();
 }

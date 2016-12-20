@@ -20,7 +20,7 @@ public abstract class CommandRequest {
         this.serverConnection = serverConnection;
         this.command = command;
     }
-    public void run() {
+    void run() {
         try {
             //send command to server
             DataOutputStream dataOutputStream = new DataOutputStream(serverConnection.getOutputStream());

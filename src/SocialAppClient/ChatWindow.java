@@ -25,8 +25,8 @@ import java.net.Socket;
 /**
  * Created by billy on 2016-12-11.
  */
-public class ChatWindow {
-    Stage window = new Stage();
+class ChatWindow {
+    private Stage window = new Stage();
     private String id;
     private VBox msgs;
     private HBox container;
@@ -36,7 +36,7 @@ public class ChatWindow {
     private UserInfo chatUser;
     private Socket connectionSocket;
     private ReceiveServerNotification runningThread;
-    public ChatWindow(String id){
+    ChatWindow(String id){
         this.id = id;
         window.setTitle("Messenger");
         VBox layout = new VBox(20);
@@ -67,27 +67,26 @@ public class ChatWindow {
             @Override
             void pick(UserInfo userInfo) {
                 loggedUser = userInfo;
-                Platform.runLater(() -> {
-                    new UserPicker().new InfoPicker(id) {
-                        @Override
-                        void pick(UserInfo userInfo) {
-                            ChatWindow.this.chatUser = userInfo;
+                Platform.runLater(() ->
+                        new UserPicker().new InfoPicker(id) {
+                    @Override
+                    void pick(UserInfo userInfo) {
+                        ChatWindow.this.chatUser = userInfo;
 
-                            //>>>>>>>>>>>>>>>>>>>>> start of connection #kareem
-                            try {
-                                connectionSocket = new UtilityConnection(MainWindow.id, 6020, id).getConnectionSocket();
-                                runningThread = new ReceiveServerNotification(connectionSocket) {
-                                    @Override
-                                    public void Analyze(Command command) {
-                                        messengerReceiver(command);
-                                    }
-                                };
-                                runningThread.start();
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
+                        //>>>>>>>>>>>>>>>>>>>>> start of connection #kareem
+                        try {
+                            connectionSocket = new UtilityConnection(MainWindow.id, 6020, id).getConnectionSocket();
+                            runningThread = new ReceiveServerNotification(connectionSocket) {
+                                @Override
+                                public void Analyze(Command command) {
+                                    messengerReceiver(command);
+                                }
+                            };
+                            runningThread.start();
+                        } catch (Exception e) {
+                            e.printStackTrace();
                         }
-                    };
+                    }
                 });
             }
         };
@@ -123,7 +122,7 @@ public class ChatWindow {
         container.getChildren().addAll(message, sendBtn);
     }
 
-    public void sender(String text){
+    private void sender(String text){
         HBox sender = new HBox(10);
         sender.setAlignment(Pos.CENTER_RIGHT);
         Label senderMsg = new Label(text);
@@ -135,7 +134,7 @@ public class ChatWindow {
         Platform.runLater(() -> msgs.getChildren().add(sender));
 
     }
-    public void receiver(String message){
+    private void receiver(String message){
         HBox receiver = new HBox(10);
         receiver.setAlignment(Pos.CENTER_LEFT);
 

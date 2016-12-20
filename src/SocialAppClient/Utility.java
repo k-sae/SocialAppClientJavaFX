@@ -22,7 +22,7 @@ import static SocialAppClient.SocialAppImages.UPLOADIMAGE;
  * Created by khaled hesham on 11/24/2016.
  */
 public class Utility {
-    public static Optional<String> createWindow(String  Nameenter,String  titel){/*
+    static Optional<String> createWindow(String Nameenter, String titel){/*
     this function return optional.empty if user press cancel otherwise return input
     pre !check.equals(Optional.empty())*/
         TextInputDialog Create = new TextInputDialog();
@@ -30,10 +30,11 @@ public class Utility {
         Create.setTitle(titel);
         Create.setContentText(Nameenter+" : ");
         Create.initStyle(StageStyle.UTILITY);
+        //noinspection UnnecessaryLocalVariable
         Optional<String> result = Create.showAndWait();
         return result;
     }
-    public static void errorWindow(String error){//show error window
+    static void errorWindow(String error){//show error window
         Alert alert=new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setContentText(null);
@@ -41,7 +42,7 @@ public class Utility {
         alert.initStyle(StageStyle.UTILITY);
         alert.showAndWait();
     }
-    public static void alertWindow(String title, String alertMsg){//show error window
+    static void alertWindow(String title, String alertMsg){//show error window
         Alert alert=new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
@@ -49,7 +50,7 @@ public class Utility {
         alert.initStyle(StageStyle.UTILITY);
         alert.showAndWait();
     }
-    public static String uploadImage(BufferedImage bufferedImage) {
+    static String uploadImage(BufferedImage bufferedImage) {
        final String[] id = new String[1];
         try {
             //TODO: #Config
@@ -64,7 +65,7 @@ public class Utility {
                         connectionSocket.setSoTimeout(100000);
                         DataInputStream dataInputStream = new DataInputStream(connectionSocket.getInputStream());
                        command = Command.fromString( dataInputStream.readUTF());
-                        id[0] = command.getObjectStr();
+                        id[0] = command != null ? command.getObjectStr() : null;
                         ImageIO.write(bufferedImage,"jpg", connectionSocket.getOutputStream());
                         connectionSocket.close();
                     } catch (IOException e) {
@@ -77,7 +78,7 @@ public class Utility {
         }
         return id[0];
     }
-    public static int checkID(Post post) {
+    static int checkID(Post post) {
         int i = -1;
         int check = -1;
         if (post.getLike().size() != 0) {
@@ -93,7 +94,7 @@ public class Utility {
         return check;
     }
 
-    public static ImageViewer getCircularImage(String imgid, double size){
+    static ImageViewer getCircularImage(String imgid, double size){
 
         ImageViewer img = new ImageViewer(imgid);
         img.setFitWidth(size*2);
@@ -104,7 +105,7 @@ public class Utility {
 
         return img;
     }
-    public static Optional<ButtonType> confirmationMessage(String title, String header, String content)
+    static Optional<ButtonType> confirmationMessage(String title, String header, String content)
     {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle(title);

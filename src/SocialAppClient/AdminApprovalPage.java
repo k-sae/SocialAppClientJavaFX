@@ -1,6 +1,5 @@
 package SocialAppClient;
 
-import SocialAppGeneral.*;
 import SocialAppGeneral.SocialArrayList;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -13,19 +12,19 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 /**
  * Created by billy on 2016-12-11.
  */
-public class AdminApprovalPage extends VBox {
+class AdminApprovalPage extends VBox {
     private ArrayList<String> registerInfos;
-    public AdminApprovalPage(){
+    AdminApprovalPage(){
         setLayout();
         ((ClientAdmin) MainWindow.clientLoggedUser).new FetchRequests() {
             @Override
             public void onRetrieve(SocialArrayList list) {
+                //noinspection unchecked
                 registerInfos=(ArrayList<String>)(ArrayList<?>)list.getItems();
                 Platform.runLater(() -> set(registerInfos));
             }

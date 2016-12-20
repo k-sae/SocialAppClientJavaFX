@@ -6,7 +6,7 @@ import java.net.Socket;
  * Created by kemo on 08/11/2016.
  */
 public class MainServerConnection extends ServerConnection {
-    public static Socket mainConnectionSocket;
+    static Socket mainConnectionSocket;
 
     public MainServerConnection() throws Exception {
         //TODO #config

@@ -10,7 +10,7 @@ import java.net.SocketException;
  * Created by kemo on 28/10/2016.
  */
 abstract class ReceiveServerNotification extends ReceiveCommand {
-    public ReceiveServerNotification(Socket remote)
+    ReceiveServerNotification(Socket remote)
     {
         super(remote);
         try {
