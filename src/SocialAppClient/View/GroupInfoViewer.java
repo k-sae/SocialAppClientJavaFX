@@ -14,13 +14,11 @@ import javafx.scene.layout.HBox;
 class GroupInfoViewer extends InfoViewer{
     private Button RelationBTN;
     private ListView List;
-    private Button approveBtn;
     private Group group;
     GroupInfoViewer(Group group){
         this.group = group;
         RelationBTN = new Button();
         List=new ListView();
-        approveBtn =new Button("approve");
     }
 
     @Override
@@ -35,6 +33,7 @@ class GroupInfoViewer extends InfoViewer{
                              SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(s);
                              for (Object o: socialArrayList.getItems()) {
                               Platform.runLater(()->{
+                                  Button approveBtn =new Button("approve");
                                   HBox h = new HBox(5,new FriendView((String) o,15), approveBtn);
                                   h.setAlignment(Pos.CENTER_LEFT);
                                   //noinspection unchecked
