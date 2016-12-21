@@ -4,6 +4,7 @@ import SocialAppClient.Connections.ServerConnection;
 import SocialAppGeneral.Command;
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import javax.imageio.ImageIO;
@@ -36,12 +37,13 @@ public class ImageViewer extends ImageView implements SocialAppImages {
                                 BufferedImage bufferedImage = ImageIO.read(connectionSocket.getInputStream());
                                Platform.runLater(() -> setImage(SwingFXUtils.toFXImage( bufferedImage, null)));
                             } catch (IOException e) {
-                                e.printStackTrace();
+                                Platform.runLater(() ->  setImage(new Image("file:Resources/avatar.jpg", true)));
                             }
                         }
                     };
                 } catch (Exception e) {
                     System.out.println("Image cant be loaded");
+                    Platform.runLater(() ->  setImage(new Image("file:Resources/avatar.jpg", true)));
                 }
             }
         };

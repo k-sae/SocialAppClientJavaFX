@@ -262,8 +262,12 @@ public class RegisterPage extends StackPane {
                     @Override
                     public void analyze(Command commandFromServer) {
 
-                        System.out.println(commandFromServer.getObjectStr());
+                        if(commandFromServer.getObjectStr().equals("true"))
                         Platform.runLater(()-> Utility.alertWindow(" Registration","Thanks for signing up, We will send you an E-mail informing you the admin choice!"));
+                    else
+                        {
+                            Platform.runLater(()-> Utility.alertWindow(" Registration","please use a valid unique mail"));
+                        }
                     }
                 };
                 CommandsExecutor.getInstance().add(commandRequest);
