@@ -202,21 +202,13 @@ public class RegisterPage extends StackPane {
         Button B=new Button("Register");
         B.setOnAction(e->{
             int exceptions=0;
-            if(!validator.valdiateName(FRname_verify.getText())) {
+            if(!validator.valdiateName(FRname_verify.getText()) || !validator.valdiateName(LRname_verify.getText())) {
                nameverify.setVisible(true);
                 nameverify.setTextFill(Color.RED);
                 exceptions++;
-            }else{
+            }else {
                 nameverify.setVisible(false);
             }
-            if(!validator.valdiateName(LRname_verify.getText())){
-                nameverify.setVisible(true);
-                nameverify.setTextFill(Color.RED);
-                exceptions++;
-            }else{
-                nameverify.setVisible(false);
-            }
-
             if(!validator.valdiatePass(password_verify.getText())){
                 passverify.setVisible(true);
                 passverify.setTextFill(Color.RED);
