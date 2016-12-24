@@ -10,19 +10,23 @@ import java.net.SocketException;
 /**
  * Created by kemo on 28/10/2016.
  */
+
+/**
+ * Created by kemo on 28/10/2016.
+ */
 public abstract class ServerConnection implements Connection{
     private int port;
     private String serverName;
     public Socket connectionSocket;
 
-   public ServerConnection(String serverName, int startPort) throws ServerNotFound {
+    public ServerConnection(String serverName, int startPort) throws ServerNotFound {
         port = -1;
         this.serverName = serverName;
-        findPort(startPort, startPort+10);
-        if (port > -1) {
-            startConnection();
-            //TODO #Exception
-        }else throw new ServerNotFound();
+        while(port == -1) {
+            findPort(startPort, startPort + 3);
+        }
+        startConnection();
+        //TODO #Exception
     }
     private void findPort(int sPort, int ePort)
     {
@@ -35,14 +39,14 @@ public abstract class ServerConnection implements Connection{
             connectionSocket.setSoTimeout(5000);
         }
         catch (IOException e) {
-            System.out.println("Reconnecting on "+ sPort);
+            System.out.println("Reconnecting on " + String.valueOf(sPort));
             findPort(sPort + 1, ePort);
         }
         catch (Exception e)
         {
             //TODO #Lastly
             //export it to log file
-            System.out.println("StartConnection\t"+ e.getMessage());
+            e.printStackTrace();
         }
     }
     private void verifyConnection() throws IOException {

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba75cff5-414b-45de-83db-db0bc1560e21" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/View/RegisterPage.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/View/RegisterPage.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/Connections/ServerConnection.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/Connections/ServerConnection.java" />
     </list>
     <ignored path="SocialAppClientJavaFX.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,18 +36,8 @@
       <file leaf-file-name="PostContainer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocialAppClient/View/PostContainer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="696">
+            <state relative-caret-position="408">
               <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlatformImpl.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/javafx-src.zip!/com/sun/javafx/application/PlatformImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6670">
-              <caret line="294" column="0" selection-start-line="294" selection-start-column="0" selection-end-line="294" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -56,7 +46,7 @@
       <file leaf-file-name="GroupInfoViewer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocialAppClient/View/GroupInfoViewer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-29">
+            <state relative-caret-position="255">
               <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -68,9 +58,21 @@
       <file leaf-file-name="PostWriter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocialAppClient/View/PostWriter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1276">
+            <state relative-caret-position="748">
               <caret line="51" column="50" selection-start-line="51" selection-start-column="50" selection-end-line="51" selection-end-column="50" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServerConnection.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Connections/ServerConnection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -78,7 +80,7 @@
       <file leaf-file-name="PostDetails.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocialAppClient/View/PostDetails.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="870">
+            <state relative-caret-position="510">
               <caret line="34" column="47" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
               <folding />
             </state>
@@ -88,14 +90,14 @@
       <file leaf-file-name="ProfilePage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocialAppClient/View/ProfilePage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1566">
+            <state relative-caret-position="918">
               <caret line="64" column="44" selection-start-line="64" selection-start-column="44" selection-end-line="64" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegisterPage.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RegisterPage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocialAppClient/View/RegisterPage.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="568">
@@ -108,7 +110,7 @@
       <file leaf-file-name="ImageViewer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocialAppClient/View/ImageViewer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="899">
+            <state relative-caret-position="714">
               <caret line="45" column="101" selection-start-line="45" selection-start-column="101" selection-end-line="45" selection-end-column="101" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -120,7 +122,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1102">
+            <state relative-caret-position="646">
               <caret line="48" column="27" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
               <folding />
             </state>
@@ -130,7 +132,7 @@
       <file leaf-file-name="LogHistory.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocialAppClient/LogHistory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1218">
+            <state relative-caret-position="714">
               <caret line="54" column="56" selection-start-line="54" selection-start-column="56" selection-end-line="54" selection-end-column="56" />
               <folding />
             </state>
@@ -189,7 +191,6 @@
         <option value="$PROJECT_DIR$/src/SocialAppClient/Control/CommandsExecutor.java" />
         <option value="$PROJECT_DIR$/src/SocialAppClient/Control/GroupMember.java" />
         <option value="$PROJECT_DIR$/src/SocialAppClient/Connections/UtilityConnection.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/Connections/ServerConnection.java" />
         <option value="$PROJECT_DIR$/src/SocialAppClient/Control/Utility.java" />
         <option value="$PROJECT_DIR$/src/SocialAppClient/Control/GroupPicker.java" />
         <option value="$PROJECT_DIR$/src/SocialAppClient/Control/UserPicker.java" />
@@ -208,14 +209,15 @@
         <option value="$PROJECT_DIR$/src/SocialAppClient/View/ImageViewer.java" />
         <option value="$PROJECT_DIR$/src/SocialAppClient/View/GroupInfoViewer.java" />
         <option value="$PROJECT_DIR$/src/SocialAppClient/View/RegisterPage.java" />
+        <option value="$PROJECT_DIR$/src/SocialAppClient/Connections/ServerConnection.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="width" value="1378" />
+    <option name="height" value="780" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -264,7 +266,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -354,6 +355,28 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SocialAppClient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Connections" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SocialAppClientJavaFX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SocialAppClientJavaFX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -371,6 +394,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
@@ -683,9 +707,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1378" height="780" extended-state="0" />
     <editor active="true" />
     <layout>
+      <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.4969743" order="10" side_tool="false" content_ui="tabs" />
@@ -693,23 +718,22 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34739178" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34621328" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17005348" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16995448" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39770868" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39770868" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Code Iris" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Code Iris" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="544" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
@@ -765,7 +789,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -773,7 +796,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -889,7 +911,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-510">
           <caret line="36" column="86" selection-start-line="36" selection-start-column="86" selection-end-line="36" selection-end-column="86" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -907,13 +928,6 @@
         <state relative-caret-position="17">
           <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Connections/ServerConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -964,9 +978,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="87" column="62" selection-start-line="87" selection-start-column="62" selection-end-line="87" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1012,15 +1023,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3480">
           <caret line="120" column="76" selection-start-line="120" selection-start-column="76" selection-end-line="120" selection-end-column="76" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/View/ProfilePage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1566">
+        <state relative-caret-position="918">
           <caret line="64" column="44" selection-start-line="64" selection-start-column="44" selection-end-line="64" selection-end-column="44" />
           <folding />
         </state>
@@ -1028,7 +1036,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/LogHistory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1218">
+        <state relative-caret-position="714">
           <caret line="54" column="56" selection-start-line="54" selection-start-column="56" selection-end-line="54" selection-end-column="56" />
           <folding />
         </state>
@@ -1036,7 +1044,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/View/PostDetails.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
+        <state relative-caret-position="510">
           <caret line="34" column="47" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
           <folding />
         </state>
@@ -1044,7 +1052,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/View/PostWriter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1276">
+        <state relative-caret-position="748">
           <caret line="51" column="50" selection-start-line="51" selection-start-column="50" selection-end-line="51" selection-end-column="50" />
           <folding />
         </state>
@@ -1052,7 +1060,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1102">
+        <state relative-caret-position="646">
           <caret line="48" column="27" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
           <folding />
         </state>
@@ -1065,7 +1073,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/View/ImageViewer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="899">
+        <state relative-caret-position="714">
           <caret line="45" column="101" selection-start-line="45" selection-start-column="101" selection-end-line="45" selection-end-column="101" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1075,23 +1083,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/View/PostContainer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="696">
+        <state relative-caret-position="408">
           <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/javafx-src.zip!/com/sun/javafx/application/PlatformImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6670">
-          <caret line="294" column="0" selection-start-line="294" selection-start-column="0" selection-end-line="294" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/javafx-src.zip!/com/sun/javafx/application/PlatformImpl.java" />
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/View/GroupInfoViewer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-29">
+        <state relative-caret-position="255">
           <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1104,6 +1105,16 @@
         <state relative-caret-position="568">
           <caret line="210" column="13" selection-start-line="210" selection-start-column="13" selection-end-line="210" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Connections/ServerConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
