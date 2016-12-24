@@ -96,9 +96,9 @@ public class RegisterPage extends StackPane {
              //check for input
              LoginInfo log=new LoginInfo();
              log.setEmail(email.getText());
-             log.setPassword(Encrypt(pass.getText()));
+             log.setPassword(pass.getText());
              Command command = new Command();
-             command.setKeyWord(LoginInfo.KEYWORD);
+             command.setKeyWord(LoginInfo.NEW_LOGIN);
              command.setSharableObject(log);
              CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
                  @Override
@@ -239,7 +239,7 @@ public class RegisterPage extends StackPane {
                 LoginInfo log =new LoginInfo();
                 UserInfo user =new UserInfo();
                 log.setEmail(email_verify.getText());
-                log.setPassword(Encrypt(password_verify.getText()));
+                log.setPassword(password_verify.getText());
                 send.setLoginInfo(log);
                 user.setFullName(FRname_verify.getText()+" "+LRname_verify.getText());
                 user.setBirthDate(dp.getValue().toString());
@@ -282,7 +282,7 @@ public class RegisterPage extends StackPane {
 
         return hb;
     }
-    private String Encrypt(String pass) {
+    private String Encrypt(String pass) { //useless and buggy
         StringBuilder sb = new StringBuilder();
         for (char c:pass.toCharArray()) {
             sb.append(++c);
