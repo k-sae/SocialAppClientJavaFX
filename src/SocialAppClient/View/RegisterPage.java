@@ -42,16 +42,19 @@ public class RegisterPage extends StackPane {
      this.getChildren().add(gp);
      layoutEditor(gp);
      //initialize the connection up here
-     try {
-         new MainServerConnection();
-     }catch (ServerNotFound e)
-     {
-         Utility.cantConnectMessage();
+     new Thread(() -> {
+         try {
+             new MainServerConnection();
+         }catch (ServerNotFound e)
+         {
+             Utility.cantConnectMessage();
 
-     }
-     catch (Exception e) {
-         e.printStackTrace();
-     }
+         }
+         catch (Exception e) {
+             e.printStackTrace();
+         }
+     }).start();
+
 
  }
     private void setCol(GridPane gridPane)
