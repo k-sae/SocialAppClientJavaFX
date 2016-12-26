@@ -39,8 +39,6 @@ public class ClientLoggedUser extends LoggedUser {
                     //TODO #Fix
                     //fix error on threading
                     groupsId.add(""+group1.getId());
-                    SocialArrayList socialArrayList = new SocialArrayList();
-                    socialArrayList.getItems().addAll(groupsId);
                  //   inorder to recieve in server
                    //@SuppressWarnings("unchecked") ArrayList<String>s=(ArrayList<String>)(ArrayList<?>) socialArrayList.getItems();
                     Platform.runLater(() -> MainWindow.navigateTo(new GroupPage(group1)));
@@ -53,7 +51,8 @@ public class ClientLoggedUser extends LoggedUser {
 
     }
     //<<<<<<<<<<<<<<<<<<<<<<<<
-    @Override
+    @Override     //TODO #khaled
+                    //what IS THIS ????
     public void getgroup() {
         Command command = new Command();
         command.setKeyWord(Group.LOAD_GROUP);
@@ -65,7 +64,7 @@ public class ClientLoggedUser extends LoggedUser {
                 if (cmd.getKeyWord().equals(Group.LOAD_GROUP)) {
                     SocialArrayList list=SocialArrayList.convertFromJsonString(cmd.getObjectStr());
                     for(int i=0;i<list.getItems().size();i++) {
-                        getGroups().add(Group.fromJsonString((String)list.getItems().get(i)));
+                        getGroups().add(Group.fromJsonString(list.getItems().get(i)));
                     }
                 }
             }
@@ -93,7 +92,7 @@ public class ClientLoggedUser extends LoggedUser {
                         getGroups().clear();
                         SocialArrayList list=SocialArrayList.convertFromJsonString(cmd.getObjectStr());
                         for(int i=0;i<list.getItems().size();i++) {
-                         getGroups().add(Group.fromJsonString((String)list.getItems().get(i)));
+                         getGroups().add(Group.fromJsonString(list.getItems().get(i)));
                         }
                         onFinish(getGroups());
                     }
@@ -118,7 +117,7 @@ public class ClientLoggedUser extends LoggedUser {
                         getPosts().clear();
                         for(int i=0;i<list.getItems().size();i++) {
 
-                            getPosts().add(Post.fromJsonString((String)list.getItems().get(i)));
+                            getPosts().add(Post.fromJsonString(list.getItems().get(i)));
                         }
                         onFinish( getPosts());
                     }
@@ -144,7 +143,7 @@ public class ClientLoggedUser extends LoggedUser {
                         SocialArrayList list=SocialArrayList.convertFromJsonString(cmd.getObjectStr());
                         getPosts().clear();
                         for(int i=0;i<list.getItems().size();i++) {
-                            getPosts().add(Post.fromJsonString((String)list.getItems().get(i)));
+                            getPosts().add(Post.fromJsonString(list.getItems().get(i)));
                         }
 
                         onFinish( getPosts());
@@ -171,7 +170,7 @@ public class ClientLoggedUser extends LoggedUser {
                         SocialArrayList list=SocialArrayList.convertFromJsonString(cmd.getObjectStr());
                         getPosts().clear();
                         for(int i=0;i<list.getItems().size();i++) {
-                            getPosts().add(Post.fromJsonString((String)list.getItems().get(i)));
+                            getPosts().add(Post.fromJsonString(list.getItems().get(i)));
                         }
                         onFinish( getPosts());
                     }
@@ -319,7 +318,7 @@ public class ClientLoggedUser extends LoggedUser {
                     //TODO #lastly
                     SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(cmd.getObjectStr());
 
-                    ArrayList<String> strings = socialArrayList.getItems().stream().map(o -> (String) o).collect(Collectors.toCollection(ArrayList::new));
+                    ArrayList<String> strings = socialArrayList.getItems().stream().map(o -> o).collect(Collectors.toCollection(ArrayList::new));
                     onFinish(strings);
                 }
             };
@@ -618,7 +617,7 @@ public class ClientLoggedUser extends LoggedUser {
                     getLogs().clear();
                     SocialArrayList list=SocialArrayList.convertFromJsonString(commandFromServer.getObjectStr());
                     for(int i=0;i<list.getItems().size();i++) {
-                        getLogs().add(Log.fromJsonString((String)list.getItems().get(i)));
+                        getLogs().add(Log.fromJsonString(list.getItems().get(i)));
                     }
                     onFinish(getLogs());
                 }

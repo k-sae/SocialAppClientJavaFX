@@ -157,9 +157,9 @@ class ChatWindow {
         if (cmd.getKeyWord().equals(Message.FETCH_MESSAGES))
         {
             SocialArrayList socialArrayList = SocialArrayList.convertFromJsonString(cmd.getObjectStr());
-            for (Object o: socialArrayList.getItems()
+            for (String o: socialArrayList.getItems()
                  ) {
-                Message message = Message.FromJson((String)o);
+                Message message = Message.FromJson(o);
                 if (message.getSender().equals(MainWindow.id))
                 {
                     sender(message.getMessage());

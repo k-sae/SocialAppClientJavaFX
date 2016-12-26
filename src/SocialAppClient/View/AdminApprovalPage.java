@@ -26,7 +26,7 @@ class AdminApprovalPage extends VBox {
             @Override
             public void onRetrieve(SocialArrayList list) {
                 //noinspection unchecked
-                registerInfos=(ArrayList<String>)(ArrayList<?>)list.getItems();
+                registerInfos= (ArrayList<String>)list.getItems();
                 Platform.runLater(() -> set(registerInfos));
             }
         };

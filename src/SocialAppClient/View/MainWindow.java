@@ -14,7 +14,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Created by kemo on 09/11/2016.
@@ -67,9 +66,9 @@ public class MainWindow extends GridPane {
                                 clientLoggedUser.new LoadNotification() {
                                     @Override
                                     public void onFinish(SocialArrayList list) {
-                                        for (Object o : list.getItems()
+                                        for ( String o : list.getItems()
                                                 ) {
-                                            navBar.addNotification(Notification.fromJsonString((String)o));
+                                            navBar.addNotification(Notification.fromJsonString(o));
                                         }
                                     }
                                 };
@@ -113,7 +112,7 @@ public class MainWindow extends GridPane {
                     public void Analyze(Command command) {
                         if(command.getKeyWord().equals(Message.FETCH_MESSAGES)){
                         SocialAppGeneral.SocialArrayList list = SocialArrayList.convertFromJsonString(command.getObjectStr());
-                        navBar.addNewMessage(Arrays.copyOf( list.getItems().toArray(),list.getItems().toArray().length,String[].class));
+                        navBar.addNewMessage((String[]) list.getItems().toArray());
                         }
                         else if (command.getKeyWord().equals(Message.NEW_NOTIFICATION))
                         {
