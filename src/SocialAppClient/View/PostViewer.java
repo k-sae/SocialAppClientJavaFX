@@ -149,36 +149,36 @@ class PostViewer extends VBox{
                 finalCheck[0] = Utility.checkID(post);
                 if (finalCheck[0] == -1 || post.getLike().get(finalCheck[0]).getLike().equals(Relations.DELETE)) {
                     setLikeStyle(1);
-                    MainWindow.clientLoggedUser.setLikecommendUsers(Relations.THUMP_UP, post);
+                    MainWindow.clientLoggedUser.setLikeCommandUsers(Relations.THUMP_UP, post);
                     likeNumLBL.setText("\tThumbs up " + ++likeNum + "\tThumbs down " + dislikeNum);
                 } else if (post.getLike().get(finalCheck[0]).getLike().equals(Relations.THUMP_UP)) {
 
                     setLikeStyle(-1);
-                    MainWindow.clientLoggedUser.setLikecommendUsers(Relations.DELETE, post);
+                    MainWindow.clientLoggedUser.setLikeCommandUsers(Relations.DELETE, post);
                     likeNumLBL.setText("\tThumbs up " + --likeNum + "\tThumbs down " + dislikeNum);
 
                 } else if (post.getLike().get(finalCheck[0]).getLike().equals(Relations.THUMP_DOWN)) {
 
                     setLikeStyle(1);
-                    MainWindow.clientLoggedUser.setLikecommendUsers(Relations.THUMP_UP, post);
+                    MainWindow.clientLoggedUser.setLikeCommandUsers(Relations.THUMP_UP, post);
                     likeNumLBL.setText("\tThumbs up " + ++likeNum + "\tThumbs down " + --dislikeNum);
                 }
             }else if(relation.equals(Relations.GROUP.toString())){
                 finalCheck[0] = Utility.checkID(post);
                 if (finalCheck[0] == -1 || post.getLike().get(finalCheck[0]).getLike().equals(Relations.DELETE)) {
                     setLikeStyle(1);
-                    MainWindow.clientLoggedUser.setLikecommendGroup(Relations.THUMP_UP, post);
+                    MainWindow.clientLoggedUser.setLikeCommandGroup(Relations.THUMP_UP, post);
                     likeNumLBL.setText("\tThumbs up " + ++likeNum + "\tThumbs down " + dislikeNum);
                 } else if (post.getLike().get(finalCheck[0]).getLike().equals(Relations.THUMP_UP)) {
 
                     setLikeStyle(-1);
-                    MainWindow.clientLoggedUser.setLikecommendGroup(Relations.DELETE, post);
+                    MainWindow.clientLoggedUser.setLikeCommandGroup(Relations.DELETE, post);
                     likeNumLBL.setText("\tThumbs up " + --likeNum + "\tThumbs down " + dislikeNum);
 
                 } else if (post.getLike().get(finalCheck[0]).getLike().equals(Relations.THUMP_DOWN)) {
 
                     setLikeStyle(1);
-                    MainWindow.clientLoggedUser.setLikecommendGroup(Relations.THUMP_UP, post);
+                    MainWindow.clientLoggedUser.setLikeCommandGroup(Relations.THUMP_UP, post);
                     likeNumLBL.setText("\tThumbs up " + ++likeNum + "\tThumbs down " + --dislikeNum);
                 }
             }
@@ -189,15 +189,15 @@ class PostViewer extends VBox{
                 finalCheck[0] = Utility.checkID(post);
                 if (finalCheck[0] == -1 || post.getLike().get(finalCheck[0]).getLike().equals(Relations.DELETE)) {
                     setLikeStyle(0);
-                    MainWindow.clientLoggedUser.setLikecommendUsers(Relations.THUMP_DOWN, post);
+                    MainWindow.clientLoggedUser.setLikeCommandUsers(Relations.THUMP_DOWN, post);
                     likeNumLBL.setText("\tThumbs up " + likeNum + "\tThumbs down " + ++dislikeNum);
                 } else if (post.getLike().get(finalCheck[0]).getLike().equals(Relations.THUMP_UP)) {
                     setLikeStyle(0);
-                    MainWindow.clientLoggedUser.setLikecommendUsers(Relations.THUMP_DOWN, post);
+                    MainWindow.clientLoggedUser.setLikeCommandUsers(Relations.THUMP_DOWN, post);
                     likeNumLBL.setText("\tThumbs up " + --likeNum + "\tThumbs down " + ++dislikeNum);
                 } else if (post.getLike().get(finalCheck[0]).getLike().equals(Relations.THUMP_DOWN)) {
                     setLikeStyle(-1);
-                    MainWindow.clientLoggedUser.setLikecommendUsers(Relations.DELETE, post);
+                    MainWindow.clientLoggedUser.setLikeCommandUsers(Relations.DELETE, post);
                     likeNumLBL.setText("\tThumbs up " + likeNum + "\tThumbs down " + --dislikeNum);
 
                 }
@@ -205,15 +205,15 @@ class PostViewer extends VBox{
                 finalCheck[0] = Utility.checkID(post);
                 if (finalCheck[0] == -1 || post.getLike().get(finalCheck[0]).getLike().equals(Relations.DELETE)) {
                     setLikeStyle(0);
-                    MainWindow.clientLoggedUser.setLikecommendGroup(Relations.THUMP_DOWN, post);
+                    MainWindow.clientLoggedUser.setLikeCommandGroup(Relations.THUMP_DOWN, post);
                     likeNumLBL.setText("\tThumbs up " + likeNum + "\tThumbs down " + ++dislikeNum);
                 } else if (post.getLike().get(finalCheck[0]).getLike().equals(Relations.THUMP_UP)) {
                     setLikeStyle(0);
-                    MainWindow.clientLoggedUser.setLikecommendGroup(Relations.THUMP_DOWN, post);
+                    MainWindow.clientLoggedUser.setLikeCommandGroup(Relations.THUMP_DOWN, post);
                     likeNumLBL.setText("\tThumbs up " + --likeNum + "\tThumbs down " + ++dislikeNum);
                 } else if (post.getLike().get(finalCheck[0]).getLike().equals(Relations.THUMP_DOWN)) {
                     setLikeStyle(-1);
-                    MainWindow.clientLoggedUser.setLikecommendGroup(Relations.DELETE, post);
+                    MainWindow.clientLoggedUser.setLikeCommandGroup(Relations.DELETE, post);
                     likeNumLBL.setText("\tThumbs up " + likeNum + "\tThumbs down " + --dislikeNum);
 
                 }

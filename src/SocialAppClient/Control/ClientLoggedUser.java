@@ -440,23 +440,20 @@ public class ClientLoggedUser extends LoggedUser {
         CommandsExecutor.getInstance().add(commandRequest);
     }
 
-    public void setCommentCommendUser(Relations show, String text, long commentid, long postid, long postPos){
+    public void setCommentCommandUser(Relations show, String text, long commentId, long postId, long postPos){
         Comment comment=new Comment();
         comment.setCommentcontent(text);
         comment.setOwnerID(Long.parseLong(MainWindow.id));
         comment.setShow(show);
-        comment.setCommentId(commentid);
-        Post post1 = new Post();
-        post1.setId(postid);
-        post1.setPostPos(postPos);
-        post1.addcomment(comment);
+        comment.setCommentId(commentId);
+        AttachmentSender sender=new AttachmentSender(comment,postPos,postId);
         Command command = new Command();
-        command.setKeyWord(Post.EDITE_POST_USERS);
-        command.setSharableObject(post1.convertToJsonString());
+        command.setKeyWord(AttachmentSender.ATTACHMENT_USER);
+        command.setSharableObject(sender.convertToJsonString());
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
             @Override
             public void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.EDITE_POST_USERS)) {
+                if (cmd.getKeyWord().equals(AttachmentSender.ATTACHMENT_USER)) {
                     Post b= Post.fromJsonString(cmd.getObjectStr());
                     if(b.getId() !=0) {
                         Platform.runLater(() -> Content.showPostDetails(b));
@@ -470,23 +467,20 @@ public class ClientLoggedUser extends LoggedUser {
         CommandsExecutor.getInstance().add(commandRequest);
     }
 
-    public void setCommentCommendGroup(Relations show, String text, long commentid, long postid, long postPos){
+    public void setCommentCommandGroup(Relations show, String text, long commentId, long postId, long postPos){
         Comment comment=new Comment();
         comment.setCommentcontent(text);
         comment.setOwnerID(Long.parseLong(MainWindow.id));
         comment.setShow(show);
-        comment.setCommentId(commentid);
-        Post post1 = new Post();
-        post1.setId(postid);
-        post1.setPostPos(postPos);
-        post1.addcomment(comment);
+        comment.setCommentId(commentId);
+        AttachmentSender sender=new AttachmentSender(comment,postPos,postId);
         Command command = new Command();
-        command.setKeyWord(Post.EDITE_POST_GROUPS);
-        command.setSharableObject(post1.convertToJsonString());
+        command.setKeyWord(AttachmentSender.ATTACHMENT_GROUP);
+        command.setSharableObject(sender.convertToJsonString());
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket,command) {
             @Override
             public void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.EDITE_POST_GROUPS)) {
+                if (cmd.getKeyWord().equals(AttachmentSender.ATTACHMENT_GROUP)) {
                     Post b= Post.fromJsonString(cmd.getObjectStr());
                     if(b.getId() !=0) {
                         Platform.runLater(() -> Content.showPostDetails(b));
@@ -500,21 +494,18 @@ public class ClientLoggedUser extends LoggedUser {
         CommandsExecutor.getInstance().add(commandRequest);
     }
 
-    public void setLikecommendUsers(Relations i, Post post) {
+    public void setLikeCommandUsers(Relations i, Post post) {
         Like like = new Like();
         like.setLike(i);
         like.setOwnerID(Long.parseLong(MainWindow.id));
-        Post post1 = new Post();
-        post1.setId(post.getId());
-        post1.setPostPos(post.getPostPos());
-        post1.addlike(like);
+        AttachmentSender sender=new AttachmentSender(like,post.getPostPos(),post.getId());
         Command command = new Command();
-        command.setKeyWord(Post.EDITE_POST_USERS);
-        command.setSharableObject(post1.convertToJsonString());
+        command.setKeyWord(AttachmentSender.ATTACHMENT_USER);
+        command.setSharableObject(sender.convertToJsonString());
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
             @Override
             public void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.EDITE_POST_USERS)) {
+                if (cmd.getKeyWord().equals(AttachmentSender.ATTACHMENT_USER)) {
                     int check = Utility.checkID(post);
                     Post b= Post.fromJsonString(cmd.getObjectStr());
                     if (b.getId() !=0) {
@@ -537,21 +528,18 @@ public class ClientLoggedUser extends LoggedUser {
         CommandsExecutor.getInstance().add(commandRequest);
     }
 
-    public void setLikecommendGroup(Relations i, Post post) {
+    public void setLikeCommandGroup(Relations i, Post post) {
         Like like = new Like();
         like.setLike(i);
         like.setOwnerID(Long.parseLong(MainWindow.id));
-        Post post1 = new Post();
-        post1.setId(post.getId());
-        post1.setPostPos(post.getPostPos());
-        post1.addlike(like);
+        AttachmentSender sender=new AttachmentSender(like,post.getPostPos(),post.getId());
         Command command = new Command();
-        command.setKeyWord(Post.EDITE_POST_GROUPS);
-        command.setSharableObject(post1.convertToJsonString());
+        command.setKeyWord(AttachmentSender.ATTACHMENT_GROUP);
+        command.setSharableObject(sender.convertToJsonString());
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
             @Override
             public void analyze(Command cmd) {
-                if (cmd.getKeyWord().equals(Post.EDITE_POST_GROUPS)) {
+                if (cmd.getKeyWord().equals(AttachmentSender.ATTACHMENT_GROUP)) {
                     int check = Utility.checkID(post);
                     Post b= Post.fromJsonString(cmd.getObjectStr());
                     if (b.getId() !=0) {
@@ -562,12 +550,8 @@ public class ClientLoggedUser extends LoggedUser {
                         }
 
                     } else {
-
                         Platform.runLater(() ->  Utility.errorWindow("please refresh window"));
-
-
                     }
-
                 }
             }
         };

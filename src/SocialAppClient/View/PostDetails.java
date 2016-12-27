@@ -30,9 +30,9 @@ class PostDetails extends VBox{
     }
     static void setCommentCommend(Relations show, String text, long id){
         if(relation.equals(Relations.HOME_PAGE.toString()) || relation.equals(Relations.PROFILE_PAGE.toString())) {
-            MainWindow.clientLoggedUser.setCommentCommendUser(show, text, id, post.getId(), post.getPostPos());
+            MainWindow.clientLoggedUser.setCommentCommandUser(show, text, id, post.getId(), post.getPostPos());
         }else if(relation.equals(Relations.GROUP.toString())){
-            MainWindow.clientLoggedUser.setCommentCommendGroup(show, text, id, post.getId(), post.getPostPos());
+            MainWindow.clientLoggedUser.setCommentCommandGroup(show, text, id, post.getId(), post.getPostPos());
         }
 
     }
