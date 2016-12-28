@@ -108,7 +108,8 @@ public class ClientLoggedUser extends LoggedUser {
         public GetPosts(long numberPost){
             Command command = new Command();
             command.setKeyWord(Post.LOAD_POST_HOME);
-            command.setSharableObject(String.valueOf(numberPost));
+            PostSender postSender =new PostSender(numberPost);
+            command.setSharableObject(postSender.convertToJsonString());
             CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
                 @Override
                 public void analyze(Command cmd) {
@@ -130,12 +131,10 @@ public class ClientLoggedUser extends LoggedUser {
         }
     public abstract class GetPostsProfile{
         public GetPostsProfile(long numberPost, String id){
-            SocialArrayList posts=new SocialArrayList();
-            posts.setExtra(id);
-            posts.setTarget(String.valueOf(numberPost));
+            PostSender postSender =new PostSender(numberPost,Long.parseLong(id));
             Command command = new Command();
             command.setKeyWord(Post.LOAD_POST_USERS);
-            command.setSharableObject(posts.convertToJsonString());
+            command.setSharableObject(postSender.convertToJsonString());
             CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
                 @Override
                 public void analyze(Command cmd) {
@@ -157,12 +156,10 @@ public class ClientLoggedUser extends LoggedUser {
     }
     public abstract class GetPostsGroup{
         public GetPostsGroup(long numberPost, long id){
-            SocialArrayList posts=new SocialArrayList();
-            posts.setExtra(String.valueOf(id));
-            posts.setTarget(String.valueOf(numberPost));
+            PostSender postSender =new PostSender(numberPost,id);
             Command command = new Command();
             command.setKeyWord(Post.LOAD_POST_GROUPS);
-            command.setSharableObject(posts.convertToJsonString());
+            command.setSharableObject(postSender.convertToJsonString());
             CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
                 @Override
                 public void analyze(Command cmd) {
