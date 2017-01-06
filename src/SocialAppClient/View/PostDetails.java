@@ -28,8 +28,12 @@ class PostDetails extends VBox{
         setPadding(new Insets(30, 0, 30, 0));
         getChildren().addAll(postViewer,CommentContainer);
     }
+    //function name???
     static void setCommentCommend(Relations show, String text, long id){
+        //why append it to relations enum ?????
         if(relation.equals(Relations.HOME_PAGE.toString()) || relation.equals(Relations.PROFILE_PAGE.toString())) {
+            //TODO ???
+            //functions names ????                             //too many param
             MainWindow.clientLoggedUser.setCommentCommandUser(show, text, id, post.getId(), post.getPostPos());
         }else if(relation.equals(Relations.GROUP.toString())){
             MainWindow.clientLoggedUser.setCommentCommandGroup(show, text, id, post.getId(), post.getPostPos());

@@ -435,10 +435,13 @@ public class ClientLoggedUser extends LoggedUser {
         };
         CommandsExecutor.getInstance().add(commandRequest);
     }
-
+    //TODO ???
+    //khaled some concepts
+    //4 prob till now
     public void setCommentCommandUser(Relations show, String text, long commentId, long postId, long postPos){
         Comment comment=new Comment();
         comment.setCommentcontent(text);
+        //security issue should be added by server
         comment.setOwnerID(Long.parseLong(MainWindow.id));
         comment.setShow(show);
         comment.setCommentId(commentId);

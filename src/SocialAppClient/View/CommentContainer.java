@@ -35,6 +35,8 @@ class CommentContainer extends VBox{
 
         commentText.setOnKeyPressed(event -> {
             if(event.getCode().equals(KeyCode.ENTER)){
+                //TODO ???
+                // what is suppose to do ?????                     //what is this zero??
                 PostDetails.setCommentCommend(Relations.ADD, commentText.getText(),0);
                 commentText.setText("");
             }
