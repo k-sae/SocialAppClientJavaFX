@@ -145,15 +145,18 @@ class PostViewer extends VBox{
         }
         final int[] finalCheck = new int[1];
         thumbsUp.setOnAction(event -> {
+            //TODO ???
+            //  seems Useless Check
             if(relation.equals(Relations.HOME_PAGE.toString()) || relation.equals(Relations.PROFILE_PAGE.toString())) {
                 finalCheck[0] = Utility.checkID(post);
+                //whats is -1 supposed to refer to ?
                 if (finalCheck[0] == -1 || post.getLike().get(finalCheck[0]).getLike().equals(Relations.DELETE)) {
                     setLikeStyle(1);
                     MainWindow.clientLoggedUser.setLikeCommandUsers(Relations.THUMP_UP, post);
                     likeNumLBL.setText("\tThumbs up " + ++likeNum + "\tThumbs down " + dislikeNum);
                 } else if (post.getLike().get(finalCheck[0]).getLike().equals(Relations.THUMP_UP)) {
 
-                    setLikeStyle(-1);
+                    setLikeStyle(-1); // ???
                     MainWindow.clientLoggedUser.setLikeCommandUsers(Relations.DELETE, post);
                     likeNumLBL.setText("\tThumbs up " + --likeNum + "\tThumbs down " + dislikeNum);
 
