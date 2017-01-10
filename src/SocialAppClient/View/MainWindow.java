@@ -73,6 +73,7 @@ public class MainWindow extends GridPane {
                                     }
                                 };
                             }
+
                         }
                                 .getConnectionSocket()) {
                     @Override
