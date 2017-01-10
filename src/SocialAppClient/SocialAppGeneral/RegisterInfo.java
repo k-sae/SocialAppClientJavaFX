@@ -1,4 +1,4 @@
-package SocialAppGeneral;
+package SocialAppClient.SocialAppGeneral;
 
 import com.google.gson.Gson;
 
@@ -7,7 +7,7 @@ import com.google.gson.Gson;
  */
 public class RegisterInfo implements Shareable {
     private LoginInfo loginInfo;
-   private SocialAppGeneral.UserInfo UserInfo;
+   private UserInfo UserInfo;
     public static  final String KEYWORD="new_register";
 
 
@@ -19,11 +19,11 @@ public class RegisterInfo implements Shareable {
         this.loginInfo = loginInfo;
     }
 
-    public SocialAppGeneral.UserInfo getUserInfo() {
+    public UserInfo getUserInfo() {
         return UserInfo;
     }
 
-    public void setUserInfo(SocialAppGeneral.UserInfo userInfo) {
+    public void setUserInfo(UserInfo userInfo) {
         UserInfo = userInfo;
     }
 

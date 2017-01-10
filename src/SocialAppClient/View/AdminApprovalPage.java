@@ -1,7 +1,7 @@
 package SocialAppClient.View;
 
 import SocialAppClient.Control.ClientAdmin;
-import SocialAppGeneral.SocialArrayList;
+import SocialAppClient.SocialAppGeneral.SocialArrayList;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

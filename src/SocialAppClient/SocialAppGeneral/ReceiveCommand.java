@@ -1,19 +1,25 @@
-package SocialAppGeneral;
+package SocialAppClient.SocialAppGeneral;
 
-import SocialAppClient.Control.Utility;
+
+import SocialAppClient.Connections.TransmissionFailureListener;
 
 import java.io.DataInputStream;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.ArrayList;
 
 /**
  * Created by kemo on 25/10/2016.
  */
 public abstract class ReceiveCommand extends Thread {
+
+
     private Socket remote;
     private volatile boolean run;
+    private ArrayList<TransmissionFailureListener> transmissionFailureListeners;
     public ReceiveCommand(Socket remote)
     {
+        transmissionFailureListeners = new ArrayList<>();
         this.remote = remote;
         run = true;
     }
@@ -33,8 +39,7 @@ public abstract class ReceiveCommand extends Thread {
                 }
                 catch (SocketException e)
                 {
-                    Utility.cantConnectMessage();
-                    break;
+                    triggerListeners();
                 }
                 catch (Exception e) {
                     //Export to log
@@ -48,4 +53,21 @@ public abstract class ReceiveCommand extends Thread {
         run = false;
     }
     public abstract void Analyze(Command command);
+    public void setTransmissionFailureListener(TransmissionFailureListener transmissionFailureListener)
+    {
+        transmissionFailureListeners.add(transmissionFailureListener);
+    }
+    private void triggerListeners()
+    {
+        //noinspection ForLoopReplaceableByForEach
+        for (int i = 0; i < transmissionFailureListeners.size(); i++) {
+            transmissionFailureListeners.get(i).onDisconnection();
+        }
+    }
+    public void setRemote(Socket remote) {
+        this.remote = remote;
+    }
+    public Socket getRemote() {
+        return remote;
+    }
 }

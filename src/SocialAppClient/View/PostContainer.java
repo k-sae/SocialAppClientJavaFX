@@ -1,7 +1,8 @@
 package SocialAppClient.View;
 
-import SocialAppGeneral.Post;
-import SocialAppGeneral.Relations;
+
+import SocialAppClient.SocialAppGeneral.Post;
+import SocialAppClient.SocialAppGeneral.Relations;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

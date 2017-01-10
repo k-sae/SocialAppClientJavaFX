@@ -1,7 +1,7 @@
 package SocialAppClient.View;
 
 import SocialAppClient.Connections.ServerConnection;
-import SocialAppGeneral.Command;
+import SocialAppClient.SocialAppGeneral.Command;
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;

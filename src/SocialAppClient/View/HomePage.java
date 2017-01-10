@@ -1,13 +1,13 @@
 package SocialAppClient.View;
 
-import SocialAppClient.Main;
 import SocialAppClient.Control.UserPicker;
 import SocialAppClient.Control.Utility;
 import SocialAppClient.Control.validator;
-import SocialAppGeneral.Group;
-import SocialAppGeneral.Post;
-import SocialAppGeneral.Relations;
-import SocialAppGeneral.UserInfo;
+import SocialAppClient.Main;
+import SocialAppClient.SocialAppGeneral.Group;
+import SocialAppClient.SocialAppGeneral.Post;
+import SocialAppClient.SocialAppGeneral.Relations;
+import SocialAppClient.SocialAppGeneral.UserInfo;
 import javafx.application.Platform;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ScrollPane;

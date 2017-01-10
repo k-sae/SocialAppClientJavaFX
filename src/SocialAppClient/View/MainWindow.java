@@ -1,11 +1,10 @@
 package SocialAppClient.View;
 
-import SocialAppClient.Connections.MainServerConnection;
-import SocialAppClient.Connections.ReceiveServerNotification;
-import SocialAppClient.Connections.ServerNotFound;
-import SocialAppClient.Connections.UtilityConnection;
-import SocialAppClient.Control.*;
-import SocialAppGeneral.*;
+import SocialAppClient.Connections.*;
+import SocialAppClient.Control.ClientAdmin;
+import SocialAppClient.Control.ClientLoggedUser;
+import SocialAppClient.Control.Utility;
+import SocialAppClient.SocialAppGeneral.*;
 import javafx.application.Platform;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.ColumnConstraints;
@@ -112,7 +111,7 @@ public class MainWindow extends GridPane {
                     @Override
                     public void Analyze(Command command) {
                         if(command.getKeyWord().equals(Message.FETCH_MESSAGES)){
-                        SocialAppGeneral.SocialArrayList list = SocialArrayList.convertFromJsonString(command.getObjectStr());
+                        SocialArrayList list = SocialArrayList.convertFromJsonString(command.getObjectStr());
                         navBar.addNewMessage((String[]) list.getItems().toArray());
                         }
                         else if (command.getKeyWord().equals(Message.NEW_NOTIFICATION))

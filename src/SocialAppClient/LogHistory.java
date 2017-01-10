@@ -1,9 +1,9 @@
 package SocialAppClient;
 
+import SocialAppClient.SocialAppGeneral.Log;
+import SocialAppClient.SocialAppGeneral.Relations;
 import SocialAppClient.View.FriendView;
 import SocialAppClient.View.Styles;
-import SocialAppGeneral.Log;
-import SocialAppGeneral.Relations;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;

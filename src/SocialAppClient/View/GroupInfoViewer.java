@@ -1,7 +1,8 @@
 package SocialAppClient.View;
 
 import SocialAppClient.Control.GroupMember;
-import SocialAppGeneral.*;
+import SocialAppClient.SocialAppGeneral.*;
+import SocialAppClient.SocialAppGeneral.SocialArrayList;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

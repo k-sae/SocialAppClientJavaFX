@@ -1,13 +1,13 @@
 package SocialAppClient.View;
 
 import SocialAppClient.Connections.ReceiveServerNotification;
+import SocialAppClient.Connections.UtilityConnection;
 import SocialAppClient.Control.UserPicker;
 import SocialAppClient.Control.Utility;
-import SocialAppClient.Connections.UtilityConnection;
-import SocialAppGeneral.Command;
-import SocialAppGeneral.Message;
-import SocialAppGeneral.SocialArrayList;
-import SocialAppGeneral.UserInfo;
+import SocialAppClient.SocialAppGeneral.Command;
+import SocialAppClient.SocialAppGeneral.Message;
+import SocialAppClient.SocialAppGeneral.SocialArrayList;
+import SocialAppClient.SocialAppGeneral.UserInfo;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

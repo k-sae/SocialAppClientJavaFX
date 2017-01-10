@@ -8,10 +8,9 @@ import java.net.Socket;
  * Created by kemo on 08/11/2016.
  */
 public class UtilityConnection extends ServerConnection {
-    //TODO #overload
     public UtilityConnection(String id, int port) throws ServerNotFound {
         //TODO #config
-        super("127.0.0.1",port);
+        super("192.168.43.195",port);
         sendId(id);
     }
     public UtilityConnection(String senderId, int port, String receiverId) throws ServerNotFound

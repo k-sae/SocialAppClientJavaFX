@@ -1,12 +1,16 @@
 package SocialAppClient.View;
 
-import SocialAppClient.*;
+import SocialAppClient.Connections.CommandRequest;
+import SocialAppClient.Connections.CommandsExecutor;
 import SocialAppClient.Connections.MainServerConnection;
-import SocialAppClient.Control.*;
-import SocialAppGeneral.Command;
-import SocialAppGeneral.Notification;
-import SocialAppGeneral.SocialArrayList;
-import SocialAppGeneral.UserInfo;
+import SocialAppClient.Control.ClientAdmin;
+import SocialAppClient.Control.UserPicker;
+import SocialAppClient.Control.Utility;
+import SocialAppClient.Main;
+import SocialAppClient.SocialAppGeneral.Command;
+import SocialAppClient.SocialAppGeneral.Notification;
+import SocialAppClient.SocialAppGeneral.SocialArrayList;
+import SocialAppClient.SocialAppGeneral.UserInfo;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

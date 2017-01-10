@@ -1,9 +1,9 @@
 package SocialAppClient.View;
 
 import SocialAppClient.Control.UserPicker;
-import SocialAppGeneral.Post;
-import SocialAppGeneral.Relations;
-import SocialAppGeneral.UserInfo;
+import SocialAppClient.SocialAppGeneral.*;
+import SocialAppClient.SocialAppGeneral.Relations;
+import SocialAppClient.SocialAppGeneral.UserInfo;
 import javafx.application.Platform;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.ColumnConstraints;

@@ -2,7 +2,7 @@ package SocialAppClient.View;
 
 import SocialAppClient.Control.UserPicker;
 import SocialAppClient.Control.Utility;
-import SocialAppGeneral.UserInfo;
+import SocialAppClient.SocialAppGeneral.UserInfo;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;

@@ -1,11 +1,11 @@
 package SocialAppClient.View;
 
-import SocialAppClient.Control.CommandRequest;
-import SocialAppClient.Control.CommandsExecutor;
+import SocialAppClient.Connections.CommandRequest;
+import SocialAppClient.Connections.CommandsExecutor;
 import SocialAppClient.Connections.MainServerConnection;
 import SocialAppClient.Control.Utility;
-import SocialAppGeneral.Command;
-import SocialAppGeneral.UserInfo;
+import SocialAppClient.SocialAppGeneral.Command;
+import SocialAppClient.SocialAppGeneral.UserInfo;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

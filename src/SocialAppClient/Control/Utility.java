@@ -1,10 +1,10 @@
 package SocialAppClient.Control;
 
 import SocialAppClient.Connections.ServerConnection;
+import SocialAppClient.SocialAppGeneral.Command;
+import SocialAppClient.SocialAppGeneral.Post;
 import SocialAppClient.View.ImageViewer;
 import SocialAppClient.View.MainWindow;
-import SocialAppGeneral.Command;
-import SocialAppGeneral.Post;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;

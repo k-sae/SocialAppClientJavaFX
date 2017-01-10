@@ -1,13 +1,18 @@
 package SocialAppClient.View;
 
 import SocialAppClient.Control.Utility;
-import SocialAppGeneral.*;
+import SocialAppClient.SocialAppGeneral.Comment;
+import SocialAppClient.SocialAppGeneral.Like;
+import SocialAppClient.SocialAppGeneral.Post;
+import SocialAppClient.SocialAppGeneral.Relations;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
 import java.text.SimpleDateFormat;

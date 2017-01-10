@@ -1,6 +1,6 @@
 package SocialAppClient.View;
 
-import SocialAppGeneral.Post;
+import SocialAppClient.SocialAppGeneral.Post;
 import javafx.geometry.Pos;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;

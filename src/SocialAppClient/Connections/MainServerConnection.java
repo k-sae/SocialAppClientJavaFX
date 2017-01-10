@@ -1,5 +1,6 @@
 package SocialAppClient.Connections;
 
+import java.io.IOException;
 import java.net.Socket;
 
 /**
@@ -7,20 +8,51 @@ import java.net.Socket;
  */
 public class MainServerConnection extends ServerConnection {
     public static Socket mainConnectionSocket;
-
+    private static boolean isActiveConnection;
     public MainServerConnection() throws Exception {
-        //TODO #config
-
-        super(/*change this to match ur pc name*/"127.0.0.1", 6000);
-
-        mainConnectionSocket = connectionSocket;
+    }
+    public void reconnect()
+    {
+        try {
+            connect();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void connect() throws Exception
+    {
+        if (mainConnectionSocket !=null)
+        {
+            if (mainConnectionSocket.isClosed())
+            {
+                start();
+            }
+        }
+        else if (!isActiveConnection)
+        {
+            isActiveConnection = true;
+            start();
+        }
+    }
+    private void start() throws ServerNotFound {
+        //here i will check for user info and choose whether to continue the connection or to end it
+        super.connect("192.168.43.195",6000);
+    }
+    public void endConnection()
+    {
+        if (mainConnectionSocket != null)
+        {
+            try {
+                mainConnectionSocket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
-    //if no parameters passed set default connection
-    //TODO #kareem
-    //after creating users levels accept user of type registeredUser or login user
     @Override
     public void startConnection() {
-        //here i will check for user info and choose whether to continue the connection or to end it
+        mainConnectionSocket = connectionSocket;
+        isActiveConnection = false;
     }
 }

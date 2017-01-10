@@ -1,15 +1,15 @@
 package SocialAppClient.View;
 
+import SocialAppClient.Connections.CommandRequest;
+import SocialAppClient.Connections.CommandsExecutor;
 import SocialAppClient.Connections.MainServerConnection;
 import SocialAppClient.Connections.ServerNotFound;
-import SocialAppClient.Control.CommandRequest;
-import SocialAppClient.Control.CommandsExecutor;
 import SocialAppClient.Control.Utility;
 import SocialAppClient.Control.validator;
-import SocialAppGeneral.Command;
-import SocialAppGeneral.LoginInfo;
-import SocialAppGeneral.RegisterInfo;
-import SocialAppGeneral.UserInfo;
+import SocialAppClient.SocialAppGeneral.Command;
+import SocialAppClient.SocialAppGeneral.LoginInfo;
+import SocialAppClient.SocialAppGeneral.RegisterInfo;
+import SocialAppClient.SocialAppGeneral.UserInfo;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -44,7 +44,8 @@ public class RegisterPage extends StackPane {
      //initialize the connection up here
      new Thread(() -> {
          try {
-             new MainServerConnection();
+           MainServerConnection mainServerConnection = new MainServerConnection();
+             mainServerConnection.connect();
          }catch (ServerNotFound e)
          {
              Utility.cantConnectMessage();

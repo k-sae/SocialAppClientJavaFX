@@ -1,6 +1,6 @@
 package SocialAppClient.View;
 
-import SocialAppGeneral.Relations;
+import SocialAppClient.SocialAppGeneral.Relations;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;

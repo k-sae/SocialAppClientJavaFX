@@ -1,6 +1,6 @@
 package SocialAppClient.View;
 
-import SocialAppGeneral.Group;
+import SocialAppClient.SocialAppGeneral.Group;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

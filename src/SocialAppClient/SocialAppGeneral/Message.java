@@ -1,4 +1,4 @@
-package SocialAppGeneral;
+package SocialAppClient.SocialAppGeneral;
 
 import com.google.gson.Gson;
 
@@ -17,9 +17,9 @@ public class Message implements Shareable {
     public String convertToJsonString() {
         return new Gson().toJson(this);
     }
-    public static SocialAppGeneral.Message FromJson(String Json)
+    public static Message FromJson(String Json)
     {
-        return new Gson().fromJson(Json, SocialAppGeneral.Message.class);
+        return new Gson().fromJson(Json, Message.class);
     }
 
     public String getSender() {

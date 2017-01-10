@@ -1,7 +1,7 @@
 package SocialAppClient.View;
 
-import SocialAppGeneral.Comment;
-import SocialAppGeneral.Relations;
+
+import SocialAppClient.SocialAppGeneral.*;
 import javafx.geometry.Insets;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;

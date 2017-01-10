@@ -1,4 +1,4 @@
-package SocialAppGeneral;
+package SocialAppClient.SocialAppGeneral;
 
 /**
  * Created by khaled hesham on 12/2/2016.

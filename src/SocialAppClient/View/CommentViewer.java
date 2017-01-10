@@ -1,7 +1,7 @@
 package SocialAppClient.View;
 
-import SocialAppGeneral.Comment;
-import SocialAppGeneral.Relations;
+
+import SocialAppClient.SocialAppGeneral.*;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ChoiceBox;

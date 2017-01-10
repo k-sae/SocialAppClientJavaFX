@@ -2,7 +2,7 @@ package SocialAppClient.View;
 
 import SocialAppClient.Control.GroupPicker;
 import SocialAppClient.Control.Utility;
-import SocialAppGeneral.Group;
+import SocialAppClient.SocialAppGeneral.Group;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;

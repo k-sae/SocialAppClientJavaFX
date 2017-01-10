@@ -3,9 +3,8 @@ package SocialAppClient.View;
 import SocialAppClient.Control.ClientAdmin;
 import SocialAppClient.LogHistory;
 import SocialAppClient.Main;
-import SocialAppGeneral.Command;
-import SocialAppGeneral.Log;
-import SocialAppGeneral.Relations;
+import SocialAppClient.SocialAppGeneral.*;
+import SocialAppClient.SocialAppGeneral.Relations;
 import javafx.application.Platform;
 import javafx.scene.control.Button;
 

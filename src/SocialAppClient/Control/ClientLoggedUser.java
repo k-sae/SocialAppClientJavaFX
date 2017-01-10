@@ -1,10 +1,11 @@
 package SocialAppClient.Control;
 
-import SocialAppClient.Main;
+import SocialAppClient.Connections.CommandRequest;
+import SocialAppClient.Connections.CommandsExecutor;
 import SocialAppClient.Connections.MainServerConnection;
+import SocialAppClient.Main;
+import SocialAppClient.SocialAppGeneral.*;
 import SocialAppClient.View.*;
-import SocialAppGeneral.*;
-import SocialAppGeneral.LoggedUser;
 import javafx.application.Platform;
 
 import java.util.ArrayList;
