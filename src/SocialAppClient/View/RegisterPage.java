@@ -53,10 +53,15 @@ public class RegisterPage extends StackPane {
                  @Override
                  public void onConnectionSuccess() {
                     //TODO #belal
+                     System.out.println("horray2!!! :D");
                  }
              });
              CommandsExecutor.getInstance().setOnTransmissionFailure(() -> { // this trigger whenever client try to send package and fail
                  //TODO #belal
+                 System.out.println("horray3!!! :D");
+                 mainServerConnection.endConnection();
+                 mainServerConnection.reconnect();
+                 CommandsExecutor.getInstance().updateSocket(mainServerConnection.connectionSocket);
              });
              mainServerConnection.connect();
          }catch (ServerNotFound e)
