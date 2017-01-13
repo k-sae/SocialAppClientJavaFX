@@ -153,6 +153,7 @@ class PostViewer extends VBox{
             //TODO ???
             //  3 errors
             // seems Useless Check
+            // no it's useful, because this statements for home page or profile page only
             if(relation.equals(Relations.HOME_PAGE.toString()) || relation.equals(Relations.PROFILE_PAGE.toString())) {
                 finalCheck[0] = Utility.checkID(post);
                 //whats is -1 supposed to refer to ?

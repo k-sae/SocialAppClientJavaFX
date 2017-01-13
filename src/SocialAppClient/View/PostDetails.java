@@ -32,9 +32,11 @@ class PostDetails extends VBox{
     //function name???
     static void setCommentCommend(Relations show, String text, long id){
         //why append it to relations enum ?????
+        //sorry, we append it to this enum instead of making a new one, we'll make a new isa ^_^
         if(relation.equals(Relations.HOME_PAGE.toString()) || relation.equals(Relations.PROFILE_PAGE.toString())) {
             //TODO ???
             //functions names ????                             //too many param
+                                                              // because it's a generic function that add, edit or delete comment
             MainWindow.clientLoggedUser.setCommentCommandUser(show, text, id, post.getId(), post.getPostPos());
         }else if(relation.equals(Relations.GROUP.toString())){
             MainWindow.clientLoggedUser.setCommentCommandGroup(show, text, id, post.getId(), post.getPostPos());
