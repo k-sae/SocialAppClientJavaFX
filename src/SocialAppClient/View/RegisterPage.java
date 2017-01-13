@@ -1,9 +1,6 @@
 package SocialAppClient.View;
 
-import SocialAppClient.Connections.CommandRequest;
-import SocialAppClient.Connections.CommandsExecutor;
-import SocialAppClient.Connections.MainServerConnection;
-import SocialAppClient.Connections.ServerNotFound;
+import SocialAppClient.Connections.*;
 import SocialAppClient.Control.Utility;
 import SocialAppClient.Control.validator;
 import SocialAppClient.SocialAppGeneral.Command;
@@ -46,6 +43,20 @@ public class RegisterPage extends StackPane {
          try {
            MainServerConnection mainServerConnection = new MainServerConnection();
              mainServerConnection.connect();
+             mainServerConnection.setConnectionListener(new ConnectionListener() {
+                 @Override
+                 public void onStart() {
+                     //TODO #belal
+                 }
+
+                 @Override
+                 public void onConnectionSuccess() {
+                    //TODO #belal
+                 }
+             });
+             CommandsExecutor.getInstance().setOnTransmissionFailure(() -> { // this trigger whenever client try to send package and fail
+                 //TODO #belal
+             });
          }catch (ServerNotFound e)
          {
              Utility.cantConnectMessage();
