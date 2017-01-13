@@ -42,11 +42,12 @@ public class RegisterPage extends StackPane {
      new Thread(() -> {
          try {
            MainServerConnection mainServerConnection = new MainServerConnection();
-             mainServerConnection.connect();
+
              mainServerConnection.setConnectionListener(new ConnectionListener() {
                  @Override
                  public void onStart() {
                      //TODO #belal
+                     System.out.println("horray!!! :D");
                  }
 
                  @Override
@@ -57,6 +58,7 @@ public class RegisterPage extends StackPane {
              CommandsExecutor.getInstance().setOnTransmissionFailure(() -> { // this trigger whenever client try to send package and fail
                  //TODO #belal
              });
+             mainServerConnection.connect();
          }catch (ServerNotFound e)
          {
              Utility.cantConnectMessage();
