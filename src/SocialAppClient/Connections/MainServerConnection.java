@@ -36,7 +36,7 @@ public class MainServerConnection extends ServerConnection {
     }
     private void start() throws ServerNotFound {
         //here i will check for user info and choose whether to continue the connection or to end it
-        super.connect("192.168.43.195",6000);
+        super.connect("127.0.0.1",6000);
     }
     public void endConnection()
     {
