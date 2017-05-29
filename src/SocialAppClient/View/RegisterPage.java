@@ -2,11 +2,8 @@ package SocialAppClient.View;
 
 import SocialAppClient.Connections.*;
 import SocialAppClient.Control.Utility;
-import SocialAppClient.Control.validator;
-import SocialAppClient.SocialAppGeneral.Command;
-import SocialAppClient.SocialAppGeneral.LoginInfo;
-import SocialAppClient.SocialAppGeneral.RegisterInfo;
-import SocialAppClient.SocialAppGeneral.UserInfo;
+import SocialAppClient.SocialAppGeneral.*;
+import SocialAppClient.SocialAppGeneral.Error;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -17,6 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  * Created by mosta on 30-Oct-16.
@@ -223,37 +221,6 @@ public class RegisterPage extends StackPane {
         VBox.setMargin(Admin_Hbox,(new Insets(0,0,10,0)));
         Button B=new Button("Register");
         B.setOnAction(e->{
-            int exceptions=0;
-            if(!validator.valdiateName(FRname_verify.getText()) || !validator.valdiateName(LRname_verify.getText())) {
-               nameverify.setVisible(true);
-                nameverify.setTextFill(Color.RED);
-                exceptions++;
-            }else {
-                nameverify.setVisible(false);
-            }
-            if(!validator.valdiatePass(password_verify.getText())){
-                passverify.setVisible(true);
-                passverify.setTextFill(Color.RED);
-             exceptions++;
-            }else{
-                passverify.setVisible(false);
-            }
-            if(!validator.valdiateEmail(email_verify.getText())){
-                emailverfiy.setVisible(true);
-                emailverfiy.setTextFill(Color.RED);
-                exceptions++;
-            }else {
-                emailverfiy.setVisible(false);
-            }
-            if(validator.datecheck(dp.getValue().toString())){
-                dateverify.setVisible(false);
-            }else{
-                exceptions++;
-                dateverify.setVisible(true);
-                dateverify.setTextFill(Color.RED);
-            }
-            if(exceptions==0)
-            {
                 RegisterInfo send=new RegisterInfo();
                 LoginInfo log =new LoginInfo();
                 UserInfo user =new UserInfo();
@@ -276,17 +243,42 @@ public class RegisterPage extends StackPane {
                     @Override
                     public void analyze(Command commandFromServer) {
 
-                        if(commandFromServer.getObjectStr().equals("true"))
-                        Platform.runLater(()-> Utility.alertWindow(" Registration","Thanks for signing up, We will send you an E-mail informing you the admin choice!"));
-                    else
-                        {
-                            Platform.runLater(()-> Utility.alertWindow(" Registration","please use a valid unique mail"));
+                        if(commandFromServer.getObjectStr().equals("true")){ Platform.runLater(()-> Utility.alertWindow(" Registration","Thanks for signing up, We will send you an E-mail informing you the admin choice!"));}
+                        else if(commandFromServer.getObjectStr().equals("false")){Platform.runLater(()-> Utility.alertWindow(" Registration","please use a valid unique mail"));}
+                        else if(commandFromServer.getObjectStr().equals(Error.EmptyRegister.toString()))
+                            Platform.runLater(()-> Utility.alertWindow(" Registration","there is an empty field plz fill it"));
+                        else {
+                            SocialArrayList errors=SocialArrayList.convertFromJsonString(commandFromServer.getObjectStr());
+                            if (errors.getItems().contains(Error.Wrongemail.toString())) {
+                                emailverfiy.setVisible(true);
+                                emailverfiy.setTextFill(Color.RED);
+                            }else {
+                                emailverfiy.setVisible(false);
+                            }
+                            if(errors.getItems().contains(Error.Wrongpass.toString())){
+                                passverify.setVisible(true);
+                                passverify.setTextFill(Color.RED);
+                            }else {
+                                passverify.setVisible(false);
+                            } if(errors.getItems().contains(Error.WrongDate.toString())){
+                                dateverify.setVisible(true);
+                                dateverify.setTextFill(Color.RED);
+                            }else {
+                                dateverify.setVisible(false);
+                            }if(errors.getItems().contains(Error.Wrongname.toString())){
+                                nameverify.setVisible(true);
+                                nameverify.setTextFill(Color.RED);
+                            }else {
+                                nameverify.setVisible(false);
+                            }
+
+
                         }
+
                     }
                 };
                 CommandsExecutor.getInstance().add(commandRequest);
 
-            }
         });
 
 
