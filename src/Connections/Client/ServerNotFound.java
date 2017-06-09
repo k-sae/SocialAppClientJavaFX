@@ -1,4 +1,4 @@
-package SocialAppClient.Connections;
+package Connections.Client;
 
 import java.io.IOException;
 

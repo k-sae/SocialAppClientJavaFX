@@ -1,4 +1,7 @@
-package SocialAppClient.Connections;
+package SocialAppClient.Control.Connections;
+
+import Connections.Client.ServerConnection;
+import Connections.Client.ServerNotFound;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -10,6 +13,7 @@ public class MainServerConnection extends ServerConnection {
     public static Socket mainConnectionSocket;
     private static boolean isActiveConnection;
     public MainServerConnection() throws Exception {
+        super("127.0.0.1",6000);
     }
     public void reconnect()
     {
@@ -19,24 +23,23 @@ public class MainServerConnection extends ServerConnection {
             e.printStackTrace();
         }
     }
-    public void connect() throws Exception
-    {
+    public ServerConnection connect() throws ServerNotFound {
         if (mainConnectionSocket !=null)
         {
             if (mainConnectionSocket.isClosed())
             {
-                start();
+                super.connect();
             }
         }
         else if (!isActiveConnection)
         {
             isActiveConnection = true;
-            start();
+           super.connect();
         }
+        return this;
     }
     private void start() throws ServerNotFound {
         //here i will check for user info and choose whether to continue the connection or to end it
-        super.connect("127.0.0.1",6000);
     }
     public void endConnection()
     {
@@ -52,7 +55,7 @@ public class MainServerConnection extends ServerConnection {
 
     @Override
     public void startConnection() {
-        mainConnectionSocket = connectionSocket;
+        mainConnectionSocket = getConnectionSocket();
         isActiveConnection = false;
     }
 }

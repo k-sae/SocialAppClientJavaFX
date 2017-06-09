@@ -1,5 +1,6 @@
 package SocialAppClient.SocialAppGeneral;
 
+import Connections.Shareable;
 import com.google.gson.Gson;
 
 import java.io.Serializable;

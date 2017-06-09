@@ -1,7 +1,7 @@
 package SocialAppClient.Control;
 
-import SocialAppClient.Connections.ServerConnection;
-import SocialAppClient.SocialAppGeneral.Command;
+import Connections.Client.ServerConnection;
+import Connections.Command;
 import SocialAppClient.SocialAppGeneral.Post;
 import SocialAppClient.View.ImageViewer;
 import SocialAppClient.View.MainWindow;
@@ -17,6 +17,7 @@ import java.awt.image.BufferedImage;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.net.Socket;
 import java.util.Optional;
 
 import static SocialAppClient.View.SocialAppImages.UPLOADIMAGE;
@@ -61,6 +62,7 @@ public class Utility {
                 @Override
                 public void startConnection() {
                     try {
+                        Socket connectionSocket = getConnectionSocket();
                         DataOutputStream dataOutputStream = new DataOutputStream(connectionSocket.getOutputStream());
                         Command command = new Command();
                         command.setKeyWord(UPLOADIMAGE);

@@ -1,4 +1,7 @@
-package SocialAppClient.Connections;
+package SocialAppClient.Control.Connections;
+
+import Connections.Client.ServerConnection;
+import Connections.Client.ServerNotFound;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -27,7 +30,7 @@ public class UtilityConnection extends ServerConnection {
     private void sendId(String id)
     {
         try {
-            DataOutputStream dataOutputStream = new DataOutputStream(connectionSocket.getOutputStream());
+            DataOutputStream dataOutputStream = new DataOutputStream(getConnectionSocket().getOutputStream());
             dataOutputStream.writeUTF(id);
         } catch (IOException e) {
             e.printStackTrace();
@@ -35,6 +38,6 @@ public class UtilityConnection extends ServerConnection {
     }
     public Socket getConnectionSocket()
     {
-        return connectionSocket;
+        return super.getConnectionSocket();
     }
 }

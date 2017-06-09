@@ -1,11 +1,12 @@
 package SocialAppClient.SocialAppGeneral;
 
+import Connections.Shareable;
 import com.google.gson.Gson;
 
 /**
  * Created by khaled hesham on 12/27/2016.
  */
-public class AttachmentSender implements Shareable{
+public class AttachmentSender implements Shareable {
     Like like ;
     Comment comment;
     long ownerID;

@@ -1,9 +1,9 @@
 package SocialAppClient;
 
-import SocialAppClient.Connections.CommandsExecutor;
-import SocialAppClient.Connections.ConnectionListener;
-import SocialAppClient.Connections.MainServerConnection;
-import SocialAppClient.Connections.ServerNotFound;
+import Connections.Client.CommandsExecutor;
+import Connections.Client.ConnectionListener;
+import Connections.Client.ServerNotFound;
+import SocialAppClient.Control.Connections.MainServerConnection;
 import SocialAppClient.Control.Utility;
 import SocialAppClient.View.MainWindow;
 import SocialAppClient.View.RegisterPage;
@@ -129,7 +129,7 @@ public class Main extends Application {
                     System.out.println("connection lost and reconnecting");
                     mainServerConnection.endConnection();
                     mainServerConnection.reconnect();
-                    CommandsExecutor.getInstance().updateSocket(mainServerConnection.connectionSocket);
+                    CommandsExecutor.getInstance().updateSocket(mainServerConnection.getConnectionSocket());
                 });
                 mainServerConnection.connect();
             }catch (ServerNotFound e)

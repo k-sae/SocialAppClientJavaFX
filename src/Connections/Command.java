@@ -1,9 +1,9 @@
-package SocialAppClient.SocialAppGeneral;
+package Connections;
 
 /**
  * Created by kemo on 25/10/2016.
  */
-public class Command  {
+public class Command {
     private String keyWord;
     final static String separator = "%&&&%";
     private String sharableObject;

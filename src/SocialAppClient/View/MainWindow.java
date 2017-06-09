@@ -1,6 +1,10 @@
 package SocialAppClient.View;
 
-import SocialAppClient.Connections.*;
+import Connections.Client.CommandRequest;
+import Connections.Client.CommandsExecutor;
+import Connections.Client.ServerNotFound;
+import Connections.Command;
+import SocialAppClient.Control.Connections.*;
 import SocialAppClient.Control.ClientAdmin;
 import SocialAppClient.Control.ClientLoggedUser;
 import SocialAppClient.Control.Utility;
@@ -75,7 +79,7 @@ public class MainWindow extends GridPane {
                             }
 
                         }
-                                .getConnectionSocket()) {
+                           .connect().getConnectionSocket()) {
                     @Override
                     public void Analyze(Command command) {
                         if (command.getKeyWord().equals(LoggedUser.FRIEND_REQ))
@@ -107,7 +111,7 @@ public class MainWindow extends GridPane {
                 //i should rename this later
                 ReceiveServerNotification receiveServerNotification =
                         new ReceiveServerNotification(
-                                new UtilityConnection(id,PORT_NO)
+                                new UtilityConnection(id,PORT_NO).connect()
                                         .getConnectionSocket()) {
                     @Override
                     public void Analyze(Command command) {

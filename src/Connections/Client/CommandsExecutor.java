@@ -1,7 +1,9 @@
-package SocialAppClient.Connections;
+package Connections.Client;
 
+import Connections.TransmissionFailureListener;
+
+import java.io.IOException;
 import java.net.Socket;
-import java.net.SocketException;
 import java.util.ArrayList;
 
 /**
@@ -11,7 +13,7 @@ import java.util.ArrayList;
 //singleton class iin order to be easily accessed all over app
 public class CommandsExecutor {
     private static CommandsExecutor instance;
-    private volatile ArrayList<CommandRequest> commandRequests;
+    private volatile ArrayList<ConnectionRunnable> commandRequests;
     private volatile boolean isRunning;
     private ArrayList<TransmissionFailureListener> transmissionFailureListeners;
     private Socket updatedSocket;
@@ -28,9 +30,19 @@ public class CommandsExecutor {
         if(instance == null) instance = new CommandsExecutor();
         return instance;
     }
-    public synchronized void add(CommandRequest request)
+    public  void add(ConnectionRunnable request, int index)
+    {
+        commandRequests.add(index, request);
+        start();
+    }
+    public  void add(ConnectionRunnable request)
     {
         commandRequests.add(request);
+        start();
+
+    }
+    private synchronized void start()
+    {
         if(!isRunning) startExecuting();
     }
     private void startExecuting()
@@ -46,10 +58,10 @@ public class CommandsExecutor {
                 {
                     try {
                         if (updatedSocket != null)
-                            commandRequests.get(0).updateConnectionSocket(updatedSocket);
+                            ((CommandRequest) commandRequests.get(0)).updateConnectionSocket(updatedSocket);
                         commandRequests.get(0).run();
                         commandRequests.remove(0);
-                    } catch (SocketException e) {
+                    } catch (IOException e) {
                         //noinspection ForLoopReplaceableByForEach
                         for (int i = 0; i < transmissionFailureListeners.size(); i++) {
                             transmissionFailureListeners.get(i).onDisconnection();
@@ -60,6 +72,7 @@ public class CommandsExecutor {
                 updatedSocket = null;
             }
         };
+        thread.setName("Connection Thread");
         thread.start();
     }
     public void setOnTransmissionFailure(TransmissionFailureListener transmissionFailureListener)

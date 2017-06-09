@@ -1,6 +1,9 @@
 package SocialAppClient.View;
 
-import SocialAppClient.Connections.*;
+import Connections.Client.CommandRequest;
+import Connections.Client.CommandsExecutor;
+import Connections.Command;
+import SocialAppClient.Control.Connections.*;
 import SocialAppClient.Control.Utility;
 import SocialAppClient.SocialAppGeneral.*;
 import SocialAppClient.SocialAppGeneral.Error;
@@ -14,7 +17,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 /**
  * Created by mosta on 30-Oct-16.

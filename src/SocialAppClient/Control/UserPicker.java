@@ -1,9 +1,9 @@
 package SocialAppClient.Control;
 
-import SocialAppClient.Connections.CommandRequest;
-import SocialAppClient.Connections.CommandsExecutor;
-import SocialAppClient.Connections.MainServerConnection;
-import SocialAppClient.SocialAppGeneral.Command;
+import Connections.Client.CommandRequest;
+import Connections.Client.CommandsExecutor;
+import Connections.Command;
+import SocialAppClient.Control.Connections.MainServerConnection;
 import SocialAppClient.SocialAppGeneral.UserInfo;
 
 

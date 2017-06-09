@@ -1,7 +1,8 @@
 package SocialAppClient.View;
 
-import SocialAppClient.Connections.ServerConnection;
-import SocialAppClient.SocialAppGeneral.Command;
+import Connections.Client.ServerConnection;
+import Connections.Command;
+import Connections.Connection;
 import javafx.application.Platform;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
@@ -32,6 +33,7 @@ public class ImageViewer extends ImageView implements SocialAppImages {
                         @Override
                         public void startConnection() {
                             try {
+                                Socket connectionSocket = getConnectionSocket();
                                 sendCommand(connectionSocket);
                                 connectionSocket.setSoTimeout(100000);
                                 BufferedImage bufferedImage = ImageIO.read(connectionSocket.getInputStream());

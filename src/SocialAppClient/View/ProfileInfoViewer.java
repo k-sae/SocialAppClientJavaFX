@@ -1,5 +1,6 @@
 package SocialAppClient.View;
 
+import Connections.Command;
 import SocialAppClient.Control.ClientAdmin;
 import SocialAppClient.LogHistory;
 import SocialAppClient.Main;

@@ -1,4 +1,4 @@
-package SocialAppClient.SocialAppGeneral;
+package Connections;
 
 /**
  * Created by kemo on 08/11/2016.

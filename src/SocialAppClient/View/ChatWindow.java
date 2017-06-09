@@ -1,10 +1,10 @@
 package SocialAppClient.View;
 
-import SocialAppClient.Connections.ReceiveServerNotification;
-import SocialAppClient.Connections.UtilityConnection;
+import Connections.Command;
+import SocialAppClient.Control.Connections.ReceiveServerNotification;
+import SocialAppClient.Control.Connections.UtilityConnection;
 import SocialAppClient.Control.UserPicker;
 import SocialAppClient.Control.Utility;
-import SocialAppClient.SocialAppGeneral.Command;
 import SocialAppClient.SocialAppGeneral.Message;
 import SocialAppClient.SocialAppGeneral.SocialArrayList;
 import SocialAppClient.SocialAppGeneral.UserInfo;

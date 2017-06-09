@@ -1,7 +1,7 @@
-package SocialAppClient.Connections;
+package SocialAppClient.Control.Connections;
 
-import SocialAppClient.SocialAppGeneral.Command;
-import SocialAppClient.SocialAppGeneral.ReceiveCommand;
+import Connections.Command;
+import Connections.ReceiveCommand;
 
 import java.net.Socket;
 import java.net.SocketException;
@@ -20,8 +20,7 @@ public abstract class ReceiveServerNotification extends ReceiveCommand {
         }
     }
 
-  abstract   public void Analyze(Command command);
-
+  abstract  public void Analyze(Command command);
     @Override
     public void setRemote(Socket remote) {
         super.setRemote(remote);

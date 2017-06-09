@@ -1,8 +1,9 @@
 package SocialAppClient.Control;
 
-import SocialAppClient.Connections.CommandRequest;
-import SocialAppClient.Connections.CommandsExecutor;
-import SocialAppClient.Connections.MainServerConnection;
+import Connections.Client.CommandRequest;
+import Connections.Client.CommandsExecutor;
+import Connections.Command;
+import SocialAppClient.Control.Connections.MainServerConnection;
 import SocialAppClient.Main;
 import SocialAppClient.SocialAppGeneral.*;
 import SocialAppClient.View.*;
@@ -31,7 +32,6 @@ public class ClientLoggedUser extends LoggedUser {
         command.setSharableObject(group.convertToJsonString());
 
         CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
-
 
             @Override
             public void analyze(Command cmd) {
