@@ -47,7 +47,7 @@ public class ImageViewer extends ImageView implements SocialAppImages {
                 }
             }
         };
-        thread.start();
+//        thread.start();
 
     }
     private void sendCommand(Socket socket)

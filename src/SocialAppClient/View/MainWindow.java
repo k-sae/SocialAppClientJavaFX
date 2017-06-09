@@ -13,6 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by kemo on 09/11/2016.
@@ -112,7 +113,9 @@ public class MainWindow extends GridPane {
                     public void Analyze(Command command) {
                         if(command.getKeyWord().equals(Message.FETCH_MESSAGES)){
                         SocialArrayList list = SocialArrayList.convertFromJsonString(command.getObjectStr());
-                        navBar.addNewMessage((String[]) list.getItems().toArray());
+                        Object[] objectArray = list.getItems().toArray();
+                        String[] strings = Arrays.copyOf(objectArray, objectArray.length, String[].class);
+                        navBar.addNewMessage(strings);
                         }
                         else if (command.getKeyWord().equals(Message.NEW_NOTIFICATION))
                         {
