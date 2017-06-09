@@ -34,6 +34,7 @@ public class RegisterPage extends StackPane {
      setRow(gp);
      setCol(gp);
      gp.setStyle("-fx-background-color:rgba(9,9,9,0.4)");
+     gp.setPadding(new Insets(30));
      this.getChildren().add(gp);
      layoutEditor(gp);
 
