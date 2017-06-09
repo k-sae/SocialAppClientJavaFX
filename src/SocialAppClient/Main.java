@@ -1,5 +1,10 @@
 package SocialAppClient;
 
+import SocialAppClient.Connections.CommandsExecutor;
+import SocialAppClient.Connections.ConnectionListener;
+import SocialAppClient.Connections.MainServerConnection;
+import SocialAppClient.Connections.ServerNotFound;
+import SocialAppClient.Control.Utility;
 import SocialAppClient.View.MainWindow;
 import SocialAppClient.View.RegisterPage;
 import javafx.application.Application;
@@ -19,11 +24,10 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-
+        initMainConnection();
         mainPane = new StackPane();
         Pane GP=new RegisterPage(mainPane);
         mainPane.getChildren().add(GP);
-
         primaryStage.setTitle("btats Network");
         /** ADD THE APPLICATION ICON */
         primaryStage.getIcons().add(new Image("file:Resources/btatsya.png"));
@@ -49,6 +53,44 @@ public class Main extends Application {
     public static void logout(){
         mainPane.getChildren().clear();
         mainPane.getChildren().add(new RegisterPage(mainPane));
+    }
+    private void initMainConnection()
+    {
+        //initialize the connection up here
+        new Thread(() -> {
+            try {
+                MainServerConnection mainServerConnection = new MainServerConnection();
+
+                mainServerConnection.setConnectionListener(new ConnectionListener() {
+                    @Override
+                    public void onStart() {
+                        //TODO #belal
+                        System.out.println("Connecting...");
+                    }
+
+                    @Override
+                    public void onConnectionSuccess() {
+                        //TODO #belal
+                        System.out.println("Connected");
+                    }
+                });
+                CommandsExecutor.getInstance().setOnTransmissionFailure(() -> { // this trigger whenever client try to send package and fail
+                    //TODO #belal
+                    System.out.println("connection lost and reconnecting");
+                    mainServerConnection.endConnection();
+                    mainServerConnection.reconnect();
+                    CommandsExecutor.getInstance().updateSocket(mainServerConnection.connectionSocket);
+                });
+                mainServerConnection.connect();
+            }catch (ServerNotFound e)
+            {
+                Utility.cantConnectMessage();
+
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
 }

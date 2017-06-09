@@ -36,41 +36,6 @@ public class RegisterPage extends StackPane {
      gp.setStyle("-fx-background-color:rgba(9,9,9,0.4)");
      this.getChildren().add(gp);
      layoutEditor(gp);
-     //initialize the connection up here
-     new Thread(() -> {
-         try {
-           MainServerConnection mainServerConnection = new MainServerConnection();
-
-             mainServerConnection.setConnectionListener(new ConnectionListener() {
-                 @Override
-                 public void onStart() {
-                     //TODO #belal
-                     System.out.println("horray!!! :D");
-                 }
-
-                 @Override
-                 public void onConnectionSuccess() {
-                    //TODO #belal
-                     System.out.println("horray2!!! :D");
-                 }
-             });
-             CommandsExecutor.getInstance().setOnTransmissionFailure(() -> { // this trigger whenever client try to send package and fail
-                 //TODO #belal
-                 System.out.println("horray3!!! :D");
-                 mainServerConnection.endConnection();
-                 mainServerConnection.reconnect();
-                 CommandsExecutor.getInstance().updateSocket(mainServerConnection.connectionSocket);
-             });
-             mainServerConnection.connect();
-         }catch (ServerNotFound e)
-         {
-             Utility.cantConnectMessage();
-
-         }
-         catch (Exception e) {
-             e.printStackTrace();
-         }
-     }).start();
 
 
  }
