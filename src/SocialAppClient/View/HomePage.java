@@ -2,7 +2,6 @@ package SocialAppClient.View;
 
 import SocialAppClient.Control.UserPicker;
 import SocialAppClient.Control.Utility;
-import SocialAppClient.Control.validator;
 import SocialAppClient.Main;
 import SocialAppClient.SocialAppGeneral.Group;
 import SocialAppClient.SocialAppGeneral.Post;
