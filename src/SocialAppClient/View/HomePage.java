@@ -17,6 +17,7 @@ import javafx.scene.layout.RowConstraints;
 
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 /**
  * Created by kemo on 10/11/2016.
@@ -113,7 +114,7 @@ public class HomePage extends GridPane {
             Optional<String> check =  Utility.createWindow("Group Name", Group.CREATE_GROUP);
                     if (!check.equals(Optional.empty())) {
                         //noinspection OptionalGetWithoutIsPresent
-                        if (check.get().equals("") || !validator.valdiateName(check.get())) {
+                        if (check.get().equals("") || !Pattern.matches("[A-Za-z]{1,10}+(\\s[A-Za-z]{1,10}+)?",check.get())) {
                             Platform.runLater(() -> Utility.errorWindow("not correct name"));
                         } else {
                             //noinspection OptionalGetWithoutIsPresent
