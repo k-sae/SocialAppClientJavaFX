@@ -7,7 +7,6 @@ import SocialAppClient.Connections.ServerNotFound;
 import SocialAppClient.Control.Utility;
 import SocialAppClient.View.MainWindow;
 import SocialAppClient.View.RegisterPage;
-import SocialAppClient.View.Styles;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -26,7 +25,7 @@ import java.util.TimerTask;
 
 public class Main extends Application {
 
-    private static BorderPane overallPane;
+    private static BorderPane windowPane;
     private static StackPane connectionPane;
     private static Label connectionStatus;
     private static Pane mainPane;
@@ -41,11 +40,11 @@ public class Main extends Application {
         Pane GP = new RegisterPage(mainPane);
         mainPane.getChildren().add(GP);
 
-        overallPane = new BorderPane(mainPane,connectionPane,null,null,null);
+        windowPane = new BorderPane(mainPane,connectionPane,null,null,null);
         primaryStage.setTitle("btats Network");
         /** ADD THE APPLICATION ICON */
         primaryStage.getIcons().add(new Image("file:Resources/btatsya.png"));
-        primaryStage.setScene(new Scene(overallPane,960,600));
+        primaryStage.setScene(new Scene(windowPane,960,600));
         primaryStage.show();
     }
 
@@ -70,6 +69,9 @@ public class Main extends Application {
     }
     private void initMainConnection()
     {
+        connectionStatus = new Label();
+        connectionPane = new StackPane(connectionStatus);
+
         //initialize the connection up here
         new Thread(() -> {
             try {
@@ -80,43 +82,45 @@ public class Main extends Application {
                     public void onStart() {
                         //TODO #belal
                         System.out.println("Connecting...");
-                        connectionStatus = new Label();
-                        connectionStatus.setText("CONNECTING...");
-                        connectionStatus.setFont(Font.font(16));
 
-                        connectionPane = new StackPane(connectionStatus);
-                        connectionPane.setStyle("-fx-background-color: #ffbb00");
-                        connectionPane.setPadding(new Insets(5));
-                        connectionPane.setAlignment(Pos.CENTER);
+                        Platform.runLater(() -> {
+                            connectionStatus.setText("CONNECTING...");
+                            connectionStatus.setFont(Font.font(16));
+                            connectionPane.setStyle("-fx-background-color: #ffbb00");
+                            connectionPane.setPadding(new Insets(8));
+                            connectionPane.setAlignment(Pos.CENTER);
+                        });
+
                     }
 
                     @Override
                     public void onConnectionSuccess() {
                         //TODO #belal
                         System.out.println("Connected");
-                        connectionStatus = new Label();
-                        connectionStatus.setText("CONNECTED");
-                        connectionStatus.setFont(Font.font(16));
 
-                        connectionPane = new StackPane(connectionStatus);
-                        connectionPane.setStyle("-fx-background-color: #00ff00");
-                        connectionPane.setPadding(new Insets(5));
-                        connectionPane.setAlignment(Pos.CENTER);
+                        Platform.runLater(() -> {
+                            connectionStatus.setText("CONNECTED");
+                            connectionStatus.setFont(Font.font(16));
+                            connectionPane.setStyle("-fx-background-color: #00ff00");
+                            connectionPane.setPadding(new Insets(8));
+                            connectionPane.setAlignment(Pos.CENTER);
 
-                        //Remove the connection status after 5 seconds
-                        new Timer().schedule(
-                                new TimerTask() {
-                                    @Override
-                                    public void run() {
-                                        Platform.runLater(() -> {
-                                            connectionPane.getChildren().clear();
-                                            connectionPane.setStyle(null);
-                                            connectionPane.setPadding(new Insets(0));
-                                        });
-                                    }
-                                },
-                                5000
-                        );
+                            //Remove the connection status after 5 seconds
+                            new Timer().schedule(
+                                    new TimerTask() {
+                                        @Override
+                                        public void run() {
+                                            Platform.runLater(() -> {
+                                                connectionPane.getChildren().clear();
+                                                connectionPane.setStyle(null);
+                                                connectionPane.setPadding(new Insets(0));
+                                            });
+                                        }
+                                    },
+                                    5000
+                            );
+
+                        });
 
                     }
                 });
