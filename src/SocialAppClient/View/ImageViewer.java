@@ -36,8 +36,9 @@ public class ImageViewer extends ImageView implements SocialAppImages {
                                 Socket connectionSocket = getConnectionSocket();
                                 sendCommand(connectionSocket);
                                 connectionSocket.setSoTimeout(100000);
-                                BufferedImage bufferedImage = ImageIO.read(connectionSocket.getInputStream());
-                               Platform.runLater(() -> setImage(SwingFXUtils.toFXImage( bufferedImage, null)));
+                               //TODO #hazem
+                                //          1- read from server byte array
+                                //          2- convert byte array to Javafx image
                             } catch (IOException e) {
                                 Platform.runLater(() ->  setImage(new Image("file:Resources/avatar.jpg", true)));
                             }
@@ -49,7 +50,7 @@ public class ImageViewer extends ImageView implements SocialAppImages {
                 }
             }
         };
-//        thread.start();
+        thread.start();
 
     }
     private void sendCommand(Socket socket)
