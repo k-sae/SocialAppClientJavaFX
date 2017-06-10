@@ -22,6 +22,8 @@ import java.time.LocalDate;
  * Created by mosta on 30-Oct-16.
  */
 public class RegisterPage extends StackPane {
+    //i will put it here bec oop concepts shits any way :)
+    public  static LoginInfo  loginInfo;
     private Pane parent;
  public RegisterPage(Pane parent){
      this.parent = parent;
@@ -83,6 +85,7 @@ public class RegisterPage extends StackPane {
              log.setEmail(email.getText());
              log.setPassword(pass.getText());
              Command command = new Command();
+             loginInfo = log;
              command.setKeyWord(LoginInfo.NEW_LOGIN);
              command.setSharableObject(log);
              CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {

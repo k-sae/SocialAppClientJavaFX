@@ -628,4 +628,20 @@ public class ClientLoggedUser extends LoggedUser {
         }
         public abstract void onFinish(String result);
     }
+    public static abstract class Login {
+        protected Login(LoginInfo loginInfo) {
+            Command command = new Command();
+            command.setKeyWord(LoginInfo.NEW_LOGIN);
+            command.setSharableObject(loginInfo.convertToJsonString());
+            CommandRequest commandRequest = new CommandRequest(MainServerConnection.mainConnectionSocket, command) {
+                @Override
+                public void analyze(Command cmd) {
+                    onFinish(cmd.getObjectStr());
+                }
+            };
+            CommandsExecutor.getInstance().add(commandRequest, 0);
+        }
+
+        public abstract void onFinish(String id);
+    }
 }

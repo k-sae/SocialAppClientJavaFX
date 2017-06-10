@@ -3,6 +3,7 @@ package SocialAppClient;
 import Connections.Client.CommandsExecutor;
 import Connections.Client.ConnectionListener;
 import Connections.Client.ServerNotFound;
+import SocialAppClient.Control.ClientLoggedUser;
 import SocialAppClient.Control.Connections.MainServerConnection;
 import SocialAppClient.Control.Utility;
 import SocialAppClient.View.MainWindow;
@@ -129,6 +130,7 @@ public class Main extends Application {
                     System.out.println("connection lost and reconnecting");
                     mainServerConnection.endConnection();
                     mainServerConnection.reconnect();
+                    login();
                     CommandsExecutor.getInstance().updateSocket(mainServerConnection.getConnectionSocket());
                 });
                 mainServerConnection.connect();
@@ -141,6 +143,20 @@ public class Main extends Application {
                 e.printStackTrace();
             }
         }).start();
+    }
+    private void login()
+    {
+        if (RegisterPage.loginInfo == null) return;
+        new ClientLoggedUser.Login(RegisterPage.loginInfo) {
+            @Override
+            public void onFinish(String id) {
+                if (id.equals("-1")){
+                    //TODO #belbl
+                    //this suppose to redirect him to register page
+                    //many reasons for this includes password changes
+                }
+            }
+        };
     }
 
 }
