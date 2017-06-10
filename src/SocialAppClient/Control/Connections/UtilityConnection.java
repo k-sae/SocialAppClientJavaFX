@@ -14,12 +14,14 @@ public class UtilityConnection extends ServerConnection {
     public UtilityConnection(String id, int port) throws ServerNotFound {
         //TODO #config
         super("127.0.0.1",port);
+        connect();
         sendId(id);
     }
     public UtilityConnection(String senderId, int port, String receiverId) throws ServerNotFound
     {
         //TODO #config
         super("127.0.0.1",port);
+        connect();
         sendId(senderId);
         sendId(receiverId);
     }

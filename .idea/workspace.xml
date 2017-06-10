@@ -2,56 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba75cff5-414b-45de-83db-db0bc1560e21" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Connections/Client/BasicConnection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Connections/Client/ConnectionRunnable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Connections/Client/ServerConnection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Connections/Client/ServerFoundListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Connections/Client/ServerScanner.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Connections/Connection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Connections/IPAddress.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Connections/ReceiveCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Connections/Server/ServerInitializer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Connections/Shareable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Connections/TransmissionFailureListener.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SocialAppClient/Connections/ServerConnection.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/ReceiveCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/Shareable.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/SocialAppClient/Connections/CommandRequest.java" afterPath="$PROJECT_DIR$/src/Connections/Client/CommandRequest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/SocialAppClient/Connections/CommandsExecutor.java" afterPath="$PROJECT_DIR$/src/Connections/Client/CommandsExecutor.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/SocialAppClient/Connections/ConnectionListener.java" afterPath="$PROJECT_DIR$/src/Connections/Client/ConnectionListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/SocialAppClient/Connections/MainServerConnection.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/Control/Connections/MainServerConnection.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/SocialAppClient/Connections/ReceiveServerNotification.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/Control/Connections/ReceiveServerNotification.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/SocialAppClient/Connections/ServerNotFound.java" afterPath="$PROJECT_DIR$/src/Connections/Client/ServerNotFound.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/SocialAppClient/Connections/TransmissionFailureListener.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/Control/Connections/TransmissionFailureListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/SocialAppClient/Connections/UtilityConnection.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/Control/Connections/UtilityConnection.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/Command.java" afterPath="$PROJECT_DIR$/src/Connections/Command.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/Control/ClientAdmin.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/Control/ClientAdmin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/Control/ClientLoggedUser.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/Control/ClientLoggedUser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/Control/GroupMember.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/Control/GroupMember.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/Control/GroupPicker.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/Control/GroupPicker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/Control/UserPicker.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/Control/UserPicker.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/Control/Utility.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/Control/Utility.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/Main.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/AppUser.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/AppUser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/AttachmentSender.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/AttachmentSender.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/Group.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/Group.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/Log.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/Log.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/LoginInfo.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/LoginInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/Message.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/Message.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/Notification.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/Notification.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/Post.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/Post.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/PostSender.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/PostSender.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/RegisterInfo.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/RegisterInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/SocialArrayList.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/SocialArrayList.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/UserInfo.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/UserInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/View/ChatWindow.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/View/ChatWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/View/EditInfo.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/View/EditInfo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/View/ImageViewer.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/View/ImageViewer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/Control/Connections/UtilityConnection.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/Control/Connections/UtilityConnection.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/View/MainWindow.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/View/MainWindow.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/View/NavBar.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/View/NavBar.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/View/ProfileInfoViewer.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/View/ProfileInfoViewer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SocialAppClient/View/RegisterPage.java" afterPath="$PROJECT_DIR$/src/SocialAppClient/View/RegisterPage.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,33 +32,10 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="77" column="69" lean-forward="false" selection-start-line="77" selection-start-column="69" selection-end-line="77" selection-end-column="69" />
+            <state relative-caret-position="765">
+              <caret line="147" column="0" lean-forward="false" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainServerConnection.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Control/Connections/MainServerConnection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-165">
-              <caret line="11" column="49" lean-forward="true" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UtilityConnection.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Control/Connections/UtilityConnection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="82">
-              <caret line="31" column="13" lean-forward="true" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-              <folding>
-                <element signature="e#1149#1150#0" expanded="true" />
-                <element signature="e#1199#1200#0" expanded="true" />
+                <marker date="1497050726792" expanded="true" signature="5571:5579" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -114,12 +44,9 @@
       <file leaf-file-name="ServerConnection.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Connections/Client/ServerConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="41" column="20" lean-forward="false" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
-              <folding>
-                <element signature="e#2242#2243#0" expanded="true" />
-                <element signature="e#2281#2282#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="34">
+              <caret line="38" column="16" lean-forward="true" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -127,18 +54,28 @@
       <file leaf-file-name="BasicConnection.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Connections/Client/BasicConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="340">
               <caret line="26" column="19" lean-forward="false" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocialAppClient/View/MainWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="81" column="37" lean-forward="false" selection-start-line="81" selection-start-column="37" selection-end-line="81" selection-end-column="37" />
+            <state relative-caret-position="93">
+              <caret line="63" column="33" lean-forward="false" selection-start-line="63" selection-start-column="33" selection-end-line="63" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UtilityConnection.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Control/Connections/UtilityConnection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="552">
+              <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -147,7 +84,7 @@
       <file leaf-file-name="CommandRequest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Connections/Client/CommandRequest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
+            <state relative-caret-position="119">
               <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
               <folding />
             </state>
@@ -157,9 +94,26 @@
       <file leaf-file-name="ChatWindow.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocialAppClient/View/ChatWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
+            <state relative-caret-position="1020">
               <caret line="84" column="54" lean-forward="false" selection-start-line="84" selection-start-column="54" selection-end-line="84" selection-end-column="54" />
-              <folding />
+              <folding>
+                <marker date="1497051338125" expanded="true" signature="947:989" ph="/**...*/" />
+                <marker date="1497051338125" expanded="true" signature="1360:3509" ph="{...}" />
+                <marker date="1497051338125" expanded="true" signature="1659:1867" ph="{...}" />
+                <marker date="1497051338125" expanded="true" signature="2286:3449" ph="{...}" />
+                <marker date="1497051338125" expanded="true" signature="2358:3439" ph="{...}" />
+                <marker date="1497051338125" expanded="true" signature="2499:3423" ph="{...}" />
+                <marker date="1497051338125" expanded="true" signature="2587:3405" ph="{...}" />
+                <marker date="1497051338125" expanded="true" signature="2966:3208" ph="{...}" />
+                <marker date="1497051338125" expanded="false" signature="3078:3117" ph=" { " />
+                <marker date="1497051338125" expanded="false" signature="3144:3178" ph=" }" />
+                <marker date="1497051338125" expanded="true" signature="3538:4567" ph="{...}" />
+                <marker date="1497051338125" expanded="true" signature="4339:4500" ph="{...}" />
+                <marker date="1497051338125" expanded="true" signature="4605:5102" ph="{...}" />
+                <marker date="1497051338125" expanded="true" signature="5144:5664" ph="{...}" />
+                <marker date="1497051338125" expanded="true" signature="5791:6497" ph="{...}" />
+                <marker date="1497051338125" expanded="true" signature="6548:7147" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -167,9 +121,22 @@
       <file leaf-file-name="EditInfo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocialAppClient/View/EditInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="2295">
               <caret line="158" column="22" lean-forward="false" selection-start-line="158" selection-start-column="22" selection-end-line="158" selection-end-column="22" />
-              <folding />
+              <folding>
+                <marker date="1497051337901" expanded="true" signature="794:836" ph="/**...*/" />
+                <marker date="1497051337901" expanded="true" signature="972:1059" ph="{...}" />
+                <marker date="1497051337901" expanded="true" signature="1093:1432" ph="{...}" />
+                <marker date="1497051337901" expanded="true" signature="1463:6729" ph="{...}" />
+                <marker date="1497051337901" expanded="true" signature="2194:2918" ph="{...}" />
+                <marker date="1497051337901" expanded="true" signature="3232:3333" ph="{...}" />
+                <marker date="1497051337901" expanded="true" signature="4907:6095" ph="{...}" />
+                <marker date="1497051337901" expanded="true" signature="5709:5871" ph="{...}" />
+                <marker date="1497051337901" expanded="false" signature="5783:5802" ph=" { " />
+                <marker date="1497051337901" expanded="false" signature="5841:5858" ph=" }" />
+                <marker date="1497051337901" expanded="true" signature="5948:6018" ph="//..." />
+                <marker date="1497051337901" expanded="true" signature="6432:6497" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -177,9 +144,36 @@
       <file leaf-file-name="ProfileInfoViewer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SocialAppClient/View/ProfileInfoViewer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-150">
-              <caret line="68" column="37" lean-forward="false" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
-              <folding />
+            <state relative-caret-position="1020">
+              <caret line="69" column="37" lean-forward="false" selection-start-line="69" selection-start-column="37" selection-end-line="69" selection-end-column="37" />
+              <folding>
+                <marker date="1497051390729" expanded="true" signature="363:405" ph="/**...*/" />
+                <marker date="1497051390729" expanded="true" signature="555:774" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="818:2002" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="1184:1954" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="1259:1939" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="1305:1919" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="2045:2398" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="2165:2350" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="2235:2340" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="2449:2731" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="2777:3132" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="2899:3084" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="2969:3074" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="3178:3561" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="3308:3513" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="3386:3499" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="3608:3974" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="3738:3926" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="3808:3916" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="4015:4618" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="4383:4571" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="4453:4561" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="4658:5030" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="5054:5626" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="5391:5583" ph="{...}" />
+                <marker date="1497051390729" expanded="true" signature="5470:5573" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -230,15 +224,16 @@
         <option value="$PROJECT_DIR$/src/SocialAppClient/View/ProfileInfoViewer.java" />
         <option value="$PROJECT_DIR$/src/SocialAppClient/Control/Connections/MainServerConnection.java" />
         <option value="$PROJECT_DIR$/src/Connections/Client/ServerConnection.java" />
-        <option value="$PROJECT_DIR$/src/SocialAppClient/Control/Connections/UtilityConnection.java" />
         <option value="$PROJECT_DIR$/src/SocialAppClient/View/MainWindow.java" />
+        <option value="$PROJECT_DIR$/src/SocialAppClient/Control/Connections/UtilityConnection.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="24" />
-    <option name="width" value="1366" />
-    <option name="height" value="744" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="784" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -431,31 +426,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SocialAppClientJavaFX" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SocialAppClientJavaFX" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value=".idea" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SocialAppChatServer" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -718,6 +714,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="ba75cff5-414b-45de-83db-db0bc1560e21" name="Default" comment="" />
@@ -729,7 +728,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="1366" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -741,14 +740,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32569557" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4133127" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41321045" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28181818" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32507738" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2859304" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -764,6 +762,7 @@
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="544" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32507738" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -779,7 +778,7 @@
           <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="15" />
+      <option name="time" value="16" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -797,7 +796,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -806,9 +804,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="16" column="26" lean-forward="false" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -816,7 +811,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -832,17 +826,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
           <caret line="41" column="47" lean-forward="false" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/javafx-src.zip!/javafx/application/Platform.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="35" column="19" lean-forward="false" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/javafx-src.zip!/javafx/application/Platform.java" />
     <entry file="file://$PROJECT_DIR$/src/Connections/Command.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -895,7 +882,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -903,23 +889,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Control/Connections/ServerNotFound.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Control/Connections/ServerNotFound.java" />
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/SocialAppGeneral/ReceiveCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="37" column="25" lean-forward="false" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -945,7 +922,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="20" lean-forward="false" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -953,7 +929,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
           <caret line="191" column="43" lean-forward="false" selection-start-line="191" selection-start-column="43" selection-end-line="191" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1118,41 +1093,91 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Control/Connections/ReceiveServerNotification.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-22">
-          <caret line="12" column="14" lean-forward="false" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Control/Connections/ReceiveServerNotification.java" />
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/View/ChatWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
+        <state relative-caret-position="1020">
           <caret line="84" column="54" lean-forward="false" selection-start-line="84" selection-start-column="54" selection-end-line="84" selection-end-column="54" />
-          <folding />
+          <folding>
+            <marker date="1497051338125" expanded="true" signature="947:989" ph="/**...*/" />
+            <marker date="1497051338125" expanded="true" signature="1360:3509" ph="{...}" />
+            <marker date="1497051338125" expanded="true" signature="1659:1867" ph="{...}" />
+            <marker date="1497051338125" expanded="true" signature="2286:3449" ph="{...}" />
+            <marker date="1497051338125" expanded="true" signature="2358:3439" ph="{...}" />
+            <marker date="1497051338125" expanded="true" signature="2499:3423" ph="{...}" />
+            <marker date="1497051338125" expanded="true" signature="2587:3405" ph="{...}" />
+            <marker date="1497051338125" expanded="true" signature="2966:3208" ph="{...}" />
+            <marker date="1497051338125" expanded="false" signature="3078:3117" ph=" { " />
+            <marker date="1497051338125" expanded="false" signature="3144:3178" ph=" }" />
+            <marker date="1497051338125" expanded="true" signature="3538:4567" ph="{...}" />
+            <marker date="1497051338125" expanded="true" signature="4339:4500" ph="{...}" />
+            <marker date="1497051338125" expanded="true" signature="4605:5102" ph="{...}" />
+            <marker date="1497051338125" expanded="true" signature="5144:5664" ph="{...}" />
+            <marker date="1497051338125" expanded="true" signature="5791:6497" ph="{...}" />
+            <marker date="1497051338125" expanded="true" signature="6548:7147" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/View/EditInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="2295">
           <caret line="158" column="22" lean-forward="false" selection-start-line="158" selection-start-column="22" selection-end-line="158" selection-end-column="22" />
-          <folding />
+          <folding>
+            <marker date="1497051337901" expanded="true" signature="794:836" ph="/**...*/" />
+            <marker date="1497051337901" expanded="true" signature="972:1059" ph="{...}" />
+            <marker date="1497051337901" expanded="true" signature="1093:1432" ph="{...}" />
+            <marker date="1497051337901" expanded="true" signature="1463:6729" ph="{...}" />
+            <marker date="1497051337901" expanded="true" signature="2194:2918" ph="{...}" />
+            <marker date="1497051337901" expanded="true" signature="3232:3333" ph="{...}" />
+            <marker date="1497051337901" expanded="true" signature="4907:6095" ph="{...}" />
+            <marker date="1497051337901" expanded="true" signature="5709:5871" ph="{...}" />
+            <marker date="1497051337901" expanded="false" signature="5783:5802" ph=" { " />
+            <marker date="1497051337901" expanded="false" signature="5841:5858" ph=" }" />
+            <marker date="1497051337901" expanded="true" signature="5948:6018" ph="//..." />
+            <marker date="1497051337901" expanded="true" signature="6432:6497" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/View/ProfileInfoViewer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-150">
-          <caret line="68" column="37" lean-forward="false" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
-          <folding />
+        <state relative-caret-position="1020">
+          <caret line="69" column="37" lean-forward="false" selection-start-line="69" selection-start-column="37" selection-end-line="69" selection-end-column="37" />
+          <folding>
+            <marker date="1497051390729" expanded="true" signature="363:405" ph="/**...*/" />
+            <marker date="1497051390729" expanded="true" signature="555:774" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="818:2002" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="1184:1954" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="1259:1939" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="1305:1919" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="2045:2398" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="2165:2350" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="2235:2340" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="2449:2731" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="2777:3132" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="2899:3084" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="2969:3074" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="3178:3561" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="3308:3513" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="3386:3499" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="3608:3974" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="3738:3926" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="3808:3916" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="4015:4618" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="4383:4571" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="4453:4561" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="4658:5030" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="5054:5626" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="5391:5583" ph="{...}" />
+            <marker date="1497051390729" expanded="true" signature="5470:5573" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Connections/Client/CommandRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
+        <state relative-caret-position="119">
           <caret line="14" column="22" lean-forward="false" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
           <folding />
         </state>
@@ -1160,7 +1185,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Connections/Client/BasicConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
+        <state relative-caret-position="340">
           <caret line="26" column="19" lean-forward="false" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="19" />
           <folding />
         </state>
@@ -1168,48 +1193,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="77" column="69" lean-forward="false" selection-start-line="77" selection-start-column="69" selection-end-line="77" selection-end-column="69" />
+        <state relative-caret-position="765">
+          <caret line="147" column="0" lean-forward="false" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1497050726792" expanded="true" signature="5571:5579" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Control/Connections/MainServerConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-165">
-          <caret line="11" column="49" lean-forward="true" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Control/Connections/MainServerConnection.java" />
     <entry file="file://$PROJECT_DIR$/src/Connections/Client/ServerConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="41" column="20" lean-forward="false" selection-start-line="41" selection-start-column="20" selection-end-line="41" selection-end-column="20" />
-          <folding>
-            <element signature="e#2242#2243#0" expanded="true" />
-            <element signature="e#2281#2282#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Control/Connections/UtilityConnection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="31" column="13" lean-forward="true" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-          <folding>
-            <element signature="e#1149#1150#0" expanded="true" />
-            <element signature="e#1199#1200#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="38" column="16" lean-forward="true" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SocialAppClient/View/MainWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="81" column="37" lean-forward="false" selection-start-line="81" selection-start-column="37" selection-end-line="81" selection-end-column="37" />
+        <state relative-caret-position="93">
+          <caret line="63" column="33" lean-forward="false" selection-start-line="63" selection-start-column="33" selection-end-line="63" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SocialAppClient/Control/Connections/UtilityConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
           <folding />
         </state>
       </provider>

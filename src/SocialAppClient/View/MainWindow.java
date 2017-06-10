@@ -111,7 +111,7 @@ public class MainWindow extends GridPane {
                 //i should rename this later
                 ReceiveServerNotification receiveServerNotification =
                         new ReceiveServerNotification(
-                                new UtilityConnection(id,PORT_NO).connect()
+                                new UtilityConnection(id,PORT_NO)
                                         .getConnectionSocket()) {
                     @Override
                     public void Analyze(Command command) {
