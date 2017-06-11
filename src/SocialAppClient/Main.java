@@ -152,9 +152,7 @@ public class Main extends Application {
             @Override
             public void onFinish(String id) {
                 if (id.equals("-1")){
-                    //TODO #belbl
-                    //this suppose to redirect him to register page
-                    //many reasons for this includes password changes
+                    logout();
                 }
             }
         };
