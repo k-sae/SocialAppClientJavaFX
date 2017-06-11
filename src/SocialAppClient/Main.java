@@ -71,7 +71,7 @@ public class Main extends Application {
     private void initMainConnection()
     {
         connectionStatus = new Label();
-        connectionPane = new StackPane(connectionStatus);
+        connectionPane = new StackPane();
 
         //initialize the connection up here
         new Thread(() -> {
@@ -87,6 +87,7 @@ public class Main extends Application {
                         Platform.runLater(() -> {
                             connectionStatus.setText("CONNECTING...");
                             connectionStatus.setFont(Font.font(16));
+                            connectionPane.getChildren().add(connectionStatus);
                             connectionPane.setStyle("-fx-background-color: #ffbb00");
                             connectionPane.setPadding(new Insets(8));
                             connectionPane.setAlignment(Pos.CENTER);
