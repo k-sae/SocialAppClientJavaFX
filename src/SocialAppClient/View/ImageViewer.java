@@ -10,8 +10,10 @@ import javafx.scene.image.ImageView;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.Socket;
 
 /**
@@ -39,11 +41,16 @@ public class ImageViewer extends ImageView implements SocialAppImages {
                                //TODO #hazem
                                 //          1- read from server byte array
                                 //          2- convert byte array to Javafx image
+                                byte[] bytes = (byte[]) new ObjectInputStream(connectionSocket.getInputStream()).readObject();
+                                BufferedImage img = ImageIO.read(new ByteArrayInputStream(bytes));
+                                Platform.runLater(() -> setImage(SwingFXUtils.toFXImage( img, null)));
                             } catch (IOException e) {
                                 Platform.runLater(() ->  setImage(new Image("file:Resources/avatar.jpg", true)));
+                            } catch (ClassNotFoundException e) {
+                                e.printStackTrace();
                             }
                         }
-                    };
+                    }.connect();
                 } catch (Exception e) {
                     System.out.println("Image cant be loaded");
                     Platform.runLater(() ->  setImage(new Image("file:Resources/avatar.jpg", true)));
