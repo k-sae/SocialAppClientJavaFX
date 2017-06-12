@@ -79,7 +79,7 @@ public class MainWindow extends GridPane {
                             }
 
                         }
-                           .connect().getConnectionSocket()) {
+                           .getConnectionSocket()) {
                     @Override
                     public void Analyze(Command command) {
                         if (command.getKeyWord().equals(LoggedUser.FRIEND_REQ))
