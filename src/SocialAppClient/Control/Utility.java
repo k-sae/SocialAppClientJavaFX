@@ -14,9 +14,7 @@ import javafx.stage.StageStyle;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
 import java.util.Optional;
 
@@ -71,13 +69,17 @@ public class Utility {
                         DataInputStream dataInputStream = new DataInputStream(connectionSocket.getInputStream());
                        command = Command.fromString( dataInputStream.readUTF());
                         id[0] = command != null ? command.getObjectStr() : null;
-                        ImageIO.write(bufferedImage,"jpg", connectionSocket.getOutputStream());
+                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                        ImageIO.write(bufferedImage, "jpg", baos);
+                        byte[] bytes = baos.toByteArray();
+                        ObjectOutputStream objectOutputStream = new ObjectOutputStream(connectionSocket.getOutputStream());
+                        objectOutputStream.writeObject(bytes);
                         connectionSocket.close();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
-            };
+            }.connect();
         } catch (Exception e) {
             e.printStackTrace();
         }
